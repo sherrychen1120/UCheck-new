@@ -1,0 +1,6 @@
+framework module Pods_UCheck {
+  umbrella header "Pods-UCheck-umbrella.h"
+
+  export *
+  module * { export * }
+}

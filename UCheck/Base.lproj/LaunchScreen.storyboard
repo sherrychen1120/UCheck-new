@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRT-Eb-BhI">
+                                <rect key="frame" x="112.5" y="261" width="150" height="123"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="90"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Self-Checkout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8s-TW-Q0l">
+                                <rect key="frame" x="110" y="384" width="155" height="33"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UCheck LOGO - white" translatesAutoresizingMaskIntoConstraints="NO" id="QAc-uH-dOG">
+                                <rect key="frame" x="106" y="103" width="163" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="55v-gO-Fmo"/>
+                                    <constraint firstAttribute="width" constant="163" id="hrE-EO-z3o"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.52941176469999995" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="a8s-TW-Q0l" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Vf3-SH-eTC"/>
+                            <constraint firstItem="a8s-TW-Q0l" firstAttribute="top" secondItem="CRT-Eb-BhI" secondAttribute="bottom" id="XDa-OM-oca"/>
+                            <constraint firstItem="CRT-Eb-BhI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Y6H-6F-Ac2"/>
+                            <constraint firstItem="QAc-uH-dOG" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="83" id="bip-Da-UhJ"/>
+                            <constraint firstItem="CRT-Eb-BhI" firstAttribute="top" secondItem="QAc-uH-dOG" secondAttribute="bottom" constant="8" id="gBa-YF-sep"/>
+                            <constraint firstItem="QAc-uH-dOG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="t9N-N6-VMe"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="UCheck LOGO - white" width="882" height="730"/>
+    </resources>
+</document>
