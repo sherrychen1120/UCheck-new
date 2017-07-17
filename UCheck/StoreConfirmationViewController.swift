@@ -14,38 +14,52 @@ class StoreConfirmationViewController: UIViewController {
     var store_id = ""
     var store_name = ""
     var store_address = ""
-    let ref = FIRDatabase.database().reference(withPath: "membership-programs")
-
+    let ref = FIRDatabase.database().reference()
+    
     @IBOutlet weak var YesButton: UIButton!
     @IBOutlet weak var StoreNameLabel: UILabel!
     @IBOutlet weak var StoreAddressLabel: UILabel!
     @IBAction func YesButton(_ sender: Any) {
         CurrentStore = store_id
         OnGoing = true
+        print("CurrentStore =" + store_id)
+        print("OnGoing = true")
         
-        ref.child(store_name).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get store information
-            let value = snapshot.value as? NSDictionary
+        var phone_no = ""
+        
+        ref.child("membership-programs").child(store_name).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Read from database whether CurrentUser is in the membership program of CurrentStore.
+            let dict = snapshot.value as? NSDictionary
             
-            
-            if (self.store_name != "" && self.store_address != ""){
-                print(self.store_name)
-                print(self.store_address)
-                self.performSegue(withIdentifier: "ScanStoreCodeToStoreConfirmation", sender: self)
+            //Read the phone number for current user
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            self.ref.child("user-profiles").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                phone_no = value?["phone_no"] as! String
+                print(phone_no)
+                
+                //Check the phone number in membership databse
+                if let val = dict![phone_no] {
+                    //if yes - get the user's phone number and log in to the program
+                    IsMember = true
+                    print("IsMember = true")
+                    self.performSegue(withIdentifier: "StoreConfirmationToMembership", sender: nil)
+                } else {
+                    //if no - register for the program
+                    self.performSegue(withIdentifier: "StoreConfirmationToJoinMember", sender: nil)
+                }
+
+            }) { (error) in
+                print(error.localizedDescription)
             }
             
+            print("out of the first ref")
+            
+            
+        
         }) { (error) in
             print(error.localizedDescription)
-        }
-
-        /*Read from database whether CurrentUser is in the membership program of CurrentStore.
-         If yes - log in to the program
-        IsMember = true
-        performSegue(withIdentifier: "StoreConfirmationToMembership", sender: nil)
-         if no - register for the program
-        performSegue(withIdentifier: "StoreConfirmationToJoinMember", sender: nil)
-         */
- 
+        } 
     }
     @IBAction func BackButton(_ sender: Any) {
         performSegue(withIdentifier: "UnwindToScanStore", sender: nil)

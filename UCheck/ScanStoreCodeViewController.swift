@@ -113,8 +113,8 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
                     self.store_address = value?["store_address"] as? String ?? ""
                     
                     if (self.store_name != "" && self.store_address != ""){
-                        print(self.store_name)
-                        print(self.store_address)
+                        print(self.store_name!)
+                        print(self.store_address!)
                         self.performSegue(withIdentifier: "ScanStoreCodeToStoreConfirmation", sender: self)
                     }
                     
