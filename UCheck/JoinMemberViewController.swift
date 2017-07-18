@@ -7,16 +7,45 @@
 //
 
 import UIKit
+import Firebase
 
 class JoinMemberViewController: UIViewController {
     
+    var checked = false
+    var phone_no = ""
+    var store_name = ""
+    let ref = FIRDatabase.database().reference(withPath: "membership-programs")
+    
+    @IBAction func CheckBox(_ sender: Any) {
+        checked = !checked
+    }
+    
     @IBAction func YesButton(_ sender: Any) {
         
-        //perform segue to the register VC
-        //After successfully registered, IsMember -> true, MemberLoggedIn = true
+        if (checked == false) {
+            //Show alert if the checkbox is not checked.
+            self.showAlert(withMessage: "Please review and check the box for Membership Terms of Services.")
+        } else {
+            //Register the user by uploading info & initializing on Firebase
+            let store_ref = self.ref.child(store_name).child(phone_no)
+            let new_member = ["coupons" : "",
+                              "points" : 0] as [String : Any]
+            store_ref.updateChildValues(new_member)
+            
+            //After successfully registered, IsMember -> true, MemberLoggedIn = true
+            IsMember = true
+            MemberLoggedIn = true
+            print("IsMember = true")
+            print("MemberLoggedIn = true")
+            
+            //perform segue to the barcode scanner
+            performSegue(withIdentifier: "JoinMemberToScanner", sender: self)
+        }
     }
+    
     @IBAction func NoButton(_ sender: Any) {
         //perform segue to the barcode scanner
+        performSegue(withIdentifier: "JoinMemberToScanner", sender: self)
     }
 
     @IBOutlet weak var YesButton: UIButton!
@@ -32,5 +61,13 @@ class JoinMemberViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: - show alert
+    func showAlert(withMessage: String) {
+        let alert = UIAlertController(title: "Eh Oh", message: withMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }

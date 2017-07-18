@@ -37,6 +37,11 @@
 		56B6811C1F1AC33B00772C68 /* MembershipLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6811B1F1AC33B00772C68 /* MembershipLoginViewController.swift */; };
 		56B6811E1F1AC66700772C68 /* JoinMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6811D1F1AC66700772C68 /* JoinMemberViewController.swift */; };
 		56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681201F1AC96C00772C68 /* ScannerViewController.swift */; };
+		56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95AD1F1DE03F0090A1AE /* ItemDetailViewController.swift */; };
+		56FC95BF1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BC1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift */; };
+		56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BD1F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift */; };
+		56FC95C11F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BE1F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift */; };
+		56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */; };
 		B8AF986AFF0651EAAB522D9B /* Pods_UCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */; };
 		F30608221F187FA900C01E45 /* CouponsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608211F187FA900C01E45 /* CouponsTableViewCell.swift */; };
 		F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608231F18811400C01E45 /* MyRewardsTableViewCell.swift */; };
@@ -98,6 +103,11 @@
 		56B6811B1F1AC33B00772C68 /* MembershipLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembershipLoginViewController.swift; sourceTree = "<group>"; };
 		56B6811D1F1AC66700772C68 /* JoinMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinMemberViewController.swift; sourceTree = "<group>"; };
 		56B681201F1AC96C00772C68 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		56FC95AD1F1DE03F0090A1AE /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		56FC95BC1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalInteractiveTransition.swift; sourceTree = "<group>"; };
+		56FC95BD1F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitionAnimator.swift; sourceTree = "<group>"; };
+		56FC95BE1F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
+		56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		74CF65B4F49EAD70CFE9796B /* Pods-UCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheck/Pods-UCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA7946E1E4FBA95F6FB4301 /* Pods_UCheckUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheckUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +237,8 @@
 		56B680EA1F09FB1C00772C68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				56FC95AF1F1DE2130090A1AE /* HalfModal */,
+				56B681171F19A28200772C68 /* CurrentSession.swift */,
 				56B681001F0CA9CD00772C68 /* First-time Registration */,
 			);
 			name = Model;
@@ -252,7 +264,6 @@
 				56B680F91F0C45F600772C68 /* MonthYearPickerView.swift */,
 				56B680FD1F0C4E9700772C68 /* StatePickerView.swift */,
 				56B681011F0DFEA900772C68 /* User.swift */,
-				56B681171F19A28200772C68 /* CurrentSession.swift */,
 			);
 			name = "First-time Registration";
 			sourceTree = "<group>";
@@ -275,8 +286,20 @@
 			isa = PBXGroup;
 			children = (
 				56B681201F1AC96C00772C68 /* ScannerViewController.swift */,
+				56FC95AD1F1DE03F0090A1AE /* ItemDetailViewController.swift */,
 			);
 			name = "Shopping Flow";
+			sourceTree = "<group>";
+		};
+		56FC95AF1F1DE2130090A1AE /* HalfModal */ = {
+			isa = PBXGroup;
+			children = (
+				56FC95BC1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift */,
+				56FC95BD1F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift */,
+				56FC95BE1F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift */,
+				56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */,
+			);
+			name = HalfModal;
 			sourceTree = "<group>";
 		};
 		8A78BF6F4CD9D37EF771768D /* Frameworks */ = {
@@ -608,9 +631,12 @@
 				56B6811C1F1AC33B00772C68 /* MembershipLoginViewController.swift in Sources */,
 				56B6811E1F1AC66700772C68 /* JoinMemberViewController.swift in Sources */,
 				56B681181F19A28200772C68 /* CurrentSession.swift in Sources */,
+				56FC95C11F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift in Sources */,
 				56B681021F0DFEA900772C68 /* User.swift in Sources */,
 				56B681141F17C51900772C68 /* RecommendedForYouTableViewCell.swift in Sources */,
 				56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */,
+				56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */,
+				56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */,
 				56B680F61F0C2E8600772C68 /* AllSetViewController.swift in Sources */,
 				F30608271F188E5A00C01E45 /* FindStoreTipViewController.swift in Sources */,
 				F30608291F1897C200C01E45 /* ScanStoreCodeViewController.swift in Sources */,
@@ -623,9 +649,11 @@
 				F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */,
 				56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */,
 				5652EF981F09D1030014873D /* AppDelegate.swift in Sources */,
+				56FC95BF1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift in Sources */,
 				56B680FA1F0C45F600772C68 /* MonthYearPickerView.swift in Sources */,
 				56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */,
 				56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */,
+				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
 				56B6811A1F1A7F1C00772C68 /* StoreConfirmationViewController.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,

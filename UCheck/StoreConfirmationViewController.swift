@@ -14,6 +14,7 @@ class StoreConfirmationViewController: UIViewController {
     var store_id = ""
     var store_name = ""
     var store_address = ""
+    var phone_no = ""
     let ref = FIRDatabase.database().reference()
     
     @IBOutlet weak var YesButton: UIButton!
@@ -25,7 +26,6 @@ class StoreConfirmationViewController: UIViewController {
         print("CurrentStore =" + store_id)
         print("OnGoing = true")
         
-        var phone_no = ""
         
         ref.child("membership-programs").child(store_name).observeSingleEvent(of: .value, with: { (snapshot) in
             // Read from database whether CurrentUser is in the membership program of CurrentStore.
@@ -35,11 +35,11 @@ class StoreConfirmationViewController: UIViewController {
             let userID = FIRAuth.auth()?.currentUser?.uid
             self.ref.child("user-profiles").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
-                phone_no = value?["phone_no"] as! String
-                print(phone_no)
+                self.phone_no = value?["phone_no"] as! String
+                print(self.phone_no)
                 
                 //Check the phone number in membership databse
-                if let val = dict![phone_no] {
+                if dict![self.phone_no] != nil {
                     //if yes - get the user's phone number and log in to the program
                     IsMember = true
                     print("IsMember = true")
@@ -79,6 +79,14 @@ class StoreConfirmationViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "StoreConfirmationToJoinMember"{
+            let nextScene = segue.destination as? JoinMemberViewController
+            nextScene?.phone_no = self.phone_no
+            nextScene?.store_name = self.store_name
+        }
     }
 
 }

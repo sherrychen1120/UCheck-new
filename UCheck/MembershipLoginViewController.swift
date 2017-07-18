@@ -15,10 +15,15 @@ class MembershipLoginViewController: UIViewController {
     @IBOutlet weak var YesButton: UIButton!
     @IBAction func YesButton(_ sender: Any) {
         MemberLoggedIn = true
+        print("Member logged in.")
+        
         //segue to barcode scanner
+        performSegue(withIdentifier: "MembershipLoginToScanner", sender: self)
     }
     @IBAction func NoButton(_ sender: Any) {
         //segue to barcode scanner
+        performSegue(withIdentifier: "MembershipLoginToScanner", sender: self)
+
     }
     
     override func viewDidLoad() {
