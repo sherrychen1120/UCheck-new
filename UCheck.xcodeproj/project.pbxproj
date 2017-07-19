@@ -42,6 +42,7 @@
 		56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BD1F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift */; };
 		56FC95C11F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BE1F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift */; };
 		56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */; };
+		56FC95C51F1F13880090A1AE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C41F1F13880090A1AE /* Item.swift */; };
 		B8AF986AFF0651EAAB522D9B /* Pods_UCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */; };
 		F30608221F187FA900C01E45 /* CouponsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608211F187FA900C01E45 /* CouponsTableViewCell.swift */; };
 		F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608231F18811400C01E45 /* MyRewardsTableViewCell.swift */; };
@@ -108,6 +109,7 @@
 		56FC95BD1F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitionAnimator.swift; sourceTree = "<group>"; };
 		56FC95BE1F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
+		56FC95C41F1F13880090A1AE /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		74CF65B4F49EAD70CFE9796B /* Pods-UCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheck/Pods-UCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA7946E1E4FBA95F6FB4301 /* Pods_UCheckUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheckUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,6 +242,7 @@
 				56FC95AF1F1DE2130090A1AE /* HalfModal */,
 				56B681171F19A28200772C68 /* CurrentSession.swift */,
 				56B681001F0CA9CD00772C68 /* First-time Registration */,
+				56FC95C41F1F13880090A1AE /* Item.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				5652EFA01F09D1030014873D /* UCheck.xcdatamodeld in Sources */,
 				56B681161F17CEA900772C68 /* LunchNearbyTableViewCell.swift in Sources */,
 				56B680FC1F0C4A0700772C68 /* BillingInfoViewController.swift in Sources */,
+				56FC95C51F1F13880090A1AE /* Item.swift in Sources */,
 				F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */,
 				56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */,
 				5652EF981F09D1030014873D /* AppDelegate.swift in Sources */,

@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class ItemDetailViewController: UIViewController, HalfModalPresentable {
 
     //take the item code from the last VC and create an object with the JSON
-    var current_item = ""
+    var currItem : Item = Item(code: "", name: "", price: "", has_discount: false, discount_message: "", discount_price: "")
     
     @IBOutlet weak var ItemNameLabel: UILabel!
     @IBOutlet weak var ItemPriceLabel: UILabel!
     @IBOutlet weak var ItemImage: UIImageView!
+    @IBOutlet weak var ContinueButton: UIButton!
     
+    @IBAction func ContinueButton(_ sender: Any) {
+    }
     @IBAction func CancelButton(_ sender: Any) {
         if let delegate = transitioningDelegate as? HalfModalTransitioningDelegate {
             delegate.interactiveDismiss = false
@@ -27,8 +31,30 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ContinueButton.layer.cornerRadius = 9
+        
+        //display item detail information
+        ItemNameLabel.text = currItem.name
+        if (currItem.has_discount) {
+            ItemPriceLabel.text = "$" + (currItem.discount_price)
+        } else {
+            ItemPriceLabel.text = "$" + (currItem.price)
+        }
+        
+        //TODO: display image
+        let storage = FIRStorage.storage()
+        let code = currItem.code
+        let storageRef = storage.reference(withPath: "inventory/\(CurrentStore)/\(code).png")
+        
+        storageRef.data(withMaxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                let image = UIImage(data: data!)
+                self.ItemImage.image = image
+            }
+        }
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

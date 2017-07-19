@@ -10,7 +10,7 @@ import UIKit
 
 var CurrentUser = ""
 var CurrentStore = ""
-var CurrentShoppingCart = [""]
+var CurrentShoppingCart : [Item] = []
 var OnGoing = false
 var MemberLoggedIn = false
 var IsMember = false
