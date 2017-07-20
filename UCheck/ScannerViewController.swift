@@ -33,6 +33,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     @IBOutlet weak var RecommendationCollection: UICollectionView!
     
+    @IBAction func MenuButton(_ sender: Any) {
+        performSegue(withIdentifier: "ScanningToMenu", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -175,9 +179,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: segue.destination)
             
-            segue.destination.modalPresentationStyle = .custom
-            segue.destination.transitioningDelegate = self.halfModalTransitioningDelegate
+            nextScene.modalPresentationStyle = .custom
+            nextScene.transitioningDelegate = self.halfModalTransitioningDelegate
 
+        } else if let destinationViewController = segue.destination as? MenuViewController {
+            print("segue to menu")
+            destinationViewController.modalPresentationStyle = .custom
+            destinationViewController.transitioningDelegate = self
         }
     }
     
@@ -214,5 +222,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         return CGSize(width: itemWidth, height: itemHeight)
     }
 
+}
 
+extension ScannerViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PresentMenuAnimator()
+    }
 }

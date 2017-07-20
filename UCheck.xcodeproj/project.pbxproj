@@ -43,6 +43,10 @@
 		56FC95C11F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BE1F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift */; };
 		56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */; };
 		56FC95C51F1F13880090A1AE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C41F1F13880090A1AE /* Item.swift */; };
+		56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C61F20945C0090A1AE /* MenuViewController.swift */; };
+		56FC95CD1F20966B0090A1AE /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95CC1F20966B0090A1AE /* Interactor.swift */; };
+		56FC95CF1F2096A80090A1AE /* MenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95CE1F2096A80090A1AE /* MenuHelper.swift */; };
+		56FC95D11F209C810090A1AE /* PresentMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95D01F209C810090A1AE /* PresentMenuAnimator.swift */; };
 		B8AF986AFF0651EAAB522D9B /* Pods_UCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */; };
 		F30608221F187FA900C01E45 /* CouponsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608211F187FA900C01E45 /* CouponsTableViewCell.swift */; };
 		F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608231F18811400C01E45 /* MyRewardsTableViewCell.swift */; };
@@ -110,6 +114,10 @@
 		56FC95BE1F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		56FC95C41F1F13880090A1AE /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		56FC95C61F20945C0090A1AE /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		56FC95CC1F20966B0090A1AE /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
+		56FC95CE1F2096A80090A1AE /* MenuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHelper.swift; sourceTree = "<group>"; };
+		56FC95D01F209C810090A1AE /* PresentMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMenuAnimator.swift; sourceTree = "<group>"; };
 		74CF65B4F49EAD70CFE9796B /* Pods-UCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheck/Pods-UCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA7946E1E4FBA95F6FB4301 /* Pods_UCheckUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheckUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +251,9 @@
 				56B681171F19A28200772C68 /* CurrentSession.swift */,
 				56B681001F0CA9CD00772C68 /* First-time Registration */,
 				56FC95C41F1F13880090A1AE /* Item.swift */,
+				56FC95CC1F20966B0090A1AE /* Interactor.swift */,
+				56FC95CE1F2096A80090A1AE /* MenuHelper.swift */,
+				56FC95D01F209C810090A1AE /* PresentMenuAnimator.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -290,6 +301,7 @@
 			children = (
 				56B681201F1AC96C00772C68 /* ScannerViewController.swift */,
 				56FC95AD1F1DE03F0090A1AE /* ItemDetailViewController.swift */,
+				56FC95C61F20945C0090A1AE /* MenuViewController.swift */,
 			);
 			name = "Shopping Flow";
 			sourceTree = "<group>";
@@ -633,6 +645,7 @@
 				56B681041F10771F00772C68 /* LoginViewController.swift in Sources */,
 				56B6811C1F1AC33B00772C68 /* MembershipLoginViewController.swift in Sources */,
 				56B6811E1F1AC66700772C68 /* JoinMemberViewController.swift in Sources */,
+				56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */,
 				56B681181F19A28200772C68 /* CurrentSession.swift in Sources */,
 				56FC95C11F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift in Sources */,
 				56B681021F0DFEA900772C68 /* User.swift in Sources */,
@@ -640,6 +653,8 @@
 				56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */,
 				56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */,
 				56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */,
+				56FC95CD1F20966B0090A1AE /* Interactor.swift in Sources */,
+				56FC95CF1F2096A80090A1AE /* MenuHelper.swift in Sources */,
 				56B680F61F0C2E8600772C68 /* AllSetViewController.swift in Sources */,
 				F30608271F188E5A00C01E45 /* FindStoreTipViewController.swift in Sources */,
 				F30608291F1897C200C01E45 /* ScanStoreCodeViewController.swift in Sources */,
@@ -659,6 +674,7 @@
 				56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */,
 				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
+				56FC95D11F209C810090A1AE /* PresentMenuAnimator.swift in Sources */,
 				56B6811A1F1A7F1C00772C68 /* StoreConfirmationViewController.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,
 			);

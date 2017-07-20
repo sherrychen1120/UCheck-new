@@ -26,6 +26,9 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
             delegate.interactiveDismiss = false
         }
         
+        CurrentShoppingCart.removeLast()
+        print(CurrentShoppingCart)
+        
         performSegue(withIdentifier: "ItemDetailToScanning", sender: self)
     }
     
