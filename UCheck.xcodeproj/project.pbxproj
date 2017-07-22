@@ -16,6 +16,11 @@
 		5652EFA51F09D1030014873D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5652EFA31F09D1030014873D /* LaunchScreen.storyboard */; };
 		5652EFB01F09D1030014873D /* UCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652EFAF1F09D1030014873D /* UCheckTests.swift */; };
 		5652EFBB1F09D1030014873D /* UCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652EFBA1F09D1030014873D /* UCheckUITests.swift */; };
+		565D91AC1F23C571009C2393 /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91AB1F23C571009C2393 /* SlideInPresentationManager.swift */; };
+		565D91AF1F23C7C4009C2393 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91AE1F23C7C4009C2393 /* SlideInPresentationController.swift */; };
+		565D91B11F23CAD8009C2393 /* SlideInPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B01F23CAD8009C2393 /* SlideInPresentationAnimator.swift */; };
+		565D91B31F23DD2A009C2393 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B21F23DD2A009C2393 /* ShoppingCartViewController.swift */; };
+		565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */; };
 		567488BD1F09F46B00EB4471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */; };
 		56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */; };
 		56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */; };
@@ -44,9 +49,6 @@
 		56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */; };
 		56FC95C51F1F13880090A1AE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C41F1F13880090A1AE /* Item.swift */; };
 		56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C61F20945C0090A1AE /* MenuViewController.swift */; };
-		56FC95CD1F20966B0090A1AE /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95CC1F20966B0090A1AE /* Interactor.swift */; };
-		56FC95CF1F2096A80090A1AE /* MenuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95CE1F2096A80090A1AE /* MenuHelper.swift */; };
-		56FC95D11F209C810090A1AE /* PresentMenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95D01F209C810090A1AE /* PresentMenuAnimator.swift */; };
 		B8AF986AFF0651EAAB522D9B /* Pods_UCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */; };
 		F30608221F187FA900C01E45 /* CouponsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608211F187FA900C01E45 /* CouponsTableViewCell.swift */; };
 		F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608231F18811400C01E45 /* MyRewardsTableViewCell.swift */; };
@@ -86,6 +88,11 @@
 		5652EFB61F09D1030014873D /* UCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5652EFBA1F09D1030014873D /* UCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCheckUITests.swift; sourceTree = "<group>"; };
 		5652EFBC1F09D1030014873D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		565D91AB1F23C571009C2393 /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
+		565D91AE1F23C7C4009C2393 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
+		565D91B01F23CAD8009C2393 /* SlideInPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInPresentationAnimator.swift; sourceTree = "<group>"; };
+		565D91B21F23DD2A009C2393 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
+		565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallCartItemTableViewCell.swift; sourceTree = "<group>"; };
 		567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		567488BE1F09F4CF00EB4471 /* UCheck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UCheck.entitlements; sourceTree = "<group>"; };
 		56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
@@ -115,9 +122,6 @@
 		56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		56FC95C41F1F13880090A1AE /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		56FC95C61F20945C0090A1AE /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		56FC95CC1F20966B0090A1AE /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
-		56FC95CE1F2096A80090A1AE /* MenuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHelper.swift; sourceTree = "<group>"; };
-		56FC95D01F209C810090A1AE /* PresentMenuAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMenuAnimator.swift; sourceTree = "<group>"; };
 		74CF65B4F49EAD70CFE9796B /* Pods-UCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheck/Pods-UCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		7FA7946E1E4FBA95F6FB4301 /* Pods_UCheckUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheckUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +215,16 @@
 			path = UCheckUITests;
 			sourceTree = "<group>";
 		};
+		565D91AD1F23C785009C2393 /* SlideInPresentation */ = {
+			isa = PBXGroup;
+			children = (
+				565D91AB1F23C571009C2393 /* SlideInPresentationManager.swift */,
+				565D91AE1F23C7C4009C2393 /* SlideInPresentationController.swift */,
+				565D91B01F23CAD8009C2393 /* SlideInPresentationAnimator.swift */,
+			);
+			name = SlideInPresentation;
+			sourceTree = "<group>";
+		};
 		56B680E71F09FAE600772C68 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,13 +261,11 @@
 		56B680EA1F09FB1C00772C68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				565D91AD1F23C785009C2393 /* SlideInPresentation */,
 				56FC95AF1F1DE2130090A1AE /* HalfModal */,
 				56B681171F19A28200772C68 /* CurrentSession.swift */,
 				56B681001F0CA9CD00772C68 /* First-time Registration */,
 				56FC95C41F1F13880090A1AE /* Item.swift */,
-				56FC95CC1F20966B0090A1AE /* Interactor.swift */,
-				56FC95CE1F2096A80090A1AE /* MenuHelper.swift */,
-				56FC95D01F209C810090A1AE /* PresentMenuAnimator.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -302,6 +314,8 @@
 				56B681201F1AC96C00772C68 /* ScannerViewController.swift */,
 				56FC95AD1F1DE03F0090A1AE /* ItemDetailViewController.swift */,
 				56FC95C61F20945C0090A1AE /* MenuViewController.swift */,
+				565D91B21F23DD2A009C2393 /* ShoppingCartViewController.swift */,
+				565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */,
 			);
 			name = "Shopping Flow";
 			sourceTree = "<group>";
@@ -642,8 +656,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F30608221F187FA900C01E45 /* CouponsTableViewCell.swift in Sources */,
+				565D91B11F23CAD8009C2393 /* SlideInPresentationAnimator.swift in Sources */,
 				56B681041F10771F00772C68 /* LoginViewController.swift in Sources */,
 				56B6811C1F1AC33B00772C68 /* MembershipLoginViewController.swift in Sources */,
+				565D91AF1F23C7C4009C2393 /* SlideInPresentationController.swift in Sources */,
 				56B6811E1F1AC66700772C68 /* JoinMemberViewController.swift in Sources */,
 				56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */,
 				56B681181F19A28200772C68 /* CurrentSession.swift in Sources */,
@@ -653,9 +669,9 @@
 				56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */,
 				56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */,
 				56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */,
-				56FC95CD1F20966B0090A1AE /* Interactor.swift in Sources */,
-				56FC95CF1F2096A80090A1AE /* MenuHelper.swift in Sources */,
+				565D91AC1F23C571009C2393 /* SlideInPresentationManager.swift in Sources */,
 				56B680F61F0C2E8600772C68 /* AllSetViewController.swift in Sources */,
+				565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */,
 				F30608271F188E5A00C01E45 /* FindStoreTipViewController.swift in Sources */,
 				F30608291F1897C200C01E45 /* ScanStoreCodeViewController.swift in Sources */,
 				56B6810C1F1090B900772C68 /* DiscoverNearbyViewController.swift in Sources */,
@@ -670,11 +686,11 @@
 				5652EF981F09D1030014873D /* AppDelegate.swift in Sources */,
 				56FC95BF1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift in Sources */,
 				56B680FA1F0C45F600772C68 /* MonthYearPickerView.swift in Sources */,
+				565D91B31F23DD2A009C2393 /* ShoppingCartViewController.swift in Sources */,
 				56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */,
 				56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */,
 				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
-				56FC95D11F209C810090A1AE /* PresentMenuAnimator.swift in Sources */,
 				56B6811A1F1A7F1C00772C68 /* StoreConfirmationViewController.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,
 			);

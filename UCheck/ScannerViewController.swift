@@ -12,6 +12,7 @@ import Firebase
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    
     //Scanner-related variables
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
@@ -26,6 +27,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     //CurrItem
     var currItem: Item?
     
+    //Transitioning Delegate for Menu
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
+    
     @IBOutlet weak var ButtonView: UIView!
     @IBOutlet weak var ScanningArea: UIView!
     @IBOutlet weak var CheckoutButton: UIButton!
@@ -37,8 +41,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         performSegue(withIdentifier: "ScanningToMenu", sender: nil)
     }
     
+    @IBAction func ShoppingCartButton(_ sender: Any) {
+        performSegue(withIdentifier: "ScanningToCart", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("view did load.")
 
         //Customize the navigation bar
         self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
@@ -55,8 +64,17 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         RecommendationCollection.delegate = self
         RecommendationCollection.dataSource = self
         
-        
+        self.scannerSetup()
+        print("scanner setup.")
     }
+    
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.scannerSetup()
+        print("scanner setup.")
+     }*/
+    
     
     func scannerSetup(){
         //Scanner set up
@@ -182,18 +200,22 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             nextScene.modalPresentationStyle = .custom
             nextScene.transitioningDelegate = self.halfModalTransitioningDelegate
 
-        } else if let destinationViewController = segue.destination as? MenuViewController {
-            print("segue to menu")
-            destinationViewController.modalPresentationStyle = .custom
-            destinationViewController.transitioningDelegate = self
+        } else if let controller = segue.destination as? MenuViewController {
+            //captureSession?.stopRunning()
+            
+            slideInTransitioningDelegate.direction = .left
+            controller.transitioningDelegate = slideInTransitioningDelegate
+            controller.modalPresentationStyle = .custom
+        } else if let controller = segue.destination as? ShoppingCartViewController {
+            
+            slideInTransitioningDelegate.direction = .right
+            controller.transitioningDelegate = slideInTransitioningDelegate
+            controller.modalPresentationStyle = .custom
         }
+
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.scannerSetup()
-    }
-    
+  
     @IBAction func unwindToScanner(segue: UIStoryboardSegue) {
         self.scannerSetup()
     }
@@ -224,9 +246,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
 }
 
-extension ScannerViewController: UIViewControllerTransitioningDelegate {
+/*extension ScannerViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PresentMenuAnimator()
     }
-}
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissMenuAnimator()
+    }
+}*/

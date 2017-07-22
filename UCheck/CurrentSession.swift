@@ -10,16 +10,17 @@ import UIKit
 
 var CurrentUser = ""
 var CurrentStore = ""
+var CurrentStoreName = ""
 var CurrentShoppingCart : [Item] = []
 var OnGoing = false
 var MemberLoggedIn = false
 var IsMember = false
+var CurrentUserName = ""
+var CurrentUserPhoto : UIImage? = nil
 
 class CurrentSession: NSObject {
+
     
-    /*init(userid : String){
-        CurrentUser = userid
-    }*/
     
     
 }

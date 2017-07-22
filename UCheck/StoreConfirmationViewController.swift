@@ -74,6 +74,8 @@ class StoreConfirmationViewController: UIViewController {
         
         StoreNameLabel.text = store_name + "?"
         StoreAddressLabel.text = store_address
+        
+        CurrentStoreName = store_name
        
     }
 

@@ -20,7 +20,13 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
     @IBOutlet weak var ContinueButton: UIButton!
     
     @IBAction func ContinueButton(_ sender: Any) {
+        if let delegate = transitioningDelegate as? HalfModalTransitioningDelegate {
+            delegate.interactiveDismiss = false
+        }
+        print(CurrentShoppingCart)
+        performSegue(withIdentifier: "ItemDetailToScanning", sender: self)
     }
+    
     @IBAction func CancelButton(_ sender: Any) {
         if let delegate = transitioningDelegate as? HalfModalTransitioningDelegate {
             delegate.interactiveDismiss = false

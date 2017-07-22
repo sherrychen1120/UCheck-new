@@ -86,6 +86,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     let user_ref = self.ref.child(uid)
                     user_ref.setValue(new_user.toAnyObject())
                     
+                    CurrentUser = self.email
+                    CurrentUserName = self.first_name + " " + self.last_name
+                    
                     self.performSegue(withIdentifier: "RegisterToPayment", sender: nil)
                 }
             }

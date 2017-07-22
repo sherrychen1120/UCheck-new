@@ -65,6 +65,8 @@ class SelfieViewController: UIViewController, UINavigationControllerDelegate, UI
 
             }
             
+            CurrentUserPhoto = chosenImage!
+                
             self.performSegue(withIdentifier: "SelfieToAllSet", sender: nil)
         }
     }
