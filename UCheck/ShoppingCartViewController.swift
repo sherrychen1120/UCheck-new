@@ -23,6 +23,16 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         
         super.viewDidLoad()
         StoreNameLabel.text = CurrentStoreName
+        
+        ShoppingCartTableView.delegate = self
+        ShoppingCartTableView.dataSource = self
+        
+        let tax = 0.06 * subtotal
+        let total = tax + subtotal
+        MembershipSavedLabel.text = "Membership saving: $" + String(format: "%.2f", total_saving)
+        SubtotalLabel.text = "Subtotal: $" + String(format: "%.2f", subtotal)
+        EstTaxLabel.text = "Est. Tax: $" + String(format: "%.2f", tax)
+        TotalLabel.text = "Total: $" + String(format: "%.2f", total)
 
     }
     
@@ -35,38 +45,35 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.tableView.dequeueReusableCell(withIdentifier:"CartItemCell", for: indexPath) as? CartItemTableViewCell else {
-            fatalError("The dequeued cell is not an instance of CartItemTableViewCell.")
+        guard let cell = self.ShoppingCartTableView.dequeueReusableCell(withIdentifier:"CartItemCell", for: indexPath) as? SmallCartItemTableViewCell else {
+            fatalError("The dequeued cell is not an instance of SmallCartItemTableViewCell.")
         }
         
-        let s = shoppingCart[indexPath.row]
-        cell.ItemName?.text = s.name
-        cell.ItemDetails?.text = "Color: " + s.color + ", Size: " + s.size
-        cell.ItemPrice?.text = "$" + s.price
-        
-        let ItemCode = s.code
-        let storageRef = storage.reference(withPath: "\(ItemCode)-2.jpeg")
-        
-        storageRef.data(withMaxSize: 1 * 1024 * 1024) { data, error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                let image = UIImage(data: data!)
-                cell.ItemImage?.image = image
-            }
+        let item = CurrentShoppingCart[indexPath.row]
+        cell.ItemImage.image = item.item_image
+        cell.ItemName.text = item.name
+        //cell.ItemQuantity = ""
+        if item.has_discount {
+            cell.ItemPrice.text = "$" + item.discount_price
+            cell.ItemOriginalPrice.text = "Original: $" + item.price
+            cell.DeleteLine.isHidden = false
+        } else {
+            cell.ItemPrice.text = "$" + item.price
+            cell.ItemOriginalPrice.isHidden = true
+            cell.DeleteLine.isHidden = true
         }
-        
+                
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let s = shoppingCart[indexPath.row]
-            ShoppingCart.deleteItem(oldItem: s)
+            let item = CurrentShoppingCart[indexPath.row]
+            CurrentShoppingCart.deleteItem(oldItem: s)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             updatePrices()
         }
-    }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

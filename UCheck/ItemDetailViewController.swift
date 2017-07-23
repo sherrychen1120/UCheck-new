@@ -23,7 +23,6 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
         if let delegate = transitioningDelegate as? HalfModalTransitioningDelegate {
             delegate.interactiveDismiss = false
         }
-        print(CurrentShoppingCart)
         performSegue(withIdentifier: "ItemDetailToScanning", sender: self)
     }
     
@@ -32,8 +31,8 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
             delegate.interactiveDismiss = false
         }
         
-        CurrentShoppingCart.removeLast()
-        print(CurrentShoppingCart)
+        ShoppingCart.deleteItem(oldItem: currItem)
+        ShoppingCart.listItems()
         
         performSegue(withIdentifier: "ItemDetailToScanning", sender: self)
     }
@@ -61,6 +60,8 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
             } else {
                 let image = UIImage(data: data!)
                 self.ItemImage.image = image
+                self.currItem.addImage(source: image)
+                print("Image saved for \(self.currItem.name)")
             }
         }
 

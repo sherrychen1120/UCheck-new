@@ -16,6 +16,7 @@ class Item: NSObject {
     var has_discount = false
     var discount_message : String = ""
     var discount_price : String = ""
+    var item_image : UIImage?
     let ref: FIRDatabaseReference?
     
     init(code:String, name:String, price:String,
@@ -38,6 +39,10 @@ class Item: NSObject {
         discount_message = snapshotValue["discount_message"] as! String
         discount_price = snapshotValue["discount_price"] as! String
         ref = snapshot.ref
+    }
+    
+    func addImage(source : UIImage?){
+        item_image = source
     }
 
 

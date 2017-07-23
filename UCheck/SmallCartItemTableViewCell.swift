@@ -15,6 +15,8 @@ class SmallCartItemTableViewCell: UITableViewCell {
     @IBOutlet weak var ItemQuantity: UILabel!
     @IBOutlet weak var ItemPrice: UILabel!
     @IBOutlet weak var ItemOriginalPrice: UILabel!
+    @IBOutlet weak var DeleteLine: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -8,19 +8,21 @@
 
 import UIKit
 
-var CurrentUser = ""
 var CurrentStore = ""
 var CurrentStoreName = ""
-var CurrentShoppingCart : [Item] = []
+
 var OnGoing = false
 var MemberLoggedIn = false
 var IsMember = false
+
+var CurrentUser = ""
 var CurrentUserName = ""
 var CurrentUserPhoto : UIImage? = nil
 
+
 class CurrentSession: NSObject {
 
-    
+   
     
     
 }

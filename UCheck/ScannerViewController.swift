@@ -64,16 +64,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         RecommendationCollection.delegate = self
         RecommendationCollection.dataSource = self
         
-        self.scannerSetup()
-        print("scanner setup.")
     }
     
-    /*
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         self.scannerSetup()
-        print("scanner setup.")
-     }*/
+        print("view did appear scanner setup.")
+        super.viewDidAppear(animated)
+     }
     
     
     func scannerSetup(){
@@ -168,8 +165,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                         self.captureSession = nil
                         
                         //Add to shopping cart
-                        CurrentShoppingCart.append(self.currItem!)
-                        print(CurrentShoppingCart)
+                        ShoppingCart.addItem(newItem: self.currItem!)
+                        ShoppingCart.listItems()
                         
                         //Show ItemDetail VC
                         //TODO: Pass the currItem to the next VC
@@ -201,13 +198,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             nextScene.transitioningDelegate = self.halfModalTransitioningDelegate
 
         } else if let controller = segue.destination as? MenuViewController {
-            //captureSession?.stopRunning()
-            
+            captureSession?.stopRunning()
             slideInTransitioningDelegate.direction = .left
             controller.transitioningDelegate = slideInTransitioningDelegate
             controller.modalPresentationStyle = .custom
-        } else if let controller = segue.destination as? ShoppingCartViewController {
             
+        } else if let controller = segue.destination as? ShoppingCartViewController {
+            captureSession?.stopRunning()
             slideInTransitioningDelegate.direction = .right
             controller.transitioningDelegate = slideInTransitioningDelegate
             controller.modalPresentationStyle = .custom
@@ -218,6 +215,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
   
     @IBAction func unwindToScanner(segue: UIStoryboardSegue) {
         self.scannerSetup()
+        print("unwindSegue scannerSetup")
     }
     
     //CollectionView delegate
@@ -245,14 +243,3 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
 
 }
-
-/*extension ScannerViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PresentMenuAnimator()
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return DismissMenuAnimator()
-    }
-}*/
