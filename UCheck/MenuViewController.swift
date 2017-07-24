@@ -12,6 +12,7 @@ import Firebase
 class MenuViewController: UIViewController {
 
     var uid : String = ""
+    var delegate: communicationScanner? = nil
     
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var UserNameLabel: UILabel!
@@ -27,6 +28,11 @@ class MenuViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("menu view will disappear")
+        self.delegate?.scannerSetup()
     }
     
 

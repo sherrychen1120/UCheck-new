@@ -10,8 +10,7 @@ import UIKit
 import AVFoundation
 import Firebase
 
-class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, communicationScanner {
     
     //Scanner-related variables
     var captureSession:AVCaptureSession?
@@ -34,6 +33,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     @IBOutlet weak var ScanningArea: UIView!
     @IBOutlet weak var CheckoutButton: UIButton!
     @IBAction func CheckoutButton(_ sender: Any) {
+        performSegue(withIdentifier: "ScanningToCheckout", sender: nil)
     }
     @IBOutlet weak var RecommendationCollection: UICollectionView!
     
@@ -47,7 +47,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("view did load.")
 
         //Customize the navigation bar
         self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
@@ -64,13 +63,15 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         RecommendationCollection.delegate = self
         RecommendationCollection.dataSource = self
         
+        self.scannerSetup()
+        print("view did load scanner setup.")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    /*override func viewDidAppear(_ animated: Bool) {
         self.scannerSetup()
         print("view did appear scanner setup.")
         super.viewDidAppear(animated)
-     }
+     }*/
     
     
     func scannerSetup(){
@@ -144,8 +145,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         || metadataObj.type == AVMetadataObjectTypePDF417Code) {
             // If the found metadata is equal to the bar code metadata then set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            barCodeFrameView?.frame = barCodeObject!.bounds
-            
+            barCodeFrameView?.frame = barCodeObject!.bounds       
+                        
             if metadataObj.stringValue != nil {
                 let code = metadataObj.stringValue
                 print(code!)
@@ -202,12 +203,16 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             slideInTransitioningDelegate.direction = .left
             controller.transitioningDelegate = slideInTransitioningDelegate
             controller.modalPresentationStyle = .custom
+            controller.delegate = self
             
         } else if let controller = segue.destination as? ShoppingCartViewController {
             captureSession?.stopRunning()
             slideInTransitioningDelegate.direction = .right
             controller.transitioningDelegate = slideInTransitioningDelegate
             controller.modalPresentationStyle = .custom
+            controller.delegate = self
+        } else if let controller = segue.destination as? CheckOutViewController {
+            captureSession?.stopRunning()
         }
 
     }

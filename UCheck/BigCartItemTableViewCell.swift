@@ -1,20 +1,20 @@
 //
-//  SmallCartItemTableViewCell.swift
+//  BigCartItemTableViewCell.swift
 //  UCheck
 //
-//  Created by Sherry Chen on 7/22/17.
+//  Created by Sherry Chen on 7/23/17.
 //
 //
 
 import UIKit
 
-class SmallCartItemTableViewCell: UITableViewCell {
-
+class BigCartItemTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var ItemName: UILabel!
+    @IBOutlet weak var ItemQuantity: UILabel!
     @IBOutlet weak var ItemPrice: UILabel!
-    @IBOutlet weak var ItemOriginalPrice: UILabel!
-    @IBOutlet weak var DeleteLine: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

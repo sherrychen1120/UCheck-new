@@ -19,11 +19,11 @@ class ShoppingCart: NSObject {
             CurrentShoppingCart.append(newItem)
             
             if newItem.has_discount{
-                subtotal += Double(newItem.discount_price)!
+                subtotal = subtotal + Double(newItem.discount_price)!
                 let saving = Double(newItem.price)! - Double(newItem.discount_price)!
-                total_saving += saving
+                total_saving = total_saving + saving
             } else {
-                subtotal += Double(newItem.price)!
+                subtotal = subtotal + Double(newItem.price)!
             }
             
         }
@@ -35,11 +35,11 @@ class ShoppingCart: NSObject {
             CurrentShoppingCart.remove(at: index!)
             
             if oldItem.has_discount{
-                subtotal += Double(oldItem.discount_price)!
+                subtotal = subtotal - Double(oldItem.discount_price)!
                 let saving = Double(oldItem.price)! - Double(oldItem.discount_price)!
-                total_saving -= saving
+                total_saving = total_saving - saving
             } else {
-                subtotal -= Double(oldItem.price)!
+                subtotal = subtotal - Double(oldItem.price)!
             }
         }
     }
@@ -50,6 +50,8 @@ class ShoppingCart: NSObject {
             print(item.name)
         }
         print("]")
+        print("subtotal = " + String(subtotal))
+        print("total savings = " + String(total_saving))
     }
 
 }

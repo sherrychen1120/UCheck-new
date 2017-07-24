@@ -1,38 +1,54 @@
 //
-//  ShoppingCartViewController.swift
+//  CheckOutViewController.swift
 //  UCheck
 //
-//  Created by Sherry Chen on 7/22/17.
+//  Created by Sherry Chen on 7/23/17.
 //
 //
 
 import UIKit
 
+class CheckOutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-protocol communicationScanner {
-    func scannerSetup()
-}
-
-class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var StoreNameLabel: UILabel!
-    @IBOutlet weak var ShoppingCartTableView: UITableView!
-    
-    @IBOutlet weak var BottomView: UIView!
-    @IBOutlet weak var MembershipSavedLabel: UILabel!
-    @IBOutlet weak var SubtotalLabel: UILabel!
-    @IBOutlet weak var EstTaxLabel: UILabel!
+    @IBAction func ChangePaymentMethodButton(_ sender: Any) {
+    }
+    @IBAction func ConfirmAndPayButton(_ sender: Any) {
+    }
+    @IBOutlet weak var ConfirmAndPayButton: UIButton!
     @IBOutlet weak var TotalLabel: UILabel!
+    @IBOutlet weak var EstTaxLabel: UILabel!
+    @IBOutlet weak var SubtotalLabel: UILabel!
+    @IBOutlet weak var MembershipSavedLabel: UILabel!
+    @IBOutlet weak var ButtonArea: UIView!
+    @IBOutlet weak var CartItemsTableView: UITableView!
     
-    var delegate: communicationScanner? = nil
+    @IBAction func BackButton(_ sender: Any) {
+        performSegue(withIdentifier: "UnwindToScanner", sender: nil)
+    }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        StoreNameLabel.text = CurrentStoreName
+
+        //Customize the navigation bar
+        self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
+        self.navigationController!.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
+        self.navigationController!.navigationBar.titleTextAttributes =
+            [NSForegroundColorAttributeName: UIColor.white,
+             NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        ShoppingCartTableView.delegate = self
-        ShoppingCartTableView.dataSource = self
+        //Customize the button
+        ConfirmAndPayButton.layer.cornerRadius = 9
+        
+        //Shadow of the UIView around the button
+        ButtonArea.layer.shadowColor = UIColor.black.cgColor
+        ButtonArea.layer.shadowOpacity = 0.3
+        ButtonArea.layer.shadowOffset = CGSize(width: 0, height: -5)
+        ButtonArea.layer.shadowRadius = 3
+
+        //TableView delegate & data source
+        CartItemsTableView.delegate = self
+        CartItemsTableView.dataSource = self
         
         updatePrices()
     }
@@ -44,7 +60,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         SubtotalLabel.text = "Subtotal: $" + String(format: "%.2f", subtotal)
         EstTaxLabel.text = "Est. Tax: $" + String(format: "%.2f", tax)
         TotalLabel.text = "Total: $" + String(format: "%.2f", total)
-        ShoppingCart.listItems()
+        ShoppingCart.listItems() //for debug
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -56,8 +72,8 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.ShoppingCartTableView.dequeueReusableCell(withIdentifier:"CartItemCell", for: indexPath) as? SmallCartItemTableViewCell else {
-            fatalError("The dequeued cell is not an instance of SmallCartItemTableViewCell.")
+        guard let cell = self.CartItemsTableView.dequeueReusableCell(withIdentifier:"CartItemCell", for: indexPath) as? BigCartItemTableViewCell else {
+            fatalError("The dequeued cell is not an instance of BigCartItemTableViewCell.")
         }
         
         let item = CurrentShoppingCart[indexPath.row]
@@ -65,14 +81,10 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         cell.ItemName.text = item.name
         if item.has_discount {
             cell.ItemPrice.text = "$" + String(item.discount_price)
-            cell.ItemOriginalPrice.text = "Original: $" + String(item.price)
-            cell.DeleteLine.isHidden = false
         } else {
             cell.ItemPrice.text = "$" + String(item.price)
-            cell.ItemOriginalPrice.isHidden = true
-            cell.DeleteLine.isHidden = true
         }
-                
+        
         return cell
     }
     
@@ -90,12 +102,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print("shopping cart view will disappear")
-        self.delegate?.scannerSetup()
-    }
 
-    
     /*
     // MARK: - Navigation
 

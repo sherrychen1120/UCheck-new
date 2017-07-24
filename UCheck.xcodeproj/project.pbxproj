@@ -43,6 +43,8 @@
 		56B6811C1F1AC33B00772C68 /* MembershipLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6811B1F1AC33B00772C68 /* MembershipLoginViewController.swift */; };
 		56B6811E1F1AC66700772C68 /* JoinMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6811D1F1AC66700772C68 /* JoinMemberViewController.swift */; };
 		56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681201F1AC96C00772C68 /* ScannerViewController.swift */; };
+		56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3241F258CC90043E910 /* CheckOutViewController.swift */; };
+		56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */; };
 		56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95AD1F1DE03F0090A1AE /* ItemDetailViewController.swift */; };
 		56FC95BF1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BC1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift */; };
 		56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BD1F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift */; };
@@ -117,6 +119,8 @@
 		56B6811B1F1AC33B00772C68 /* MembershipLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembershipLoginViewController.swift; sourceTree = "<group>"; };
 		56B6811D1F1AC66700772C68 /* JoinMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinMemberViewController.swift; sourceTree = "<group>"; };
 		56B681201F1AC96C00772C68 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		56D9E3241F258CC90043E910 /* CheckOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
+		56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigCartItemTableViewCell.swift; sourceTree = "<group>"; };
 		56FC95AD1F1DE03F0090A1AE /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		56FC95BC1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalInteractiveTransition.swift; sourceTree = "<group>"; };
 		56FC95BD1F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -263,12 +267,10 @@
 		56B680EA1F09FB1C00772C68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				56D9E3231F258BA90043E910 /* Classes */,
 				565D91AD1F23C785009C2393 /* SlideInPresentation */,
 				56FC95AF1F1DE2130090A1AE /* HalfModal */,
-				56B681171F19A28200772C68 /* CurrentSession.swift */,
 				56B681001F0CA9CD00772C68 /* First-time Registration */,
-				56FC95C41F1F13880090A1AE /* Item.swift */,
-				565D91B61F251A50009C2393 /* ShoppingCart.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -319,8 +321,20 @@
 				56FC95C61F20945C0090A1AE /* MenuViewController.swift */,
 				565D91B21F23DD2A009C2393 /* ShoppingCartViewController.swift */,
 				565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */,
+				56D9E3241F258CC90043E910 /* CheckOutViewController.swift */,
+				56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */,
 			);
 			name = "Shopping Flow";
+			sourceTree = "<group>";
+		};
+		56D9E3231F258BA90043E910 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				56B681171F19A28200772C68 /* CurrentSession.swift */,
+				56FC95C41F1F13880090A1AE /* Item.swift */,
+				565D91B61F251A50009C2393 /* ShoppingCart.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		56FC95AF1F1DE2130090A1AE /* HalfModal */ = {
@@ -676,6 +690,7 @@
 				565D91AC1F23C571009C2393 /* SlideInPresentationManager.swift in Sources */,
 				56B680F61F0C2E8600772C68 /* AllSetViewController.swift in Sources */,
 				565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */,
+				56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */,
 				F30608271F188E5A00C01E45 /* FindStoreTipViewController.swift in Sources */,
 				F30608291F1897C200C01E45 /* ScanStoreCodeViewController.swift in Sources */,
 				56B6810C1F1090B900772C68 /* DiscoverNearbyViewController.swift in Sources */,
@@ -694,6 +709,7 @@
 				56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */,
 				56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */,
 				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
+				56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
 				56B6811A1F1A7F1C00772C68 /* StoreConfirmationViewController.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,

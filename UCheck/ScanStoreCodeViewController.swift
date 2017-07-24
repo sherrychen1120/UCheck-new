@@ -100,7 +100,13 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
         if metadataObj.type == AVMetadataObjectTypeQRCode {
             // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            qrCodeFrameView?.frame = barCodeObject!.bounds
+            qrCodeFrameView?.frame = CGRect(x: barCodeObject!.bounds.origin.x,
+                                            y: barCodeObject!.bounds.origin.y + 50,
+                                            width: barCodeObject!.bounds.width,
+                                            height: barCodeObject!.bounds.height)
+            print(barCodeObject!.bounds.origin.x)
+            print(barCodeObject!.bounds.origin.y)
+
             
             if metadataObj.stringValue != nil {
                 store_id = metadataObj.stringValue
@@ -116,6 +122,8 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
                         print(self.store_name!)
                         print(self.store_address!)
                         self.performSegue(withIdentifier: "ScanStoreCodeToStoreConfirmation", sender: self)
+                    } else {
+                        self.captureSession?.startRunning()
                     }
                     
                 }) { (error) in

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class ItemDetailViewController: UIViewController, HalfModalPresentable {
 
     //take the item code from the last VC and create an object with the JSON
@@ -44,9 +45,9 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
         //display item detail information
         ItemNameLabel.text = currItem.name
         if (currItem.has_discount) {
-            ItemPriceLabel.text = "$" + (currItem.discount_price)
+            ItemPriceLabel.text = "$" + String(currItem.discount_price)
         } else {
-            ItemPriceLabel.text = "$" + (currItem.price)
+            ItemPriceLabel.text = "$" + String(currItem.price)
         }
         
         //TODO: display image
@@ -64,7 +65,7 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
                 print("Image saved for \(self.currItem.name)")
             }
         }
-
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,7 +73,7 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 
