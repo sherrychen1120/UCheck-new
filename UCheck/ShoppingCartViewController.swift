@@ -16,7 +16,7 @@ protocol communicationScanner {
 class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var StoreNameLabel: UILabel!
-    @IBOutlet weak var ShoppingCartTableView: UITableView!
+    @IBOutlet weak var ShoppingCartTableView: ShoppingCartTableView!
     
     @IBOutlet weak var BottomView: UIView!
     @IBOutlet weak var MembershipSavedLabel: UILabel!
@@ -33,11 +33,12 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         
         ShoppingCartTableView.delegate = self
         ShoppingCartTableView.dataSource = self
+        ShoppingCartTableView.allowsSelection = false
         
         updatePrices()
     }
     
-    func updatePrices(){
+    private func updatePrices(){
         let tax = 0.06 * subtotal
         let total = tax + subtotal
         MembershipSavedLabel.text = "Membership saving: $" + String(format: "%.2f", total_saving)
@@ -63,12 +64,19 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         let item = CurrentShoppingCart[indexPath.row]
         cell.ItemImage.image = item.item_image
         cell.ItemName.text = item.name
+        cell.ItemQuantity.text = String(item.quantity)
+        cell.currItem = item
+        cell.delegate = ShoppingCartTableView
+        
         if item.has_discount {
-            cell.ItemPrice.text = "$" + String(item.discount_price)
-            cell.ItemOriginalPrice.text = "Original: $" + String(item.price)
+            let item_subtotal = Double(item.discount_price)! * Double(item.quantity)
+            let item_original_subtotal = Double(item.price)! * Double(item.quantity)
+            cell.ItemPrice.text = "$" + String(item_subtotal)
+            cell.ItemOriginalPrice.text = "Original: $" + String(item_original_subtotal)
             cell.DeleteLine.isHidden = false
         } else {
-            cell.ItemPrice.text = "$" + String(item.price)
+            let item_original_subtotal = Double(item.price)! * Double(item.quantity)
+            cell.ItemPrice.text = "$" + String(item_original_subtotal)
             cell.ItemOriginalPrice.isHidden = true
             cell.DeleteLine.isHidden = true
         }
@@ -76,14 +84,16 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    
+    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let item = CurrentShoppingCart[indexPath.row]
             ShoppingCart.deleteItem(oldItem: item)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             updatePrices()
         }
-    }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

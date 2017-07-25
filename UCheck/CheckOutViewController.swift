@@ -79,23 +79,26 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         let item = CurrentShoppingCart[indexPath.row]
         cell.ItemImage.image = item.item_image
         cell.ItemName.text = item.name
+        cell.ItemQuantity.text = "×" + String(item.quantity)
         if item.has_discount {
-            cell.ItemPrice.text = "$" + String(item.discount_price)
+            let item_subtotal = Double(item.discount_price)! * Double(item.quantity)
+            cell.ItemPrice.text = "$" + String(item_subtotal)
         } else {
-            cell.ItemPrice.text = "$" + String(item.price)
+            let item_original_subtotal = Double(item.price)! * Double(item.quantity)
+            cell.ItemPrice.text = "$" + String(item_original_subtotal)
         }
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let item = CurrentShoppingCart[indexPath.row]
             ShoppingCart.deleteItem(oldItem: item)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             updatePrices()
         }
-    }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

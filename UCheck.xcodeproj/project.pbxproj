@@ -45,6 +45,7 @@
 		56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681201F1AC96C00772C68 /* ScannerViewController.swift */; };
 		56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3241F258CC90043E910 /* CheckOutViewController.swift */; };
 		56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */; };
+		56D9E3291F25B2440043E910 /* ShoppingCartTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */; };
 		56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95AD1F1DE03F0090A1AE /* ItemDetailViewController.swift */; };
 		56FC95BF1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BC1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift */; };
 		56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95BD1F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift */; };
@@ -121,6 +122,7 @@
 		56B681201F1AC96C00772C68 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		56D9E3241F258CC90043E910 /* CheckOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
 		56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigCartItemTableViewCell.swift; sourceTree = "<group>"; };
+		56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableView.swift; sourceTree = "<group>"; };
 		56FC95AD1F1DE03F0090A1AE /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		56FC95BC1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalInteractiveTransition.swift; sourceTree = "<group>"; };
 		56FC95BD1F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */,
 				56D9E3241F258CC90043E910 /* CheckOutViewController.swift */,
 				56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */,
+				56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */,
 			);
 			name = "Shopping Flow";
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */,
 				56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */,
 				5652EF981F09D1030014873D /* AppDelegate.swift in Sources */,
+				56D9E3291F25B2440043E910 /* ShoppingCartTableView.swift in Sources */,
 				56FC95BF1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift in Sources */,
 				56B680FA1F0C45F600772C68 /* MonthYearPickerView.swift in Sources */,
 				565D91B31F23DD2A009C2393 /* ShoppingCartViewController.swift in Sources */,

@@ -17,6 +17,7 @@ class Item: NSObject {
     var discount_message : String = ""
     var discount_price : String = ""
     var item_image : UIImage?
+    var quantity : Int = 1
     let ref: FIRDatabaseReference?
     
     init(code:String, name:String, price:String,
@@ -43,6 +44,15 @@ class Item: NSObject {
     
     func addImage(source : UIImage?){
         item_image = source
+    }
+    
+    func addItem(){
+        quantity = quantity + 1
+    }
+    
+    func deleteItem() -> Int {
+        quantity = quantity - 1
+        return quantity
     }
 
 

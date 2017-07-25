@@ -10,7 +10,8 @@ pod 'Firebase/Core'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
-pod 'SwiftKeychainWrapper’,’~>3.0.1’
+pod 'SwiftKeychainWrapper','~>3.0.1'
+pod 'Stripe'
 
   target 'UCheckTests' do
     inherit! :search_paths
