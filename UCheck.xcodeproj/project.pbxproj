@@ -23,6 +23,7 @@
 		565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */; };
 		565D91B71F251A50009C2393 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B61F251A50009C2393 /* ShoppingCart.swift */; };
 		567488BD1F09F46B00EB4471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */; };
+		56B1AA6E1F287C450085FE06 /* store-code-ex.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B1AA6D1F287C450085FE06 /* store-code-ex.png */; };
 		56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */; };
 		56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */; };
 		56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EF1F0BFD1800772C68 /* CheckBox.swift */; };
@@ -100,6 +101,7 @@
 		565D91B61F251A50009C2393 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		567488BE1F09F4CF00EB4471 /* UCheck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UCheck.entitlements; sourceTree = "<group>"; };
+		56B1AA6D1F287C450085FE06 /* store-code-ex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store-code-ex.png"; sourceTree = "<group>"; };
 		56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		56B680EF1F0BFD1800772C68 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				5652EF971F09D1030014873D /* AppDelegate.swift */,
 				5652EFA11F09D1030014873D /* Assets.xcassets */,
+				56B1AA6D1F287C450085FE06 /* store-code-ex.png */,
 				567488BE1F09F4CF00EB4471 /* UCheck.entitlements */,
 				5652EFA61F09D1030014873D /* Info.plist */,
 				5652EF9E1F09D1030014873D /* UCheck.xcdatamodeld */,
@@ -511,6 +514,7 @@
 			files = (
 				5652EFA51F09D1030014873D /* LaunchScreen.storyboard in Resources */,
 				567488BD1F09F46B00EB4471 /* GoogleService-Info.plist in Resources */,
+				56B1AA6E1F287C450085FE06 /* store-code-ex.png in Resources */,
 				5652EFA21F09D1030014873D /* Assets.xcassets in Resources */,
 				5652EF9D1F09D1030014873D /* Main.storyboard in Resources */,
 			);
