@@ -142,6 +142,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func doneButtonAction() {
         self.view.endEditing(true)
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

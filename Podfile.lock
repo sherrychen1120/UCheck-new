@@ -1,4 +1,19 @@
 PODS:
+  - Alamofire (4.4.0)
+  - Braintree/Card (4.8.5):
+    - Braintree/Core
+  - Braintree/Core (4.8.5)
+  - Braintree/UnionPay (4.8.5):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreeDropIn (5.2.1):
+    - BraintreeDropIn/DropIn (= 5.2.1)
+  - BraintreeDropIn/DropIn (5.2.1):
+    - Braintree/Card (~> 4.0)
+    - Braintree/Core (~> 4.0)
+    - Braintree/UnionPay (~> 4.0)
+    - BraintreeDropIn/UIKit
+  - BraintreeDropIn/UIKit (5.2.1)
   - Firebase/Auth (3.15.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
@@ -38,18 +53,21 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
-  - Stripe (10.0.1)
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - BraintreeDropIn
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
-  - Stripe
   - SwiftKeychainWrapper (~> 3.0.1)
 
 SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Braintree: 12225834d0e39ffad56888756a3c0d8bda043d53
+  BraintreeDropIn: e9cecf2ec946f084476f007a7e91925016b77e91
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -59,9 +77,8 @@ SPEC CHECKSUMS:
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
-  Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: f617046ef28931f8319b444d57ece6addf2a11e4
+PODFILE CHECKSUM: 968d70c9d3786b26a365202264e542c69c8dc852
 
 COCOAPODS: 1.2.0

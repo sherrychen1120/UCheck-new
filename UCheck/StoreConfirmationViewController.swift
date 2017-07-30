@@ -26,7 +26,7 @@ class StoreConfirmationViewController: UIViewController {
         print("CurrentStore =" + store_id)
         print("OnGoing = true")
         
-        
+        //Log in to membership program
         ref.child("membership-programs").child(store_name).observeSingleEvent(of: .value, with: { (snapshot) in
             // Read from database whether CurrentUser is in the membership program of CurrentStore.
             let dict = snapshot.value as? NSDictionary
@@ -54,12 +54,14 @@ class StoreConfirmationViewController: UIViewController {
             }
             
             print("out of the first ref")
-            
-            
         
         }) { (error) in
             print(error.localizedDescription)
-        } 
+        }
+        
+        //Braintree client token
+        
+        
     }
     @IBAction func BackButton(_ sender: Any) {
         performSegue(withIdentifier: "UnwindToScanStore", sender: nil)
@@ -78,7 +80,7 @@ class StoreConfirmationViewController: UIViewController {
         CurrentStoreName = store_name
        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

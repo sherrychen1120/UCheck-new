@@ -11,7 +11,8 @@ pod 'Firebase/Database'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'SwiftKeychainWrapper','~>3.0.1'
-pod 'Stripe'
+pod 'Alamofire', '~> 4.4'
+pod 'BraintreeDropIn'
 
   target 'UCheckTests' do
     inherit! :search_paths

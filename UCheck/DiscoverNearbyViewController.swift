@@ -13,15 +13,16 @@ import Firebase
 class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBAction func LogOutButton(_ sender: Any) {
-        let removeEmail: Bool = KeychainWrapper.standard.remove(key: "email")
-        let removePassword: Bool = KeychainWrapper.standard.remove(key: "password")
+        let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
+        let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
         print("Successfully removed email: \(removeEmail);")
         print("Successfully removed passwordd: \(removePassword).")
         
         if FIRAuth.auth()?.currentUser != nil{
             //There is a user signed in
             do{
-                try? FIRAuth.auth()!.signOut()
+                try! FIRAuth.auth()!.signOut()
+                
                 if FIRAuth.auth()?.currentUser == nil{
                     let loginVC = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Login") as! LoginViewController
                     self.present(loginVC, animated: true, completion: nil)

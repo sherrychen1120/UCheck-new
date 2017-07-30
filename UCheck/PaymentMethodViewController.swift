@@ -113,9 +113,7 @@ class PaymentMethodViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PaymentToBillingInfo"{
             
-            var uid = ""
-            
-            if let user = FIRAuth.auth()?.currentUser{
+            /*if let user = FIRAuth.auth()?.currentUser{
                 uid = user.uid
             }
             
@@ -125,6 +123,7 @@ class PaymentMethodViewController: UIViewController, UITextFieldDelegate {
                 "credit_card_ex_date" : ExpirationDateInput.text!,
                 "credit_card_cvv" : CVVInput.text!
                 ])
+            */
         }
     }
     

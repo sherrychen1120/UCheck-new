@@ -41,40 +41,22 @@ class LoginViewController: UIViewController {
                         }
                         
                     }
-                }
-                
-                let saveEmail: Bool = KeychainWrapper.standard.set(email, forKey: "email")
-                let savePassword: Bool = KeychainWrapper.standard.set(password, forKey: "password")
-                print("Successfully saved email: \(saveEmail);")
-                print("Successfully saved passwordd: \(savePassword).")
-                
-                //Store user email
-                CurrentUser = email
-                print(CurrentUser + " user stored.")
-                
-                //Store user name & photo
-                if let user = FIRAuth.auth()?.currentUser{
-                    uid = user.uid
-                }
-                
-                ref.child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                    // Get user value
-                    let value = snapshot.value as? NSDictionary
-                    let first_name = value?["first_name"] as? String ?? ""
-                    let last_name = value?["last_name"] as? String ?? ""
-                    let url_string = value?["photo_url"] as? String ?? ""
                     
-                    CurrentUserName = first_name + " " + last_name
-                    let photo_url = URL(string: url_string)
-                    self.retrievePhoto(url: photo_url!)
+                    let saveEmail: Bool = KeychainWrapper.standard.set(email, forKey: "email")
+                    let savePassword: Bool = KeychainWrapper.standard.set(password, forKey: "password")
+                    print("Successfully saved email: \(saveEmail);")
+                    print("Successfully saved passwordd: \(savePassword).")
                     
-                }) { (error) in
-                    print(error.localizedDescription)
-                }
+                    //Store user email
+                    CurrentUser = email
+                    print(CurrentUser + " user stored.")
 
-                print("user info stored.")
+                    self.uid = (user?.uid)!
+                    print(self.uid)
+                    
+                    self.performSegue(withIdentifier: "LoginToDiscoverNearby", sender: nil)
+                }
                 
-                self.performSegue(withIdentifier: "LoginToDiscoverNearby", sender: nil)
             }
         
     }
@@ -131,4 +113,26 @@ class LoginViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LoginToDiscoverNearby"{
+            
+            self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                let first_name = value?["first_name"] as? String ?? ""
+                let last_name = value?["last_name"] as? String ?? ""
+                let url_string = value?["photo_url"] as? String ?? ""
+                
+                CurrentUserName = first_name + " " + last_name
+                let photo_url = URL(string: url_string)
+                self.retrievePhoto(url: photo_url!)
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+            print("user info stored.")
+
+        }
+    }
 }

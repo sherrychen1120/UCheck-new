@@ -4,6 +4,26 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Braintree.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BraintreeDropIn-Braintree-UIKit-Localization.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BraintreeDropIn.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,16 +49,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Stripe-Stripe.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Stripe.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SwiftKeychainWrapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,12 +62,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1A14C0BC10041A79172E5DEF0E54F889</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>312B3E952FE0D7D7ECFB3CFF8C2E6CD1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3D9D79A205055918388241929CDA519C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7903DE44708689C3B09958CB25D9B692</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,7 +87,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BDCCCA4E50DA2FCECE63BB21B75A5ACA</key>
+		<key>B7F9C17EEF35B1512FDCE8283D7E6ACC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,12 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E294C5A89CCBA0B0F4F1EBEFC170F1A4</key>
+		<key>C9E41977F64FDEF5F2B6AE953F533BFF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EDEFD8E1357A173D3DAF75B29C5EC793</key>
+		<key>E32C0E002F5799B2046D5205937918A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

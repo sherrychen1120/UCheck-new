@@ -235,6 +235,14 @@
 			name = SlideInPresentation;
 			sourceTree = "<group>";
 		};
+		56B1AA711F2B87040085FE06 /* Checkout Flow */ = {
+			isa = PBXGroup;
+			children = (
+				56D9E3241F258CC90043E910 /* CheckOutViewController.swift */,
+			);
+			name = "Checkout Flow";
+			sourceTree = "<group>";
+		};
 		56B680E71F09FAE600772C68 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +269,7 @@
 		56B680E91F09FB0900772C68 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				56B1AA711F2B87040085FE06 /* Checkout Flow */,
 				56B681221F1AC96F00772C68 /* Shopping Flow */,
 				56B6811F1F1AC67300772C68 /* Log In Flow */,
 				F30608251F188BBF00C01E45 /* DiscoverNearby Scene */,
@@ -326,7 +335,6 @@
 				56FC95C61F20945C0090A1AE /* MenuViewController.swift */,
 				565D91B21F23DD2A009C2393 /* ShoppingCartViewController.swift */,
 				565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */,
-				56D9E3241F258CC90043E910 /* CheckOutViewController.swift */,
 				56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */,
 				56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */,
 			);
