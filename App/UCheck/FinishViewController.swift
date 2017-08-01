@@ -10,11 +10,15 @@ import UIKit
 
 class FinishViewController: UIViewController {
 
+    @IBOutlet weak var BackToHomeButton: UIButton!
+    @IBAction func BackToHomeButton(_ sender: Any) {
+        performSegue(withIdentifier: "FinishToDIscoverNearby", sender: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.view.backgroundColor = UIColor(red:0.53, green:0.05, blue:0.05, alpha:1.0)
-        
+        BackToHomeButton.layer.cornerRadius = 9
     }
 
     override func didReceiveMemoryWarning() {

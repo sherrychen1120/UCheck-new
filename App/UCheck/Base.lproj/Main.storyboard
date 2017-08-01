@@ -1574,18 +1574,65 @@ automatically applied at checkout.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You are all set!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0w-uI-qEz">
-                                <rect key="frame" x="52" y="251" width="285" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all-set" translatesAutoresizingMaskIntoConstraints="NO" id="dbw-5S-fSP">
+                                <rect key="frame" x="98" y="153.5" width="178" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="Tnw-Y4-hQn"/>
+                                    <constraint firstAttribute="width" constant="178" id="m0X-P6-tgI"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are good to go!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJ4-5E-DD4">
+                                <rect key="frame" x="26" y="338" width="323" height="39"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="28"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V19-FV-GVH">
+                                <rect key="frame" x="36" y="585" width="303" height="45"/>
+                                <color key="backgroundColor" red="0.98691338299999998" green="0.87408608200000004" blue="0.87300062180000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="NCA-hL-awj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
+                                <state key="normal" title="Back to home page">
+                                    <color key="titleColor" red="0.60701197389999995" green="0.053868211809999997" blue="0.061009041969999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="BackToHomeButton:" destination="6qA-Cy-JQF" eventType="touchUpInside" id="O6W-dz-g3r"/>
+                                    <action selector="RegisterButton:" destination="qgG-kK-JM5" eventType="touchUpInside" id="dr6-P9-4mJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for shopping with UCheck." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mza-sK-Bxm">
+                                <rect key="frame" x="103" y="385" width="169" height="49.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="169" id="Vep-ob-1IU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.52772486210000003" green="0.048718027769999998" blue="0.049309380350000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AJ4-5E-DD4" firstAttribute="leading" secondItem="GYX-XN-KeN" secondAttribute="leadingMargin" constant="10" id="CM3-df-SG3"/>
+                            <constraint firstItem="mza-sK-Bxm" firstAttribute="centerX" secondItem="GYX-XN-KeN" secondAttribute="centerX" id="EGa-qq-7FU"/>
+                            <constraint firstItem="4gC-Mn-MWr" firstAttribute="top" secondItem="V19-FV-GVH" secondAttribute="bottom" constant="37" id="JcK-Hx-0dh"/>
+                            <constraint firstItem="V19-FV-GVH" firstAttribute="leading" secondItem="GYX-XN-KeN" secondAttribute="leadingMargin" constant="20" id="JiH-za-QKs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V19-FV-GVH" secondAttribute="trailing" constant="20" id="Msc-5a-gwa"/>
+                            <constraint firstItem="AJ4-5E-DD4" firstAttribute="top" secondItem="dbw-5S-fSP" secondAttribute="bottom" constant="14.5" id="ZkO-tw-VlN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AJ4-5E-DD4" secondAttribute="trailing" constant="10" id="eBI-YD-Gfk"/>
+                            <constraint firstItem="dbw-5S-fSP" firstAttribute="centerX" secondItem="GYX-XN-KeN" secondAttribute="centerX" id="pFk-Dv-bBs"/>
+                            <constraint firstItem="mza-sK-Bxm" firstAttribute="top" secondItem="AJ4-5E-DD4" secondAttribute="bottom" constant="8" id="t34-oV-BBB"/>
+                            <constraint firstItem="dbw-5S-fSP" firstAttribute="bottom" secondItem="GYX-XN-KeN" secondAttribute="centerY" constant="-10" id="wpr-4E-Umn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="BackToHomeButton" destination="V19-FV-GVH" id="ygs-1O-iDK"/>
+                        <segue destination="JiB-mf-YWl" kind="unwind" identifier="FinishToDIscoverNearby" unwindAction="unwindToDiscoverNearbyWithSegue:" id="TgS-Qu-Thd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTy-yY-dmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JiB-mf-YWl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="12512.799999999999" y="1447.8260869565217"/>
         </scene>
@@ -2693,7 +2740,7 @@ will be automatically applied at checkout.</string>
         <image name="visa" width="334" height="218"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cMZ-w7-3rl"/>
+        <segue reference="fPP-AJ-yMA"/>
         <segue reference="feJ-9A-rcV"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -42,6 +42,7 @@ exports.create_new_transaction = functions.https.onRequest((req, res) => {
 		}, function (err, result) {
       
 			if (result.success) {
+        res.send("Transaction succeeded.");
         console.log("Transaction succeeded.");
         console.log(result.transaction.id);
       } else {

@@ -14,10 +14,15 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBAction func ChangePaymentMethodButton(_ sender: Any) {
     }
+    
     @IBAction func ConfirmAndPayButton(_ sender: Any) {
-        self.fetchClientToken()
-        performSegue(withIdentifier: "CheckOutToFinish", sender: <#T##Any?#>)
+        self.finishPayment{ () -> () in
+            DispatchQueue.main.async (execute: { () -> Void in
+                self.performSegue(withIdentifier: "CheckOutToFinish", sender: self)
+            })
+        }
     }
+    
     @IBOutlet weak var ConfirmAndPayButton: UIButton!
     @IBOutlet weak var TotalLabel: UILabel!
     @IBOutlet weak var EstTaxLabel: UILabel!
@@ -29,7 +34,7 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
     var total : Double = 0.0
     var tax : Double = 0.0
     
-    var clientToken : String? = nil
+    //var clientToken : String? = nil
     
     @IBAction func BackButton(_ sender: Any) {
         performSegue(withIdentifier: "UnwindToScanner", sender: nil)
@@ -62,14 +67,11 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         //update prices
         updatePrices()
         
-        //fetch client token
-        self.fetchClientToken()
-        
     }
     
     func updatePrices(){
         tax = 0.06 * subtotal
-        total = tax + subtotal
+        total = Double(Int((tax + subtotal) * 100)) / 100.0
         MembershipSavedLabel.text = "Membership saving: $" + String(format: "%.2f", total_saving)
         SubtotalLabel.text = "Subtotal: $" + String(format: "%.2f", subtotal)
         EstTaxLabel.text = "Est. Tax: $" + String(format: "%.2f", tax)
@@ -78,7 +80,8 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     //MARK: - Braintree
-    func fetchClientToken() {
+    func finishPayment(handleComplete:@escaping (()->())) {
+        //First fetch the client token.
         let clientTokenURL = NSURL(string: "https://us-central1-ucheck-f7c6f.cloudfunctions.net/client_token")!
         let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
         clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
@@ -91,52 +94,55 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
                 
             } else {
                 if let token_received = String(data: data!, encoding: String.Encoding.utf8) {
-                    self.clientToken = token_received
+                    //after getting the client token
                     print("Client token successfully fetched.")
-                    print(self.clientToken!)
+                    print(token_received)
+                    
+                    //create the transaction on the backend
+                    if let user = FIRAuth.auth()?.currentUser {
+                        
+                        let uid = user.uid
+                        
+                        //Prepare the JSON file
+                        let json: [String: String] = ["amount" : String(self.total),
+                                                      "customerId" : uid
+                        ]
+                        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+                        
+                        //Attach the JSON file to HTTP request
+                        let paymentURL = URL(string: "https://us-central1-ucheck-f7c6f.cloudfunctions.net/create_new_transaction")!
+                        var request = URLRequest(url: paymentURL)
+                        request.httpBody = jsonData
+                        request.httpMethod = "POST"
+                        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                        request.addValue("application/json", forHTTPHeaderField: "Accept")
+                        
+                        //send the HTTP request and catch the response.
+                        URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+                            guard let data = data, error == nil else {
+                                print(error?.localizedDescription ?? "No data")
+                                return
+                            }
+                            
+                            let responseData = String(data: data, encoding: String.Encoding.utf8)
+                            
+                            if (responseData == "Transaction succeeded."){
+                                handleComplete()
+                            } else {
+                                self.showAlert(withMessage: "Transaction problem.")
+                            }
+                            
+                        }.resume()
+                        
+                    } else {
+                        self.showAlert(withMessage: "Something wrong with fetching the client token.")
+                    }
+
                 }
             }
             
             }.resume()
     }
-    
-    // Create a new transaction with total amount and customer Id
-    func postNewTransactionToServer() {
-        
-        if let current_token = clientToken, let user = FIRAuth.auth()?.currentUser {
-            
-            let uid = user.uid
-            
-            //Prepare the JSON file
-            let json: [String: String] = ["amount" : String(total),
-                                          "customerId" : uid
-                                         ]
-            let jsonData = try? JSONSerialization.data(withJSONObject: json)
-            
-            //Attach the JSON file to HTTP request
-            let paymentURL = URL(string: "https://us-central1-ucheck-f7c6f.cloudfunctions.net/create_new_transaction")!
-            var request = URLRequest(url: paymentURL)
-            request.httpBody = jsonData
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            //send the HTTP request and catch the response.
-            URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
-                guard let data = data, error == nil else {
-                    print(error?.localizedDescription ?? "No data")
-                    return
-                }
-                print(data)
-                }.resume()
-            
-        } else {
-            showAlert(withMessage: "Something wrong with fetching the client token.")
-        }
-        
-    }
-
-
     
     //Function for sending payment method nonce
     /*func postNonceToServer(paymentMethodNonce: String) {
@@ -218,9 +224,7 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CheckOutToFinish" {
-            postNewTransactionToServer()
-        }
+        
     }
     
 
