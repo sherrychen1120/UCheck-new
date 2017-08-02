@@ -30,7 +30,7 @@ class RecommendedForYouTableViewCell: UITableViewCell, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath as IndexPath) 
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendedItemCell", for: indexPath as IndexPath) 
         return cell
     }
     

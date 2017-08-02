@@ -24,6 +24,7 @@
 		565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */; };
 		565D91B71F251A50009C2393 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B61F251A50009C2393 /* ShoppingCart.swift */; };
 		567488BD1F09F46B00EB4471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */; };
+		56A3DFE61F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A3DFE51F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift */; };
 		56B1AA6E1F287C450085FE06 /* store-code-ex.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B1AA6D1F287C450085FE06 /* store-code-ex.png */; };
 		56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */; };
 		56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */; };
@@ -103,6 +104,7 @@
 		565D91B61F251A50009C2393 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		567488BE1F09F4CF00EB4471 /* UCheck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UCheck.entitlements; sourceTree = "<group>"; };
+		56A3DFE51F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		56B1AA6D1F287C450085FE06 /* store-code-ex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store-code-ex.png"; sourceTree = "<group>"; };
 		56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				56B681151F17CEA900772C68 /* LunchNearbyTableViewCell.swift */,
 				F30608211F187FA900C01E45 /* CouponsTableViewCell.swift */,
 				F30608231F18811400C01E45 /* MyRewardsTableViewCell.swift */,
+				56A3DFE51F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift */,
 			);
 			name = "DiscoverNearby Scene";
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				563B588E1F2F11AD0004E36F /* FinishViewController.swift in Sources */,
 				F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */,
 				56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */,
+				56A3DFE61F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift in Sources */,
 				5652EF981F09D1030014873D /* AppDelegate.swift in Sources */,
 				56D9E3291F25B2440043E910 /* ShoppingCartTableView.swift in Sources */,
 				56FC95BF1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift in Sources */,
