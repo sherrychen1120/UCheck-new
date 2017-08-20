@@ -40,16 +40,22 @@ class Item: NSObject {
     
     init(snapshot: FIRDataSnapshot) {
         code = snapshot.key
-        let snapshotValue = snapshot.value as! [String: AnyObject]
+        let snapshotValue = snapshot.value as! NSDictionary
         name = snapshotValue["name"] as! String
-        price = snapshotValue["price"] as! String
+        if let snap_price = snapshotValue["price"] as? NSNumber {
+            price = String(format: "%.2f", snap_price)
+        } else if let snap_price = snapshotValue["price"] as? String {
+            price = snap_price
+        }
+        
+        //price = snapshotValue["price"] as! String
         category = snapshotValue["category"] as! String
         has_itemwise_discount = snapshotValue["has_itemwise_discount"] as! String
         has_coupon = snapshotValue["has_coupon"] as! String
         
         
         if (has_itemwise_discount != "none")  {
-            let itemwise_discount = snapshotValue["itemwise_discount"] as! [String:AnyObject]
+            let itemwise_discount = snapshotValue["itemwise_discount"] as! NSDictionary
             discount_content = itemwise_discount["discount_content"] as! String
             discount_price = itemwise_discount["discount_price"] as! String
         }
@@ -62,7 +68,14 @@ class Item: NSObject {
                 let coupon = coupons[coupon_id] as! NSDictionary
                 coupon_content = coupon["coupon_content"] as! String
                 coupon_image_url = coupon["coupon_image_url"] as! String
-                coupon_applied_unit_price = coupon["coupon_applied_unit_price"] as! String
+                
+                if let snap_coupon_price = coupon["coupon_applied_unit_price"] as? NSNumber {
+                    coupon_applied_unit_price = String(format: "%.2f", snap_coupon_price)
+                } else if let snap_coupon_price = coupon["coupon_applied_unit_price"] as? String {
+                    coupon_applied_unit_price = snap_coupon_price
+                }
+                
+                //coupon_applied_unit_price = coupon["coupon_applied_unit_price"] as! String
             } else {
                 print("Database error - more than one coupon on one item.")
             }

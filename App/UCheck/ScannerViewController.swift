@@ -153,12 +153,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 
                 //Read object from Firebase
                 ref.observe(.value, with: { snapshot in
-                    print(snapshot)
+                    
                     for item in snapshot.children {
                         let newItem = Item(snapshot: item as! FIRDataSnapshot)
                         if (newItem.code == code){
                             self.currItem = newItem
                         }
+                        
                     }
                     
                     if (self.currItem != nil){
@@ -170,10 +171,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                         ShoppingCart.listItems()
                         
                         //Show ItemDetail VC
-                        //TODO: Pass the currItem to the next VC
+                        //Pass the currItem to the next VC
                         self.performSegue(withIdentifier: "ScanningToItemDetail", sender: self)
                     } else {
-                        print("Item not found.")
+                        self.showAlert(withMessage : "Item not found.")
+                        self.scannerSetup()
                     }
                     
                 })
@@ -192,6 +194,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             let nextScene = segue.destination as! ItemDetailViewController
             nextScene.currItem = self.currItem!
+            self.currItem = nil
             
             self.halfModalTransitioningDelegate = HalfModalTransitioningDelegate(viewController: self, presentingViewController: segue.destination)
             
@@ -245,6 +248,14 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         print("itemHeight = " + String(describing: itemHeight))
         
         return CGSize(width: itemWidth, height: itemHeight)
+    }
+    
+    // MARK: - show alert
+    func showAlert(withMessage: String) {
+        let alert = UIAlertController(title: "Eh Oh", message: withMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

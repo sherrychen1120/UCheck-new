@@ -19,6 +19,9 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
     @IBOutlet weak var ItemPriceLabel: UILabel!
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var ContinueButton: UIButton!
+    @IBOutlet weak var OriginalPriceLabel: UILabel!
+    @IBOutlet weak var DiscountMessageLabel: UILabel!
+    @IBOutlet weak var DeleteLine: UIView!
     
     @IBAction func ContinueButton(_ sender: Any) {
         if let delegate = transitioningDelegate as? HalfModalTransitioningDelegate {
@@ -46,8 +49,13 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
         ItemNameLabel.text = currItem.name
         if (currItem.has_itemwise_discount != "none") {
             ItemPriceLabel.text = "$" + String(currItem.discount_price)
+            OriginalPriceLabel.text = "Original: $" + String(currItem.price)
+            DiscountMessageLabel.text = currItem.discount_content
         } else {
             ItemPriceLabel.text = "$" + String(currItem.price)
+            OriginalPriceLabel.isHidden = true
+            DeleteLine.isHidden = true
+            DiscountMessageLabel.isHidden = true
         }
         
         //display image
