@@ -34,7 +34,7 @@ class ShoppingCart: NSObject {
     
     private static func increasePrices(newItem : Item){
         
-        if newItem.has_discount{
+        if (newItem.has_itemwise_discount == "store" || newItem.has_itemwise_discount == "member") {
             subtotal = subtotal + Double(newItem.discount_price)!
             let saving = Double(newItem.price)! - Double(newItem.discount_price)!
             total_saving = total_saving + saving
@@ -46,7 +46,7 @@ class ShoppingCart: NSObject {
     
     private static func decreasePrices(oldItem : Item){
         
-        if oldItem.has_discount{
+        if (oldItem.has_itemwise_discount == "store" || oldItem.has_itemwise_discount == "member"){
             subtotal = subtotal - Double(oldItem.discount_price)!
             let saving = Double(oldItem.price)! - Double(oldItem.discount_price)!
             total_saving = total_saving - saving

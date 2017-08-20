@@ -29,7 +29,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        StoreNameLabel.text = CurrentStoreName
+        StoreNameLabel.text = CurrentStoreDisplayName
         
         ShoppingCartTableView.delegate = self
         ShoppingCartTableView.dataSource = self
@@ -68,7 +68,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         cell.currItem = item
         cell.delegate = ShoppingCartTableView
         
-        if item.has_discount {
+        if (item.has_itemwise_discount != "none") {
             let item_subtotal = Double(item.discount_price)! * Double(item.quantity)
             let item_original_subtotal = Double(item.price)! * Double(item.quantity)
             cell.ItemPrice.text = "$" + String(item_subtotal)

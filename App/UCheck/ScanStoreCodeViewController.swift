@@ -18,10 +18,11 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var store_id = ""
+    var store_display_name : String?
     var store_name : String?
     var store_address : String?
     
-    let ref = FIRDatabase.database().reference(withPath: "store-profiles")
+    let ref = FIRDatabase.database().reference(withPath: "store_profiles")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,10 +113,14 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
                 store_id = metadataObj.stringValue
                 self.captureSession?.stopRunning()
                 
-                ref.child(store_id).observeSingleEvent(of: .value, with: { (snapshot) in
+                let c = store_id.characters
+                let divider = c.index(of: "_")!
+                self.store_name = store_id[store_id.startIndex..<divider]
+                
+                ref.child(self.store_name!).child(store_id).observeSingleEvent(of: .value, with: { (snapshot) in
                     // Get store information
                     let value = snapshot.value as? NSDictionary
-                    self.store_name = value?["store_name"] as? String ?? ""
+                    self.store_display_name = value?["store_display_name"] as? String ?? ""
                     self.store_address = value?["store_address"] as? String ?? ""
                     
                     if (self.store_name != "" && self.store_address != ""){
@@ -151,6 +156,7 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
             let nextScene = segue.destination as? StoreConfirmationViewController {
             nextScene.store_id = store_id
             nextScene.store_name = store_name!
+            nextScene.store_display_name = store_display_name!
             nextScene.store_address = store_address!
         }
 

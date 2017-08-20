@@ -55,7 +55,7 @@ class User: NSObject {
         last_name = snapshotValue["last_name"] as! String
         email = snapshotValue["email"] as! String
         phone_no = snapshotValue["phone_no"] as! String
-        credit_card_no = snapshotValue["credit_card_no"] as! String
+        /*credit_card_no = snapshotValue["credit_card_no"] as! String
         credit_card_ex_month = snapshotValue["credit_card_ex_date"] as! String
         credit_card_ex_year = snapshotValue["credit_card_ex_date"] as! String
         credit_card_cvv = snapshotValue["credit_card_cvv"] as! String
@@ -65,7 +65,7 @@ class User: NSObject {
         billing_add_extended = snapshotValue["billing_add_extended"] as! String
         billing_add_city = snapshotValue["billing_add_city"] as! String
         billing_add_zip_code = snapshotValue["billing_add_zip_code"] as! String
-        billing_add_state = snapshotValue["billing_add_state"] as! String
+        billing_add_state = snapshotValue["billing_add_state"] as! String*/
         photo_url = snapshotValue["photo_url"] as! String
     }
     

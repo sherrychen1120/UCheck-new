@@ -13,21 +13,28 @@ class Item: NSObject {
     var code : String = ""
     var name : String = ""
     var price : String = ""
-    var has_discount = false
-    var discount_message : String = ""
+    var category : String = ""
+    var has_itemwise_discount = "none"
+    var has_coupon = "none"
+    var discount_content : String = ""
     var discount_price : String = ""
+    var coupon_id : String = ""
+    var coupon_content : String = ""
+    var coupon_image_url : String = ""
+    var coupon_applied_unit_price : String = ""
     var item_image : UIImage?
     var quantity : Int = 1
     let ref: FIRDatabaseReference?
     
-    init(code:String, name:String, price:String,
-         has_discount:Bool, discount_message:String, discount_price:String) {
+    //Is this even used anywhere??
+    init(code:String, name:String, price:String, category:String,
+         has_itemwise_discount:String, has_coupon:String) {
         self.code = code
         self.name = name
         self.price = price
-        self.has_discount = has_discount
-        self.discount_message = discount_message
-        self.discount_price = discount_price
+        self.category = category
+        self.has_itemwise_discount = has_itemwise_discount
+        self.has_coupon = has_coupon
         self.ref = nil
     }
     
@@ -36,9 +43,31 @@ class Item: NSObject {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         name = snapshotValue["name"] as! String
         price = snapshotValue["price"] as! String
-        has_discount = snapshotValue["has_discount"] as! Bool
-        discount_message = snapshotValue["discount_message"] as! String
-        discount_price = snapshotValue["discount_price"] as! String
+        category = snapshotValue["category"] as! String
+        has_itemwise_discount = snapshotValue["has_itemwise_discount"] as! String
+        has_coupon = snapshotValue["has_coupon"] as! String
+        
+        
+        if (has_itemwise_discount != "none")  {
+            let itemwise_discount = snapshotValue["itemwise_discount"] as! [String:AnyObject]
+            discount_content = itemwise_discount["discount_content"] as! String
+            discount_price = itemwise_discount["discount_price"] as! String
+        }
+        
+        if (has_coupon != "none")  {
+            let coupons = snapshotValue["coupons"] as! NSDictionary
+            let coupon_ids = coupons.allKeys
+            if (coupon_ids.count == 1){
+                coupon_id = coupon_ids[0] as! String
+                let coupon = coupons[coupon_id] as! NSDictionary
+                coupon_content = coupon["coupon_content"] as! String
+                coupon_image_url = coupon["coupon_image_url"] as! String
+                coupon_applied_unit_price = coupon["coupon_applied_unit_price"] as! String
+            } else {
+                print("Database error - more than one coupon on one item.")
+            }
+        }
+        
         ref = snapshot.ref
     }
     

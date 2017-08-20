@@ -13,6 +13,7 @@ class StoreConfirmationViewController: UIViewController {
     
     var store_id = ""
     var store_name = ""
+    var store_display_name = ""
     var store_address = ""
     var phone_no = ""
     let ref = FIRDatabase.database().reference()
@@ -23,11 +24,11 @@ class StoreConfirmationViewController: UIViewController {
     @IBAction func YesButton(_ sender: Any) {
         CurrentStore = store_id
         OnGoing = true
-        print("CurrentStore =" + store_id)
+        print("CurrentStoreID = " + store_id)
         print("OnGoing = true")
         
         //Log in to membership program
-        ref.child("membership-programs").child(store_name).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("membership_users").child(store_name).observeSingleEvent(of: .value, with: { (snapshot) in
             // Read from database whether CurrentUser is in the membership program of CurrentStore.
             let dict = snapshot.value as? NSDictionary
             
@@ -74,10 +75,11 @@ class StoreConfirmationViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.53, green:0.05, blue:0.05, alpha:1.0)
         YesButton.layer.cornerRadius = 9
         
-        StoreNameLabel.text = store_name + "?"
+        StoreNameLabel.text = store_display_name + "?"
         StoreAddressLabel.text = store_address
         
         CurrentStoreName = store_name
+        CurrentStoreDisplayName = store_display_name
        
     }
     

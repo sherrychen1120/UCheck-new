@@ -34,7 +34,7 @@ class MembershipLoginViewController: UIViewController {
         YesButton.layer.cornerRadius = 9
         
         //Read the name of the membership program from Firebase
-        //MembershipProgramLabel.text = ...
+        MembershipProgramLabel.text = CurrentStoreName + " membership program"
     }
 
     override func didReceiveMemoryWarning() {

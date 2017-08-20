@@ -10,6 +10,7 @@ import UIKit
 
 var CurrentStore = ""
 var CurrentStoreName = ""
+var CurrentStoreDisplayName = ""
 
 var OnGoing = false
 var MemberLoggedIn = false

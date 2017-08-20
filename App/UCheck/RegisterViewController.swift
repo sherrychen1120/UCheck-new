@@ -92,7 +92,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                             let user_ref = self.ref.child(uid)
                             user_ref.setValue(self.new_user.toAnyObject())
                             
-                            //update info in the CurrentUser object
+                            //update info in the CurrentSession object
                             CurrentUser = self.email
                             CurrentUserName = self.first_name + " " + self.last_name
                             

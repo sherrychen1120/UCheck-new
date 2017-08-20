@@ -187,7 +187,7 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         cell.ItemImage.image = item.item_image
         cell.ItemName.text = item.name
         cell.ItemQuantity.text = "×" + String(item.quantity)
-        if item.has_discount {
+        if (item.has_itemwise_discount != "none") {
             let item_subtotal = Double(item.discount_price)! * Double(item.quantity)
             cell.ItemPrice.text = "$" + String(item_subtotal)
         } else {

@@ -13,7 +13,7 @@ import Firebase
 class ItemDetailViewController: UIViewController, HalfModalPresentable {
 
     //take the item code from the last VC and create an object with the JSON
-    var currItem : Item = Item(code: "", name: "", price: "", has_discount: false, discount_message: "", discount_price: "")
+    var currItem : Item = Item(code: "", name: "", price: "", category: "", has_itemwise_discount: "none", has_coupon: "none")
     
     @IBOutlet weak var ItemNameLabel: UILabel!
     @IBOutlet weak var ItemPriceLabel: UILabel!
@@ -44,13 +44,13 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
         
         //display item detail information
         ItemNameLabel.text = currItem.name
-        if (currItem.has_discount) {
+        if (currItem.has_itemwise_discount != "none") {
             ItemPriceLabel.text = "$" + String(currItem.discount_price)
         } else {
             ItemPriceLabel.text = "$" + String(currItem.price)
         }
         
-        //TODO: display image
+        //display image
         let storage = FIRStorage.storage()
         let code = currItem.code
         let storageRef = storage.reference(withPath: "inventory/\(CurrentStore)/\(code).png")

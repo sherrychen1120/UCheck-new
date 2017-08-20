@@ -220,9 +220,6 @@ class BillingInfoViewController: UIViewController, UITextFieldDelegate {
                     showAlert(withMessage: "Fetching client token failed.")
             }
 
-            
-            //Create the new user with payment method & billing address on the backend
-            
         }
 
     }

@@ -14,7 +14,7 @@ class JoinMemberViewController: UIViewController {
     var checked = false
     var phone_no = ""
     var store_name = ""
-    let ref = FIRDatabase.database().reference(withPath: "membership-programs")
+    let ref = FIRDatabase.database().reference(withPath: "membership_users")
     
     @IBAction func CheckBox(_ sender: Any) {
         checked = !checked
@@ -28,8 +28,9 @@ class JoinMemberViewController: UIViewController {
         } else {
             //Register the user by uploading info & initializing on Firebase
             let store_ref = self.ref.child(store_name).child(phone_no)
-            let new_member = ["coupons" : "",
-                              "points" : 0] as [String : Any]
+            let new_member = ["points" : 0,
+                              "savings_this_month" : "0.00",
+                              "spending_this_month" : "0.00"] as [String : Any]
             store_ref.updateChildValues(new_member)
             
             //After successfully registered, IsMember -> true, MemberLoggedIn = true

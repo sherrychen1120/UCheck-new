@@ -22,8 +22,6 @@ class PaymentMethodViewController: UIViewController, UITextFieldDelegate {
     let CreditCardNoLength = 16
     let CVVLength = 3
     
-    let ref = FIRDatabase.database().reference(withPath: "user-profiles")
-    
     var new_user : User?
     
     @IBAction func ContinueButton(_ sender: Any) {
@@ -131,21 +129,6 @@ class PaymentMethodViewController: UIViewController, UITextFieldDelegate {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PaymentToBillingInfo"{
-            
-            /*if let user = FIRAuth.auth()?.currentUser{
-                uid = user.uid
-            }
-            
-            let user_ref = self.ref.child(uid)
-            user_ref.updateChildValues([
-                "credit_card_no" : CreditCardNoInput.text!,
-                "credit_card_ex_date" : ExpirationDateInput.text!,
-                "credit_card_cvv" : CVVInput.text!
-                ])
-            */
-            
-            
-            
             //Send the new_user to the next VC
             if let nextScene = segue.destination as? BillingInfoViewController{
                 nextScene.new_user = self.new_user

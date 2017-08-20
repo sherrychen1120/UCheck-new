@@ -1314,9 +1314,6 @@ automatically applied at checkout.</string>
                                                     <state key="normal" title="+">
                                                         <color key="titleColor" red="0.52941176469999995" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="IncreaseQuantityButton:" destination="Kxl-rv-yJ8" eventType="touchUpInside" id="zMu-ga-jiB"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZG-7d-dO6">
                                                     <rect key="frame" x="95" y="66" width="17" height="17"/>
@@ -1329,9 +1326,6 @@ automatically applied at checkout.</string>
                                                     <state key="normal" title="-">
                                                         <color key="titleColor" red="0.52941176469999995" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="DecreaseQuantityButton:" destination="Kxl-rv-yJ8" eventType="touchUpInside" id="m5j-O4-8OM"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

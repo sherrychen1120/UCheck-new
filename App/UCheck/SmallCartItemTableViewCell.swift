@@ -25,17 +25,17 @@ class SmallCartItemTableViewCell: UITableViewCell, CustomCellUpdater {
     var currItem : Item?
     var delegate: CustomCellUpdater?
     
-    @IBAction func DecreaseQuantityButton(_ sender: Any) {
+    /*@IBAction func DecreaseQuantityButton(_ sender: Any) {
         print("decrease clicked")
         ShoppingCart.deleteItem(oldItem: currItem!)
         updateTableView()
-    }
+    }*/
     
-    @IBAction func IncreaseQuantityButton(_ sender: Any) {
+    /*@IBAction func IncreaseQuantityButton(_ sender: Any) {
         print("increase clicked")
         ShoppingCart.addItem(newItem: currItem!)
         updateTableView()
-    }
+    }*/
 
     
     override func awakeFromNib() {
