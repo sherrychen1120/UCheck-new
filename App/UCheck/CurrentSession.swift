@@ -18,6 +18,7 @@ var IsMember = false
 
 var CurrentUser = ""
 var CurrentUserName = ""
+var CurrentUserId = ""
 var CurrentUserPhoto : UIImage? = nil
 
 

@@ -35,6 +35,7 @@ class FirstPageViewController: UIViewController {
                     //Store user name & photo
                     if let user = FIRAuth.auth()?.currentUser{
                         self.uid = user.uid
+                        CurrentUserId = user.uid
                     }
                     
                     self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in

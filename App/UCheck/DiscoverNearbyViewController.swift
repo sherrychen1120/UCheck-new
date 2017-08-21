@@ -63,6 +63,7 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
         //StartShoppingButton
         StartShoppingButton.layer.cornerRadius = 9
         
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +95,7 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
         if (indexPath.section == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendedForYouCell", for: indexPath) as! RecommendedForYouTableViewCell
             cell.selectionStyle = UITableViewCellSelectionStyle(rawValue: 0)!
+            cell.RecommendationCollectionView.tag = 1234
             return cell
         } else if (indexPath.section == 1){
             let cell = tableView.dequeueReusableCell(withIdentifier: "LunchNearbyCell", for: indexPath) as! LunchNearbyTableViewCell
@@ -113,13 +115,14 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 227
+            return 300
         } else if (indexPath.section == 1 || indexPath.section == 2){
             return 188
         } else {
             return 210
         }
     }
+   
 
     
     /*

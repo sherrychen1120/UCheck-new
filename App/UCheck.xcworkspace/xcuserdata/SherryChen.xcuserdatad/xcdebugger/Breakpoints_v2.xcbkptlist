@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/RecommendedForYouTableViewCell.swift"
-            timestampString = "521652555.934463"
+            timestampString = "524977907.912524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62">
+            startingLineNumber = "220"
+            endingLineNumber = "220">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -662,11 +662,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/Item.swift"
-            timestampString = "524896801.702773"
+            timestampString = "524977649.310617"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "init(snapshot:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -674,7 +674,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
@@ -700,6 +700,70 @@
             startingLineNumber = "162"
             endingLineNumber = "162"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/RecommendedForYouTableViewCell.swift"
+            timestampString = "524977907.912524"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UCheck.RecommendedForYouTableViewCell.(collectionView (__ObjC.UICollectionView, cellForItemAt : Foundation.IndexPath) -&gt; __ObjC.UICollectionViewCell).(closure #1)"
+                  moduleName = "UCheck"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/RecommendedForYouTableViewCell.swift"
+                  timestampString = "524968334.640155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "6776">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UCheck.RecommendedForYouTableViewCell.(collectionView (__ObjC.UICollectionView, cellForItemAt : Foundation.IndexPath) -&gt; __ObjC.UICollectionViewCell).(closure #1).(closure #1)"
+                  moduleName = "UCheck"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/RecommendedForYouTableViewCell.swift"
+                  timestampString = "524968334.642043"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/DiscoverNearbyViewController.swift"
+            timestampString = "524974559.401347"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "LogOutButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

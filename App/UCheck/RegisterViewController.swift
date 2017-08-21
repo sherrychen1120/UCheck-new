@@ -81,6 +81,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                             var uid = ""
                             if let user = FIRAuth.auth()?.currentUser{
                                 uid = user.uid
+                                CurrentUserId = user.uid
                             }
                             self.new_user = User(uid : uid,
                                                  first_name : self.first_name,
