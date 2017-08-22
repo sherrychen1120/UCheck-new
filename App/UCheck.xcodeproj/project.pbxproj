@@ -24,6 +24,13 @@
 		565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */; };
 		565D91B71F251A50009C2393 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B61F251A50009C2393 /* ShoppingCart.swift */; };
 		567488BD1F09F46B00EB4471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */; };
+		568480071F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480061F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift */; };
+		5684800B1F4B4BB200B41BC7 /* LunchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684800A1F4B4BB200B41BC7 /* LunchItem.swift */; };
+		5684800D1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684800C1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift */; };
+		5684800F1F4B80DD00B41BC7 /* EdgeShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684800E1F4B80DD00B41BC7 /* EdgeShadowLayer.swift */; };
+		568480121F4B8D6100B41BC7 /* CouponForDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480111F4B8D6100B41BC7 /* CouponForDisplay.swift */; };
+		568480141F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480131F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift */; };
+		568480161F4BA29E00B41BC7 /* MembershipProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480151F4BA29E00B41BC7 /* MembershipProgram.swift */; };
 		56A3DFE61F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A3DFE51F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift */; };
 		56B1AA6E1F287C450085FE06 /* store-code-ex.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B1AA6D1F287C450085FE06 /* store-code-ex.png */; };
 		56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */; };
@@ -104,6 +111,13 @@
 		565D91B61F251A50009C2393 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		567488BE1F09F4CF00EB4471 /* UCheck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UCheck.entitlements; sourceTree = "<group>"; };
+		568480061F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunchNearbyCollectionViewCell.swift; sourceTree = "<group>"; };
+		5684800A1F4B4BB200B41BC7 /* LunchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunchItem.swift; sourceTree = "<group>"; };
+		5684800C1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		5684800E1F4B80DD00B41BC7 /* EdgeShadowLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeShadowLayer.swift; sourceTree = "<group>"; };
+		568480111F4B8D6100B41BC7 /* CouponForDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponForDisplay.swift; sourceTree = "<group>"; };
+		568480131F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRewardsCollectionViewCell.swift; sourceTree = "<group>"; };
+		568480151F4BA29E00B41BC7 /* MembershipProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembershipProgram.swift; sourceTree = "<group>"; };
 		56A3DFE51F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		56B1AA6D1F287C450085FE06 /* store-code-ex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store-code-ex.png"; sourceTree = "<group>"; };
 		56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +253,14 @@
 			name = SlideInPresentation;
 			sourceTree = "<group>";
 		};
+		568480101F4B80F000B41BC7 /* StyleHelper */ = {
+			isa = PBXGroup;
+			children = (
+				5684800E1F4B80DD00B41BC7 /* EdgeShadowLayer.swift */,
+			);
+			name = StyleHelper;
+			sourceTree = "<group>";
+		};
 		56B1AA711F2B87040085FE06 /* Checkout Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +308,7 @@
 		56B680EA1F09FB1C00772C68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				568480101F4B80F000B41BC7 /* StyleHelper */,
 				56D9E3231F258BA90043E910 /* Classes */,
 				565D91AD1F23C785009C2393 /* SlideInPresentation */,
 				56FC95AF1F1DE2130090A1AE /* HalfModal */,
@@ -352,6 +375,9 @@
 				56B681171F19A28200772C68 /* CurrentSession.swift */,
 				56FC95C41F1F13880090A1AE /* Item.swift */,
 				565D91B61F251A50009C2393 /* ShoppingCart.swift */,
+				5684800A1F4B4BB200B41BC7 /* LunchItem.swift */,
+				568480111F4B8D6100B41BC7 /* CouponForDisplay.swift */,
+				568480151F4BA29E00B41BC7 /* MembershipProgram.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -399,6 +425,9 @@
 				F30608211F187FA900C01E45 /* CouponsTableViewCell.swift */,
 				F30608231F18811400C01E45 /* MyRewardsTableViewCell.swift */,
 				56A3DFE51F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift */,
+				568480061F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift */,
+				5684800C1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift */,
+				568480131F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift */,
 			);
 			name = "DiscoverNearby Scene";
 			sourceTree = "<group>";
@@ -698,6 +727,7 @@
 				56B681041F10771F00772C68 /* LoginViewController.swift in Sources */,
 				56B6811C1F1AC33B00772C68 /* MembershipLoginViewController.swift in Sources */,
 				565D91AF1F23C7C4009C2393 /* SlideInPresentationController.swift in Sources */,
+				568480121F4B8D6100B41BC7 /* CouponForDisplay.swift in Sources */,
 				56B6811E1F1AC66700772C68 /* JoinMemberViewController.swift in Sources */,
 				56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */,
 				56B681181F19A28200772C68 /* CurrentSession.swift in Sources */,
@@ -711,6 +741,7 @@
 				565D91AC1F23C571009C2393 /* SlideInPresentationManager.swift in Sources */,
 				56B680F61F0C2E8600772C68 /* AllSetViewController.swift in Sources */,
 				565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */,
+				5684800D1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift in Sources */,
 				56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */,
 				F30608271F188E5A00C01E45 /* FindStoreTipViewController.swift in Sources */,
 				F30608291F1897C200C01E45 /* ScanStoreCodeViewController.swift in Sources */,
@@ -718,18 +749,23 @@
 				56B680FE1F0C4E9700772C68 /* StatePickerView.swift in Sources */,
 				56B680F81F0C433800772C68 /* PopDateViewController.swift in Sources */,
 				5652EFA01F09D1030014873D /* UCheck.xcdatamodeld in Sources */,
+				568480161F4BA29E00B41BC7 /* MembershipProgram.swift in Sources */,
 				56B681161F17CEA900772C68 /* LunchNearbyTableViewCell.swift in Sources */,
 				56B680FC1F0C4A0700772C68 /* BillingInfoViewController.swift in Sources */,
+				5684800B1F4B4BB200B41BC7 /* LunchItem.swift in Sources */,
 				56FC95C51F1F13880090A1AE /* Item.swift in Sources */,
 				563B588E1F2F11AD0004E36F /* FinishViewController.swift in Sources */,
 				F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */,
+				568480071F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift in Sources */,
 				56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */,
+				568480141F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift in Sources */,
 				56A3DFE61F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift in Sources */,
 				5652EF981F09D1030014873D /* AppDelegate.swift in Sources */,
 				56D9E3291F25B2440043E910 /* ShoppingCartTableView.swift in Sources */,
 				56FC95BF1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift in Sources */,
 				56B680FA1F0C45F600772C68 /* MonthYearPickerView.swift in Sources */,
 				565D91B31F23DD2A009C2393 /* ShoppingCartViewController.swift in Sources */,
+				5684800F1F4B80DD00B41BC7 /* EdgeShadowLayer.swift in Sources */,
 				56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */,
 				56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */,
 				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
