@@ -16,8 +16,20 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func ConfirmAndPayButton(_ sender: Any) {
+        
+        //Bring up loading view
+        LoadingView.isHidden = false
+        ActivityIndicator.isHidden = false
+        LoadingText.isHidden = false
+        view.bringSubview(toFront: LoadingView)
+        LoadingView.bringSubview(toFront: ActivityIndicator)
+        LoadingView.bringSubview(toFront: LoadingText)
+        ActivityIndicator.startAnimating()
+        ActivityIndicator.hidesWhenStopped = true
+        
         self.finishPayment{ () -> () in
             DispatchQueue.main.async (execute: { () -> Void in
+                self.ActivityIndicator.stopAnimating()
                 self.performSegue(withIdentifier: "CheckOutToFinish", sender: self)
             })
         }
@@ -30,6 +42,9 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var MembershipSavedLabel: UILabel!
     @IBOutlet weak var ButtonArea: UIView!
     @IBOutlet weak var CartItemsTableView: UITableView!
+    @IBOutlet weak var LoadingView: UIView!
+    @IBOutlet weak var LoadingText: UILabel!
+    @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
     
     var total : Double = 0.0
     var tax : Double = 0.0
@@ -59,6 +74,13 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         ButtonArea.layer.shadowOpacity = 0.3
         ButtonArea.layer.shadowOffset = CGSize(width: 0, height: -5)
         ButtonArea.layer.shadowRadius = 3
+        
+        //Hide the Loading View
+        ActivityIndicator.isHidden = true
+        ActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        LoadingView.isHidden = true
+        LoadingText.text = "Processing Payment..."
+        LoadingText.isHidden = true
 
         //TableView delegate & data source
         CartItemsTableView.delegate = self

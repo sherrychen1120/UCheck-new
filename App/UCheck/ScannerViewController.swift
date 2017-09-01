@@ -29,21 +29,28 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     //Transitioning Delegate for Menu
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     
+    //Variables related to current store recommendation
+    var CurrentStoreRecommendationList : [Item] = []
+    
+    @IBOutlet weak var MyCouponButton: UIButton!
     @IBOutlet weak var ButtonView: UIView!
-    @IBOutlet weak var ScanningArea: UIView!
     @IBOutlet weak var CheckoutButton: UIButton!
     @IBAction func CheckoutButton(_ sender: Any) {
         performSegue(withIdentifier: "ScanningToCheckout", sender: nil)
     }
     @IBOutlet weak var RecommendationCollection: UICollectionView!
+    @IBOutlet weak var RecommendationView: UIView!
+    @IBAction func MyCouponButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "ScanningToMyCoupons", sender: nil)
+    }
     
-    @IBAction func MenuButton(_ sender: Any) {
+    /*@IBAction func MenuButton(_ sender: Any) {
         performSegue(withIdentifier: "ScanningToMenu", sender: nil)
-    }
+    }*/
     
-    @IBAction func ShoppingCartButton(_ sender: Any) {
+    /*@IBAction func ShoppingCartButton(_ sender: Any) {
         performSegue(withIdentifier: "ScanningToCart", sender: nil)
-    }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,15 +70,44 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         RecommendationCollection.delegate = self
         RecommendationCollection.dataSource = self
         
+        //Scanner Setup
         self.scannerSetup()
         print("view did load scanner setup.")
+        
+        //Shopping cart bar button setup
+        let button: UIButton = UIButton(type: .custom)
+        button.setImage(UIImage(named: "shopping_cart_white.png"), for: .normal)
+        button.addTarget(self, action:#selector(ShoppingCartButtonPressed), for: .touchUpInside)
+        button.frame = CGRect(x:0, y:0, width:31, height:31)
+        button.semanticContentAttribute = .forceRightToLeft
+        button.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
+        
+        //Menu bar button setup
+        let menubutton: UIButton = UIButton(type: .custom)
+        menubutton.setImage(UIImage(named: "menu_white.png"), for: .normal)
+        menubutton.addTarget(self, action:#selector(MenuButtonPressed), for: .touchUpInside)
+        menubutton.frame = CGRect(x:0, y:0, width:31, height:31)
+        menubutton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        let menuBarButton = UIBarButtonItem(customView: menubutton)
+        self.navigationItem.leftBarButtonItem = menuBarButton
+        
+        //Update collection view
+        self.getStoreRecommendations(handleComplete:{
+            DispatchQueue.main.async {
+                self.RecommendationCollection.reloadData()
+            }
+        })
     }
     
-    /*override func viewDidAppear(_ animated: Bool) {
-        self.scannerSetup()
-        print("view did appear scanner setup.")
-        super.viewDidAppear(animated)
-     }*/
+    @objc func ShoppingCartButtonPressed(){
+        performSegue(withIdentifier: "ScanningToCart", sender: nil)
+    }
+    
+    @objc func MenuButtonPressed(){
+        performSegue(withIdentifier: "ScanningToMenu", sender: nil)
+    }
     
     
     func scannerSetup(){
@@ -116,8 +152,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 view.bringSubview(toFront: barCodeFrameView)
             }
             
-            view.bringSubview(toFront: RecommendationCollection)
+            //Bring the subviews to front
+            view.bringSubview(toFront: RecommendationView)
             view.bringSubview(toFront: ButtonView)
+            view.bringSubview(toFront: MyCouponButton)
             
         } catch {
             // If any error occurs, simply print it out and don't continue any more.
@@ -216,6 +254,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             controller.delegate = self
         } else if let controller = segue.destination as? CheckOutViewController {
             captureSession?.stopRunning()
+        } else if let controller = segue.destination as? MyCouponsViewController {
+            captureSession?.stopRunning()
+            slideInTransitioningDelegate.direction = .bottom
+            controller.transitioningDelegate = slideInTransitioningDelegate
+            controller.modalPresentationStyle = .custom
+            controller.delegate = self
         }
 
     }
@@ -228,18 +272,64 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     //CollectionView delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 4
     }
     
     //CollectionView datasource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath as IndexPath)
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath as IndexPath) as! ShoppingRecommendationItemCollectionViewCell
+        
+        if (indexPath.row < CurrentStoreRecommendationList.count){
+            var curr_item = CurrentStoreRecommendationList[indexPath.row]
+            
+            if let source_image = curr_item.item_image{
+                cell.ItemImage.image = source_image
+            }
+                
+            if (curr_item.has_itemwise_discount != "none"){
+                    cell.ItemPrice.isHidden = false
+                    cell.OriginalPrice.isHidden = false
+                    cell.DeleteLine.isHidden = false
+                    cell.PromoMessage.isHidden = false
+                    
+                    cell.ItemPrice.text = "$" + curr_item.discount_price
+                    cell.OriginalPrice.text = "$" + curr_item.price
+                    cell.PromoMessage.text = curr_item.discount_content
+                
+            } else if (curr_item.has_coupon != "none"){
+                    cell.ItemPrice.isHidden = false
+                    cell.OriginalPrice.isHidden = false
+                    cell.DeleteLine.isHidden = false
+                    cell.PromoMessage.isHidden = false
+                    
+                    cell.ItemPrice.text = "$" + curr_item.coupon_applied_unit_price
+                    cell.OriginalPrice.text = "$" + curr_item.price
+                    cell.PromoMessage.text = curr_item.coupon_content
+            } else {
+                    cell.ItemPrice.isHidden = false
+                    cell.OriginalPrice.isHidden = true
+                    cell.PromoMessage.isHidden = true
+                    cell.DeleteLine.isHidden = true
+                    
+                    cell.ItemPrice.text = "$" + curr_item.price
+            }
+                
+            return cell
+            
+        } else {
+            cell.ItemPrice.isHidden = true
+            cell.OriginalPrice.isHidden = true
+            cell.DeleteLine.isHidden = true
+            cell.PromoMessage.isHidden = true
+                
+            return cell
+        }
+
     }
     
     //CollectionView delegate flow layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        let itemsPerRow:CGFloat = 4
+        let itemsPerRow:CGFloat = 3
         let hardCodedPadding:CGFloat = 10
         let itemWidth = (collectionView.bounds.width / itemsPerRow) - hardCodedPadding - 5
         let itemHeight = collectionView.bounds.height - (2 * hardCodedPadding)
@@ -248,6 +338,16 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         print("itemHeight = " + String(describing: itemHeight))
         
         return CGSize(width: itemWidth, height: itemHeight)
+    }
+    
+    func getStoreRecommendations(handleComplete:@escaping ()->()){
+        for item in ItemwiseRecommendationList {
+            if (item.store_id == CurrentStore) && ((item.has_coupon != "none") || (item.has_itemwise_discount != "none")) {
+                CurrentStoreRecommendationList.append(item)
+            }
+        }
+        CurrentStoreRecommendationList.sort{ $0.score > $1.score}
+
     }
     
     // MARK: - show alert

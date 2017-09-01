@@ -182,11 +182,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "522555132.07614"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -198,11 +198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "522555132.07614"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "scannerSetup()"
             landmarkType = "7">
          </BreakpointContent>
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "522555132.07614"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -230,11 +230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "522555132.07614"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -246,11 +246,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "524897829.021201"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -262,28 +262,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "522555132.07614"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UCheck/ItemDetailViewController.swift"
-            timestampString = "524898767.986712"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -342,11 +326,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "522555132.07614"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -374,11 +358,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995316.353054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "LogOutButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -390,11 +374,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995316.353054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "LogOutButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -454,11 +438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995316.353054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "LogOutButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -534,11 +518,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/CheckOutViewController.swift"
-            timestampString = "523264084.404254"
+            timestampString = "525996501.200147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "finishPayment(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -550,11 +534,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/CheckOutViewController.swift"
-            timestampString = "523264084.404254"
+            timestampString = "525996501.200147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "finishPayment(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -566,11 +550,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/CheckOutViewController.swift"
-            timestampString = "523264084.404254"
+            timestampString = "525996501.200147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "finishPayment(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -582,11 +566,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/CheckOutViewController.swift"
-            timestampString = "523264084.404254"
+            timestampString = "525996501.200147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "finishPayment(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -614,11 +598,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "524894478.623849"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
             landmarkType = "7">
             <Locations>
@@ -678,11 +662,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "524896285.902332"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -694,11 +678,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/ScannerViewController.swift"
-            timestampString = "524896129.838313"
+            timestampString = "525999230.414913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "captureOutput(_:didOutputMetadataObjects:from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -758,11 +742,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995316.353054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "LogOutButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -774,11 +758,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "getItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -790,11 +774,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "getItems(handleComplete:)"
             landmarkType = "7">
             <Locations>
@@ -806,11 +790,11 @@
                   moduleName = "UCheck"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/DiscoverNearbyViewController.swift"
-                  timestampString = "525021486.092364"
+                  timestampString = "525988552.93113"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "145"
-                  endingLineNumber = "145"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
                   offsetFromSymbolStart = "424">
                </Location>
                <Location
@@ -821,12 +805,12 @@
                   moduleName = "UCheck"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/DiscoverNearbyViewController.swift"
-                  timestampString = "525021486.093837"
+                  timestampString = "525988552.933765"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
-                  offsetFromSymbolStart = "32">
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "40">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -882,15 +866,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -902,11 +886,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -918,11 +902,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -934,11 +918,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "getPictures(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -950,11 +934,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "getPictures(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -966,11 +950,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "getPictures(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -982,11 +966,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "getItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1014,11 +998,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "getLunchItems(handleComplete:)"
             landmarkType = "7">
             <Locations>
@@ -1062,11 +1046,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "getLunchItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1078,11 +1062,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "getLunchItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1094,11 +1078,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "getLunchItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1110,11 +1094,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "getLunchItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1126,11 +1110,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1138,15 +1122,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1238,11 +1222,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "getCouponItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1254,11 +1238,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051657.79602"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "getCouponItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1266,15 +1250,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051739.606192"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1282,27 +1266,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525051771.27008"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
             landmarkName = "getRewardsItems(handleComplete:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "UCheck.DiscoverNearbyViewController.getRewardsItems (handleComplete : () -&gt; ()) -&gt; ()"
                   moduleName = "UCheck"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/DiscoverNearbyViewController.swift"
-                  timestampString = "525052739.299376"
+                  timestampString = "525988552.951344"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "336"
@@ -1310,14 +1294,14 @@
                   offsetFromSymbolStart = "416">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "UCheck.DiscoverNearbyViewController.(getRewardsItems (handleComplete : () -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "UCheck"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/DiscoverNearbyViewController.swift"
-                  timestampString = "525052739.301409"
+                  timestampString = "525988552.952939"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "337"
@@ -1330,15 +1314,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525052983.801383"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "getRewardsItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1346,15 +1330,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525052983.801383"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "getRewardsItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1362,15 +1346,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525052983.801383"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "380"
+            endingLineNumber = "380"
             landmarkName = "getRewardsItems(handleComplete:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1442,46 +1426,46 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/DiscoverNearbyViewController.swift"
-            timestampString = "525052983.801383"
+            timestampString = "525995599.280164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
             landmarkName = "getRewardsItems(handleComplete:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "UCheck.DiscoverNearbyViewController.(getRewardsItems (handleComplete : () -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "UCheck"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/DiscoverNearbyViewController.swift"
-                  timestampString = "525052739.329246"
+                  timestampString = "525988552.973649"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "350"
-                  endingLineNumber = "350"
-                  offsetFromSymbolStart = "2668">
+                  startingLineNumber = "346"
+                  endingLineNumber = "346"
+                  offsetFromSymbolStart = "2080">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "UCheck.DiscoverNearbyViewController.(getRewardsItems (handleComplete : () -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
                   moduleName = "UCheck"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/DiscoverNearbyViewController.swift"
-                  timestampString = "525052739.330617"
+                  timestampString = "525988552.975389"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "351"
-                  endingLineNumber = "351"
+                  startingLineNumber = "347"
+                  endingLineNumber = "347"
                   offsetFromSymbolStart = "40">
                </Location>
             </Locations>
@@ -1538,7 +1522,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UCheck/MembershipProgram.swift"
@@ -1580,6 +1564,278 @@
             startingLineNumber = "25"
             endingLineNumber = "25"
             landmarkName = "init(store_name_source:snapshot_source:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/DiscoverNearbyViewController.swift"
+            timestampString = "525995599.280164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "getPictures(handleComplete:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UCheck.DiscoverNearbyViewController.(getPictures (handleComplete : () -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "UCheck"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/DiscoverNearbyViewController.swift"
+                  timestampString = "525988552.984906"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "214"
+                  endingLineNumber = "214"
+                  offsetFromSymbolStart = "1224">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UCheck.DiscoverNearbyViewController.(getPictures (handleComplete : () -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "UCheck"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/DiscoverNearbyViewController.swift"
+                  timestampString = "525988552.986286"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/DiscoverNearbyViewController.swift"
+            timestampString = "525995599.280164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "getItems(handleComplete:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/DiscoverNearbyViewController.swift"
+            timestampString = "525995599.280164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "getItems(handleComplete:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/Item.swift"
+            timestampString = "525981159.867723"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "init(snapshotValue:barcode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/Item.swift"
+            timestampString = "525981160.283857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "init(snapshotValue:barcode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/Item.swift"
+            timestampString = "525981173.96826"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "init(snapshotValue:barcode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/Item.swift"
+            timestampString = "525981212.141252"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "init(snapshotValue:barcode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/Item.swift"
+            timestampString = "525981212.809059"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "init(snapshotValue:barcode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/Item.swift"
+            timestampString = "525981327.409383"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "init(snapshotValue:barcode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/Item.swift"
+            timestampString = "525981328.609399"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "init(snapshotValue:barcode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/Item.swift"
+            timestampString = "525981329.155727"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "init(snapshotValue:barcode:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UCheck.Item.init (snapshotValue : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;, barcode : Swift.String) -&gt; UCheck.Item"
+                  moduleName = "UCheck"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/Item.swift"
+                  timestampString = "525988553.019247"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "2956">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UCheck.Item.init (snapshotValue : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;, barcode : Swift.String) -&gt; UCheck.Item"
+                  moduleName = "UCheck"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SherryChen/Documents/UPenn/Entrepreneurship/UCheck/App/UCheck/UCheck/Item.swift"
+                  timestampString = "525988553.020669"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "3200">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/Item.swift"
+            timestampString = "525981511.62696"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "init(snapshotValue:barcode:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UCheck/ScannerViewController.swift"
+            timestampString = "525998149.834738"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

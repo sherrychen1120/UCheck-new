@@ -26,7 +26,7 @@ class SlideInPresentationController: UIPresentationController {
         case .right:
             frame.origin.x = containerView!.frame.width*(1.0/3.0)
         case .bottom:
-            frame.origin.y = containerView!.frame.height*(1.0/3.0)
+            frame.origin.y = containerView!.frame.height*(1.0/2.0)
         default:
             frame.origin = .zero
         }
@@ -89,7 +89,7 @@ class SlideInPresentationController: UIPresentationController {
         case .left, .right:
             return CGSize(width: parentSize.width*(2.0/3.0), height: parentSize.height)
         case .bottom, .top:
-            return CGSize(width: parentSize.width, height: parentSize.height*(2.0/3.0))
+            return CGSize(width: parentSize.width, height: parentSize.height*(1.0/2.0))
         }
     }
 
@@ -100,7 +100,7 @@ private extension SlideInPresentationController {
     func setupDimmingView() {
         dimmingView = UIView()
         dimmingView.translatesAutoresizingMaskIntoConstraints = false
-        dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.7)
         dimmingView.alpha = 0.0
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         dimmingView.addGestureRecognizer(recognizer)

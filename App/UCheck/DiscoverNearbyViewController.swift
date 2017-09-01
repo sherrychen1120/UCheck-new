@@ -18,6 +18,8 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
     var should_reload_coupon = false
     var should_reload_rewards = false
 
+    @IBOutlet weak var LoadingText: UILabel!
+    @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
     @IBAction func LogOutButton(_ sender: Any) {
         let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
         let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
@@ -40,6 +42,7 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var TableArea: UITableView!
     @IBOutlet weak var ButtonArea: UIView!
     @IBOutlet weak var StartShoppingButton: UIButton!
+    @IBOutlet weak var LoadingView: UIView!
     
     @IBAction func StartShoppingButton(_ sender: Any) {
         performSegue(withIdentifier: "DiscoverNearbyToFindStoreTip", sender: nil)
@@ -69,6 +72,15 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
         //StartShoppingButton
         StartShoppingButton.layer.cornerRadius = 9
         
+        //Loading View setup
+        view.bringSubview(toFront: LoadingView)
+        LoadingView.bringSubview(toFront: ActivityIndicator)
+        ActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        LoadingView.bringSubview(toFront: LoadingText)
+        LoadingText.text = "Loading your personalized recommendations..."
+        ActivityIndicator.hidesWhenStopped = true
+        ActivityIndicator.startAnimating()
+        
         //Itemwise Recommendation: Get items & pictures and refresh
         self.getItems(handleComplete:{
             self.getLunchItems(handleComplete:{
@@ -79,6 +91,11 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
                             self.should_reload_recom = true
                             self.should_reload_lunch = true
                             self.should_reload_coupon = true
+                            
+                            //Move away the LoadingView
+                            self.ActivityIndicator.stopAnimating()
+                            self.LoadingView.isHidden = true
+                            self.LoadingText.isHidden = true
                         }
                     })
                 })
@@ -176,7 +193,7 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
             //Retrieve all the items, put them into the array
             for barcode in allBarcodes {
                 let recom_item_dict = snapshotValue[barcode] as! [String:AnyObject]
-                //print(recom_item_dict)
+                print(recom_item_dict)
                 let recom_item = Item(snapshotValue: recom_item_dict, barcode: barcode)
                 let store_id = recom_item.store_id
                 

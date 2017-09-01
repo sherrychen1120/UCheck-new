@@ -51,6 +51,11 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
             ItemPriceLabel.text = "$" + String(currItem.discount_price)
             OriginalPriceLabel.text = "Original: $" + String(currItem.price)
             DiscountMessageLabel.text = currItem.discount_content
+        } else if (currItem.has_coupon != "none"){
+            ItemPriceLabel.text = "$" + String(currItem.price)
+            OriginalPriceLabel.isHidden = true
+            DeleteLine.isHidden = true
+            DiscountMessageLabel.text = "Related Coupon: " + currItem.coupon_content
         } else {
             ItemPriceLabel.text = "$" + String(currItem.price)
             OriginalPriceLabel.isHidden = true

@@ -46,9 +46,7 @@ class FirstPageViewController: UIViewController {
                         let url_string = value?["photo_url"] as? String ?? ""
                         
                         CurrentUserName = first_name + " " + last_name
-                        let photo_url = URL(string: url_string)
-                        self.retrievePhoto(url: photo_url!)
-                        
+                        self.retrievePhoto(uid : CurrentUserId)
                         print("user info stored.")
                     }) { (error) in
                         print(error.localizedDescription)
@@ -64,34 +62,20 @@ class FirstPageViewController: UIViewController {
 
     }
 
-    private func retrievePhoto(url: URL){
-        // Creating a session object with the default configuration.
-        let session = URLSession(configuration: .default)
+    private func retrievePhoto(uid: String){
         
-        // Define a download task. The download task will download the contents of the URL as a Data object and then you can do what you wish with that data.
-        let downloadPicTask = session.dataTask(with: url) { (data, response, error) in
-            // The download has finished.
-            if let e = error {
-                print("Error downloading user picture: \(e)")
+        let image_ref = FIRStorage.storage().reference(withPath:"profile_pics/\(uid).png")
+        
+        image_ref.data(withMaxSize: 10 * 1024 * 1024) { data, error in
+            if let error = error {
+                print(error.localizedDescription)
             } else {
-                // No errors found.
-                // It would be weird if we didn't have a response, so check for that too.
-                if let res = response as? HTTPURLResponse {
-                    print("Downloaded user picture with response code \(res.statusCode)")
-                    if let imageData = data {
-                        // Finally convert that Data into an image and do what you wish with it.
-                        let image = UIImage(data: imageData)
-                        CurrentUserPhoto = image
-                    } else {
-                        print("Couldn't get image: Image is nil")
-                    }
-                } else {
-                    print("Couldn't get response code for some reason")
-                }
+                let image = UIImage(data: data!)
+                print("Downloaded user picture")
+                CurrentUserPhoto = image
             }
         }
-        
-        downloadPicTask.resume()
+
     }
     
     override func didReceiveMemoryWarning() {

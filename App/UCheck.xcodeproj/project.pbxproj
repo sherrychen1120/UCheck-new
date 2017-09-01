@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1BAE9C8AB6187ED5CC68786C /* Pods_UCheckUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA7946E1E4FBA95F6FB4301 /* Pods_UCheckUITests.framework */; };
 		502AF3ED09986B63693758EE /* Pods_UCheckTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530210D571712B3F9FD8B570 /* Pods_UCheckTests.framework */; };
+		5621AACD1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AACC1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift */; };
+		5621AACF1F59DF3600ECA0E6 /* MyCouponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AACE1F59DF3600ECA0E6 /* MyCouponsViewController.swift */; };
+		5621AAD11F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AAD01F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift */; };
 		563B588E1F2F11AD0004E36F /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B588D1F2F11AD0004E36F /* FinishViewController.swift */; };
 		5652EF981F09D1030014873D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652EF971F09D1030014873D /* AppDelegate.swift */; };
 		5652EF9D1F09D1030014873D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5652EF9B1F09D1030014873D /* Main.storyboard */; };
@@ -89,6 +92,9 @@
 
 /* Begin PBXFileReference section */
 		530210D571712B3F9FD8B570 /* Pods_UCheckTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheckTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5621AACC1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingRecommendationItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		5621AACE1F59DF3600ECA0E6 /* MyCouponsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCouponsViewController.swift; sourceTree = "<group>"; };
+		5621AAD01F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCouponItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		563B588D1F2F11AD0004E36F /* FinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		5652EF941F09D1030014873D /* UCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5652EF971F09D1030014873D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -365,6 +371,9 @@
 				565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */,
 				56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */,
 				56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */,
+				5621AACC1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift */,
+				5621AACE1F59DF3600ECA0E6 /* MyCouponsViewController.swift */,
+				5621AAD01F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift */,
 			);
 			name = "Shopping Flow";
 			sourceTree = "<group>";
@@ -726,6 +735,7 @@
 				565D91B11F23CAD8009C2393 /* SlideInPresentationAnimator.swift in Sources */,
 				56B681041F10771F00772C68 /* LoginViewController.swift in Sources */,
 				56B6811C1F1AC33B00772C68 /* MembershipLoginViewController.swift in Sources */,
+				5621AACF1F59DF3600ECA0E6 /* MyCouponsViewController.swift in Sources */,
 				565D91AF1F23C7C4009C2393 /* SlideInPresentationController.swift in Sources */,
 				568480121F4B8D6100B41BC7 /* CouponForDisplay.swift in Sources */,
 				56B6811E1F1AC66700772C68 /* JoinMemberViewController.swift in Sources */,
@@ -734,6 +744,7 @@
 				56FC95C11F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift in Sources */,
 				56B681021F0DFEA900772C68 /* User.swift in Sources */,
 				565D91B71F251A50009C2393 /* ShoppingCart.swift in Sources */,
+				5621AACD1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift in Sources */,
 				56B681141F17C51900772C68 /* RecommendedForYouTableViewCell.swift in Sources */,
 				56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */,
 				56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */,
@@ -769,6 +780,7 @@
 				56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */,
 				56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */,
 				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
+				5621AAD11F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift in Sources */,
 				56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
 				56B6811A1F1A7F1C00772C68 /* StoreConfirmationViewController.swift in Sources */,
