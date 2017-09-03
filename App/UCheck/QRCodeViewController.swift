@@ -1,26 +1,28 @@
 //
-//  FinishViewController.swift
+//  QRCodeViewController.swift
 //  UCheck
 //
-//  Created by Sherry Chen on 7/31/17.
+//  Created by Sherry Chen on 9/2/17.
 //
 //
 
 import UIKit
 
-class FinishViewController: UIViewController {
+class QRCodeViewController: UIViewController {
 
-    @IBAction func BackToHomeButton(_ sender: Any) {
-        performSegue(withIdentifier: "FinishToDiscoverNearby", sender: nil)
-
-    }
-    @IBOutlet weak var BackToHomeButton: UIButton!
-   
+    @IBOutlet weak var QRCodeImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.view.backgroundColor = UIColor(red:0.53, green:0.05, blue:0.05, alpha:1.0)
-        BackToHomeButton.layer.cornerRadius = 9
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toFinish))
+        QRCodeImage.isUserInteractionEnabled = true
+        QRCodeImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func toFinish(){
+        performSegue(withIdentifier: "QRCodeToFinish", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {

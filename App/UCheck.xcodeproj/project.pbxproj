@@ -12,6 +12,7 @@
 		5621AACD1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AACC1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift */; };
 		5621AACF1F59DF3600ECA0E6 /* MyCouponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AACE1F59DF3600ECA0E6 /* MyCouponsViewController.swift */; };
 		5621AAD11F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AAD01F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift */; };
+		5621AAD31F5A730100ECA0E6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AAD21F5A730100ECA0E6 /* QRCodeViewController.swift */; };
 		563B588E1F2F11AD0004E36F /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B588D1F2F11AD0004E36F /* FinishViewController.swift */; };
 		5652EF981F09D1030014873D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652EF971F09D1030014873D /* AppDelegate.swift */; };
 		5652EF9D1F09D1030014873D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5652EF9B1F09D1030014873D /* Main.storyboard */; };
@@ -95,6 +96,7 @@
 		5621AACC1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingRecommendationItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		5621AACE1F59DF3600ECA0E6 /* MyCouponsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCouponsViewController.swift; sourceTree = "<group>"; };
 		5621AAD01F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCouponItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		5621AAD21F5A730100ECA0E6 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		563B588D1F2F11AD0004E36F /* FinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		5652EF941F09D1030014873D /* UCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5652EF971F09D1030014873D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				56D9E3241F258CC90043E910 /* CheckOutViewController.swift */,
 				563B588D1F2F11AD0004E36F /* FinishViewController.swift */,
+				5621AAD21F5A730100ECA0E6 /* QRCodeViewController.swift */,
 			);
 			name = "Checkout Flow";
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				5684800D1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift in Sources */,
 				56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */,
 				F30608271F188E5A00C01E45 /* FindStoreTipViewController.swift in Sources */,
+				5621AAD31F5A730100ECA0E6 /* QRCodeViewController.swift in Sources */,
 				F30608291F1897C200C01E45 /* ScanStoreCodeViewController.swift in Sources */,
 				56B6810C1F1090B900772C68 /* DiscoverNearbyViewController.swift in Sources */,
 				56B680FE1F0C4E9700772C68 /* StatePickerView.swift in Sources */,

@@ -193,7 +193,7 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
             //Retrieve all the items, put them into the array
             for barcode in allBarcodes {
                 let recom_item_dict = snapshotValue[barcode] as! [String:AnyObject]
-                print(recom_item_dict)
+                //print(recom_item_dict)
                 let recom_item = Item(snapshotValue: recom_item_dict, barcode: barcode)
                 let store_id = recom_item.store_id
                 
@@ -272,7 +272,7 @@ class DiscoverNearbyViewController: UIViewController, UITableViewDelegate, UITab
             
             let recom_ref = FIRDatabase.database().reference(withPath: "temporary_promotions/\(city)/\(zip_code)")
             recom_ref.observe(.value, with:{snapshot in
-                print(snapshot)
+                //print(snapshot)
                 for item in snapshot.children{
                     let new_lunch_item = LunchItem(snapshot_source : item as! FIRDataSnapshot)
                     

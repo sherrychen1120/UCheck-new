@@ -1328,9 +1328,9 @@ automatically applied at checkout.</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xg0-AJ-RFX">
-                                                            <rect key="frame" x="92" y="98.5" width="31" height="12.5"/>
+                                                            <rect key="frame" x="83" y="98.5" width="29" height="12.5"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="31" id="1l5-LT-gEb"/>
+                                                                <constraint firstAttribute="width" constant="29" id="1l5-LT-gEb"/>
                                                                 <constraint firstAttribute="height" constant="12.5" id="QQh-1g-OWh"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="9"/>
@@ -1340,8 +1340,8 @@ automatically applied at checkout.</string>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hii-QZ-Vvj">
                                                             <rect key="frame" x="8" y="8" width="115" height="80"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IF8-A7-42D">
-                                                            <rect key="frame" x="8" y="93" width="65" height="23"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$00.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IF8-A7-42D">
+                                                            <rect key="frame" x="13" y="93" width="65" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="23" id="Dgj-55-BAy"/>
                                                                 <constraint firstAttribute="width" constant="65" id="eRN-LY-oRh"/>
@@ -1360,7 +1360,7 @@ automatically applied at checkout.</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCB-i1-ABU">
-                                                            <rect key="frame" x="93" y="104" width="31" height="1"/>
+                                                            <rect key="frame" x="83" y="104" width="29" height="1"/>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="us7-Km-wbv"/>
@@ -1371,18 +1371,18 @@ automatically applied at checkout.</string>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="XCB-i1-ABU" firstAttribute="width" secondItem="Xg0-AJ-RFX" secondAttribute="width" id="5UP-X2-IYo"/>
+                                                    <constraint firstItem="Xg0-AJ-RFX" firstAttribute="leading" secondItem="IF8-A7-42D" secondAttribute="trailing" constant="5" id="7Ys-cb-duF"/>
                                                     <constraint firstItem="Xg0-AJ-RFX" firstAttribute="centerY" secondItem="IF8-A7-42D" secondAttribute="centerY" id="KfJ-Zi-Ary"/>
                                                     <constraint firstItem="anc-N4-jUw" firstAttribute="trailing" secondItem="1C9-AO-VKw" secondAttribute="trailingMargin" id="N3z-MN-rou"/>
                                                     <constraint firstItem="anc-N4-jUw" firstAttribute="leading" secondItem="1C9-AO-VKw" secondAttribute="leadingMargin" id="Pxb-wf-v9Y"/>
                                                     <constraint firstItem="hii-QZ-Vvj" firstAttribute="leading" secondItem="1C9-AO-VKw" secondAttribute="leadingMargin" id="SJ8-kO-PZh"/>
                                                     <constraint firstItem="anc-N4-jUw" firstAttribute="top" secondItem="IF8-A7-42D" secondAttribute="bottom" id="Wth-S9-Eqo"/>
-                                                    <constraint firstItem="IF8-A7-42D" firstAttribute="leading" secondItem="1C9-AO-VKw" secondAttribute="leadingMargin" id="bbJ-IR-kaU"/>
+                                                    <constraint firstItem="XCB-i1-ABU" firstAttribute="centerX" secondItem="Xg0-AJ-RFX" secondAttribute="centerX" id="bwx-Il-mDz"/>
                                                     <constraint firstItem="hii-QZ-Vvj" firstAttribute="top" secondItem="1C9-AO-VKw" secondAttribute="topMargin" id="fJq-Ro-ecL"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="Xg0-AJ-RFX" secondAttribute="trailing" id="jwv-fT-EX7"/>
-                                                    <constraint firstItem="Xg0-AJ-RFX" firstAttribute="leading" secondItem="XCB-i1-ABU" secondAttribute="trailing" constant="-32" id="m4t-zk-DJG"/>
                                                     <constraint firstItem="XCB-i1-ABU" firstAttribute="centerY" secondItem="Xg0-AJ-RFX" secondAttribute="centerY" id="pzg-UT-gbX"/>
                                                     <constraint firstAttribute="bottomMargin" secondItem="anc-N4-jUw" secondAttribute="baseline" id="s5V-zb-gDq"/>
                                                     <constraint firstAttribute="trailingMargin" secondItem="hii-QZ-Vvj" secondAttribute="trailing" id="sQt-b7-Qy8"/>
+                                                    <constraint firstItem="IF8-A7-42D" firstAttribute="centerX" secondItem="1C9-AO-VKw" secondAttribute="centerX" constant="-20" id="w6T-vK-Nep"/>
                                                     <constraint firstItem="IF8-A7-42D" firstAttribute="top" secondItem="hii-QZ-Vvj" secondAttribute="bottom" constant="5" id="zv3-yX-cl8"/>
                                                 </constraints>
                                                 <connections>
@@ -1916,7 +1916,7 @@ automatically applied at checkout.</string>
                         <outlet property="SubtotalLabel" destination="IKs-7s-xPc" id="1w5-ca-4Rh"/>
                         <outlet property="TotalLabel" destination="esm-J9-tlI" id="gJR-Ml-tTe"/>
                         <segue destination="bJQ-ma-jw7" kind="unwind" identifier="UnwindToScanner" unwindAction="unwindToScannerWithSegue:" id="3SS-YJ-qF3"/>
-                        <segue destination="6qA-Cy-JQF" kind="show" identifier="CheckOutToFinish" id="UCZ-Cc-D4z"/>
+                        <segue destination="8mb-bJ-wtU" kind="show" identifier="CheckOutToQRCode" id="d7K-jU-Edw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Umz-ij-k5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1960,8 +1960,7 @@ automatically applied at checkout.</string>
                                     <color key="titleColor" red="0.60701197389999995" green="0.053868211809999997" blue="0.061009041969999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="BackToHomeButton:" destination="6qA-Cy-JQF" eventType="touchUpInside" id="O6W-dz-g3r"/>
-                                    <action selector="RegisterButton:" destination="qgG-kK-JM5" eventType="touchUpInside" id="dr6-P9-4mJ"/>
+                                    <action selector="BackToHomeButton:" destination="6qA-Cy-JQF" eventType="touchUpInside" id="0hM-88-CNy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for shopping with UCheck." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mza-sK-Bxm">
@@ -1989,14 +1988,96 @@ automatically applied at checkout.</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="BackToHomeButton" destination="V19-FV-GVH" id="ygs-1O-iDK"/>
-                        <segue destination="JiB-mf-YWl" kind="unwind" identifier="FinishToDIscoverNearby" unwindAction="unwindToDiscoverNearbyWithSegue:" id="TgS-Qu-Thd"/>
+                        <segue destination="JiB-mf-YWl" kind="unwind" identifier="FinishToDiscoverNearby" unwindAction="unwindToDiscoverNearbyWithSegue:" id="wfF-si-Yjr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTy-yY-dmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JiB-mf-YWl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="12512.799999999999" y="1447.8260869565217"/>
+            <point key="canvasLocation" x="13311" y="1449"/>
+        </scene>
+        <!--Code View Controller-->
+        <scene sceneID="tmL-zr-fg2">
+            <objects>
+                <viewController id="8mb-bJ-wtU" customClass="QRCodeViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hWU-vi-E8i"/>
+                        <viewControllerLayoutGuide type="bottom" id="1HM-Od-1aI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gzg-T9-Vql">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="order_confirm_QR_code" translatesAutoresizingMaskIntoConstraints="NO" id="rbW-UZ-kY1">
+                                <rect key="frame" x="75.5" y="221.5" width="225" height="225"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rbW-UZ-kY1" secondAttribute="height" multiplier="1:1" id="XgK-PN-uhQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They'll scan the code and confirm your order." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-D1-DNd">
+                                <rect key="frame" x="87.5" y="165.5" width="200" height="46.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="jlh-Xc-wk3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make sure you finish this simple step before leaving!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74m-Wx-LjV">
+                                <rect key="frame" x="66" y="476.5" width="243" height="49.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49.5" id="tfb-us-37W"/>
+                                    <constraint firstAttribute="width" constant="243" id="vnx-UN-RfR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show this code to a UCheck store staff at the exit." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qd-hB-1tH">
+                                <rect key="frame" x="16" y="92.5" width="351" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="iMj-rH-GwT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="23"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Penalties might apply otherwise." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCa-qv-nDP">
+                                <rect key="frame" x="36" y="536" width="303" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="T8n-4l-Y1E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.52772486209869385" green="0.048718027770519257" blue="0.049309380352497101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rbW-UZ-kY1" firstAttribute="width" secondItem="gzg-T9-Vql" secondAttribute="width" multiplier="0.6" id="738-Cc-3Z3"/>
+                            <constraint firstItem="ezZ-D1-DNd" firstAttribute="centerX" secondItem="gzg-T9-Vql" secondAttribute="centerX" id="BHZ-ng-Kic"/>
+                            <constraint firstItem="2Qd-hB-1tH" firstAttribute="leading" secondItem="gzg-T9-Vql" secondAttribute="leadingMargin" id="Edq-v2-42e"/>
+                            <constraint firstItem="rbW-UZ-kY1" firstAttribute="top" secondItem="ezZ-D1-DNd" secondAttribute="bottom" constant="10" id="MER-nD-83r"/>
+                            <constraint firstItem="zCa-qv-nDP" firstAttribute="top" secondItem="74m-Wx-LjV" secondAttribute="bottom" constant="10" id="NHe-wm-ksc"/>
+                            <constraint firstItem="ezZ-D1-DNd" firstAttribute="top" secondItem="2Qd-hB-1tH" secondAttribute="bottom" constant="10" id="Si2-e6-Bk6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zCa-qv-nDP" secondAttribute="trailing" constant="20" id="UNk-d5-C6p"/>
+                            <constraint firstItem="74m-Wx-LjV" firstAttribute="top" secondItem="rbW-UZ-kY1" secondAttribute="bottom" constant="30" id="V8g-TS-e2v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Qd-hB-1tH" secondAttribute="trailingMargin" id="esn-cs-rzA"/>
+                            <constraint firstItem="zCa-qv-nDP" firstAttribute="leading" secondItem="gzg-T9-Vql" secondAttribute="leadingMargin" constant="20" id="tM2-xy-gsH"/>
+                            <constraint firstItem="rbW-UZ-kY1" firstAttribute="centerX" secondItem="gzg-T9-Vql" secondAttribute="centerX" id="wk5-bk-4bc"/>
+                            <constraint firstItem="74m-Wx-LjV" firstAttribute="centerX" secondItem="gzg-T9-Vql" secondAttribute="centerX" id="yB9-tU-8TF"/>
+                            <constraint firstItem="rbW-UZ-kY1" firstAttribute="centerY" secondItem="gzg-T9-Vql" secondAttribute="centerY" id="yvq-gh-cus"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="QRCodeImage" destination="rbW-UZ-kY1" id="3Cg-FY-oLy"/>
+                        <segue destination="6qA-Cy-JQF" kind="show" identifier="QRCodeToFinish" id="T3o-bJ-zDD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1yq-UR-whg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="12543" y="1449"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="eFQ-td-z9T">
@@ -3205,6 +3286,7 @@ will be automatically applied at checkout.</string>
         <image name="discover" width="625" height="171"/>
         <image name="location_icon" width="256" height="256"/>
         <image name="mastercard" width="493" height="300"/>
+        <image name="order_confirm_QR_code" width="300" height="300"/>
         <image name="shopping_cart_dark_red" width="1063" height="1063"/>
         <image name="store-code-ex" width="384" height="545"/>
         <image name="venmo" width="786" height="149"/>

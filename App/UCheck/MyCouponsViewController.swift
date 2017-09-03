@@ -9,13 +9,13 @@
 import UIKit
 import Firebase
 
+//Hard-coded my coupon list. Need to change later!
+var MyCouponsList = ["c711_001", "mc711_001", "c711_002"]
+var MyCouponsImages : [UIImage] = []
+
 class MyCouponsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var delegate: communicationScanner? = nil
-    
-    //Hard-coded my coupon list. Need to change later!
-    var MyCouponsList = ["c711_001", "mc711_001", "c711_002"]
-    var MyCouponsImages : [UIImage] = []
     
     @IBOutlet weak var CouponsCollectionView: UICollectionView!
     
@@ -23,11 +23,15 @@ class MyCouponsViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         self.CouponsCollectionView.delegate = self
         self.CouponsCollectionView.dataSource = self
-        self.getCouponImages(handleComplete: {
-            DispatchQueue.main.async {
-                self.CouponsCollectionView.reloadData()
-            }
-        })
+        
+        if MyCouponsImages.count == 0 {
+            self.getCouponImages(handleComplete: {
+                DispatchQueue.main.async {
+                    self.CouponsCollectionView.reloadData()
+                }
+            })
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,7 +72,7 @@ class MyCouponsViewController: UIViewController, UICollectionViewDelegate, UICol
                     print(error.localizedDescription)
                 } else {
                     if let image = UIImage(data: data!){
-                        self.MyCouponsImages.append(image)
+                        MyCouponsImages.append(image)
                     }
                 }
                 

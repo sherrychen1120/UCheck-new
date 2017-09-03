@@ -30,7 +30,7 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         self.finishPayment{ () -> () in
             DispatchQueue.main.async (execute: { () -> Void in
                 self.ActivityIndicator.stopAnimating()
-                self.performSegue(withIdentifier: "CheckOutToFinish", sender: self)
+                self.performSegue(withIdentifier: "CheckOutToQRCode", sender: self)
             })
         }
     }
