@@ -35,6 +35,12 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
              NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
+
+        self.scannerSetup()
+        
+    }
+    
+    func scannerSetup(){
         //Scanner
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter.
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -52,7 +58,7 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
             // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
             let captureMetadataOutput = AVCaptureMetadataOutput()
             captureSession?.addOutput(captureMetadataOutput)
-
+            
             // Set delegate and use the default dispatch queue to execute the call back
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
@@ -65,7 +71,7 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
             
             // Start video capture.
             captureSession?.startRunning()
-
+            
             //QR Code Reading
             // Initialize QR Code Frame to highlight the QR code
             qrCodeFrameView = UIView()
@@ -82,8 +88,6 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
             print(error)
             return
         }
-        
-        
     }
 
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
@@ -101,6 +105,7 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
         if metadataObj.type == AVMetadataObjectTypeQRCode {
             // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+            qrCodeFrameView?.isHidden = false 
             qrCodeFrameView?.frame = CGRect(x: barCodeObject!.bounds.origin.x,
                                             y: barCodeObject!.bounds.origin.y + 50,
                                             width: barCodeObject!.bounds.width,
@@ -154,6 +159,7 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ScanStoreCodeToStoreConfirmation" ,
             let nextScene = segue.destination as? StoreConfirmationViewController {
+            self.captureSession?.stopRunning()
             nextScene.store_id = store_id
             nextScene.store_name = store_name!
             nextScene.store_display_name = store_display_name!
@@ -162,7 +168,11 @@ class ScanStoreCodeViewController: UIViewController, AVCaptureMetadataOutputObje
 
     }
     
-    @IBAction func unwindToScanStore(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToScanStore(segue: UIStoryboardSegue) {
+        self.scannerSetup()
+        qrCodeFrameView?.isHidden = true
+        print("unwindSegue scannerSetup")
+    }
     
 
 }
