@@ -97,7 +97,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                             CurrentUser = self.email
                             CurrentUserName = self.first_name + " " + self.last_name
                             
-                            self.performSegue(withIdentifier: "RegisterToPayment", sender: nil)
+                            self.performSegue(withIdentifier: "SetupToVenmo", sender: nil)
 
                         }
                         
@@ -177,6 +177,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "RegisterToPayment"{
             //Send the new_user to the next VC
             if let nextScene = segue.destination as? PaymentMethodViewController{
+                nextScene.new_user = self.new_user
+            }
+        } else if segue.identifier == "SetupToVenmo"{
+            //Send the new_user to the next VC
+            if let nextScene = segue.destination as? VenmoSetupViewController{
                 nextScene.new_user = self.new_user
             }
         }

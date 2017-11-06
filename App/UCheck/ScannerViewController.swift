@@ -44,14 +44,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         self.performSegue(withIdentifier: "ScanningToMyCoupons", sender: nil)
     }
     
-    /*@IBAction func MenuButton(_ sender: Any) {
-        performSegue(withIdentifier: "ScanningToMenu", sender: nil)
-    }*/
-    
-    /*@IBAction func ShoppingCartButton(_ sender: Any) {
-        performSegue(withIdentifier: "ScanningToCart", sender: nil)
-    }*/
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

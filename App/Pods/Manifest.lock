@@ -1,11 +1,33 @@
 PODS:
   - Alamofire (4.4.0)
+  - Braintree (4.8.5):
+    - Braintree/Card (= 4.8.5)
+    - Braintree/Core (= 4.8.5)
+    - Braintree/PayPal (= 4.8.5)
+    - Braintree/UI (= 4.8.5)
   - Braintree/Card (4.8.5):
     - Braintree/Core
   - Braintree/Core (4.8.5)
+  - Braintree/PayPal (4.8.5):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.8.5):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.8.5):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.8.5)
+  - Braintree/UI (4.8.5):
+    - Braintree/Card
+    - Braintree/Core
   - Braintree/UnionPay (4.8.5):
     - Braintree/Card
     - Braintree/Core
+  - Braintree/Venmo (4.8.5):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
   - BraintreeDropIn (5.2.1):
     - BraintreeDropIn/DropIn (= 5.2.1)
   - BraintreeDropIn/DropIn (5.2.1):
@@ -57,6 +79,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Braintree
+  - Braintree/Venmo
   - BraintreeDropIn
   - Firebase/Auth
   - Firebase/Core
@@ -79,6 +103,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 968d70c9d3786b26a365202264e542c69c8dc852
+PODFILE CHECKSUM: f4ef2e578537c5a0f2453dca10d2d1c59a305aea
 
 COCOAPODS: 1.2.0

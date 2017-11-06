@@ -81,7 +81,7 @@ exports.create_new_customer = functions.https.onRequest((req, res) => {
             gateway.paymentMethod.create({
               customerId: req.body.uid,
               paymentMethodNonce: req.body.payment_method_nonce,
-              billingAddress: {
+              /*billingAddress: {
                 firstName: req.body.cardholder_first_name,
                 lastName: req.body.cardholder_last_name,
                 streetAddress: req.body.billing_add_street,
@@ -92,7 +92,7 @@ exports.create_new_customer = functions.https.onRequest((req, res) => {
               },
               options: {
                 verifyCard: true
-              }
+              }*/
             }, function (err2, result2) {
                if (result2.success){
                   console.log("Payment creation succeeded.");

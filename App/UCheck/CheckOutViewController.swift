@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Braintree
+import BraintreeDropIn
 
 class CheckOutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -30,7 +31,7 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         self.finishPayment{ () -> () in
             DispatchQueue.main.async (execute: { () -> Void in
                 self.ActivityIndicator.stopAnimating()
-                self.performSegue(withIdentifier: "CheckOutToQRCode", sender: self)
+                self.performSegue(withIdentifier: "CheckoutToReceipt", sender: self)
             })
         }
     }
@@ -120,6 +121,9 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
                     print("Client token successfully fetched.")
                     print(token_received)
                     
+                    /*self.showDropIn(clientTokenOrTokenizationKey: token_received)
+                    print(self.venmo_username)*/
+                    
                     //create the transaction on the backend
                     if let user = FIRAuth.auth()?.currentUser {
                         
@@ -165,6 +169,30 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
             
             }.resume()
     }
+    
+   /* var venmo_username = ""
+    func showDropIn(clientTokenOrTokenizationKey: String) {
+        let request =  BTDropInRequest()
+        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
+        { (controller, result, error) in
+            if (error != nil) {
+                print("ERROR")
+            } else if (result?.isCancelled == true) {
+                print("CANCELLED")
+            } else if let result = result {
+                // Use the BTDropInResult properties to update your UI
+                // result.paymentOptionType
+                // result.paymentMethod
+                // result.paymentIcon
+                
+                let venmo_acct_nonce = result.paymentMethod as! BTVenmoAccountNonce
+                self.venmo_username = venmo_acct_nonce.username!
+                
+            }
+            controller.dismiss(animated: true, completion: nil)
+        }
+        self.present(dropIn!, animated: true, completion: nil)
+    }*/
     
     //Function for sending payment method nonce
     /*func postNonceToServer(paymentMethodNonce: String) {

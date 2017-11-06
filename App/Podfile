@@ -13,6 +13,8 @@ pod 'Firebase/Storage'
 pod 'SwiftKeychainWrapper','~>3.0.1'
 pod 'Alamofire', '~> 4.4'
 pod 'BraintreeDropIn'
+pod 'Braintree'
+pod 'Braintree/Venmo'
 
   target 'UCheckTests' do
     inherit! :search_paths
