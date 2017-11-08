@@ -9,6 +9,9 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import FacebookLogin
+import FacebookCore
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var EmailInput: UITextField!
@@ -22,9 +25,9 @@ class LoginViewController: UIViewController {
             let email = EmailInput.text!
             let password = PasswordInput.text!
         
-            if (email == "" || password == ""){
-                showAlert(withMessage: "Incomplete information.")
-            } else {
+//            if (email == "" || password == ""){
+//                showAlert(withMessage: "Incomplete information.")
+//            } else {
                 FIRAuth.auth()!.signIn(withEmail: email, password: password){(user, error) in
                     if error != nil {
                         
@@ -55,9 +58,129 @@ class LoginViewController: UIViewController {
                     print(self.uid)
                     
                     self.performSegue(withIdentifier: "LoginToScanner", sender: nil)
-                }
+//                }
                 
             }
+        
+    }
+    
+    struct MyProfileRequest: GraphRequestProtocol {
+        struct Response: GraphResponseProtocol {
+            var first_name: String?
+            var last_name: String?
+            var id: String?
+            var email: String?
+            var profilePictureUrl: String?
+            
+            init(rawResponse: Any?) {
+                // Decode JSON from rawResponse into other properties here.
+                guard let response = rawResponse as? Dictionary<String, Any> else {
+                    return
+                }
+                
+                if let first_name = response["first_name"] as? String {
+                    self.first_name = first_name
+                }
+                
+                if let last_name = response["last_name"] as? String {
+                    self.last_name = last_name
+                }
+                
+                if let id = response["id"] as? String {
+                    self.id = id
+                }
+                
+                if let email = response["email"] as? String {
+                    self.email = email
+                }
+                
+                if let picture = response["picture"] as? Dictionary<String, Any> {
+                    
+                    if let data = picture["data"] as? Dictionary<String, Any> {
+                        if let url = data["url"] as? String {
+                            self.profilePictureUrl = url
+                        }
+                    }
+                }
+            }
+        }
+        
+        var graphPath = "/me"
+        var parameters: [String : Any]? = ["fields": "id, first_name, last_name, email, picture"]
+        var accessToken = AccessToken.current
+        var httpMethod: GraphRequestHTTPMethod = .GET
+        var apiVersion: GraphAPIVersion = .defaultVersion
+    }
+    
+    var new_user = User(uid : "", first_name: "", last_name: "", email: "", phone_no: "")
+    
+    @IBAction func facebookLoginButton(_ sender: Any) {
+        let loginManager = FBSDKLoginManager()
+        
+        loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let accessToken = FBSDKAccessToken.current() else {
+                print("Failed to get access token")
+                return
+            }
+            
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+
+            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                if let error = error {
+                    print("Login error: \(error.localizedDescription)")
+                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    return
+                }
+                
+                let ref = FIRDatabase.database().reference(withPath: "user-profiles")
+                
+                print("ID BRO:" + (FIRAuth.auth()?.currentUser?.uid)!)
+                var uid = ""
+                if let user = FIRAuth.auth()?.currentUser{
+                    uid = user.uid
+                    CurrentUserId = user.uid
+                }
+                
+                let connection = GraphRequestConnection()
+                connection.add(MyProfileRequest()) { response, result in
+                    switch result {
+                    case .success(let response):
+                        
+                        self.new_user = User(uid : uid,
+                                        first_name : response.first_name!,
+                                         last_name : response.last_name!,
+                                         email : response.email!,
+                                         phone_no : "")
+                        
+                        print("UID1: " + uid)
+                        
+                        //update info on Firebase
+                        let user_ref = self.ref.child(uid)
+                        user_ref.setValue(self.new_user.toAnyObject())
+                        
+                        //update info in the CurrentSession object
+                        CurrentUser = response.email!
+                        CurrentUserName = response.first_name! + " " + response.last_name!
+                        
+                        self.performSegue(withIdentifier: "LoginToVenmo", sender: nil)
+                    case .failed(let error):
+                        print("Custom Graph Request Failed: \(error)")
+                    }
+                }
+                connection.start()
+            })
+            
+        }
+        
         
     }
     
@@ -68,6 +191,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         LoginButton.layer.cornerRadius = 9
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,6 +238,13 @@ class LoginViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LoginToVenmo"{
+            //Send the new_user to the next VC
+            if let nextScene = segue.destination as? VenmoSetupViewController{
+                print("UID2: " + self.new_user.uid)
+                nextScene.new_user = self.new_user
+            }
+        } else {
             
             self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
@@ -131,6 +262,6 @@ class LoginViewController: UIViewController {
             }
             
             print("user info stored.")
-
+        }
     }
 }
