@@ -124,19 +124,33 @@
                                     <constraint firstAttribute="height" constant="1" id="QdE-3l-8Mx"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMp-4f-X8U">
+                                <rect key="frame" x="36" y="549" width="303" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
+                                <state key="normal" title="Facebook">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookLoginButton:" destination="ehJ-Cc-GYG" eventType="touchUpInside" id="V8x-ca-Uh3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.52941176469999995" green="0.050980392159999999" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UWs-ER-Kie" firstAttribute="leading" secondItem="4Tc-a7-SP2" secondAttribute="leadingMargin" constant="20" id="2YQ-xX-HNL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PI5-kh-Av8" secondAttribute="trailing" constant="20" id="9cR-5S-8si"/>
                             <constraint firstItem="uW7-Zh-Wyb" firstAttribute="centerX" secondItem="4Tc-a7-SP2" secondAttribute="centerX" id="LA1-F9-9j4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wMp-4f-X8U" secondAttribute="trailing" constant="20" id="QML-Ra-m0h"/>
                             <constraint firstItem="PU2-Rh-bPD" firstAttribute="leading" secondItem="4Tc-a7-SP2" secondAttribute="leadingMargin" constant="20" id="Rzd-tc-UNz"/>
                             <constraint firstItem="uW7-Zh-Wyb" firstAttribute="top" secondItem="y3o-ct-lrx" secondAttribute="bottom" constant="55" id="Sd5-qs-bdQ"/>
                             <constraint firstItem="PU2-Rh-bPD" firstAttribute="top" secondItem="UWs-ER-Kie" secondAttribute="bottom" constant="8" id="TfD-zW-MkS"/>
                             <constraint firstItem="rvI-YQ-yfa" firstAttribute="firstBaseline" secondItem="ZnI-Qh-ueX" secondAttribute="firstBaseline" constant="5" id="Uwo-PV-NJr"/>
                             <constraint firstItem="rvI-YQ-yfa" firstAttribute="width" secondItem="ZnI-Qh-ueX" secondAttribute="width" id="VTE-kp-QEb"/>
                             <constraint firstItem="PI5-kh-Av8" firstAttribute="top" secondItem="PU2-Rh-bPD" secondAttribute="bottom" constant="50" id="Wuv-Xj-p7m"/>
+                            <constraint firstItem="wMp-4f-X8U" firstAttribute="leading" secondItem="4Tc-a7-SP2" secondAttribute="leadingMargin" constant="20" id="a0i-Gr-gaO"/>
                             <constraint firstItem="UWs-ER-Kie" firstAttribute="top" secondItem="uW7-Zh-Wyb" secondAttribute="bottom" constant="30" id="amL-rm-CfO"/>
+                            <constraint firstItem="wMp-4f-X8U" firstAttribute="top" secondItem="ZnI-Qh-ueX" secondAttribute="bottom" constant="50" id="eDW-JS-4BH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UWs-ER-Kie" secondAttribute="trailing" constant="20" id="guF-ln-nF5"/>
                             <constraint firstItem="rvI-YQ-yfa" firstAttribute="centerX" secondItem="4Tc-a7-SP2" secondAttribute="centerX" id="jBu-1l-Y44"/>
                             <constraint firstItem="PI5-kh-Av8" firstAttribute="leading" secondItem="4Tc-a7-SP2" secondAttribute="leadingMargin" constant="20" id="p9I-97-4Np"/>
@@ -153,6 +167,7 @@
                         <segue destination="qgG-kK-JM5" kind="show" identifier="LoginToSetup" id="mT5-NQ-v51"/>
                         <segue destination="yQY-oB-qPf" kind="show" identifier="LoginToDiscoverNearby" id="tjX-Il-qnf"/>
                         <segue destination="gbQ-Jh-5Ig" kind="show" identifier="LoginToScanner" id="NRm-WD-tbV"/>
+                        <segue destination="M6h-eb-QMo" kind="show" identifier="LoginToVenmo" id="BbT-Cx-kJI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QaC-B2-isA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3298,8 +3313,9 @@ will be automatically applied at checkout.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Q1e-Hi-EIh"/>
-        <segue reference="cMZ-w7-3rl"/>
+        <segue reference="tjX-Il-qnf"/>
         <segue reference="Zc2-73-7UG"/>
-        <segue reference="OKK-lQ-g2a"/>
+        <segue reference="BbT-Cx-kJI"/>
+        <segue reference="NRm-WD-tbV"/>
     </inferredMetricsTieBreakers>
 </document>

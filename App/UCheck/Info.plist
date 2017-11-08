@@ -25,6 +25,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>fb1980301695557059</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>com.xiaoyichen.UCheck.payments</string>
 			</array>
 		</dict>
@@ -33,8 +41,16 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
 		<string>com.venmo.touch.v2</string>
 	</array>
+	<key>FacebookAppID</key>
+	<string>1980301695557059</string>
+	<key>FacebookDisplayName</key>
+	<string>UCheck</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>

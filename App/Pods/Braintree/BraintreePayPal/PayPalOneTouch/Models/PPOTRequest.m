@@ -116,7 +116,6 @@ NSString *const PayPalEnvironmentMock = PPRequestEnvironmentNoNetwork;
             if (appSwitchRequest) {
                 appSwitchURL = [appSwitchRequest encodedURL];
                 requestClientMetadataId = appSwitchRequest.clientMetadataID;
-                PPLog(@"URL to open %@", appSwitchURL);
 
                 NSString *analyticsPage = nil;
                 if ([[appSwitchURL.absoluteString lowercaseString] hasPrefix:kPPOTAppSwitchSchemeToCheck]) {
@@ -167,7 +166,7 @@ NSString *const PayPalEnvironmentMock = PPRequestEnvironmentNoNetwork;
 
 #pragma mark - configuration methods
 
-- (void)determineConfigurationRecipe:(void (^)())completionBlock {
+- (void)determineConfigurationRecipe:(void (^)(void))completionBlock {
     PPAssert(completionBlock, @"establishConfigurationRecipe: completionBlock is required");
 
     if (self.configurationRecipe) {
