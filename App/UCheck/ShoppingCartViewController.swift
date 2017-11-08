@@ -19,7 +19,6 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var ShoppingCartTableView: ShoppingCartTableView!
     
     @IBOutlet weak var BottomView: UIView!
-    @IBOutlet weak var MembershipSavedLabel: UILabel!
     @IBOutlet weak var SubtotalLabel: UILabel!
     @IBOutlet weak var EstTaxLabel: UILabel!
     @IBOutlet weak var TotalLabel: UILabel!
@@ -39,11 +38,10 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     private func updatePrices(){
-        let tax = 0.06 * subtotal
+        let tax = 0.00
         let total = tax + subtotal
-        MembershipSavedLabel.text = "Membership saving: $" + String(format: "%.2f", total_saving)
         SubtotalLabel.text = "Subtotal: $" + String(format: "%.2f", subtotal)
-        EstTaxLabel.text = "Est. Tax: $" + String(format: "%.2f", tax)
+        EstTaxLabel.text = "Tax included"
         TotalLabel.text = "Total: $" + String(format: "%.2f", total)
         ShoppingCart.listItems()
     }
@@ -63,24 +61,13 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         
         let item = CurrentShoppingCart[indexPath.row]
         cell.ItemImage.image = item.item_image
-        cell.ItemName.text = item.name
+        cell.ItemName.text = item.item_name
         cell.ItemQuantity.text = String(item.quantity)
         cell.currItem = item
         cell.delegate = ShoppingCartTableView
+        let item_subtotal = Double(item.item_price)! * Double(item.quantity)
+        cell.ItemPrice.text = "$" + String(item_subtotal)
         
-        if (item.has_itemwise_discount != "none") {
-            let item_subtotal = Double(item.discount_price)! * Double(item.quantity)
-            let item_original_subtotal = Double(item.price)! * Double(item.quantity)
-            cell.ItemPrice.text = "$" + String(item_subtotal)
-            cell.ItemOriginalPrice.text = "Original: $" + String(item_original_subtotal)
-            cell.DeleteLine.isHidden = false
-        } else {
-            let item_original_subtotal = Double(item.price)! * Double(item.quantity)
-            cell.ItemPrice.text = "$" + String(item_original_subtotal)
-            cell.ItemOriginalPrice.isHidden = true
-            cell.DeleteLine.isHidden = true
-        }
-                
         return cell
     }
     

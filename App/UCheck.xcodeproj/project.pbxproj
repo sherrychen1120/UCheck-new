@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		1BAE9C8AB6187ED5CC68786C /* Pods_UCheckUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA7946E1E4FBA95F6FB4301 /* Pods_UCheckUITests.framework */; };
 		502AF3ED09986B63693758EE /* Pods_UCheckTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530210D571712B3F9FD8B570 /* Pods_UCheckTests.framework */; };
-		5621AACD1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AACC1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift */; };
-		5621AACF1F59DF3600ECA0E6 /* MyCouponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AACE1F59DF3600ECA0E6 /* MyCouponsViewController.swift */; };
-		5621AAD11F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AAD01F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift */; };
-		5621AAD31F5A730100ECA0E6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621AAD21F5A730100ECA0E6 /* QRCodeViewController.swift */; };
 		563B588E1F2F11AD0004E36F /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B588D1F2F11AD0004E36F /* FinishViewController.swift */; };
 		5652EF981F09D1030014873D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652EF971F09D1030014873D /* AppDelegate.swift */; };
 		5652EF9D1F09D1030014873D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5652EF9B1F09D1030014873D /* Main.storyboard */; };
@@ -30,14 +26,7 @@
 		565E4BC01FACFCA500D273E8 /* VenmoSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E4BBF1FACFCA500D273E8 /* VenmoSetupViewController.swift */; };
 		565E4BC71FAD0B4B00D273E8 /* CustomObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 565E4BC61FAD0B4B00D273E8 /* CustomObject.m */; };
 		567488BD1F09F46B00EB4471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */; };
-		568480071F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480061F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift */; };
-		5684800B1F4B4BB200B41BC7 /* LunchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684800A1F4B4BB200B41BC7 /* LunchItem.swift */; };
-		5684800D1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684800C1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift */; };
 		5684800F1F4B80DD00B41BC7 /* EdgeShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684800E1F4B80DD00B41BC7 /* EdgeShadowLayer.swift */; };
-		568480121F4B8D6100B41BC7 /* CouponForDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480111F4B8D6100B41BC7 /* CouponForDisplay.swift */; };
-		568480141F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480131F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift */; };
-		568480161F4BA29E00B41BC7 /* MembershipProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480151F4BA29E00B41BC7 /* MembershipProgram.swift */; };
-		56A3DFE61F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A3DFE51F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift */; };
 		56A720BC1FB0184D00FF6DCE /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A720BB1FB0184D00FF6DCE /* ReceiptViewController.swift */; };
 		56A720BE1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A720BD1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift */; };
 		56B1AA6E1F287C450085FE06 /* store-code-ex.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B1AA6D1F287C450085FE06 /* store-code-ex.png */; };
@@ -53,13 +42,7 @@
 		56B680FE1F0C4E9700772C68 /* StatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680FD1F0C4E9700772C68 /* StatePickerView.swift */; };
 		56B681021F0DFEA900772C68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681011F0DFEA900772C68 /* User.swift */; };
 		56B681041F10771F00772C68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681031F10771F00772C68 /* LoginViewController.swift */; };
-		56B6810C1F1090B900772C68 /* DiscoverNearbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6810B1F1090B900772C68 /* DiscoverNearbyViewController.swift */; };
-		56B681141F17C51900772C68 /* RecommendedForYouTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681131F17C51900772C68 /* RecommendedForYouTableViewCell.swift */; };
-		56B681161F17CEA900772C68 /* LunchNearbyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681151F17CEA900772C68 /* LunchNearbyTableViewCell.swift */; };
 		56B681181F19A28200772C68 /* CurrentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681171F19A28200772C68 /* CurrentSession.swift */; };
-		56B6811A1F1A7F1C00772C68 /* StoreConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681191F1A7F1C00772C68 /* StoreConfirmationViewController.swift */; };
-		56B6811C1F1AC33B00772C68 /* MembershipLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6811B1F1AC33B00772C68 /* MembershipLoginViewController.swift */; };
-		56B6811E1F1AC66700772C68 /* JoinMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6811D1F1AC66700772C68 /* JoinMemberViewController.swift */; };
 		56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681201F1AC96C00772C68 /* ScannerViewController.swift */; };
 		56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3241F258CC90043E910 /* CheckOutViewController.swift */; };
 		56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */; };
@@ -72,10 +55,6 @@
 		56FC95C51F1F13880090A1AE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C41F1F13880090A1AE /* Item.swift */; };
 		56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C61F20945C0090A1AE /* MenuViewController.swift */; };
 		B8AF986AFF0651EAAB522D9B /* Pods_UCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */; };
-		F30608221F187FA900C01E45 /* CouponsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608211F187FA900C01E45 /* CouponsTableViewCell.swift */; };
-		F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608231F18811400C01E45 /* MyRewardsTableViewCell.swift */; };
-		F30608271F188E5A00C01E45 /* FindStoreTipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608261F188E5A00C01E45 /* FindStoreTipViewController.swift */; };
-		F30608291F1897C200C01E45 /* ScanStoreCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30608281F1897C200C01E45 /* ScanStoreCodeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,10 +76,6 @@
 
 /* Begin PBXFileReference section */
 		530210D571712B3F9FD8B570 /* Pods_UCheckTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheckTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5621AACC1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingRecommendationItemCollectionViewCell.swift; sourceTree = "<group>"; };
-		5621AACE1F59DF3600ECA0E6 /* MyCouponsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCouponsViewController.swift; sourceTree = "<group>"; };
-		5621AAD01F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCouponItemCollectionViewCell.swift; sourceTree = "<group>"; };
-		5621AAD21F5A730100ECA0E6 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		563B588D1F2F11AD0004E36F /* FinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
 		5652EF941F09D1030014873D /* UCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5652EF971F09D1030014873D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,14 +101,7 @@
 		565E4BC81FAD0B6F00D273E8 /* UCheck-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UCheck-Bridging-Header.h"; sourceTree = "<group>"; };
 		567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		567488BE1F09F4CF00EB4471 /* UCheck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UCheck.entitlements; sourceTree = "<group>"; };
-		568480061F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunchNearbyCollectionViewCell.swift; sourceTree = "<group>"; };
-		5684800A1F4B4BB200B41BC7 /* LunchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunchItem.swift; sourceTree = "<group>"; };
-		5684800C1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		5684800E1F4B80DD00B41BC7 /* EdgeShadowLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeShadowLayer.swift; sourceTree = "<group>"; };
-		568480111F4B8D6100B41BC7 /* CouponForDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponForDisplay.swift; sourceTree = "<group>"; };
-		568480131F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRewardsCollectionViewCell.swift; sourceTree = "<group>"; };
-		568480151F4BA29E00B41BC7 /* MembershipProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembershipProgram.swift; sourceTree = "<group>"; };
-		56A3DFE51F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		56A720BB1FB0184D00FF6DCE /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 		56A720BD1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		56B1AA6D1F287C450085FE06 /* store-code-ex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store-code-ex.png"; sourceTree = "<group>"; };
@@ -149,13 +117,7 @@
 		56B680FD1F0C4E9700772C68 /* StatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatePickerView.swift; sourceTree = "<group>"; };
 		56B681011F0DFEA900772C68 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56B681031F10771F00772C68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		56B6810B1F1090B900772C68 /* DiscoverNearbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverNearbyViewController.swift; sourceTree = "<group>"; };
-		56B681131F17C51900772C68 /* RecommendedForYouTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedForYouTableViewCell.swift; sourceTree = "<group>"; };
-		56B681151F17CEA900772C68 /* LunchNearbyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunchNearbyTableViewCell.swift; sourceTree = "<group>"; };
 		56B681171F19A28200772C68 /* CurrentSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSession.swift; sourceTree = "<group>"; };
-		56B681191F1A7F1C00772C68 /* StoreConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreConfirmationViewController.swift; sourceTree = "<group>"; };
-		56B6811B1F1AC33B00772C68 /* MembershipLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembershipLoginViewController.swift; sourceTree = "<group>"; };
-		56B6811D1F1AC66700772C68 /* JoinMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinMemberViewController.swift; sourceTree = "<group>"; };
 		56B681201F1AC96C00772C68 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		56D9E3241F258CC90043E910 /* CheckOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
 		56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigCartItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -175,10 +137,6 @@
 		D808FF2563865F87077DD8D2 /* Pods-UCheckUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckUITests/Pods-UCheckUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7A68DBC20091C5E0EDD9DA /* Pods-UCheckUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckUITests/Pods-UCheckUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DFA57BDCEDE64D8E4011CC47 /* Pods-UCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheck.release.xcconfig"; path = "Pods/Target Support Files/Pods-UCheck/Pods-UCheck.release.xcconfig"; sourceTree = "<group>"; };
-		F30608211F187FA900C01E45 /* CouponsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponsTableViewCell.swift; sourceTree = "<group>"; };
-		F30608231F18811400C01E45 /* MyRewardsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRewardsTableViewCell.swift; sourceTree = "<group>"; };
-		F30608261F188E5A00C01E45 /* FindStoreTipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindStoreTipViewController.swift; sourceTree = "<group>"; };
-		F30608281F1897C200C01E45 /* ScanStoreCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanStoreCodeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,7 +241,6 @@
 			children = (
 				56D9E3241F258CC90043E910 /* CheckOutViewController.swift */,
 				563B588D1F2F11AD0004E36F /* FinishViewController.swift */,
-				5621AAD21F5A730100ECA0E6 /* QRCodeViewController.swift */,
 				56A720BB1FB0184D00FF6DCE /* ReceiptViewController.swift */,
 				56A720BD1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift */,
 			);
@@ -321,7 +278,6 @@
 				56B1AA711F2B87040085FE06 /* Checkout Flow */,
 				56B681221F1AC96F00772C68 /* Shopping Flow */,
 				56B6811F1F1AC67300772C68 /* Log In Flow */,
-				F30608251F188BBF00C01E45 /* DiscoverNearby Scene */,
 				56B680FF1F0CA9B600772C68 /* First-time Registration */,
 			);
 			name = ViewController;
@@ -369,11 +325,6 @@
 			children = (
 				56B681031F10771F00772C68 /* LoginViewController.swift */,
 				56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */,
-				F30608261F188E5A00C01E45 /* FindStoreTipViewController.swift */,
-				F30608281F1897C200C01E45 /* ScanStoreCodeViewController.swift */,
-				56B681191F1A7F1C00772C68 /* StoreConfirmationViewController.swift */,
-				56B6811B1F1AC33B00772C68 /* MembershipLoginViewController.swift */,
-				56B6811D1F1AC66700772C68 /* JoinMemberViewController.swift */,
 			);
 			name = "Log In Flow";
 			sourceTree = "<group>";
@@ -388,9 +339,6 @@
 				565D91B41F23E75A009C2393 /* SmallCartItemTableViewCell.swift */,
 				56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */,
 				56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */,
-				5621AACC1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift */,
-				5621AACE1F59DF3600ECA0E6 /* MyCouponsViewController.swift */,
-				5621AAD01F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift */,
 			);
 			name = "Shopping Flow";
 			sourceTree = "<group>";
@@ -401,9 +349,6 @@
 				56B681171F19A28200772C68 /* CurrentSession.swift */,
 				56FC95C41F1F13880090A1AE /* Item.swift */,
 				565D91B61F251A50009C2393 /* ShoppingCart.swift */,
-				5684800A1F4B4BB200B41BC7 /* LunchItem.swift */,
-				568480111F4B8D6100B41BC7 /* CouponForDisplay.swift */,
-				568480151F4BA29E00B41BC7 /* MembershipProgram.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -440,22 +385,6 @@
 				DE7A68DBC20091C5E0EDD9DA /* Pods-UCheckUITests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		F30608251F188BBF00C01E45 /* DiscoverNearby Scene */ = {
-			isa = PBXGroup;
-			children = (
-				56B6810B1F1090B900772C68 /* DiscoverNearbyViewController.swift */,
-				56B681131F17C51900772C68 /* RecommendedForYouTableViewCell.swift */,
-				56B681151F17CEA900772C68 /* LunchNearbyTableViewCell.swift */,
-				F30608211F187FA900C01E45 /* CouponsTableViewCell.swift */,
-				F30608231F18811400C01E45 /* MyRewardsTableViewCell.swift */,
-				56A3DFE51F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift */,
-				568480061F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift */,
-				5684800C1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift */,
-				568480131F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift */,
-			);
-			name = "DiscoverNearby Scene";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -749,49 +678,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F30608221F187FA900C01E45 /* CouponsTableViewCell.swift in Sources */,
 				565D91B11F23CAD8009C2393 /* SlideInPresentationAnimator.swift in Sources */,
 				56B681041F10771F00772C68 /* LoginViewController.swift in Sources */,
-				56B6811C1F1AC33B00772C68 /* MembershipLoginViewController.swift in Sources */,
-				5621AACF1F59DF3600ECA0E6 /* MyCouponsViewController.swift in Sources */,
 				565D91AF1F23C7C4009C2393 /* SlideInPresentationController.swift in Sources */,
 				565E4BC01FACFCA500D273E8 /* VenmoSetupViewController.swift in Sources */,
-				568480121F4B8D6100B41BC7 /* CouponForDisplay.swift in Sources */,
-				56B6811E1F1AC66700772C68 /* JoinMemberViewController.swift in Sources */,
 				56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */,
 				56B681181F19A28200772C68 /* CurrentSession.swift in Sources */,
 				56FC95C11F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift in Sources */,
 				56B681021F0DFEA900772C68 /* User.swift in Sources */,
 				565D91B71F251A50009C2393 /* ShoppingCart.swift in Sources */,
-				5621AACD1F59493A00ECA0E6 /* ShoppingRecommendationItemCollectionViewCell.swift in Sources */,
-				56B681141F17C51900772C68 /* RecommendedForYouTableViewCell.swift in Sources */,
 				56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */,
 				56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */,
 				56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */,
 				565D91AC1F23C571009C2393 /* SlideInPresentationManager.swift in Sources */,
 				56B680F61F0C2E8600772C68 /* AllSetViewController.swift in Sources */,
 				565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */,
-				5684800D1F4B6A3400B41BC7 /* CouponItemCollectionViewCell.swift in Sources */,
 				56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */,
-				F30608271F188E5A00C01E45 /* FindStoreTipViewController.swift in Sources */,
-				5621AAD31F5A730100ECA0E6 /* QRCodeViewController.swift in Sources */,
-				F30608291F1897C200C01E45 /* ScanStoreCodeViewController.swift in Sources */,
-				56B6810C1F1090B900772C68 /* DiscoverNearbyViewController.swift in Sources */,
 				56B680FE1F0C4E9700772C68 /* StatePickerView.swift in Sources */,
 				56B680F81F0C433800772C68 /* PopDateViewController.swift in Sources */,
 				5652EFA01F09D1030014873D /* UCheck.xcdatamodeld in Sources */,
 				565E4BC71FAD0B4B00D273E8 /* CustomObject.m in Sources */,
-				568480161F4BA29E00B41BC7 /* MembershipProgram.swift in Sources */,
-				56B681161F17CEA900772C68 /* LunchNearbyTableViewCell.swift in Sources */,
 				56B680FC1F0C4A0700772C68 /* BillingInfoViewController.swift in Sources */,
-				5684800B1F4B4BB200B41BC7 /* LunchItem.swift in Sources */,
 				56FC95C51F1F13880090A1AE /* Item.swift in Sources */,
 				563B588E1F2F11AD0004E36F /* FinishViewController.swift in Sources */,
-				F30608241F18811400C01E45 /* MyRewardsTableViewCell.swift in Sources */,
-				568480071F4B2FFF00B41BC7 /* LunchNearbyCollectionViewCell.swift in Sources */,
 				56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */,
-				568480141F4B9CD600B41BC7 /* MyRewardsCollectionViewCell.swift in Sources */,
-				56A3DFE61F31C1B60078A3E0 /* RecommendedItemCollectionViewCell.swift in Sources */,
 				56A720BC1FB0184D00FF6DCE /* ReceiptViewController.swift in Sources */,
 				5652EF981F09D1030014873D /* AppDelegate.swift in Sources */,
 				56D9E3291F25B2440043E910 /* ShoppingCartTableView.swift in Sources */,
@@ -802,10 +712,8 @@
 				56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */,
 				56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */,
 				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
-				5621AAD11F59FBEB00ECA0E6 /* MyCouponItemCollectionViewCell.swift in Sources */,
 				56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
-				56B6811A1F1A7F1C00772C68 /* StoreConfirmationViewController.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,
 				56A720BE1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift in Sources */,
 			);
