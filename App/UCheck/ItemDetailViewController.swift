@@ -13,15 +13,13 @@ import Firebase
 class ItemDetailViewController: UIViewController, HalfModalPresentable {
 
     //take the item code from the last VC and create an object with the JSON
-    var currItem : Item = Item(code: "", name: "", price: "", category: "", has_itemwise_discount: "none", has_coupon: "none")
+    var currItem : Item = Item(code: "", name: "", price: "", category: "")
     
     @IBOutlet weak var ItemNameLabel: UILabel!
     @IBOutlet weak var ItemPriceLabel: UILabel!
     @IBOutlet weak var ItemImage: UIImageView!
     @IBOutlet weak var ContinueButton: UIButton!
     @IBOutlet weak var OriginalPriceLabel: UILabel!
-    @IBOutlet weak var DiscountMessageLabel: UILabel!
-    @IBOutlet weak var DeleteLine: UIView!
     
     @IBAction func ContinueButton(_ sender: Any) {
         if let delegate = transitioningDelegate as? HalfModalTransitioningDelegate {
@@ -46,27 +44,14 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
         ContinueButton.layer.cornerRadius = 9
         
         //display item detail information
-        ItemNameLabel.text = currItem.name
-        if (currItem.has_itemwise_discount != "none") {
-            ItemPriceLabel.text = "$" + String(currItem.discount_price)
-            OriginalPriceLabel.text = "Original: $" + String(currItem.price)
-            DiscountMessageLabel.text = currItem.discount_content
-        } else if (currItem.has_coupon != "none"){
-            ItemPriceLabel.text = "$" + String(currItem.price)
-            OriginalPriceLabel.isHidden = true
-            DeleteLine.isHidden = true
-            DiscountMessageLabel.text = "Related Coupon: " + currItem.coupon_content
-        } else {
-            ItemPriceLabel.text = "$" + String(currItem.price)
-            OriginalPriceLabel.isHidden = true
-            DeleteLine.isHidden = true
-            DiscountMessageLabel.isHidden = true
-        }
+        ItemNameLabel.text = currItem.item_name
+        ItemPriceLabel.text = "$" + String(currItem.item_price)
+        
         
         //display image
         let storage = FIRStorage.storage()
         let code = currItem.code
-        let storageRef = storage.reference(withPath: "inventory/\(CurrentStore)/\(code).png")
+        let storageRef = storage.reference(withPath: "inventory/\(CurrentStore)/\(code).jpg")
         
         storageRef.data(withMaxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
@@ -75,7 +60,7 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
                 let image = UIImage(data: data!)
                 self.ItemImage.image = image
                 self.currItem.addImage(source: image)
-                print("Image saved for \(self.currItem.name)")
+                print("Image saved for \(self.currItem.item_name)")
             }
         }
         

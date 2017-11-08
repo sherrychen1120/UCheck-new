@@ -31,6 +31,32 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.fetchClientToken(handleComplete: {
             self.createTransaction(completion: {() -> () in
+                //Firebase Ref
+                let ref = FIRDatabase.database().reference(withPath: "shopping_sessions/\(CurrentUserId)")
+                let date = self.getDateTime()
+                
+                
+                let ShoppingSessionID = "s" + CurrentStore + date
+                let sessionRef = ref.child(ShoppingSessionID)
+                
+                //Create the item list JSON
+                var items_bought = [String:Int]()
+                for item in CurrentShoppingCart{
+                    let code = item.code
+                    items_bought[code] = item.quantity
+                }
+                
+                let total_str = String(format: "%.2f", self.total)
+                
+                //Create the shopping session record JSON
+                let sessionRecord = [
+                            "store_id": CurrentStore,
+                            "items_bought": items_bought,
+                            "total": total_str] as [String : Any]
+                
+                //update the shopping record on Firebase
+                sessionRef.updateChildValues(sessionRecord)
+                
                 DispatchQueue.main.async (execute: { () -> Void in
                     self.ActivityIndicator.stopAnimating()
                     self.performSegue(withIdentifier: "CheckoutToReceipt", sender: self)
@@ -38,6 +64,22 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
             })
         })
         
+    }
+    
+    private func getDateTime() -> String {
+        
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let myString = formatter.string(from: Date())
+        // convert your string to date
+        let yourDate = formatter.date(from: myString)
+        //then again set the date format whhich type of output you need
+        formatter.dateFormat = "yyyyMMdd_HHmmss"
+        // again convert your date to string
+        let myStringafd = formatter.string(from: yourDate!)
+        
+        return(myStringafd)
     }
     
     @IBOutlet weak var ConfirmAndPayButton: UIButton!
@@ -110,6 +152,7 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         
         if let user = FIRAuth.auth()?.currentUser {
             let uid = user.uid
+            CurrentUserId = uid
             
             //Prepare the JSON file
             let json: [String: String] = ["customerId" : uid]
@@ -185,72 +228,6 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    
-    //MARK: - Braintree
-    /*func finishPayment(handleComplete:@escaping (()->())) {
-        //Fetch the client token
-        let clientTokenURL = NSURL(string: "https://us-central1-ucheck-f7c6f.cloudfunctions.net/client_token")!
-        let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
-        clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
-        
-        URLSession.shared.dataTask(with: clientTokenRequest as URLRequest) { (data, response, error) -> Void in
-            
-            if error != nil {
-                
-                print(error!.localizedDescription)
-                
-            } else {
-                if let token_received = String(data: data!, encoding: String.Encoding.utf8) {
-                    //after getting the client token
-                    print("Client token successfully fetched.")
-                    print(token_received)
-                    
-                    //create the transaction on the backend
-                    if let user = FIRAuth.auth()?.currentUser {
-                        
-                        let uid = user.uid
-                        
-                        //Prepare the JSON file
-                        let json: [String: String] = ["amount" : String(self.total),
-                                                      "customerId" : uid
-                        ]
-                        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-                        
-                        //Attach the JSON file to HTTP request
-                        let paymentURL = URL(string: "https://us-central1-ucheck-f7c6f.cloudfunctions.net/create_new_transaction")!
-                        var request = URLRequest(url: paymentURL)
-                        request.httpBody = jsonData
-                        request.httpMethod = "POST"
-                        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                        request.addValue("application/json", forHTTPHeaderField: "Accept")
-                        
-                        //send the HTTP request and catch the response.
-                        URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
-                            guard let data = data, error == nil else {
-                                print(error?.localizedDescription ?? "No data")
-                                return
-                            }
-                            
-                            let responseData = String(data: data, encoding: String.Encoding.utf8)
-                            
-                            if (responseData == "Transaction succeeded."){
-                                handleComplete()
-                            } else {
-                                self.showAlert(withMessage: "Transaction problem.")
-                            }
-                            
-                        }.resume()
-                        
-                    } else {
-                        self.showAlert(withMessage: "Something wrong with fetching the client token.")
-                    }
-
-                }
-            }
-            
-            }.resume()
-    }*/
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -266,15 +243,10 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         
         let item = CurrentShoppingCart[indexPath.row]
         cell.ItemImage.image = item.item_image
-        cell.ItemName.text = item.name
+        cell.ItemName.text = item.item_name
         cell.ItemQuantity.text = "×" + String(item.quantity)
-        if (item.has_itemwise_discount != "none") {
-            let item_subtotal = Double(item.discount_price)! * Double(item.quantity)
-            cell.ItemPrice.text = "$" + String(item_subtotal)
-        } else {
-            let item_original_subtotal = Double(item.price)! * Double(item.quantity)
-            cell.ItemPrice.text = "$" + String(item_original_subtotal)
-        }
+        let item_subtotal = Double(item.item_price)! * Double(item.quantity)
+        cell.ItemPrice.text = "$" + String(item_subtotal)
         
         return cell
     }

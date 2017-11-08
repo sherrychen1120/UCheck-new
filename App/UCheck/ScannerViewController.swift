@@ -9,8 +9,9 @@
 import UIKit
 import AVFoundation
 import Firebase
+import SwiftKeychainWrapper
 
-class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, communicationScanner {
+class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate,  communicationScanner {
     
     //Scanner-related variables
     var captureSession:AVCaptureSession?
@@ -32,41 +33,32 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     //Variables related to current store recommendation
     var CurrentStoreRecommendationList : [Item] = []
     
-    @IBOutlet weak var MyCouponButton: UIButton!
+    @IBOutlet weak var LocationIcon: UIImageView!
+    @IBOutlet weak var CurrentStoreLabel: UILabel!
+    @IBOutlet weak var ScanningTitle: UILabel!
+    @IBOutlet weak var ShoppingCartButton: UIButton!
+    @IBOutlet weak var MenuButton: UIButton!
+    @IBOutlet weak var LogOutButton: UIButton!
     @IBOutlet weak var ButtonView: UIView!
     @IBOutlet weak var CheckoutButton: UIButton!
     @IBAction func CheckoutButton(_ sender: Any) {
         performSegue(withIdentifier: "ScanningToCheckout", sender: nil)
     }
-    @IBOutlet weak var RecommendationCollection: UICollectionView!
-    @IBOutlet weak var RecommendationView: UIView!
-    @IBAction func MyCouponButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "ScanningToMyCoupons", sender: nil)
-    }
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        //Customize the navigation bar
-        self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController!.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController!.navigationBar.titleTextAttributes =
-            [NSForegroundColorAttributeName: UIColor.white,
-             NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         //Customize the checkout button
         CheckoutButton.layer.cornerRadius = 9
-        
-        //Collection view delegate & data source
-        RecommendationCollection.delegate = self
-        RecommendationCollection.dataSource = self
         
         //Scanner Setup
         self.scannerSetup()
         print("view did load scanner setup.")
         
+        //Hide the navigation bar...?
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        /*
         //Shopping cart bar button setup
         let button: UIButton = UIButton(type: .custom)
         button.setImage(UIImage(named: "shopping_cart_white.png"), for: .normal)
@@ -84,24 +76,17 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         menubutton.frame = CGRect(x:0, y:0, width:31, height:31)
         menubutton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         let menuBarButton = UIBarButtonItem(customView: menubutton)
-        self.navigationItem.leftBarButtonItem = menuBarButton
+        self.navigationItem.leftBarButtonItem = menuBarButton*/
         
-        //Update collection view
-        self.getStoreRecommendations(handleComplete:{
-            DispatchQueue.main.async {
-                self.RecommendationCollection.reloadData()
-            }
-        })
     }
     
-    @objc func ShoppingCartButtonPressed(){
-        performSegue(withIdentifier: "ScanningToCart", sender: nil)
+    @IBAction func MenuButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "ScanningToMenu", sender: sender)
     }
     
-    @objc func MenuButtonPressed(){
-        performSegue(withIdentifier: "ScanningToMenu", sender: nil)
+    @IBAction func ShoppingCartButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "ScanningToCart", sender: sender)
     }
-    
     
     func scannerSetup(){
         //Scanner set up
@@ -146,9 +131,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             }
             
             //Bring the subviews to front
-            view.bringSubview(toFront: RecommendationView)
             view.bringSubview(toFront: ButtonView)
-            view.bringSubview(toFront: MyCouponButton)
+            view.bringSubview(toFront: LogOutButton)
+            view.bringSubview(toFront: MenuButton)
+            view.bringSubview(toFront: ShoppingCartButton)
+            view.bringSubview(toFront: ScanningTitle)
+            view.bringSubview(toFront: LocationIcon)
+            view.bringSubview(toFront: CurrentStoreLabel)
             
         } catch {
             // If any error occurs, simply print it out and don't continue any more.
@@ -190,11 +179,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                         if (newItem.code == code){
                             self.currItem = newItem
                         }
-                        
                     }
                     
                     if (self.currItem != nil){
-                        print(self.currItem!.name)
+                        print(self.currItem!.item_name)
                         self.captureSession = nil
                         
                         //Add to shopping cart
@@ -232,115 +220,50 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             nextScene.modalPresentationStyle = .custom
             nextScene.transitioningDelegate = self.halfModalTransitioningDelegate
 
-        } else if let controller = segue.destination as? MenuViewController {
+        } else if segue.identifier == "ScanningToMenu"{
+            let controller = segue.destination as! MenuViewController
             captureSession?.stopRunning()
             slideInTransitioningDelegate.direction = .left
             controller.transitioningDelegate = slideInTransitioningDelegate
             controller.modalPresentationStyle = .custom
             controller.delegate = self
-            
-        } else if let controller = segue.destination as? ShoppingCartViewController {
+        } else if segue.identifier == "ScanningToCart" {
+            let controller = segue.destination as! ShoppingCartViewController
             captureSession?.stopRunning()
             slideInTransitioningDelegate.direction = .right
             controller.transitioningDelegate = slideInTransitioningDelegate
             controller.modalPresentationStyle = .custom
             controller.delegate = self
-        } else if let controller = segue.destination as? CheckOutViewController {
+        } else if segue.identifier == "ScanningToCheckout" {
             captureSession?.stopRunning()
-        } else if let controller = segue.destination as? MyCouponsViewController {
-            captureSession?.stopRunning()
-            slideInTransitioningDelegate.direction = .bottom
-            controller.transitioningDelegate = slideInTransitioningDelegate
-            controller.modalPresentationStyle = .custom
-            controller.delegate = self
         }
 
     }
     
-  
     @IBAction func unwindToScanner(segue: UIStoryboardSegue) {
         self.scannerSetup()
+        //Make sure the navigation bar is hidden...?
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         print("unwindSegue scannerSetup")
     }
     
-    //CollectionView delegate
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    //CollectionView datasource
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath as IndexPath) as! ShoppingRecommendationItemCollectionViewCell
+    @IBAction func LogOutButton(_ sender: Any) {
+        let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
+        let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
+        print("Successfully removed email: \(removeEmail);")
+        print("Successfully removed passwordd: \(removePassword).")
         
-        if (indexPath.row < CurrentStoreRecommendationList.count){
-            let curr_item = CurrentStoreRecommendationList[indexPath.row]
-            
-            if let source_image = curr_item.item_image{
-                cell.ItemImage.image = source_image
-            }
+        if FIRAuth.auth()?.currentUser != nil{
+            //There is a user signed in
+            do{
+                try! FIRAuth.auth()!.signOut()
                 
-            if (curr_item.has_itemwise_discount != "none"){
-                    cell.ItemPrice.isHidden = false
-                    cell.OriginalPrice.isHidden = false
-                    cell.DeleteLine.isHidden = false
-                    cell.PromoMessage.isHidden = false
-                    
-                    cell.ItemPrice.text = "$" + curr_item.discount_price
-                    cell.OriginalPrice.text = "$" + curr_item.price
-                    cell.PromoMessage.text = curr_item.discount_content
-                
-            } else if (curr_item.has_coupon != "none"){
-                    cell.ItemPrice.isHidden = false
-                    cell.OriginalPrice.isHidden = false
-                    cell.DeleteLine.isHidden = false
-                    cell.PromoMessage.isHidden = false
-                    
-                    cell.ItemPrice.text = "$" + curr_item.coupon_applied_unit_price
-                    cell.OriginalPrice.text = "$" + curr_item.price
-                    cell.PromoMessage.text = curr_item.coupon_content
-            } else {
-                    cell.ItemPrice.isHidden = false
-                    cell.OriginalPrice.isHidden = true
-                    cell.PromoMessage.isHidden = true
-                    cell.DeleteLine.isHidden = true
-                    
-                    cell.ItemPrice.text = "$" + curr_item.price
-            }
-                
-            return cell
-            
-        } else {
-            cell.ItemPrice.isHidden = true
-            cell.OriginalPrice.isHidden = true
-            cell.DeleteLine.isHidden = true
-            cell.PromoMessage.isHidden = true
-                
-            return cell
-        }
-
-    }
-    
-    //CollectionView delegate flow layout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        let itemsPerRow:CGFloat = 3
-        let hardCodedPadding:CGFloat = 10
-        let itemWidth = (collectionView.bounds.width / itemsPerRow) - hardCodedPadding - 5
-        let itemHeight = collectionView.bounds.height - (2 * hardCodedPadding)
-        
-        print("itemWidth = " + String(describing: itemWidth))
-        print("itemHeight = " + String(describing: itemHeight))
-        
-        return CGSize(width: itemWidth, height: itemHeight)
-    }
-    
-    func getStoreRecommendations(handleComplete:@escaping ()->()){
-        for item in ItemwiseRecommendationList {
-            if (item.store_id == CurrentStore) && ((item.has_coupon != "none") || (item.has_itemwise_discount != "none")) {
-                CurrentStoreRecommendationList.append(item)
+                if FIRAuth.auth()?.currentUser == nil{
+                    let loginVC = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Login") as! LoginViewController
+                    self.present(loginVC, animated: true, completion: nil)
+                }
             }
         }
-        CurrentStoreRecommendationList.sort{ $0.score > $1.score}
-
     }
     
     // MARK: - show alert

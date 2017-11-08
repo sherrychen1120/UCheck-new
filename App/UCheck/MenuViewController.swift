@@ -20,7 +20,7 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        UserImage.image = CurrentUserPhoto
+        //UserImage.image = CurrentUserPhoto
         UserNameLabel.text = CurrentUserName
         
     }
