@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        if url.scheme?.localizedCaseInsensitiveCompare("com.your-company.Your-App.payments") == .orderedSame {
+        if url.scheme?.localizedCaseInsensitiveCompare("com.xiaoyichen.UCheck.payments") == .orderedSame {
             return BTAppSwitch.handleOpen(url, options: options)
         }
         return false
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // If you support iOS 7 or 8, add the following method.
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        if url.scheme?.localizedCaseInsensitiveCompare("com.your-company.Your-App.payments") == .orderedSame {
+        if url.scheme?.localizedCaseInsensitiveCompare("com.xiaoyichen.UCheck.payments") == .orderedSame {
             return BTAppSwitch.handleOpen(url, sourceApplication: sourceApplication)
         }
         return false

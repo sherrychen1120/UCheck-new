@@ -17,11 +17,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var barCodeFrameView:UIView?
     
-    //Half-modal view controller variables
-    var halfModalTransitioningDelegate: HalfModalTransitioningDelegate?
-    
     //Firebase Ref
     let ref = FIRDatabase.database().reference(withPath: "inventory/\(CurrentStore)")
+    
+    //Half-modal view controller variables
+    var halfModalTransitioningDelegate: HalfModalTransitioningDelegate?
     
     //CurrItem
     var currItem: Item?
@@ -46,6 +46,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         //Customize the navigation bar
         self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
@@ -179,7 +180,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                         
             if metadataObj.stringValue != nil {
                 let code = metadataObj.stringValue
-                print(code!)
+                print("bar code detected = " + code!)
                 
                 //Read object from Firebase
                 ref.observe(.value, with: { snapshot in
@@ -272,7 +273,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath as IndexPath) as! ShoppingRecommendationItemCollectionViewCell
         
         if (indexPath.row < CurrentStoreRecommendationList.count){
-            var curr_item = CurrentStoreRecommendationList[indexPath.row]
+            let curr_item = CurrentStoreRecommendationList[indexPath.row]
             
             if let source_image = curr_item.item_image{
                 cell.ItemImage.image = source_image

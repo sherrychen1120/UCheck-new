@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
                     self.uid = (user?.uid)!
                     print(self.uid)
                     
-                    self.performSegue(withIdentifier: "LoginToDiscoverNearby", sender: nil)
+                    self.performSegue(withIdentifier: "LoginToScanner", sender: nil)
                 }
                 
             }
@@ -114,7 +114,6 @@ class LoginViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LoginToDiscoverNearby"{
             
             self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
@@ -124,8 +123,8 @@ class LoginViewController: UIViewController {
                 let url_string = value?["photo_url"] as? String ?? ""
                 
                 CurrentUserName = first_name + " " + last_name
-                let photo_url = URL(string: url_string)
-                self.retrievePhoto(url: photo_url!)
+                //let photo_url = URL(string: url_string)
+                //self.retrievePhoto(url: photo_url!)
                 
             }) { (error) in
                 print(error.localizedDescription)
@@ -133,6 +132,5 @@ class LoginViewController: UIViewController {
             
             print("user info stored.")
 
-        }
     }
 }

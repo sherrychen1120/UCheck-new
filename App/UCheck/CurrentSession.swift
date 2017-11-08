@@ -8,7 +8,7 @@
 
 import UIKit
 
-var CurrentStore = ""
+var CurrentStore = "711_001"
 var CurrentStoreName = ""
 var CurrentStoreDisplayName = ""
 

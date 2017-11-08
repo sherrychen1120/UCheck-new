@@ -43,16 +43,16 @@ class FirstPageViewController: UIViewController {
                         let value = snapshot.value as? NSDictionary
                         let first_name = value?["first_name"] as? String ?? ""
                         let last_name = value?["last_name"] as? String ?? ""
-                        let url_string = value?["photo_url"] as? String ?? ""
+                        //let url_string = value?["photo_url"] as? String ?? ""
                         
                         CurrentUserName = first_name + " " + last_name
-                        self.retrievePhoto(uid : CurrentUserId)
+                        //self.retrievePhoto(uid : CurrentUserId)
                         print("user info stored.")
                     }) { (error) in
                         print(error.localizedDescription)
                     }
                     
-                    self.performSegue(withIdentifier: "FirstPageToDiscoverNearby", sender: nil)
+                    self.performSegue(withIdentifier: "FirstPageToScanner", sender: nil)
                 }
             }
         } else {

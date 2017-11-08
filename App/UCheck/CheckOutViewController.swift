@@ -9,10 +9,11 @@
 import UIKit
 import Firebase
 import Braintree
-import BraintreeDropIn
 
 class CheckOutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var clientToken : String? = nil
+    
     @IBAction func ChangePaymentMethodButton(_ sender: Any) {
     }
     
@@ -28,19 +29,21 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         ActivityIndicator.startAnimating()
         ActivityIndicator.hidesWhenStopped = true
         
-        self.finishPayment{ () -> () in
-            DispatchQueue.main.async (execute: { () -> Void in
-                self.ActivityIndicator.stopAnimating()
-                self.performSegue(withIdentifier: "CheckoutToReceipt", sender: self)
+        self.fetchClientToken(handleComplete: {
+            self.createTransaction(completion: {() -> () in
+                DispatchQueue.main.async (execute: { () -> Void in
+                    self.ActivityIndicator.stopAnimating()
+                    self.performSegue(withIdentifier: "CheckoutToReceipt", sender: self)
+                })
             })
-        }
+        })
+        
     }
     
     @IBOutlet weak var ConfirmAndPayButton: UIButton!
     @IBOutlet weak var TotalLabel: UILabel!
     @IBOutlet weak var EstTaxLabel: UILabel!
     @IBOutlet weak var SubtotalLabel: UILabel!
-    @IBOutlet weak var MembershipSavedLabel: UILabel!
     @IBOutlet weak var ButtonArea: UIView!
     @IBOutlet weak var CartItemsTableView: UITableView!
     @IBOutlet weak var LoadingView: UIView!
@@ -93,18 +96,99 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func updatePrices(){
-        tax = 0.06 * subtotal
+        //tax = 0.06 * subtotal
+        tax = 0.0
         total = Double(Int((tax + subtotal) * 100)) / 100.0
-        MembershipSavedLabel.text = "Membership saving: $" + String(format: "%.2f", total_saving)
         SubtotalLabel.text = "Subtotal: $" + String(format: "%.2f", subtotal)
-        EstTaxLabel.text = "Est. Tax: $" + String(format: "%.2f", tax)
+        EstTaxLabel.text = "Tax included"
+        //EstTaxLabel.text = "Est. Tax: $" + String(format: "%.2f", tax)
         TotalLabel.text = "Total: $" + String(format: "%.2f", total)
         ShoppingCart.listItems() //for debug
     }
     
+    func fetchClientToken(handleComplete:@escaping (()->())) {
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            let uid = user.uid
+            
+            //Prepare the JSON file
+            let json: [String: String] = ["customerId" : uid]
+            let jsonData = try? JSONSerialization.data(withJSONObject: json)
+            
+            //Attach the JSON file to HTTP request
+            let paymentURL = URL(string: "https://us-central1-ucheck-f7c6f.cloudfunctions.net/client_token")!
+            var request = URLRequest(url: paymentURL)
+            request.httpBody = jsonData
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            //send the HTTP request and catch the response.
+            URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+                
+                if error != nil {
+                    print(error!.localizedDescription)
+                } else {
+                    if let token_received = String(data: data!, encoding: String.Encoding.utf8) {
+                        self.clientToken = token_received
+                        print("Client token = " + self.clientToken!)
+                        handleComplete()
+                    }
+                }
+                
+            }.resume()
+        } else {
+            showAlert(withMessage: "The new user is NULL.")
+        }
+    }
+    
+    func createTransaction(completion:@escaping (()->())){
+        //create the transaction on the backend
+        if let user = FIRAuth.auth()?.currentUser {
+            
+            let uid = user.uid
+            let deviceData = PPDataCollector.collectPayPalDeviceData()
+            
+            //Prepare the JSON file
+            let json: [String: String] = ["amount" : String(self.total),
+                                          "customerId" : uid,
+                                          "device_data" : deviceData
+            ]
+            let jsonData = try? JSONSerialization.data(withJSONObject: json)
+            
+            //Attach the JSON file to HTTP request
+            let paymentURL = URL(string: "https://us-central1-ucheck-f7c6f.cloudfunctions.net/create_new_transaction")!
+            var request = URLRequest(url: paymentURL)
+            request.httpBody = jsonData
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            //send the HTTP request and catch the response.
+            URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+                
+                if error != nil {
+                    print(error!.localizedDescription)
+                } else {
+                    let responseData = String(data: data!, encoding: String.Encoding.utf8)
+                    if (responseData == "Transaction succeeded."){
+                        completion()
+                    } else {
+                        self.showAlert(withMessage: "Transaction problem.")
+                    }
+                }
+                
+            }.resume()
+            
+        } else {
+            self.showAlert(withMessage: "Something wrong with fetching the client token.")
+        }
+    }
+    
+    
     //MARK: - Braintree
-    func finishPayment(handleComplete:@escaping (()->())) {
-        //First fetch the client token.
+    /*func finishPayment(handleComplete:@escaping (()->())) {
+        //Fetch the client token
         let clientTokenURL = NSURL(string: "https://us-central1-ucheck-f7c6f.cloudfunctions.net/client_token")!
         let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
         clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
@@ -120,9 +204,6 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
                     //after getting the client token
                     print("Client token successfully fetched.")
                     print(token_received)
-                    
-                    /*self.showDropIn(clientTokenOrTokenizationKey: token_received)
-                    print(self.venmo_username)*/
                     
                     //create the transaction on the backend
                     if let user = FIRAuth.auth()?.currentUser {
@@ -168,56 +249,6 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             }.resume()
-    }
-    
-   /* var venmo_username = ""
-    func showDropIn(clientTokenOrTokenizationKey: String) {
-        let request =  BTDropInRequest()
-        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
-        { (controller, result, error) in
-            if (error != nil) {
-                print("ERROR")
-            } else if (result?.isCancelled == true) {
-                print("CANCELLED")
-            } else if let result = result {
-                // Use the BTDropInResult properties to update your UI
-                // result.paymentOptionType
-                // result.paymentMethod
-                // result.paymentIcon
-                
-                let venmo_acct_nonce = result.paymentMethod as! BTVenmoAccountNonce
-                self.venmo_username = venmo_acct_nonce.username!
-                
-            }
-            controller.dismiss(animated: true, completion: nil)
-        }
-        self.present(dropIn!, animated: true, completion: nil)
-    }*/
-    
-    //Function for sending payment method nonce
-    /*func postNonceToServer(paymentMethodNonce: String) {
-        // Update URL with your server
-        let paymentURL = URL(string: "https://us-central1-ucheck-f7c6f.cloudfunctions.net/payment_method")!
-        var request = URLRequest(url: paymentURL)
-        let totalString = String(total)
-        let dictionary = ["payment_method_nonce": "\(paymentMethodNonce)",
-                          "amount": "\(totalString)"]
-        
-        //converting the dictionary to JSON
-        let jsonData = try? JSONSerialization.data(withJSONObject: dictionary)
-        print(jsonData)
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = jsonData
-        request.httpMethod = "POST"
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
-            if error != nil {
-                print(error!.localizedDescription)
-            } else if let resultSuccess = String(data: data!, encoding: String.Encoding.utf8) {
-                print(resultSuccess)
-            }
-        }.resume()
-
     }*/
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -247,15 +278,6 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         
         return cell
     }
-    
-    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let item = CurrentShoppingCart[indexPath.row]
-            ShoppingCart.deleteItem(oldItem: item)
-            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            updatePrices()
-        }
-    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -276,6 +298,7 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
+    
     
 
 }
