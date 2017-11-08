@@ -60,14 +60,9 @@ class ReceiptViewController: UIViewController,UICollectionViewDelegate, UICollec
         let item = CurrentShoppingCart[indexPath.row]
         cell.ItemImage.image = item.item_image
         cell.ItemQuantity.text = "×" + String(item.quantity)
-        cell.ItemName.text = item.name
-        if (item.has_itemwise_discount != "none") {
-            let item_subtotal = Double(item.discount_price)! * Double(item.quantity)
-            cell.ItemPrice.text = "$" + String(item_subtotal)
-        } else {
-            let item_original_subtotal = Double(item.price)! * Double(item.quantity)
-            cell.ItemPrice.text = "$" + String(item_original_subtotal)
-        }
+        cell.ItemName.text = item.item_name
+        let item_subtotal = Double(item.item_price)! * Double(item.quantity)
+        cell.ItemPrice.text = "$" + String(item_subtotal)
         
         return cell
         

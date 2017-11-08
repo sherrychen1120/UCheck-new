@@ -11,7 +11,6 @@ import UIKit
 class FinishViewController: UIViewController {
 
     @IBAction func BackToHomeButton(_ sender: Any) {
-        performSegue(withIdentifier: "FinishToDiscoverNearby", sender: nil)
 
     }
     @IBOutlet weak var BackToHomeButton: UIButton!

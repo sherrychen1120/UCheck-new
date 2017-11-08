@@ -8,9 +8,9 @@
 
 import UIKit
 
-var CurrentStore = "711_001"
-var CurrentStoreName = ""
-var CurrentStoreDisplayName = ""
+var CurrentStore = "Harnwell"
+var CurrentStoreName = "Harnwell"
+var CurrentStoreDisplayName = "Harnwell Cafe du Soleil"
 
 var OnGoing = false
 var MemberLoggedIn = false
