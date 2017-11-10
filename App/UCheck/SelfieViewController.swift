@@ -45,7 +45,7 @@ class SelfieViewController: UIViewController, UINavigationControllerDelegate, UI
             
             //Create a reference to the profile pics folder
             let storageRef = storage.reference()
-            let imagesRef = storageRef.child("proile_pics")
+            let imagesRef = storageRef.child("profile_pics")
             
             // Create a reference to the file you want to upload
             let selfieRef = imagesRef.child("\(uid).png")

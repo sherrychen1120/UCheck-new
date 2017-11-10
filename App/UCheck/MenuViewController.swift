@@ -8,12 +8,16 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class MenuViewController: UIViewController {
 
     var uid : String = ""
     var delegate: communicationScanner? = nil
     
+    @IBAction func LogoutButton(_ sender: Any) {
+        
+    }
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var UserNameLabel: UILabel!
     

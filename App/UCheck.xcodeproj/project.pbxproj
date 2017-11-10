@@ -34,11 +34,9 @@
 		56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */; };
 		56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */; };
 		56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EF1F0BFD1800772C68 /* CheckBox.swift */; };
-		56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F11F0C1ED400772C68 /* PaymentMethodViewController.swift */; };
 		56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F31F0C2DEA00772C68 /* SelfieViewController.swift */; };
 		56B680F81F0C433800772C68 /* PopDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F71F0C433800772C68 /* PopDateViewController.swift */; };
 		56B680FA1F0C45F600772C68 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F91F0C45F600772C68 /* MonthYearPickerView.swift */; };
-		56B680FC1F0C4A0700772C68 /* BillingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680FB1F0C4A0700772C68 /* BillingInfoViewController.swift */; };
 		56B680FE1F0C4E9700772C68 /* StatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680FD1F0C4E9700772C68 /* StatePickerView.swift */; };
 		56B681021F0DFEA900772C68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681011F0DFEA900772C68 /* User.swift */; };
 		56B681041F10771F00772C68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681031F10771F00772C68 /* LoginViewController.swift */; };
@@ -109,11 +107,9 @@
 		56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		56B680EF1F0BFD1800772C68 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
-		56B680F11F0C1ED400772C68 /* PaymentMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodViewController.swift; sourceTree = "<group>"; };
 		56B680F31F0C2DEA00772C68 /* SelfieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
 		56B680F71F0C433800772C68 /* PopDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDateViewController.swift; sourceTree = "<group>"; };
 		56B680F91F0C45F600772C68 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
-		56B680FB1F0C4A0700772C68 /* BillingInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingInfoViewController.swift; sourceTree = "<group>"; };
 		56B680FD1F0C4E9700772C68 /* StatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatePickerView.swift; sourceTree = "<group>"; };
 		56B681011F0DFEA900772C68 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56B681031F10771F00772C68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -299,10 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */,
-				56B680F11F0C1ED400772C68 /* PaymentMethodViewController.swift */,
 				56B680F31F0C2DEA00772C68 /* SelfieViewController.swift */,
 				56B680F71F0C433800772C68 /* PopDateViewController.swift */,
-				56B680FB1F0C4A0700772C68 /* BillingInfoViewController.swift */,
 				565E4BBF1FACFCA500D273E8 /* VenmoSetupViewController.swift */,
 				566CA2FC1FB2F6DA00DED44F /* AllSetViewController.swift */,
 			);
@@ -729,7 +723,6 @@
 				56B680F81F0C433800772C68 /* PopDateViewController.swift in Sources */,
 				5652EFA01F09D1030014873D /* UCheck.xcdatamodeld in Sources */,
 				565E4BC71FAD0B4B00D273E8 /* CustomObject.m in Sources */,
-				56B680FC1F0C4A0700772C68 /* BillingInfoViewController.swift in Sources */,
 				56FC95C51F1F13880090A1AE /* Item.swift in Sources */,
 				563B588E1F2F11AD0004E36F /* FinishViewController.swift in Sources */,
 				56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */,
@@ -741,7 +734,6 @@
 				565D91B31F23DD2A009C2393 /* ShoppingCartViewController.swift in Sources */,
 				5684800F1F4B80DD00B41BC7 /* EdgeShadowLayer.swift in Sources */,
 				56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */,
-				56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */,
 				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
 				56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
@@ -911,7 +903,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -929,7 +921,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucheckbeta.UCheck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

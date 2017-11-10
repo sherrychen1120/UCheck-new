@@ -16,6 +16,7 @@ class ReceiptViewController: UIViewController,UICollectionViewDelegate, UICollec
     @IBOutlet weak var ItemsCollection: UICollectionView!
     @IBOutlet weak var ConfirmButton: UIButton!
     @IBAction func ConfirmButton(_ sender: Any) {
+        
         performSegue(withIdentifier: "ReceiptToFinish", sender: self)
     }
     
@@ -26,8 +27,8 @@ class ReceiptViewController: UIViewController,UICollectionViewDelegate, UICollec
         self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
         self.navigationController!.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
         self.navigationController!.navigationBar.titleTextAttributes =
-            [NSForegroundColorAttributeName: UIColor.white,
-             NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
+            [NSAttributedStringKey.foregroundColor: UIColor.white,
+             NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.setHidesBackButton(true, animated:true);
         
@@ -99,6 +100,19 @@ class ReceiptViewController: UIViewController,UICollectionViewDelegate, UICollec
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func unwindToReceipt(segue: UIStoryboardSegue) {
+        //Customize the navigation bar
+        self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
+        self.navigationController!.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
+        self.navigationController!.navigationBar.titleTextAttributes =
+            [NSAttributedStringKey.foregroundColor: UIColor.white,
+             NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        
+        print("unwindSegue to receipt")
     }
     
 

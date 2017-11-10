@@ -19,7 +19,7 @@ class ShoppingCart: NSObject {
         var foundExisting = false
         
         for existingItem in CurrentShoppingCart {
-            if (existingItem.code == newItem.code) {
+            if (existingItem.item_number == newItem.item_number) {
                 existingItem.addItem()
                 self.increasePrices(newItem: newItem)
                 foundExisting = true
@@ -77,6 +77,12 @@ class ShoppingCart: NSObject {
         print("]")
         print("subtotal = " + String(subtotal))
         print("total savings = " + String(total_saving))
+    }
+    
+    static func clear(){
+        CurrentShoppingCart = [];
+        subtotal = 0.0;
+        total_saving = 0.0;
     }
 
 }

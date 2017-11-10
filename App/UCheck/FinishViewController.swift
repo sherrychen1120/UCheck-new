@@ -11,7 +11,7 @@ import UIKit
 class FinishViewController: UIViewController {
 
     @IBAction func BackToHomeButton(_ sender: Any) {
-
+        ShoppingCart.clear()
     }
     @IBOutlet weak var BackToHomeButton: UIButton!
     
