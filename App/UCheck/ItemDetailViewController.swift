@@ -13,7 +13,7 @@ import Firebase
 class ItemDetailViewController: UIViewController, HalfModalPresentable {
 
     //take the item code from the last VC and create an object with the JSON
-    var currItem : Item = Item(code: "", name: "", price: "", category: "")
+    var currItem : Item = Item(number: "", code: "", name: "", price: "", category: "")
     
     @IBOutlet weak var ItemNameLabel: UILabel!
     @IBOutlet weak var ItemPriceLabel: UILabel!
@@ -47,10 +47,13 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
         ItemNameLabel.text = currItem.item_name
         ItemPriceLabel.text = "$" + String(currItem.item_price)
         
-        
         //display image
         let storage = FIRStorage.storage()
-        let code = currItem.code
+        var code = currItem.code
+        if (code == "-"){
+            code = currItem.item_number
+        }
+        
         let storageRef = storage.reference(withPath: "inventory/\(CurrentStore)/\(code).jpg")
         
         storageRef.data(withMaxSize: 1 * 1024 * 1024) { data, error in
@@ -63,6 +66,7 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
                 print("Image saved for \(self.currItem.item_name)")
             }
         }
+        
         
     }
 

@@ -33,13 +33,14 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     //Variables related to current store recommendation
     var CurrentStoreRecommendationList : [Item] = []
     
+    @IBOutlet weak var ScanningLabel: UILabel!
+    @IBOutlet weak var ScanningArea: UIView!
     @IBOutlet weak var LocationIcon: UIImageView!
     @IBOutlet weak var CurrentStoreLabel: UILabel!
     @IBOutlet weak var ScanningTitle: UILabel!
     @IBOutlet weak var ShoppingCartButton: UIButton!
     @IBOutlet weak var MenuButton: UIButton!
-    @IBOutlet weak var LogOutButton: UIButton!
-    @IBOutlet weak var ButtonView: UIView!
+    //@IBOutlet weak var LogOutButton: UIButton!
     @IBOutlet weak var CheckoutButton: UIButton!
     @IBAction func CheckoutButton(_ sender: Any) {
         performSegue(withIdentifier: "ScanningToCheckout", sender: nil)
@@ -58,26 +59,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         //Hide the navigation bar...?
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        /*
-        //Shopping cart bar button setup
-        let button: UIButton = UIButton(type: .custom)
-        button.setImage(UIImage(named: "shopping_cart_white.png"), for: .normal)
-        button.addTarget(self, action:#selector(ShoppingCartButtonPressed), for: .touchUpInside)
-        button.frame = CGRect(x:0, y:0, width:31, height:31)
-        button.semanticContentAttribute = .forceRightToLeft
-        button.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
-        
-        //Menu bar button setup
-        let menubutton: UIButton = UIButton(type: .custom)
-        menubutton.setImage(UIImage(named: "menu_white.png"), for: .normal)
-        menubutton.addTarget(self, action:#selector(MenuButtonPressed), for: .touchUpInside)
-        menubutton.frame = CGRect(x:0, y:0, width:31, height:31)
-        menubutton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-        let menuBarButton = UIBarButtonItem(customView: menubutton)
-        self.navigationItem.leftBarButtonItem = menuBarButton*/
-        
     }
     
     @IBAction func MenuButton(_ sender: Any) {
@@ -91,11 +72,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func scannerSetup(){
         //Scanner set up
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter.
-        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         
         do {
             // Get an instance of the AVCaptureDeviceInput class using the previous device object.
-            let input = try AVCaptureDeviceInput(device: captureDevice)
+            let input = try AVCaptureDeviceInput(device: captureDevice!)
             
             // Initialize the captureSession object.
             captureSession = AVCaptureSession()
@@ -109,11 +90,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
             // Set delegate and use the default dispatch queue to execute the call back
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypePDF417Code]
+            captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.ean13, AVMetadataObject.ObjectType.ean8,AVMetadataObject.ObjectType.upce, AVMetadataObject.ObjectType.qr]
+                //captureMetadataOutput.availableMetadataObjectTypes
             
             // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             view.layer.addSublayer(videoPreviewLayer!)
             videoPreviewLayer?.frame = view.layer.bounds
             
@@ -130,14 +112,25 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 view.bringSubview(toFront: barCodeFrameView)
             }
             
+            //Initialize Scanning Area
+            if let ScanningArea = ScanningArea {
+                ScanningArea.layer.borderColor = UIColor.green.cgColor
+                ScanningArea.layer.backgroundColor = UIColor.clear.cgColor
+                ScanningArea.layer.borderWidth = 2
+                view.addSubview(ScanningArea)
+                view.bringSubview(toFront: ScanningArea)
+            }
+            
             //Bring the subviews to front
-            view.bringSubview(toFront: ButtonView)
-            view.bringSubview(toFront: LogOutButton)
+            //view.bringSubview(toFront: LogOutButton)
             view.bringSubview(toFront: MenuButton)
             view.bringSubview(toFront: ShoppingCartButton)
             view.bringSubview(toFront: ScanningTitle)
             view.bringSubview(toFront: LocationIcon)
             view.bringSubview(toFront: CurrentStoreLabel)
+            view.bringSubview(toFront: ScanningArea)
+            view.bringSubview(toFront: ScanningLabel)
+            view.bringSubview(toFront: CheckoutButton)
             
         } catch {
             // If any error occurs, simply print it out and don't continue any more.
@@ -147,10 +140,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
     }
     
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         // Check if the metadataObjects array is not nil and it contains at least one object.
-        if metadataObjects == nil || metadataObjects.count == 0 {
+        if (metadataObjects.count == 0) {
             barCodeFrameView?.frame = CGRect.zero
             print("No bar code is detected")
             return
@@ -160,29 +153,19 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         captureSession?.stopRunning()
         
-        /*let supportedCodeTypes = [
-            AVMetadataObjectTypeCode39Code,
-            AVMetadataObjectTypeCode39Mod43Code,
-            AVMetadataObjectTypeCode93Code,
-            AVMetadataObjectTypeCode128Code,
-            AVMetadataObjectTypeEAN8Code,
-            AVMetadataObjectTypeEAN13Code,
-            AVMetadataObjectTypePDF417Code,
-            AVMetadataObjectTypeQRCode,
-            AVMetadataObjectTypeUPCECode,
-            AVMetadataObjectTypeAztecCode
-        ]*/
         
-        if (metadataObj.type == AVMetadataObjectTypeUPCECode
-            || metadataObj.type == AVMetadataObjectTypeEAN13Code
-            || metadataObj.type == AVMetadataObjectTypeEAN8Code
-            || metadataObj.type == AVMetadataObjectTypeQRCode
-            || metadataObj.type == AVMetadataObjectTypePDF417Code) {
-            // If the found metadata is equal to the bar code metadata then set the bounds
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            barCodeFrameView?.frame = barCodeObject!.bounds       
+        if (metadataObj.type == AVMetadataObject.ObjectType.ean13 ||
+            metadataObj.type == AVMetadataObject.ObjectType.ean8 ||
+            metadataObj.type == AVMetadataObject.ObjectType.upce ||
+            metadataObj.type == AVMetadataObject.ObjectType.qr) {
+           
                         
             if metadataObj.stringValue != nil {
+                // If the found metadata is equal to the bar code metadata then set the bounds
+                /*if let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj){
+                    barCodeFrameView?.frame = barCodeObject.bounds
+                }*/
+                
                 let code = metadataObj.stringValue
                 print("bar code detected = " + code!)
                 
@@ -191,7 +174,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     
                     for item in snapshot.children {
                         let newItem = Item(snapshot: item as! FIRDataSnapshot)
-                        if (newItem.code == code){
+                        if (newItem.code == code || code == newItem.item_number){
                             self.currItem = newItem
                         }
                     }
@@ -262,7 +245,27 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         print("unwindSegue scannerSetup")
     }
     
-    @IBAction func LogOutButton(_ sender: Any) {
+    @IBAction func unwindToScannerForLogout(segue: UIStoryboardSegue) {
+        print("unwindSegue for log out")
+        let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
+        let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
+        print("Successfully removed email: \(removeEmail);")
+        print("Successfully removed password: \(removePassword).")
+        
+        if FIRAuth.auth()?.currentUser != nil{
+            //There is a user signed in
+            do{
+                try! FIRAuth.auth()!.signOut()
+            }
+        }
+        
+        if FIRAuth.auth()?.currentUser == nil{
+            ShoppingCart.clear()
+            self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+        }
+    }
+    
+    /*@IBAction func LogOutButton(_ sender: Any) {
         let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
         let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
         print("Successfully removed email: \(removeEmail);")
@@ -274,12 +277,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 try! FIRAuth.auth()!.signOut()
                 
                 if FIRAuth.auth()?.currentUser == nil{
+                    ShoppingCart.clear()
                     let loginVC = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "Login") as! LoginViewController
                     self.present(loginVC, animated: true, completion: nil)
                 }
             }
         }
-    }
+    }*/
     
     // MARK: - show alert
     func showAlert(withMessage: String) {

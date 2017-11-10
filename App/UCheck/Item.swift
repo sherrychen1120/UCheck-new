@@ -20,7 +20,8 @@ class Item: NSObject {
     var ref: FIRDatabaseReference? = nil
     
     //Is this even used anywhere??
-    init(code:String, name:String, price:String, category:String) {
+    init(number:String, code:String, name:String, price:String, category:String) {
+        self.item_number = number
         self.code = code
         self.item_name = name
         self.item_price = price
@@ -28,10 +29,11 @@ class Item: NSObject {
     }
     
     init(snapshot: FIRDataSnapshot) {
-        code = snapshot.key
+        self.item_number = snapshot.key
         let snapshotValue = snapshot.value as! NSDictionary
-        item_name = snapshotValue["item_name"] as! String
         category = snapshotValue["category"] as! String
+        code = snapshotValue["barcode"] as? String ?? "-"
+        item_name = snapshotValue["item_name"] as! String
         
         if let snap_price = snapshotValue["item_price"] as? NSNumber {
             item_price = String(format: "%.2f", snap_price)
@@ -42,7 +44,7 @@ class Item: NSObject {
         ref = snapshot.ref
     }
     
-    init(snapshotValue: [String:AnyObject], barcode:String) {
+   /* init(snapshotValue: [String:AnyObject], barcode:String) {
         self.code = barcode
         item_name = snapshotValue["item_name"] as! String
         if let snap_price = snapshotValue["item_price"] as? NSNumber {
@@ -51,7 +53,7 @@ class Item: NSObject {
             item_price = snap_price
         }
         category = snapshotValue["category"] as! String
-    }
+    }*/
 
     
     func addImage(source : UIImage?){

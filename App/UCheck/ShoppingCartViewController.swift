@@ -62,7 +62,7 @@ class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITable
         let item = CurrentShoppingCart[indexPath.row]
         cell.ItemImage.image = item.item_image
         cell.ItemName.text = item.item_name
-        cell.ItemQuantity.text = String(item.quantity)
+        cell.ItemQuantity.text = "×" + String(item.quantity)
         cell.currItem = item
         cell.delegate = ShoppingCartTableView
         let item_subtotal = Double(item.item_price)! * Double(item.quantity)

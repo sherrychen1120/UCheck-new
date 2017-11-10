@@ -152,7 +152,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         self.PasswordInput.inputAccessoryView = toolbar
     }
     
-    func doneButtonAction() {
+    @objc func doneButtonAction() {
         self.view.endEditing(true)
     }
     
@@ -174,12 +174,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "RegisterToPayment"{
-            //Send the new_user to the next VC
-            if let nextScene = segue.destination as? PaymentMethodViewController{
-                nextScene.new_user = self.new_user
-            }
-        } else if segue.identifier == "SetupToVenmo"{
+        if segue.identifier == "SetupToVenmo"{
             //Send the new_user to the next VC
             if let nextScene = segue.destination as? VenmoSetupViewController{
                 nextScene.new_user = self.new_user

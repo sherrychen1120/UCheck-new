@@ -108,8 +108,8 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
         self.navigationController!.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
         self.navigationController!.navigationBar.titleTextAttributes =
-            [NSForegroundColorAttributeName: UIColor.white,
-             NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
+            [NSAttributedStringKey.foregroundColor: UIColor.white,
+             NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         //Customize the button
@@ -249,6 +249,16 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         cell.ItemPrice.text = "$" + String(item_subtotal)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            let curr_item = CurrentShoppingCart[indexPath.row]
+            ShoppingCart.deleteItem(oldItem: curr_item)
+            self.updatePrices()
+            CartItemsTableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 
     override func didReceiveMemoryWarning() {

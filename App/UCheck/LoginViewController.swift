@@ -141,47 +141,68 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                let ref = FIRDatabase.database().reference(withPath: "user-profiles")
-                
-                print("ID BRO:" + (FIRAuth.auth()?.currentUser?.uid)!)
-                var uid = ""
                 if let user = FIRAuth.auth()?.currentUser{
-                    uid = user.uid
+                    self.uid = user.uid
                     CurrentUserId = user.uid
+                    
+                    let profile_ref = FIRDatabase.database().reference(withPath: "user-profiles")
+                    //Get user name if already exists
+                    profile_ref.observe(.value, with: { snapshot in
+                        //bla bla bla
+                        self.searchExistingAccounts(snap:snapshot, completion: {
+                            self.GraphRequestAndToVenmo()
+                        })
+                    })
                 }
-                
-                let connection = GraphRequestConnection()
-                connection.add(MyProfileRequest()) { response, result in
-                    switch result {
-                    case .success(let response):
-                        
-                        self.new_user = User(uid : uid,
-                                        first_name : response.first_name!,
-                                         last_name : response.last_name!,
-                                         email : response.email!,
-                                         phone_no : "")
-                        
-                        print("UID1: " + uid)
-                        
-                        //update info on Firebase
-                        let user_ref = self.ref.child(uid)
-                        user_ref.setValue(self.new_user.toAnyObject())
-                        
-                        //update info in the CurrentSession object
-                        CurrentUser = response.email!
-                        CurrentUserName = response.first_name! + " " + response.last_name!
-                        
-                        self.performSegue(withIdentifier: "LoginToVenmo", sender: nil)
-                    case .failed(let error):
-                        print("Custom Graph Request Failed: \(error)")
-                    }
-                }
-                connection.start()
-            })
-            
+            })//FIRAuth
+        }//log in
+    }//function
+    
+    
+    func searchExistingAccounts(snap: FIRDataSnapshot, completion:@escaping ()->()){
+        for item in snap.children {
+            let curr_item = item as! FIRDataSnapshot
+            let value = curr_item.value as? NSDictionary
+            let user_id = value?["uid"] as? String ?? ""
+            if (user_id == uid){
+                let first_name = value?["first_name"] as? String ?? ""
+                let last_name = value?["last_name"] as? String ?? ""
+                let email = value?["email"] as? String ?? ""
+                CurrentUserName = first_name + " " + last_name
+                CurrentUser = email
+                self.performSegue(withIdentifier: "LoginToScanner", sender: self)
+            }
         }
+    }
         
-        
+    func GraphRequestAndToVenmo(){
+        let connection = GraphRequestConnection()
+        connection.add(MyProfileRequest()) { response, result in
+            switch result {
+            case .success(let response):
+                
+                self.new_user = User(uid : self.uid,
+                                     first_name : response.first_name!,
+                                     last_name : response.last_name!,
+                                     email : response.email!,
+                                     phone_no : "")
+                
+                print("UID1: " + self.uid)
+                
+                //update info on Firebase
+                let user_ref = self.ref.child(self.uid)
+                user_ref.setValue(self.new_user.toAnyObject())
+                
+                //update info in the CurrentSession object
+                CurrentUser = response.email!
+                CurrentUserName = response.first_name! + " " + response.last_name!
+                
+                self.performSegue(withIdentifier: "LoginToVenmo", sender: nil)
+            case .failed(let error):
+                print("Custom Graph Request Failed: \(error)")
+            }
+        }
+        connection.start()
     }
     
     @IBAction func SignUpButton(_ sender: Any) {
@@ -227,6 +248,10 @@ class LoginViewController: UIViewController {
         }
         
         downloadPicTask.resume()
+    }
+    
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+        
     }
     
     // MARK: - show alert

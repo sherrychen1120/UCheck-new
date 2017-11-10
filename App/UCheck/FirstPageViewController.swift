@@ -9,7 +9,9 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
-
+import FacebookLogin
+import FacebookCore
+import FBSDKLoginKit
 
 class FirstPageViewController: UIViewController {
     
@@ -32,14 +34,14 @@ class FirstPageViewController: UIViewController {
                     //Store user email
                     CurrentUser = email
                     
-                    //Store user name & photo
+                    //Store user id
                     if let user = FIRAuth.auth()?.currentUser{
                         self.uid = user.uid
                         CurrentUserId = user.uid
                     }
                     
+                    //Get user name
                     self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                        // Get user value
                         let value = snapshot.value as? NSDictionary
                         let first_name = value?["first_name"] as? String ?? ""
                         let last_name = value?["last_name"] as? String ?? ""
@@ -55,6 +57,39 @@ class FirstPageViewController: UIViewController {
                     self.performSegue(withIdentifier: "FirstPageToScanner", sender: nil)
                 }
             }
+        } else if let accessToken = FBSDKAccessToken.current() {
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                if let error = error {
+                    print("Login error: \(error.localizedDescription)")
+                    self.performSegue(withIdentifier: "FirstPageToLogin", sender: nil)
+                }
+                
+                //Store user name & photo
+                if let user = FIRAuth.auth()?.currentUser{
+                    self.uid = user.uid
+                    CurrentUserId = user.uid
+                }
+                
+                //Get user email & names
+                self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let value = snapshot.value as? NSDictionary
+                    let first_name = value?["first_name"] as? String ?? ""
+                    let last_name = value?["last_name"] as? String ?? ""
+                    let email = value?["email"] as? String ?? ""
+                    CurrentUser = email
+                    CurrentUserName = first_name + " " + last_name
+                    //self.retrievePhoto(uid : CurrentUserId)
+                    print("user info stored.")
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+                
+                print("ID BRO:" + (FIRAuth.auth()?.currentUser?.uid)!)
+                self.performSegue(withIdentifier: "FirstPageToScanner", sender: nil)
+                
+            })
         } else {
             self.performSegue(withIdentifier: "FirstPageToLogin", sender: nil)
         }
