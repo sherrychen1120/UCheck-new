@@ -160,9 +160,24 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         captureSession?.stopRunning()
         
-        if (metadataObj.type == AVMetadataObjectTypeEAN8Code
-        || metadataObj.type == AVMetadataObjectTypeEAN13Code
-        || metadataObj.type == AVMetadataObjectTypePDF417Code) {
+        /*let supportedCodeTypes = [
+            AVMetadataObjectTypeCode39Code,
+            AVMetadataObjectTypeCode39Mod43Code,
+            AVMetadataObjectTypeCode93Code,
+            AVMetadataObjectTypeCode128Code,
+            AVMetadataObjectTypeEAN8Code,
+            AVMetadataObjectTypeEAN13Code,
+            AVMetadataObjectTypePDF417Code,
+            AVMetadataObjectTypeQRCode,
+            AVMetadataObjectTypeUPCECode,
+            AVMetadataObjectTypeAztecCode
+        ]*/
+        
+        if (metadataObj.type == AVMetadataObjectTypeUPCECode
+            || metadataObj.type == AVMetadataObjectTypeEAN13Code
+            || metadataObj.type == AVMetadataObjectTypeEAN8Code
+            || metadataObj.type == AVMetadataObjectTypeQRCode
+            || metadataObj.type == AVMetadataObjectTypePDF417Code) {
             // If the found metadata is equal to the bar code metadata then set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             barCodeFrameView?.frame = barCodeObject!.bounds       

@@ -23,13 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        BTAppSwitch.setReturnURLScheme("com.xiaoyichen.UCheck.payments")
+        BTAppSwitch.setReturnURLScheme("com.ucheckbeta.UCheck.payments")
 //        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-        if url.scheme?.localizedCaseInsensitiveCompare("com.xiaoyichen.UCheck.payments") == .orderedSame {
+        if url.scheme?.localizedCaseInsensitiveCompare("com.ucheckbeta.UCheck.payments") == .orderedSame {
             return BTAppSwitch.handleOpen(url, options: options)
         }
         return false
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // If you support iOS 7 or 8, add the following method.
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        if url.scheme?.localizedCaseInsensitiveCompare("com.xiaoyichen.UCheck.payments") == .orderedSame {
+        if url.scheme?.localizedCaseInsensitiveCompare("com.ucheckbeta.UCheck.payments") == .orderedSame {
             return BTAppSwitch.handleOpen(url, sourceApplication: sourceApplication)
         }
         return false

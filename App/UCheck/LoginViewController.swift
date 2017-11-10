@@ -244,7 +244,7 @@ class LoginViewController: UIViewController {
                 print("UID2: " + self.new_user.uid)
                 nextScene.new_user = self.new_user
             }
-        } else {
+        } else if segue.identifier == "LoginToScanner"{
             
             self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
