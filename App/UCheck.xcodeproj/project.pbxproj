@@ -25,6 +25,7 @@
 		565D91B71F251A50009C2393 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B61F251A50009C2393 /* ShoppingCart.swift */; };
 		565E4BC01FACFCA500D273E8 /* VenmoSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E4BBF1FACFCA500D273E8 /* VenmoSetupViewController.swift */; };
 		565E4BC71FAD0B4B00D273E8 /* CustomObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 565E4BC61FAD0B4B00D273E8 /* CustomObject.m */; };
+		566CA2FD1FB2F6DA00DED44F /* AllSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CA2FC1FB2F6DA00DED44F /* AllSetViewController.swift */; };
 		567488BD1F09F46B00EB4471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */; };
 		5684800F1F4B80DD00B41BC7 /* EdgeShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684800E1F4B80DD00B41BC7 /* EdgeShadowLayer.swift */; };
 		56A720BC1FB0184D00FF6DCE /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A720BB1FB0184D00FF6DCE /* ReceiptViewController.swift */; };
@@ -35,7 +36,6 @@
 		56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EF1F0BFD1800772C68 /* CheckBox.swift */; };
 		56B680F21F0C1ED400772C68 /* PaymentMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F11F0C1ED400772C68 /* PaymentMethodViewController.swift */; };
 		56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F31F0C2DEA00772C68 /* SelfieViewController.swift */; };
-		56B680F61F0C2E8600772C68 /* AllSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F51F0C2E8600772C68 /* AllSetViewController.swift */; };
 		56B680F81F0C433800772C68 /* PopDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F71F0C433800772C68 /* PopDateViewController.swift */; };
 		56B680FA1F0C45F600772C68 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F91F0C45F600772C68 /* MonthYearPickerView.swift */; };
 		56B680FC1F0C4A0700772C68 /* BillingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680FB1F0C4A0700772C68 /* BillingInfoViewController.swift */; };
@@ -99,6 +99,7 @@
 		565E4BBF1FACFCA500D273E8 /* VenmoSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenmoSetupViewController.swift; sourceTree = "<group>"; };
 		565E4BC61FAD0B4B00D273E8 /* CustomObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomObject.m; sourceTree = "<group>"; };
 		565E4BC81FAD0B6F00D273E8 /* UCheck-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UCheck-Bridging-Header.h"; sourceTree = "<group>"; };
+		566CA2FC1FB2F6DA00DED44F /* AllSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetViewController.swift; sourceTree = "<group>"; };
 		567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		567488BE1F09F4CF00EB4471 /* UCheck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UCheck.entitlements; sourceTree = "<group>"; };
 		5684800E1F4B80DD00B41BC7 /* EdgeShadowLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeShadowLayer.swift; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		56B680EF1F0BFD1800772C68 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		56B680F11F0C1ED400772C68 /* PaymentMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodViewController.swift; sourceTree = "<group>"; };
 		56B680F31F0C2DEA00772C68 /* SelfieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
-		56B680F51F0C2E8600772C68 /* AllSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllSetViewController.swift; sourceTree = "<group>"; };
 		56B680F71F0C433800772C68 /* PopDateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDateViewController.swift; sourceTree = "<group>"; };
 		56B680F91F0C45F600772C68 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		56B680FB1F0C4A0700772C68 /* BillingInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingInfoViewController.swift; sourceTree = "<group>"; };
@@ -301,10 +301,10 @@
 				56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */,
 				56B680F11F0C1ED400772C68 /* PaymentMethodViewController.swift */,
 				56B680F31F0C2DEA00772C68 /* SelfieViewController.swift */,
-				56B680F51F0C2E8600772C68 /* AllSetViewController.swift */,
 				56B680F71F0C433800772C68 /* PopDateViewController.swift */,
 				56B680FB1F0C4A0700772C68 /* BillingInfoViewController.swift */,
 				565E4BBF1FACFCA500D273E8 /* VenmoSetupViewController.swift */,
+				566CA2FC1FB2F6DA00DED44F /* AllSetViewController.swift */,
 			);
 			name = "First-time Registration";
 			sourceTree = "<group>";
@@ -463,7 +463,7 @@
 				TargetAttributes = {
 					5652EF931F09D1030014873D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = QCGB64L4VH;
+						DevelopmentTeam = UW63CYKZZU;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -723,7 +723,6 @@
 				56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */,
 				56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */,
 				565D91AC1F23C571009C2393 /* SlideInPresentationManager.swift in Sources */,
-				56B680F61F0C2E8600772C68 /* AllSetViewController.swift in Sources */,
 				565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */,
 				56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */,
 				56B680FE1F0C4E9700772C68 /* StatePickerView.swift in Sources */,
@@ -746,6 +745,7 @@
 				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
 				56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
+				566CA2FD1FB2F6DA00DED44F /* AllSetViewController.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,
 				56A720BE1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift in Sources */,
 			);
@@ -904,7 +904,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UCheck/UCheck.entitlements;
-				DEVELOPMENT_TEAM = QCGB64L4VH;
+				DEVELOPMENT_TEAM = UW63CYKZZU;
 				INFOPLIST_FILE = UCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucheckbeta.UCheck;
@@ -923,7 +923,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UCheck/UCheck.entitlements;
-				DEVELOPMENT_TEAM = QCGB64L4VH;
+				DEVELOPMENT_TEAM = UW63CYKZZU;
 				INFOPLIST_FILE = UCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucheckbeta.UCheck;

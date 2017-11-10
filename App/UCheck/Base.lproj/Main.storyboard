@@ -236,7 +236,6 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="shopping_cart_white"/>
                                 <connections>
-                                    <action selector="MenuButton:" destination="gbQ-Jh-5Ig" eventType="touchUpInside" id="KzJ-Pi-RcK"/>
                                     <action selector="ShoppingCartButton:" destination="gbQ-Jh-5Ig" eventType="touchUpInside" id="DsP-TB-lr9"/>
                                 </connections>
                             </button>
@@ -1909,8 +1908,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now start shopping in a store nearby." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugd-xP-Prq">
-                                <rect key="frame" x="98.5" y="407" width="178" height="49.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now start shopping!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugd-xP-Prq">
+                                <rect key="frame" x="98.5" y="407" width="178" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="178" id="IKV-j7-rf8"/>
                                 </constraints>
@@ -1922,11 +1921,11 @@
                                 <rect key="frame" x="36" y="577" width="303" height="45"/>
                                 <color key="backgroundColor" red="0.98691338299999998" green="0.87408608200000004" blue="0.87300062180000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
-                                <state key="normal" title="Discover Nearby">
+                                <state key="normal" title="Start Shopping">
                                     <color key="titleColor" red="0.60701197389999995" green="0.053868211809999997" blue="0.061009041969999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="RegisterButton:" destination="qgG-kK-JM5" eventType="touchUpInside" id="Ljh-XE-dnV"/>
+                                    <action selector="StartShoppingButton:" destination="vJN-vR-CTB" eventType="touchUpInside" id="gDZ-Au-Iuw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1946,7 +1945,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="DiscoverNearbyButton" destination="eLy-hh-KM8" id="PmY-6I-MeV"/>
+                        <outlet property="StartShoppingButton" destination="eLy-hh-KM8" id="XoZ-yX-Pkj"/>
+                        <segue destination="gbQ-Jh-5Ig" kind="show" identifier="AllSetToScanning" id="4m2-aS-dKB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GAt-sj-uHv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1972,10 +1972,8 @@
         <image name="visa" width="334" height="218"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q1e-Hi-EIh"/>
-        <segue reference="tjX-Il-qnf"/>
         <segue reference="Zc2-73-7UG"/>
         <segue reference="BbT-Cx-kJI"/>
-        <segue reference="NRm-WD-tbV"/>
+        <segue reference="4m2-aS-dKB"/>
     </inferredMetricsTieBreakers>
 </document>

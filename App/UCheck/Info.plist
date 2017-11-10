@@ -33,12 +33,16 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.xiaoyichen.UCheck.payments</string>
+				<string>com.ucheckbeta.UCheck.payments</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>1980301695557059</string>
+	<key>FacebookDisplayName</key>
+	<string>UCheck</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -47,10 +51,6 @@
 		<string>fbshareextension</string>
 		<string>com.venmo.touch.v2</string>
 	</array>
-	<key>FacebookAppID</key>
-	<string>1980301695557059</string>
-	<key>FacebookDisplayName</key>
-	<string>UCheck</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
