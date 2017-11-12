@@ -57,6 +57,20 @@ class LoginViewController: UIViewController {
                     self.uid = (user?.uid)!
                     print(self.uid)
                     
+                    self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                        // Get user value
+                        let value = snapshot.value as? NSDictionary
+                        let first_name = value?["first_name"] as? String ?? ""
+                        let last_name = value?["last_name"] as? String ?? ""
+                        //let url_string = value?["photo_url"] as? String ?? ""
+                        
+                        CurrentUserName = first_name + " " + last_name
+                        //self.retrievePhoto(url: photo_url!)
+                        
+                    }) { (error) in
+                        print(error.localizedDescription)
+                    }
+                    
                     self.performSegue(withIdentifier: "LoginToScanner", sender: nil)
 //                }
                 
@@ -147,7 +161,7 @@ class LoginViewController: UIViewController {
                     
                     let profile_ref = FIRDatabase.database().reference(withPath: "user-profiles")
                     //Get user name if already exists
-                    profile_ref.observe(.value, with: { snapshot in
+                    profile_ref.observeSingleEvent(of:.value, with: { (snapshot) in
                         //bla bla bla
                         self.searchExistingAccounts(snap:snapshot, completion: {
                             self.GraphRequestAndToVenmo()
@@ -170,9 +184,11 @@ class LoginViewController: UIViewController {
                 let email = value?["email"] as? String ?? ""
                 CurrentUserName = first_name + " " + last_name
                 CurrentUser = email
+                print("Going into Scanner")
                 self.performSegue(withIdentifier: "LoginToScanner", sender: self)
             }
         }
+        completion()
     }
         
     func GraphRequestAndToVenmo(){
@@ -270,21 +286,6 @@ class LoginViewController: UIViewController {
                 nextScene.new_user = self.new_user
             }
         } else if segue.identifier == "LoginToScanner"{
-            
-            self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                let first_name = value?["first_name"] as? String ?? ""
-                let last_name = value?["last_name"] as? String ?? ""
-                let url_string = value?["photo_url"] as? String ?? ""
-                
-                CurrentUserName = first_name + " " + last_name
-                //let photo_url = URL(string: url_string)
-                //self.retrievePhoto(url: photo_url!)
-                
-            }) { (error) in
-                print(error.localizedDescription)
-            }
             
             print("user info stored.")
         }
