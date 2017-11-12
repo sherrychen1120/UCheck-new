@@ -57,16 +57,17 @@
                     <connections>
                         <segue destination="ehJ-Cc-GYG" kind="show" identifier="FirstPageToLogin" id="6U7-9l-SCj"/>
                         <segue destination="gbQ-Jh-5Ig" kind="show" identifier="FirstPageToScanner" id="OKK-lQ-g2a"/>
+                        <segue destination="ztx-sE-RLm" kind="show" identifier="FirstPageToSignUp" id="eYw-iq-rKN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfX-4p-SsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="732" y="394"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="2E5-zk-sid">
             <objects>
-                <viewController id="ztx-sE-RLm" sceneMemberID="viewController">
+                <viewController id="ztx-sE-RLm" customClass="SignUpViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C35-80-NEq"/>
                         <viewControllerLayoutGuide type="bottom" id="kyF-av-STC"/>
@@ -76,63 +77,69 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pM5-KK-n2a">
-                                <rect key="frame" x="36" y="318" width="303" height="30"/>
+                                <rect key="frame" x="36" y="362" width="303" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MmL-lC-BhZ">
-                                <rect key="frame" x="36" y="355" width="303" height="30"/>
+                                <rect key="frame" x="36" y="399" width="303" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UCheck LOGO - white" translatesAutoresizingMaskIntoConstraints="NO" id="ZWq-MA-wBz">
-                                <rect key="frame" x="144" y="46" width="87" height="99"/>
+                                <rect key="frame" x="144" y="90" width="87" height="99"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="87" id="FI3-pO-csl"/>
                                     <constraint firstAttribute="height" constant="99" id="xL0-kJ-I6g"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M8Z-hD-dBq">
-                                <rect key="frame" x="36" y="281" width="146.5" height="30"/>
+                                <rect key="frame" x="36" y="325" width="146.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Efd-zI-uoz">
-                                <rect key="frame" x="192.5" y="281" width="146" height="30"/>
+                                <rect key="frame" x="192.5" y="325" width="146" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2n-lE-auN">
-                                <rect key="frame" x="36" y="168" width="303" height="40"/>
+                                <rect key="frame" x="36" y="212" width="303" height="40"/>
                                 <color key="backgroundColor" red="0.2593061626" green="0.40482518080000002" blue="0.69534760709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                 <state key="normal" title="Sign up with Facebook">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="FBLoginButton:" destination="ztx-sE-RLm" eventType="touchUpInside" id="Lj4-qM-HV1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05I-6G-N3t">
-                                <rect key="frame" x="36" y="235" width="303" height="28"/>
+                                <rect key="frame" x="36" y="279" width="303" height="28"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password: 6-18 characters long, with upper-case, lower-case and numerical digits." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3e-sG-QHn">
-                                <rect key="frame" x="36" y="386" width="303" height="33"/>
+                                <rect key="frame" x="36" y="430" width="303" height="33"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZP-lN-xRK">
-                                <rect key="frame" x="36" y="437" width="303" height="45"/>
+                                <rect key="frame" x="36" y="481" width="303" height="45"/>
                                 <color key="backgroundColor" red="0.98691338299999998" green="0.87408608200000004" blue="0.87300062180000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" red="0.60701197389999995" green="0.053868211809999997" blue="0.061009041969999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="SignUpButton:" destination="ztx-sE-RLm" eventType="touchUpInside" id="2Ed-GL-mgX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up, you agree to our Terms of Services." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOf-7w-OUu">
                                 <rect key="frame" x="36" y="629" width="303" height="18"/>
@@ -174,6 +181,13 @@
                             <constraint firstItem="Efd-zI-uoz" firstAttribute="top" secondItem="05I-6G-N3t" secondAttribute="bottom" constant="18" id="zCr-n1-t98"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="EmailInput" destination="pM5-KK-n2a" id="FJd-lm-6Eu"/>
+                        <outlet property="FirstNameInput" destination="M8Z-hD-dBq" id="3Fl-8b-LFh"/>
+                        <outlet property="LastNameInput" destination="Efd-zI-uoz" id="PWb-gr-sqb"/>
+                        <outlet property="PasswordInput" destination="MmL-lC-BhZ" id="bC4-v1-zPA"/>
+                        <segue destination="M6h-eb-QMo" kind="show" identifier="SignUpToVenmo" id="FvN-Mo-PyD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7U-el-D4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1711,7 +1725,7 @@
         <image name="shopping_cart_white" width="1063" height="1063"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BbT-Cx-kJI"/>
-        <segue reference="NRm-WD-tbV"/>
+        <segue reference="FvN-Mo-PyD"/>
+        <segue reference="OKK-lQ-g2a"/>
     </inferredMetricsTieBreakers>
 </document>
