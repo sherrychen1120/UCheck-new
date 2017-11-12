@@ -196,7 +196,7 @@ class LoginViewController: UIViewController {
         connection.add(MyProfileRequest()) { response, result in
             switch result {
             case .success(let response):
-                
+               
                 self.new_user = User(uid : self.uid,
                                      first_name : response.first_name!,
                                      last_name : response.last_name!,
@@ -208,6 +208,13 @@ class LoginViewController: UIViewController {
                 //update info on Firebase
                 let user_ref = self.ref.child(self.uid)
                 user_ref.setValue(self.new_user.toAnyObject())
+                
+                //get and add profile picture url to user_ref
+                if let pictureUrl = response.profilePictureUrl {
+                    user_ref.updateChildValues([
+                        "photo_url" : pictureUrl
+                        ])
+                }
                 
                 //update info in the CurrentSession object
                 CurrentUser = response.email!
