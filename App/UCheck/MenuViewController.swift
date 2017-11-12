@@ -16,7 +16,7 @@ class MenuViewController: UIViewController {
     var delegate: communicationScanner? = nil
     
     @IBAction func LogoutButton(_ sender: Any) {
-        
+        toLogOut = true
     }
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var UserNameLabel: UILabel!

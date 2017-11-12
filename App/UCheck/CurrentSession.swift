@@ -21,6 +21,8 @@ var CurrentUserName = ""
 var CurrentUserId = ""
 var CurrentUserPhoto : UIImage? = nil
 
+var toLogOut = false
+
 
 class CurrentSession: NSObject {
 
