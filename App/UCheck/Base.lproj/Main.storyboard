@@ -174,7 +174,7 @@
         <!--Scanner View Controller-->
         <scene sceneID="TlP-9w-gKi">
             <objects>
-                <viewController id="gbQ-Jh-5Ig" customClass="ScannerViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scannerBoard" id="gbQ-Jh-5Ig" customClass="ScannerViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RUh-Z7-AMm"/>
                         <viewControllerLayoutGuide type="bottom" id="jRP-bu-gim"/>
