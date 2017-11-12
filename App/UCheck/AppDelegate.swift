@@ -29,6 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         print(FBSDKAccessToken.current())
         if FBSDKAccessToken.current() != nil {
+            let defaults = UserDefaults.standard
+            let userID = FBSDKAccessToken.current().userID!
+            if let values = defaults.value(forKey: "fb-" + userID) as? [String: String] {
+                CurrentUser = values["email"]!
+                CurrentUserName = values["first"]! + " " + values["last"]!
+            }
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialVC = storyboard.instantiateViewController(withIdentifier: "scannerBoard")

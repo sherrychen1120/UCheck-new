@@ -182,6 +182,8 @@ class LoginViewController: UIViewController {
                 let first_name = value?["first_name"] as? String ?? ""
                 let last_name = value?["last_name"] as? String ?? ""
                 let email = value?["email"] as? String ?? ""
+                let userData = ["email": email, "first": first_name, "last": last_name]
+                UserDefaults.standard.set(userData, forKey: "fb-" + FBSDKAccessToken.current().userID!)
                 CurrentUserName = first_name + " " + last_name
                 CurrentUser = email
                 print("Going into Scanner")
@@ -204,6 +206,9 @@ class LoginViewController: UIViewController {
                                      phone_no : "")
                 
                 print("UID1: " + self.uid)
+                
+                let userData = ["email": response.email!, "first": response.first_name!, "last": response.last_name!]
+                UserDefaults.standard.set(userData, forKey: "fb-" + FBSDKAccessToken.current().userID!)
                 
                 //update info on Firebase
                 let user_ref = self.ref.child(self.uid)
