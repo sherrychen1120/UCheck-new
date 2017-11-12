@@ -25,6 +25,7 @@
 		565D91B71F251A50009C2393 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565D91B61F251A50009C2393 /* ShoppingCart.swift */; };
 		565E4BC01FACFCA500D273E8 /* VenmoSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E4BBF1FACFCA500D273E8 /* VenmoSetupViewController.swift */; };
 		565E4BC71FAD0B4B00D273E8 /* CustomObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 565E4BC61FAD0B4B00D273E8 /* CustomObject.m */; };
+		5665A6141FB826A400A8719B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5665A6131FB826A400A8719B /* SignUpViewController.swift */; };
 		566CA2FD1FB2F6DA00DED44F /* AllSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CA2FC1FB2F6DA00DED44F /* AllSetViewController.swift */; };
 		567488BD1F09F46B00EB4471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */; };
 		5684800F1F4B80DD00B41BC7 /* EdgeShadowLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684800E1F4B80DD00B41BC7 /* EdgeShadowLayer.swift */; };
@@ -97,6 +98,7 @@
 		565E4BBF1FACFCA500D273E8 /* VenmoSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenmoSetupViewController.swift; sourceTree = "<group>"; };
 		565E4BC61FAD0B4B00D273E8 /* CustomObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomObject.m; sourceTree = "<group>"; };
 		565E4BC81FAD0B6F00D273E8 /* UCheck-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UCheck-Bridging-Header.h"; sourceTree = "<group>"; };
+		5665A6131FB826A400A8719B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		566CA2FC1FB2F6DA00DED44F /* AllSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSetViewController.swift; sourceTree = "<group>"; };
 		567488BC1F09F46B00EB4471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		567488BE1F09F4CF00EB4471 /* UCheck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UCheck.entitlements; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				56B680F71F0C433800772C68 /* PopDateViewController.swift */,
 				565E4BBF1FACFCA500D273E8 /* VenmoSetupViewController.swift */,
 				566CA2FC1FB2F6DA00DED44F /* AllSetViewController.swift */,
+				5665A6131FB826A400A8719B /* SignUpViewController.swift */,
 			);
 			name = "First-time Registration";
 			sourceTree = "<group>";
@@ -552,7 +555,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-UCheck/Pods-UCheck-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework",
 				"${BUILT_PRODUCTS_DIR}/BraintreeDropIn/BraintreeDropIn.framework",
@@ -566,7 +568,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Braintree.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BraintreeDropIn.framework",
@@ -740,6 +741,7 @@
 				566CA2FD1FB2F6DA00DED44F /* AllSetViewController.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,
 				56A720BE1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift in Sources */,
+				5665A6141FB826A400A8719B /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
