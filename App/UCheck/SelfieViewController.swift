@@ -22,6 +22,9 @@ class SelfieViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var SelfieInput: UIImageView!
     @IBOutlet weak var TakePhotoButton: UIButton!
     
+    @IBAction func SkipButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "SelfieToAllSet", sender: self)
+    }
     @IBAction func TakePhotoButton(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self

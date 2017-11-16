@@ -17,6 +17,7 @@ class MenuViewController: UIViewController {
     
     @IBAction func LogoutButton(_ sender: Any) {
         toLogOut = true
+        print("toLogOut = " + String(toLogOut))
     }
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var UserNameLabel: UILabel!

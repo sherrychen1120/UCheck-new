@@ -260,13 +260,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 //There is a user signed in
                 do{
                     try! FIRAuth.auth()!.signOut()
+                    print("signed out")
+                    ShoppingCart.clear()
+                    self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
                 }
             }
             
-            if FIRAuth.auth()?.currentUser == nil{
-                ShoppingCart.clear()
-                self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
-            }
         }
     }
     
