@@ -61,6 +61,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         //Hide the navigation bar...?
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
+        //TODO:
+        // search based on email, get PP, uid
     }
     
     @IBAction func MenuButton(_ sender: Any) {
