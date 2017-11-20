@@ -12,6 +12,7 @@ import Firebase
 import Braintree
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftKeychainWrapper
 
 
 @UIApplicationMain
@@ -26,24 +27,102 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         BTAppSwitch.setReturnURLScheme("com.ucheckbeta.UCheck.payments")
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        print(FBSDKAccessToken.current())
-        if FBSDKAccessToken.current() != nil {
-            let defaults = UserDefaults.standard
-            let userID = FBSDKAccessToken.current().userID!
-            if let values = defaults.value(forKey: "fb-" + userID) as? [String: String] {
-                CurrentUser = values["email"]!
-                CurrentUserName = values["first"]! + " " + values["last"]!
+        
+        //Check if the app has been opened on this device before.
+        let defaults = UserDefaults.standard
+        //defaults.set(false, forKey: "ExistingDevice") //Just for Sign-up testing
+        var targetID = ""
+        
+        if let stringOne = defaults.string(forKey: "ExistingDevice") {
+            print("Existing Device " + stringOne)
+            let isExistingDevice = (stringOne == "true")
+            if (!isExistingDevice){
+                //First time using this device.
+                defaults.set("true", forKey: "ExistingDevice")
+                print("going to sign up page")
+                targetID = "signupBoard"
+                
+                showTargetVC(ID: targetID)
+                
+            } else {
+                //Try retrieving email login info
+                let retrievedEmail: String? = KeychainWrapper.standard.string(forKey: "email")
+                let retrievedPassword: String? = KeychainWrapper.standard.string(forKey: "password")
+                
+                //Try retrieving FB login info
+                FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+                print(FBSDKAccessToken.current())//debug print
+                
+                //If there's existing email logged in
+                if let email = retrievedEmail, let password = retrievedPassword{
+                    FIRAuth.auth()!.signIn(withEmail: email, password: password){
+                        (user, error) in
+                        if error != nil {
+                            targetID = "loginBoard"
+                            self.showTargetVC(ID: targetID)
+                        } else {
+                            //Store user email
+                            CurrentUser = email
+                            
+                            //Store user id
+                            if let user = FIRAuth.auth()?.currentUser{
+                                CurrentUserId = user.uid
+                            }
+                            
+                            //Get the user name from NSUserDefaults
+                            CurrentUserName = defaults.object(forKey: "email-" + email) as! String
+                            
+                            targetID = "scannerBoard"
+                            self.showTargetVC(ID: targetID)
+                        }
+                    }
+                } else if let accessToken = FBSDKAccessToken.current(){
+                    let userID = accessToken.userID!
+                    
+                    //FB log in using Firebase
+                    let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+                    
+                    FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                        if let error = error {
+                            print("Login error: \(error.localizedDescription)")
+                            targetID = "loginBoard"
+                            self.showTargetVC(ID: targetID)
+                        }
+                        
+                        //Store user id
+                        if let user = FIRAuth.auth()?.currentUser{
+                            CurrentUserId = user.uid
+                        }
+                        
+                        //Get the user email & name from NSUserDefaults
+                        if let values = defaults.value(forKey: "fb-" + userID) as? [String: String]{
+                            CurrentUser = values["email"]!
+                            CurrentUserName = values["full_name"]!
+                        }
+                        
+                        print("ID BRO:" + (FIRAuth.auth()?.currentUser?.uid)!)
+                        targetID = "scannerBoard"
+                        self.showTargetVC(ID: targetID)
+                        
+                    })
+                    
+                } else {
+                    targetID = "loginBoard"
+                    showTargetVC(ID: targetID)
+                }
+                
             }
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialVC = storyboard.instantiateViewController(withIdentifier: "scannerBoard")
-            self.window?.rootViewController = initialVC
-            self.window?.makeKeyAndVisible()
-            return true
         }
         
         return true
+    }
+    
+    func showTargetVC(ID: String){
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialVC = storyboard.instantiateViewController(withIdentifier: ID)
+        self.window?.rootViewController = initialVC
+        self.window?.makeKeyAndVisible()
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
