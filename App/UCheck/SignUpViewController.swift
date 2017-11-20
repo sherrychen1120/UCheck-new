@@ -113,8 +113,15 @@ class SignUpViewController: UIViewController {
                                 CurrentUser = self.email
                                 CurrentUserName = self.first_name + " " + self.last_name
                                 
+                                //Save the user info to NSUserDefaults
+                                let defaults = UserDefaults.standard
+                                if (defaults.object(forKey: self.email) == nil){
+                                    defaults.set(CurrentUserName, forKey: "email+"+self.email)
+                                }
+                                
                                 let saveEmail: Bool = KeychainWrapper.standard.set(self.email, forKey: "email")
                                 let savePassword: Bool = KeychainWrapper.standard.set(self.password, forKey: "password")
+                                
                                 print("Successfully saved email: \(saveEmail);")
                                 print("Successfully saved passwordd: \(savePassword).")
                                 

@@ -65,6 +65,13 @@ class LoginViewController: UIViewController {
                         //let url_string = value?["photo_url"] as? String ?? ""
                         
                         CurrentUserName = first_name + " " + last_name
+                        
+                        //Save the user info to NSUserDefaults
+                        let defaults = UserDefaults.standard
+                        if (defaults.object(forKey: email) == nil){
+                            defaults.set(CurrentUserName, forKey: "email+"+email)
+                        }
+                        
                         //self.retrievePhoto(url: photo_url!)
                         
                     }) { (error) in

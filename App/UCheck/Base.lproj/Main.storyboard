@@ -67,7 +67,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="2E5-zk-sid">
             <objects>
-                <viewController id="ztx-sE-RLm" customClass="SignUpViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signupBoard" id="ztx-sE-RLm" customClass="SignUpViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C35-80-NEq"/>
                         <viewControllerLayoutGuide type="bottom" id="kyF-av-STC"/>
@@ -228,7 +228,7 @@
         <!--Login View Controller-->
         <scene sceneID="JqP-io-iry">
             <objects>
-                <viewController storyboardIdentifier="Login" id="ehJ-Cc-GYG" customClass="LoginViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginBoard" id="ehJ-Cc-GYG" customClass="LoginViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3o-ct-lrx"/>
                         <viewControllerLayoutGuide type="bottom" id="GGZ-QW-K9F"/>
@@ -1792,6 +1792,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FvN-Mo-PyD"/>
-        <segue reference="OKK-lQ-g2a"/>
+        <segue reference="NRm-WD-tbV"/>
     </inferredMetricsTieBreakers>
 </document>
