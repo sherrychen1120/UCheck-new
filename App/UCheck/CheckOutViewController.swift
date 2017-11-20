@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Braintree
+import SafariServices
 
 class CheckOutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -19,51 +20,67 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func ConfirmAndPayButton(_ sender: Any) {
         
-        //Bring up loading view
-        LoadingView.isHidden = false
-        ActivityIndicator.isHidden = false
-        LoadingText.isHidden = false
-        view.bringSubview(toFront: LoadingView)
-        LoadingView.bringSubview(toFront: ActivityIndicator)
-        LoadingView.bringSubview(toFront: LoadingText)
-        ActivityIndicator.startAnimating()
-        ActivityIndicator.hidesWhenStopped = true
-        
-        self.fetchClientToken(handleComplete: {
-            self.createTransaction(completion: {() -> () in
-                //Firebase Ref
-                let ref = FIRDatabase.database().reference(withPath: "shopping_sessions/\(CurrentUserId)")
-                let date = self.getDateTime()
-                
-                
-                let ShoppingSessionID = "s" + CurrentStore + date
-                let sessionRef = ref.child(ShoppingSessionID)
-                
-                //Create the item list JSON
-                var items_bought = [String:Int]()
-                for item in CurrentShoppingCart{
-                    let code = item.code
-                    items_bought[code] = item.quantity
-                }
-                
-                let total_str = String(format: "%.2f", self.total)
-                
-                //Create the shopping session record JSON
-                let sessionRecord = [
-                            "store_id": CurrentStore,
-                            "items_bought": items_bought,
-                            "total": total_str] as [String : Any]
-                
-                //update the shopping record on Firebase
-                sessionRef.updateChildValues(sessionRecord)
-                
-                DispatchQueue.main.async (execute: { () -> Void in
-                    self.ActivityIndicator.stopAnimating()
-                    self.performSegue(withIdentifier: "CheckoutToReceipt", sender: self)
+        if (total == 0.0){
+            showAlert(withMessage: "Add something to your shopping cart! :)")
+        } else {
+            
+            //Bring up loading view
+            LoadingView.isHidden = false
+            ActivityIndicator.isHidden = false
+            LoadingText.isHidden = false
+            view.bringSubview(toFront: LoadingView)
+            LoadingView.bringSubview(toFront: ActivityIndicator)
+            LoadingView.bringSubview(toFront: LoadingText)
+            ActivityIndicator.startAnimating()
+            ActivityIndicator.hidesWhenStopped = true
+            
+            showVenmo()
+            
+            /*self.fetchClientToken(handleComplete: {
+                self.createTransaction(completion: {() -> () in
+                    //Firebase Ref
+                    let ref = FIRDatabase.database().reference(withPath: "shopping_sessions/\(CurrentUserId)")
+                    let date = self.getDateTime()
+                    
+                    
+                    let ShoppingSessionID = "s" + CurrentStore + date
+                    let sessionRef = ref.child(ShoppingSessionID)
+                    
+                    //Create the item list JSON
+                    var items_bought = [String:Int]()
+                    for item in CurrentShoppingCart{
+                        let code = item.code
+                        items_bought[code] = item.quantity
+                    }
+                    
+                    let total_str = String(format: "%.2f", self.total)
+                    
+                    //Create the shopping session record JSON
+                    let sessionRecord = [
+                        "store_id": CurrentStore,
+                        "items_bought": items_bought,
+                        "total": total_str] as [String : Any]
+                    
+                    //update the shopping record on Firebase
+                    sessionRef.updateChildValues(sessionRecord)
+                    
+                    DispatchQueue.main.async (execute: { () -> Void in
+                        self.ActivityIndicator.stopAnimating()
+                        self.performSegue(withIdentifier: "CheckoutToReceipt", sender: self)
+                    })
                 })
-            })
-        })
-        
+            })*/
+        }
+    }
+    
+    func showVenmo() {
+        if let url = URL(string: "https://venmo.com/?txn=pay&recipients=Sherry-Chen-1120&amount=1&share=f&audience=friends&note=UCheck") {
+            //let config = SFSafariViewController.Configuration()
+            //config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
+        }
     }
     
     private func getDateTime() -> String {

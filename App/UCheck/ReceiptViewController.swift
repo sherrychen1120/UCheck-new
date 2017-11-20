@@ -9,6 +9,7 @@ import UIKit
 
 class ReceiptViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    var checked = false
     @IBOutlet weak var ButtonArea: UIView!
     @IBOutlet weak var SubtotalLabel: UILabel!
     @IBOutlet weak var TaxLabel: UILabel!
@@ -16,8 +17,17 @@ class ReceiptViewController: UIViewController,UICollectionViewDelegate, UICollec
     @IBOutlet weak var ItemsCollection: UICollectionView!
     @IBOutlet weak var ConfirmButton: UIButton!
     @IBAction func ConfirmButton(_ sender: Any) {
-        
-        performSegue(withIdentifier: "ReceiptToFinish", sender: self)
+        if (checked == false){
+            showAlert(withMessage: "Please show this page to a cashier and check the box for payment confirmation.")
+        } else {
+            performSegue(withIdentifier: "ReceiptToFinish", sender: self)
+        }
+    }
+    @IBAction func CheckBox(_ sender: Any) {
+        checked = !checked
+    }
+    @IBAction func HelpButton(_ sender: Any) {
+        showAlert(withMessage: "Please show this page to a cashier so they can confirm your payment before you leave.")
     }
     
     override func viewDidLoad() {
@@ -115,6 +125,13 @@ class ReceiptViewController: UIViewController,UICollectionViewDelegate, UICollec
         print("unwindSegue to receipt")
     }
     
+    // MARK: - show alert
+    func showAlert(withMessage: String) {
+        let alert = UIAlertController(title: "", message: withMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
