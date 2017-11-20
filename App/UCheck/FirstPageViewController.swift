@@ -24,36 +24,69 @@ class FirstPageViewController: UIViewController {
         
         //Read from user default. If it's the first time the app is opened on this phone, show the signup page.
         let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "ExistingDevice") //Just for Sign-up testing
         if let stringOne = defaults.string(forKey: "ExistingDevice") {
-            print("Existing Device" + stringOne)
-            //print("going to sign up page")
-            //self.performSegue(withIdentifier: "FirstPageToSignUp", sender: self)
+            print("Existing Device " + stringOne)
+            let isExistingDevice = (stringOne == "true")
             
-            let retrievedEmail: String? = KeychainWrapper.standard.string(forKey: "email")
-            let retrievedPassword: String? = KeychainWrapper.standard.string(forKey: "password")
-            
-            if let email = retrievedEmail, let password = retrievedPassword{
-                FIRAuth.auth()!.signIn(withEmail: email, password: password){
-                    (user, error) in
-                    if error != nil {
-                        self.performSegue(withIdentifier: "FirstPageToLogin", sender: nil)
-                    } else {
-                        //Store user email
-                        CurrentUser = email
+            if (isExistingDevice){
+                let retrievedEmail: String? = KeychainWrapper.standard.string(forKey: "email")
+                let retrievedPassword: String? = KeychainWrapper.standard.string(forKey: "password")
+                
+                if let email = retrievedEmail, let password = retrievedPassword{
+                    FIRAuth.auth()!.signIn(withEmail: email, password: password){
+                        (user, error) in
+                        if error != nil {
+                            self.performSegue(withIdentifier: "FirstPageToLogin", sender: nil)
+                        } else {
+                            //Store user email
+                            CurrentUser = email
+                            
+                            //Store user id
+                            if let user = FIRAuth.auth()?.currentUser{
+                                self.uid = user.uid
+                                CurrentUserId = user.uid
+                            }
+                            
+                            //Get user name
+                            self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                                let value = snapshot.value as? NSDictionary
+                                let first_name = value?["first_name"] as? String ?? ""
+                                let last_name = value?["last_name"] as? String ?? ""
+                                //let url_string = value?["photo_url"] as? String ?? ""
+                                
+                                CurrentUserName = first_name + " " + last_name
+                                //self.retrievePhoto(uid : CurrentUserId)
+                                print("user info stored.")
+                            }) { (error) in
+                                print(error.localizedDescription)
+                            }
+                            
+                            self.performSegue(withIdentifier: "FirstPageToScanner", sender: nil)
+                        }
+                    }
+                } else if let accessToken = FBSDKAccessToken.current() {
+                    let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+                    
+                    FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                        if let error = error {
+                            print("Login error: \(error.localizedDescription)")
+                            self.performSegue(withIdentifier: "FirstPageToLogin", sender: nil)
+                        }
                         
-                        //Store user id
+                        //Store user name & photo
                         if let user = FIRAuth.auth()?.currentUser{
                             self.uid = user.uid
                             CurrentUserId = user.uid
                         }
                         
-                        //Get user name
+                        //Get user email & names
                         self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                             let value = snapshot.value as? NSDictionary
                             let first_name = value?["first_name"] as? String ?? ""
                             let last_name = value?["last_name"] as? String ?? ""
-                            //let url_string = value?["photo_url"] as? String ?? ""
-                            
+                            let email = value?["email"] as? String ?? ""
+                            CurrentUser = email
                             CurrentUserName = first_name + " " + last_name
                             //self.retrievePhoto(uid : CurrentUserId)
                             print("user info stored.")
@@ -61,54 +94,20 @@ class FirstPageViewController: UIViewController {
                             print(error.localizedDescription)
                         }
                         
+                        print("ID BRO:" + (FIRAuth.auth()?.currentUser?.uid)!)
                         self.performSegue(withIdentifier: "FirstPageToScanner", sender: nil)
-                    }
+                        
+                    })
+                } else {
+                    self.performSegue(withIdentifier: "FirstPageToLogin", sender: nil)
                 }
-            } else if let accessToken = FBSDKAccessToken.current() {
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-                
-                FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
-                    if let error = error {
-                        print("Login error: \(error.localizedDescription)")
-                        self.performSegue(withIdentifier: "FirstPageToLogin", sender: nil)
-                    }
-                    
-                    //Store user name & photo
-                    if let user = FIRAuth.auth()?.currentUser{
-                        self.uid = user.uid
-                        CurrentUserId = user.uid
-                    }
-                    
-                    //Get user email & names
-                    self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                        let value = snapshot.value as? NSDictionary
-                        let first_name = value?["first_name"] as? String ?? ""
-                        let last_name = value?["last_name"] as? String ?? ""
-                        let email = value?["email"] as? String ?? ""
-                        CurrentUser = email
-                        CurrentUserName = first_name + " " + last_name
-                        //self.retrievePhoto(uid : CurrentUserId)
-                        print("user info stored.")
-                    }) { (error) in
-                        print(error.localizedDescription)
-                    }
-                    
-                    print("ID BRO:" + (FIRAuth.auth()?.currentUser?.uid)!)
-                    self.performSegue(withIdentifier: "FirstPageToScanner", sender: nil)
-                    
-                })
             } else {
-                self.performSegue(withIdentifier: "FirstPageToLogin", sender: nil)
+                //First time using this device.
+                defaults.set("true", forKey: "ExistingDevice")
+                print("going to sign up page")
+                self.performSegue(withIdentifier: "FirstPageToSignUp", sender: self)
             }
-        } else {
-            //First time using this device.
-            defaults.set("true", forKey: "ExistingDevice")
-            print("going to sign up page")
-            self.performSegue(withIdentifier: "FirstPageToSignUp", sender: self)
         }
-        
-        
-
     }
 
     private func retrievePhoto(uid: String){
