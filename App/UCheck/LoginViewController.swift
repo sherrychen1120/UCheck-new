@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var EmailInput: UITextField!
     @IBOutlet weak var PasswordInput: UITextField!
     @IBOutlet weak var LoginButton: UIButton!
+    @IBOutlet weak var FacebookButton: UIButton!
     var uid = ""
     let ref = FIRDatabase.database().reference(withPath: "user-profiles")
 
@@ -209,7 +210,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         LoginButton.layer.cornerRadius = 9
-        
+        FacebookButton.layer.cornerRadius = 4.5
+        FacebookButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+        FacebookButton.contentVerticalAlignment = UIControlContentVerticalAlignment.center
+        view.setGradientBackground(colorOne: Colors.lightRed, colorTwo: Colors.darkRed)
     }
 
     override func didReceiveMemoryWarning() {
