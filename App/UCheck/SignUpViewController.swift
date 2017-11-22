@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.setGradientBackground(colorOne: Colors.lightRed, colorTwo: Colors.darkRed)
         // Do any additional setup after loading the view.
     }
 

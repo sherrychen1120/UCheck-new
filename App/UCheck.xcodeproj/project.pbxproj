@@ -54,6 +54,7 @@
 		56FC95C51F1F13880090A1AE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C41F1F13880090A1AE /* Item.swift */; };
 		56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C61F20945C0090A1AE /* MenuViewController.swift */; };
 		A90ACA6E1FC612A800177EA1 /* FacebookProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90ACA6D1FC612A800177EA1 /* FacebookProfileRequest.swift */; };
+		A90ACA701FC61B9000177EA1 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90ACA6F1FC61B9000177EA1 /* UIView+Extension.swift */; };
 		B8AF986AFF0651EAAB522D9B /* Pods_UCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,7 @@
 		8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CCC7E31EE3909C7CB36AEA /* Pods-UCheckTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckTests/Pods-UCheckTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A90ACA6D1FC612A800177EA1 /* FacebookProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookProfileRequest.swift; sourceTree = "<group>"; };
+		A90ACA6F1FC61B9000177EA1 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C6E03D6D227EB6702B4CDFF8 /* Pods-UCheckTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckTests/Pods-UCheckTests.release.xcconfig"; sourceTree = "<group>"; };
 		D808FF2563865F87077DD8D2 /* Pods-UCheckUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckUITests/Pods-UCheckUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7A68DBC20091C5E0EDD9DA /* Pods-UCheckUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckUITests/Pods-UCheckUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				5652EF971F09D1030014873D /* AppDelegate.swift */,
+				A90ACA6F1FC61B9000177EA1 /* UIView+Extension.swift */,
 				A90ACA6D1FC612A800177EA1 /* FacebookProfileRequest.swift */,
 				5652EFA11F09D1030014873D /* Assets.xcassets */,
 				56B1AA6D1F287C450085FE06 /* store-code-ex.png */,
@@ -463,7 +466,7 @@
 				TargetAttributes = {
 					5652EF931F09D1030014873D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = UW63CYKZZU;
+						DevelopmentTeam = QCGB64L4VH;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -735,6 +738,7 @@
 				5652EF981F09D1030014873D /* AppDelegate.swift in Sources */,
 				56D9E3291F25B2440043E910 /* ShoppingCartTableView.swift in Sources */,
 				56FC95BF1F1DE2CC0090A1AE /* HalfModalInteractiveTransition.swift in Sources */,
+				A90ACA701FC61B9000177EA1 /* UIView+Extension.swift in Sources */,
 				56B680FA1F0C45F600772C68 /* MonthYearPickerView.swift in Sources */,
 				565D91B31F23DD2A009C2393 /* ShoppingCartViewController.swift in Sources */,
 				5684800F1F4B80DD00B41BC7 /* EdgeShadowLayer.swift in Sources */,
@@ -902,7 +906,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UCheck/UCheck.entitlements;
-				DEVELOPMENT_TEAM = UW63CYKZZU;
+				DEVELOPMENT_TEAM = QCGB64L4VH;
 				INFOPLIST_FILE = UCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucheckbeta.UCheck;
@@ -921,7 +925,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UCheck/UCheck.entitlements;
-				DEVELOPMENT_TEAM = UW63CYKZZU;
+				DEVELOPMENT_TEAM = QCGB64L4VH;
 				INFOPLIST_FILE = UCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucheckbeta.UCheck;
