@@ -219,6 +219,7 @@
                         <outlet property="LastNameInput" destination="Efd-zI-uoz" id="PWb-gr-sqb"/>
                         <outlet property="PasswordInput" destination="MmL-lC-BhZ" id="bC4-v1-zPA"/>
                         <segue destination="M6h-eb-QMo" kind="show" identifier="SignUpToVenmo" id="FvN-Mo-PyD"/>
+                        <segue destination="gbQ-Jh-5Ig" kind="show" identifier="SignUpToScanner" id="BaN-Tn-j8k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7U-el-D4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,11 +328,12 @@
                         <segue destination="qgG-kK-JM5" kind="show" identifier="LoginToSetup" id="mT5-NQ-v51"/>
                         <segue destination="gbQ-Jh-5Ig" kind="show" identifier="LoginToScanner" id="NRm-WD-tbV"/>
                         <segue destination="M6h-eb-QMo" kind="show" identifier="LoginToVenmo" id="BbT-Cx-kJI"/>
+                        <segue destination="ztx-sE-RLm" kind="show" identifier="LoginToSetup" id="PBX-Gr-8q4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QaC-B2-isA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1905" y="390"/>
+            <point key="canvasLocation" x="1905" y="444"/>
         </scene>
         <!--Scanner View Controller-->
         <scene sceneID="TlP-9w-gKi">
@@ -1792,6 +1794,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FvN-Mo-PyD"/>
-        <segue reference="NRm-WD-tbV"/>
+        <segue reference="BaN-Tn-j8k"/>
+        <segue reference="PBX-Gr-8q4"/>
     </inferredMetricsTieBreakers>
 </document>
