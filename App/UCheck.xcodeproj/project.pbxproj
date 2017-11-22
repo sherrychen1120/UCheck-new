@@ -53,6 +53,7 @@
 		56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C21F1DE2D90090A1AE /* HalfModalPresentationController.swift */; };
 		56FC95C51F1F13880090A1AE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C41F1F13880090A1AE /* Item.swift */; };
 		56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C61F20945C0090A1AE /* MenuViewController.swift */; };
+		A90ACA6E1FC612A800177EA1 /* FacebookProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90ACA6D1FC612A800177EA1 /* FacebookProfileRequest.swift */; };
 		B8AF986AFF0651EAAB522D9B /* Pods_UCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,7 @@
 		7FA7946E1E4FBA95F6FB4301 /* Pods_UCheckUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheckUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D84EFF3D61A881FEEFB3827 /* Pods_UCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CCC7E31EE3909C7CB36AEA /* Pods-UCheckTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckTests/Pods-UCheckTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A90ACA6D1FC612A800177EA1 /* FacebookProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookProfileRequest.swift; sourceTree = "<group>"; };
 		C6E03D6D227EB6702B4CDFF8 /* Pods-UCheckTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckTests/Pods-UCheckTests.release.xcconfig"; sourceTree = "<group>"; };
 		D808FF2563865F87077DD8D2 /* Pods-UCheckUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckUITests/Pods-UCheckUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7A68DBC20091C5E0EDD9DA /* Pods-UCheckUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckUITests/Pods-UCheckUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				5652EF971F09D1030014873D /* AppDelegate.swift */,
+				A90ACA6D1FC612A800177EA1 /* FacebookProfileRequest.swift */,
 				5652EFA11F09D1030014873D /* Assets.xcassets */,
 				56B1AA6D1F287C450085FE06 /* store-code-ex.png */,
 				567488BE1F09F4CF00EB4471 /* UCheck.entitlements */,
@@ -706,6 +709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				565D91B11F23CAD8009C2393 /* SlideInPresentationAnimator.swift in Sources */,
+				A90ACA6E1FC612A800177EA1 /* FacebookProfileRequest.swift in Sources */,
 				56B681041F10771F00772C68 /* LoginViewController.swift in Sources */,
 				565D91AF1F23C7C4009C2393 /* SlideInPresentationController.swift in Sources */,
 				565E4BC01FACFCA500D273E8 /* VenmoSetupViewController.swift in Sources */,
