@@ -25,9 +25,9 @@ class LoginViewController: UIViewController {
             let email = EmailInput.text!
             let password = PasswordInput.text!
         
-//            if (email == "" || password == ""){
-//                showAlert(withMessage: "Incomplete information.")
-//            } else {
+            if (email == "" || password == ""){
+                self.showAlert(withMessage: "Incomplete information.")
+            } else {
                 FIRAuth.auth()!.signIn(withEmail: email, password: password){(user, error) in
                     if error != nil {
                         
@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
                             case .errorCodeWrongPassword:
                                 self.showAlert(withMessage: "Wrong password")
                             default:
-                                self.showAlert(withMessage: "Some error occurs")
+                                self.showAlert(withMessage: "Some other error occurs")
                             }
                         }
                         
@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
                         
                         //Save the user info to NSUserDefaults
                         let defaults = UserDefaults.standard
-                        if (defaults.object(forKey: email) == nil){
+                        if (defaults.object(forKey: "email+" + email) == nil){
                             defaults.set(CurrentUserName, forKey: "email+"+email)
                         }
                         
@@ -79,61 +79,11 @@ class LoginViewController: UIViewController {
                     }
                     
                     self.performSegue(withIdentifier: "LoginToScanner", sender: nil)
-//                }
+                }
                 
             }
         
     }
-    
-    struct MyProfileRequest: GraphRequestProtocol {
-        struct Response: GraphResponseProtocol {
-            var first_name: String?
-            var last_name: String?
-            var id: String?
-            var email: String?
-            var profilePictureUrl: String?
-            
-            init(rawResponse: Any?) {
-                // Decode JSON from rawResponse into other properties here.
-                guard let response = rawResponse as? Dictionary<String, Any> else {
-                    return
-                }
-                
-                if let first_name = response["first_name"] as? String {
-                    self.first_name = first_name
-                }
-                
-                if let last_name = response["last_name"] as? String {
-                    self.last_name = last_name
-                }
-                
-                if let id = response["id"] as? String {
-                    self.id = id
-                }
-                
-                if let email = response["email"] as? String {
-                    self.email = email
-                }
-                
-                if let picture = response["picture"] as? Dictionary<String, Any> {
-                    
-                    if let data = picture["data"] as? Dictionary<String, Any> {
-                        if let url = data["url"] as? String {
-                            self.profilePictureUrl = url
-                        }
-                    }
-                }
-            }
-        }
-        
-        var graphPath = "/me"
-        var parameters: [String : Any]? = ["fields": "id, first_name, last_name, email, picture"]
-        var accessToken = AccessToken.current
-        var httpMethod: GraphRequestHTTPMethod = .GET
-        var apiVersion: GraphAPIVersion = .defaultVersion
-    }
-    
-    var new_user = User(uid : "", first_name: "", last_name: "", email: "", phone_no: "")
     
     @IBAction func facebookLoginButton(_ sender: Any) {
         let loginManager = FBSDKLoginManager()
@@ -144,13 +94,16 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            //get accessToken from fb
             guard let accessToken = FBSDKAccessToken.current() else {
                 print("Failed to get access token")
                 return
             }
             
+            //swap fb token for firebase token
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
 
+            //sign in using firebase token
             FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
                 if let error = error {
                     print("Login error: \(error.localizedDescription)")
@@ -181,6 +134,7 @@ class LoginViewController: UIViewController {
     
     
     func searchExistingAccounts(snap: FIRDataSnapshot, completion:@escaping ()->()){
+        //is there a faster way to look if user_id exists?
         for item in snap.children {
             let curr_item = item as! FIRDataSnapshot
             let value = curr_item.value as? NSDictionary
@@ -189,20 +143,26 @@ class LoginViewController: UIViewController {
                 let first_name = value?["first_name"] as? String ?? ""
                 let last_name = value?["last_name"] as? String ?? ""
                 let email = value?["email"] as? String ?? ""
-                let userData = ["email": email, "first": first_name, "last": last_name]
-                UserDefaults.standard.set(userData, forKey: "fb-" + FBSDKAccessToken.current().userID!)
-                CurrentUserName = first_name + " " + last_name
+                let full_name = first_name + " " + last_name
+                
+                let userData = ["email": email, "full_name": full_name]
+                CurrentUserName = full_name
                 CurrentUser = email
+                
+                let defaults = UserDefaults.standard
+                defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
                 print("Going into Scanner")
                 self.performSegue(withIdentifier: "LoginToScanner", sender: self)
             }
         }
         completion()
     }
+    
+    var new_user = User(uid : "", first_name: "", last_name: "", email: "", phone_no: "")
         
     func GraphRequestAndToVenmo(){
         let connection = GraphRequestConnection()
-        connection.add(MyProfileRequest()) { response, result in
+        connection.add(ProfileRequest()) { response, result in
             switch result {
             case .success(let response):
                
@@ -212,10 +172,16 @@ class LoginViewController: UIViewController {
                                      email : response.email!,
                                      phone_no : "")
                 
-                print("UID1: " + self.uid)
+                print("User UID: " + self.uid)
+                let full_name = response.first_name! + " " + response.last_name!
                 
-                let userData = ["email": response.email!, "first": response.first_name!, "last": response.last_name!]
-                UserDefaults.standard.set(userData, forKey: "fb-" + FBSDKAccessToken.current().userID!)
+                //update info in the CurrentSession object
+                let userData = ["email": response.email!, "full_name": full_name]
+                CurrentUser = response.email!
+                CurrentUserName = full_name
+
+                let defaults = UserDefaults.standard
+                defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
                 
                 //update info on Firebase
                 let user_ref = self.ref.child(self.uid)
@@ -225,12 +191,8 @@ class LoginViewController: UIViewController {
                 if let pictureUrl = response.profilePictureUrl {
                     user_ref.updateChildValues([
                         "photo_url" : pictureUrl
-                        ])
+                    ])
                 }
-                
-                //update info in the CurrentSession object
-                CurrentUser = response.email!
-                CurrentUserName = response.first_name! + " " + response.last_name!
                 
                 self.performSegue(withIdentifier: "LoginToVenmo", sender: nil)
             case .failed(let error):
@@ -301,11 +263,10 @@ class LoginViewController: UIViewController {
         if segue.identifier == "LoginToVenmo"{
             //Send the new_user to the next VC
             if let nextScene = segue.destination as? VenmoSetupViewController{
-                print("UID2: " + self.new_user.uid)
+                print("User UID: " + self.new_user.uid)
                 nextScene.new_user = self.new_user
             }
         } else if segue.identifier == "LoginToScanner"{
-            
             print("user info stored.")
         }
     }

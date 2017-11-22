@@ -9,12 +9,13 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SwiftKeychainWrapper
+import FacebookLogin
+import FacebookCore
+import FBSDKLoginKit
 
 class SignUpViewController: UIViewController {
 
-    @IBAction func FBLoginButton(_ sender: Any) {
-        
-    }
+
     
     @IBOutlet weak var FirstNameInput: UITextField!
     @IBOutlet weak var LastNameInput: UITextField!
@@ -138,6 +139,133 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    var fb_uid = "";
+    @IBAction func FBLoginButton(_ sender: Any) {
+        let loginManager = FBSDKLoginManager()
+        
+        loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            //get accessToken from fb
+            guard let accessToken = FBSDKAccessToken.current() else {
+                print("Failed to get access token")
+                return
+            }
+            
+            //swap fb token for firebase token
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            //sign in using firebase token
+            FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+                if let error = error {
+                    print("Login error: \(error.localizedDescription)")
+                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    return
+                }
+                
+                if let user = FIRAuth.auth()?.currentUser{
+                    self.fb_uid = user.uid
+                    CurrentUserId = user.uid
+                    
+                    let profile_ref = FIRDatabase.database().reference(withPath: "user-profiles")
+                    //Get user name if already exists
+                    profile_ref.observeSingleEvent(of:.value, with: { (snapshot) in
+                        //bla bla bla
+                        self.searchExistingAccounts(snap:snapshot, completion: {
+                            self.GraphRequestAndToVenmo()
+                        })
+                    })
+                }
+            })//FIRAuth
+        }//log in
+    }
+    
+    func searchExistingAccounts(snap: FIRDataSnapshot, completion:@escaping ()->()){
+        //is there a faster way to look if user_id exists?
+        for item in snap.children {
+            let curr_item = item as! FIRDataSnapshot
+            let value = curr_item.value as? NSDictionary
+            let user_id = value?["uid"] as? String ?? ""
+            if (user_id == fb_uid){
+                let first_name = value?["first_name"] as? String ?? ""
+                let last_name = value?["last_name"] as? String ?? ""
+                let email = value?["email"] as? String ?? ""
+                let full_name = first_name + " " + last_name
+                
+                let userData = ["email": email, "full_name": full_name]
+                CurrentUserName = full_name
+                CurrentUser = email
+                
+                let defaults = UserDefaults.standard
+                defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
+                print("Going into Scanner")
+                self.performSegue(withIdentifier: "SignUpToScanner", sender: self)
+            }
+        }
+        completion()
+    }
+    
+    func GraphRequestAndToVenmo(){
+        let connection = GraphRequestConnection()
+        connection.add(ProfileRequest()) { response, result in
+            switch result {
+            case .success(let response):
+                
+                self.new_user = User(uid : self.fb_uid,
+                                     first_name : response.first_name!,
+                                     last_name : response.last_name!,
+                                     email : response.email!,
+                                     phone_no : "")
+                
+                print("User UID: " + self.fb_uid)
+                let full_name = response.first_name! + " " + response.last_name!
+                
+                //update info in the CurrentSession object
+                let userData = ["email": response.email!, "full_name": full_name]
+                CurrentUser = response.email!
+                CurrentUserName = full_name
+                
+                let defaults = UserDefaults.standard
+                defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
+                
+                //update info on Firebase
+                let user_ref = self.ref.child(self.fb_uid)
+                user_ref.setValue(self.new_user.toAnyObject())
+                
+                //get and add profile picture url to user_ref
+                if let pictureUrl = response.profilePictureUrl {
+                    user_ref.updateChildValues([
+                        "photo_url" : pictureUrl
+                    ])
+                }
+                
+                self.performSegue(withIdentifier: "SignUpToVenmo", sender: nil)
+            case .failed(let error):
+                print("Custom Graph Request Failed: \(error)")
+            }
+        }
+        connection.start()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SignUpToVenmo"{
+            //Send the new_user to the next VC
+            if let nextScene = segue.destination as? VenmoSetupViewController{
+                print("User UID: " + self.new_user.uid)
+                nextScene.new_user = self.new_user
+            }
+        } else if segue.identifier == "SignUpToScanner"{
+            print("user info stored.")
+        }
+    }
+    
     /*func isPasswordValid(_ password : String) -> Bool{
         let passwordTest = NSPredicate(format: "SELF MATCHES %@","^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]){6,}$")
         return passwordTest.evaluate(with: password)
@@ -148,21 +276,18 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
         
-        // MARK: - show alert
-        func showAlert(withMessage: String) {
-            let alert = UIAlertController(title: "Eh Oh", message: withMessage, preferredStyle: UIAlertControllerStyle.alert)
-            let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-    
+    // MARK: - show alert
+    func showAlert(withMessage: String) {
+        let alert = UIAlertController(title: "Eh Oh", message: withMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
