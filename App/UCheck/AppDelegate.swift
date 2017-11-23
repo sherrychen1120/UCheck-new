@@ -55,8 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 //If there's existing email logged in
                 if let email = retrievedEmail, let password = retrievedPassword{
-                    FIRAuth.auth()!.signIn(withEmail: email, password: password){
-                        (user, error) in
+                    FIRAuth.auth()!.signIn(withEmail: email, password: password){ (user, error) in
                         if error != nil {
                             targetID = "loginBoard"
                             self.showTargetVC(ID: targetID)
@@ -70,16 +69,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             }
                             
                             //Get the user name from NSUserDefaults
-                            CurrentUserName = defaults.object(forKey: "email-" + email) as! String
+                            guard let name = defaults.string(forKey: "email+" + email) else {
+                                print("Login error: no user in defaults")
+                                targetID = "loginBoard"
+                                self.showTargetVC(ID: targetID)
+                                return;
+                            }
+                            CurrentUserName = name
                             
                             targetID = "scannerBoard"
                             self.showTargetVC(ID: targetID)
                         }
                     }
+                //else if there's a FB login
                 } else if let accessToken = FBSDKAccessToken.current(){
                     let userID = accessToken.userID!
                     
-                    //FB log in using Firebase
+                    //swap fb accessToken for firebase login key
                     let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
                     
                     FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
@@ -95,17 +101,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         }
                         
                         //Get the user email & name from NSUserDefaults
-                        if let values = defaults.value(forKey: "fb-" + userID) as? [String: String]{
+                        if let values = defaults.value(forKey: "fb+" + userID) as? [String: String]{
                             CurrentUser = values["email"]!
                             CurrentUserName = values["full_name"]!
                         }
                         
-                        print("ID BRO:" + (FIRAuth.auth()?.currentUser?.uid)!)
+                        print("Logged in w/ Firebase UID:" + (FIRAuth.auth()?.currentUser?.uid)!)
                         targetID = "scannerBoard"
                         self.showTargetVC(ID: targetID)
                         
                     })
-                    
+                //no current email or fb session
                 } else {
                     targetID = "loginBoard"
                     showTargetVC(ID: targetID)
