@@ -65,6 +65,7 @@ class SignUpViewController: UIViewController {
             
             print("isValidPassword = " + String(isValidPassword))
             
+            //Create Firebase account
             if (!isValidPassword){
                 self.showAlert(withMessage: "Password requirements unmet.")
             } else {
@@ -88,6 +89,7 @@ class SignUpViewController: UIViewController {
                         }
                         
                     } else {
+                        //Sign in to Firebase
                         FIRAuth.auth()!.signIn(withEmail: self.email, password: self.password){(user, error) in
                             
                             if (error != nil){
