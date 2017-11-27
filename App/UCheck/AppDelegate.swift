@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //defaults.set(false, forKey: "ExistingDevice") //Just for Sign-up testing
         var targetID = ""
         
+        
         if let stringOne = defaults.string(forKey: "ExistingDevice") {
             print("Existing Device " + stringOne)
             let isExistingDevice = (stringOne == "true")

@@ -33,10 +33,8 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
             LoadingView.bringSubview(toFront: LoadingText)
             ActivityIndicator.startAnimating()
             ActivityIndicator.hidesWhenStopped = true
-            
-            showVenmo()
-            
-            /*self.fetchClientToken(handleComplete: {
+
+            self.fetchClientToken(handleComplete: {
                 self.createTransaction(completion: {() -> () in
                     //Firebase Ref
                     let ref = FIRDatabase.database().reference(withPath: "shopping_sessions/\(CurrentUserId)")
@@ -69,11 +67,11 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
                         self.performSegue(withIdentifier: "CheckoutToReceipt", sender: self)
                     })
                 })
-            })*/
+            })
         }
     }
     
-    func showVenmo() {
+    /*func showVenmo() {
         if let url = URL(string: "https://venmo.com/?txn=pay&recipients=Sherry-Chen-1120&amount=1&share=f&audience=friends&note=UCheck") {
             //let config = SFSafariViewController.Configuration()
             //config.entersReaderIfAvailable = true
@@ -81,7 +79,7 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
             let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
         }
-    }
+    }*/
     
     private func getDateTime() -> String {
         
