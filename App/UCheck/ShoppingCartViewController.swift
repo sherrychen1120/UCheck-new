@@ -11,6 +11,7 @@ import UIKit
 
 protocol communicationScanner {
     func scannerSetup()
+    func showHelpForm()
 }
 
 class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
