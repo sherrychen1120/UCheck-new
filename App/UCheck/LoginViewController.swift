@@ -18,6 +18,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var PasswordInput: UITextField!
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var FacebookButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var emailSquare: UIView!
+    
     var uid = ""
     let ref = FIRDatabase.database().reference(withPath: "user-profiles")
 
@@ -209,11 +212,37 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        LoginButton.layer.cornerRadius = 9
+        LoginButton.roundCorners([.bottomLeft, .bottomRight], radius: 4.5)
+        LoginButton.backgroundColor = UIColor(red: 245.0/255.0, green: 117.0/255.0, blue: 117.0/255.0, alpha: 1)
         FacebookButton.layer.cornerRadius = 4.5
-        FacebookButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
-        FacebookButton.contentVerticalAlignment = UIControlContentVerticalAlignment.center
+        FacebookButton.imageView?.contentMode = .scaleAspectFit
+        FacebookButton.backgroundColor = UIColor(red: 37.0/255.0, green: 71.0/255.0, blue: 155.0/255.0, alpha: 1)
         view.setGradientBackground(colorOne: Colors.lightRed, colorTwo: Colors.darkRed)
+        signUpButton.layer.cornerRadius = 4.5
+        signUpButton.layer.borderWidth = 1
+        signUpButton.layer.borderColor = (UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.75)).cgColor
+
+        let emailImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let userImage = UIImage(named: "usericon")
+        emailImageView.image = userImage
+        emailImageView.contentMode = .scaleAspectFit
+        EmailInput.leftViewMode = .always
+        EmailInput.leftView = emailImageView
+        
+        let passwordImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let lockImage = UIImage(named: "lockicon")
+        passwordImageView.image = lockImage
+        passwordImageView.contentMode = .scaleAspectFit
+        PasswordInput.leftViewMode = .always
+        PasswordInput.leftView = passwordImageView
+        
+        emailSquare.layer.borderWidth = 1
+        
+        emailSquare.roundCorners([.topLeft, .topRight], radius: 4.5)
+        emailSquare.layer.borderColor = (UIColor(red: 195.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)).cgColor
+
+        
+
     }
 
     override func didReceiveMemoryWarning() {
