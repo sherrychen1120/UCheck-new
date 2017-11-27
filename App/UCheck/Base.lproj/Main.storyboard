@@ -1256,6 +1256,9 @@
                                 <state key="normal" title="Help">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="HelpButton:" destination="hy2-Cr-yuu" eventType="touchUpInside" id="DAD-3M-ahO"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vg6-yq-oRj">
                                 <rect key="frame" x="0.0" y="458.5" width="375" height="208.5"/>
@@ -1285,7 +1288,7 @@
                                 </state>
                                 <connections>
                                     <action selector="LogoutButton:" destination="hy2-Cr-yuu" eventType="touchUpInside" id="b1l-bm-YVM"/>
-                                    <segue destination="epk-kH-fnv" kind="unwind" unwindAction="unwindToScannerForLogoutWithSegue:" id="zzW-GB-90C"/>
+                                    <segue destination="epk-kH-fnv" kind="unwind" identifier="unwindHelpToScanner" unwindAction="unwindToScannerForLogoutWithSegue:" id="zzW-GB-90C"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1331,7 +1334,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCm-Fj-7Hw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="epk-kH-fnv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="8752.7999999999993" y="2524.5877061469268"/>
+            <point key="canvasLocation" x="9009" y="2523"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="vGL-uw-fPK">

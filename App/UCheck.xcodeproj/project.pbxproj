@@ -230,6 +230,13 @@
 			name = SlideInPresentation;
 			sourceTree = "<group>";
 		};
+		567C786D1FC9E3E700907232 /* Settings Pages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Settings Pages";
+			sourceTree = "<group>";
+		};
 		568480101F4B80F000B41BC7 /* StyleHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +286,7 @@
 		56B680E91F09FB0900772C68 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				567C786D1FC9E3E700907232 /* Settings Pages */,
 				56B1AA711F2B87040085FE06 /* Checkout Flow */,
 				56B681221F1AC96F00772C68 /* Shopping Flow */,
 				56B6811F1F1AC67300772C68 /* Log In Flow */,

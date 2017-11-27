@@ -9,16 +9,34 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import SafariServices
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
 
     var uid : String = ""
     var delegate: communicationScanner? = nil
     
+
+    @IBAction func HelpButton(_ sender: Any) {
+        forHelp = true
+        print("forHelp = " + String(forHelp))
+        if (forHelp == true){
+            forHelp = false
+            self.dismiss(animated: true, completion: nil)
+            self.delegate?.showHelpForm()
+        } else {
+            self.dismiss(animated: true, completion: nil)
+            self.delegate?.scannerSetup()
+        }
+        /*if (forHelp == true){
+            self.performSegue(withIdentifier: "unwindHelpToScanner", sender: nil)
+        }*/
+    }
     @IBAction func LogoutButton(_ sender: Any) {
         toLogOut = true
         print("toLogOut = " + String(toLogOut))
     }
+    
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var UserNameLabel: UILabel!
     
@@ -40,6 +58,23 @@ class MenuViewController: UIViewController {
         self.delegate?.scannerSetup()
     }
     
+    func showHelpform() {
+        let urlString = "https://docs.google.com/forms/d/e/1FAIpQLSfO1WsJ23ByoqNSsgqGotFY4s7NKh6UEehAuV9tygDwUcFEyQ/viewform?usp=sf_link"
+        
+        if let url = URL(string: urlString) {
+            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: false)
+            vc.delegate = self
+            self.present(vc, animated: true)
+        }
+    }
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        print("safariVCDidFinish Called.")
+        self.performSegue(withIdentifier: "unwindToScanner", sender: nil)
+        //controller.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+    }
+
 
     /*
     // MARK: - Navigation
