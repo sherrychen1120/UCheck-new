@@ -10,10 +10,9 @@ import UIKit
 import AVFoundation
 import Firebase
 import SwiftKeychainWrapper
+import SafariServices
 
-
-
-class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate,  communicationScanner {
+class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate,SFSafariViewControllerDelegate,communicationScanner {
     
     //Scanner-related variables
     var captureSession:AVCaptureSession?
@@ -49,7 +48,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
    
     override func viewDidLoad() {
-        super.viewDidLoad()
 
         //Customize the checkout button
         CheckoutButton.layer.cornerRadius = 9
@@ -63,6 +61,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         //TODO:
         // search based on email, get PP, uid
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.scannerSetup()
+        print("view will appear scanner setup.") //Only load together with view did load
     }
     
     @IBAction func MenuButton(_ sender: Any) {
@@ -246,7 +249,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         self.scannerSetup()
         //Make sure the navigation bar is hidden...?
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        print("unwindSegue scannerSetup")
+        print("unwindSegue scannerSetup") //Doesn't work
     }
     
     @IBAction func unwindToScannerForLogout(segue: UIStoryboardSegue) {
@@ -270,6 +273,32 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             
         }
     }
+    
+    @IBAction func unwindToScannerForHelp(_ segue: UIStoryboardSegue){
+        print("unwindToScannerForHelp")
+        //self.showHelpform()
+    }
+    
+    func showHelpForm() {
+        //let urlString = "https://docs.google.com/forms/d/e/1FAIpQLSfO1WsJ23ByoqNSsgqGotFY4s7NKh6UEehAuV9tygDwUcFEyQ/viewform?usp=sf_link"
+        let urlString = "http://www.google.com"
+        
+        if let url = URL(string: urlString) {
+            
+            //let config = SFSafariViewController.Configuration()
+            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: false)
+            self.present(vc, animated: true)
+            
+            //vc.delegate = self
+            //self.present(vc, animated: true)
+        }
+    }
+    
+    /*func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        print("safariVCDidFinish Called.")
+        controller.dismiss(animated: true, completion: nil)
+    }*/
+    
     
     /*@IBAction func LogOutButton(_ sender: Any) {
         let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
