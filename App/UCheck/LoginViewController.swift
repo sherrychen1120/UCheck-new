@@ -212,12 +212,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
         LoginButton.roundCorners([.bottomLeft, .bottomRight], radius: 4.5)
         LoginButton.backgroundColor = UIColor(red: 245.0/255.0, green: 117.0/255.0, blue: 117.0/255.0, alpha: 1)
+        
         FacebookButton.layer.cornerRadius = 4.5
         FacebookButton.imageView?.contentMode = .scaleAspectFit
         FacebookButton.backgroundColor = UIColor(red: 37.0/255.0, green: 71.0/255.0, blue: 155.0/255.0, alpha: 1)
-        view.setGradientBackground(colorOne: Colors.lightRed, colorTwo: Colors.darkRed)
+        
+        view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
+        
         signUpButton.layer.cornerRadius = 4.5
         signUpButton.layer.borderWidth = 1
         signUpButton.layer.borderColor = (UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.75)).cgColor

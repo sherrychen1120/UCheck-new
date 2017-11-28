@@ -113,7 +113,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         //Initialization
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.view.backgroundColor = UIColor(red:0.53, green:0.05, blue:0.05, alpha:1.0)
+        view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
         RegisterButton.layer.cornerRadius = 9
         
         //Input TextFields delegate
