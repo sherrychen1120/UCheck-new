@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = UserDefaults.standard
         
         //For debug - clean ExistingDevice
-        defaults.set(false, forKey: "ExistingDevice")
+        //defaults.set(false, forKey: "ExistingDevice")
         
         //For debug - clean KeychainWrapper
         /*let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
@@ -130,6 +130,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        //First time using this device.
+        defaults.set("true", forKey: "ExistingDevice")
+        print("going to sign up page")
+        targetID = "signupBoard"
+        
+        showTargetVC(ID: targetID)
         return true
         
     }
