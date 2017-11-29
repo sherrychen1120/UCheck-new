@@ -32,7 +32,6 @@
 		56A720BC1FB0184D00FF6DCE /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A720BB1FB0184D00FF6DCE /* ReceiptViewController.swift */; };
 		56A720BE1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A720BD1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift */; };
 		56B1AA6E1F287C450085FE06 /* store-code-ex.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B1AA6D1F287C450085FE06 /* store-code-ex.png */; };
-		56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */; };
 		56B680EE1F0A09AC00772C68 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */; };
 		56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680EF1F0BFD1800772C68 /* CheckBox.swift */; };
 		56B680F41F0C2DEA00772C68 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B680F31F0C2DEA00772C68 /* SelfieViewController.swift */; };
@@ -108,7 +107,6 @@
 		56A720BB1FB0184D00FF6DCE /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 		56A720BD1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		56B1AA6D1F287C450085FE06 /* store-code-ex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "store-code-ex.png"; sourceTree = "<group>"; };
-		56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
 		56B680ED1F0A09AC00772C68 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		56B680EF1F0BFD1800772C68 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		56B680F31F0C2DEA00772C68 /* SelfieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
@@ -335,7 +333,6 @@
 			isa = PBXGroup;
 			children = (
 				56B681031F10771F00772C68 /* LoginViewController.swift */,
-				56B680EB1F09FD2300772C68 /* FirstPageViewController.swift */,
 			);
 			name = "Log In Flow";
 			sourceTree = "<group>";
@@ -474,7 +471,7 @@
 				TargetAttributes = {
 					5652EF931F09D1030014873D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = UW63CYKZZU;
+						DevelopmentTeam = QCGB64L4VH;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -729,7 +726,6 @@
 				56FC95C11F1DE2CC0090A1AE /* HalfModalTransitioningDelegate.swift in Sources */,
 				56B681021F0DFEA900772C68 /* User.swift in Sources */,
 				565D91B71F251A50009C2393 /* ShoppingCart.swift in Sources */,
-				56B680EC1F09FD2300772C68 /* FirstPageViewController.swift in Sources */,
 				56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */,
 				56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */,
 				565D91AC1F23C571009C2393 /* SlideInPresentationManager.swift in Sources */,
@@ -914,7 +910,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UCheck/UCheck.entitlements;
-				DEVELOPMENT_TEAM = UW63CYKZZU;
+				DEVELOPMENT_TEAM = QCGB64L4VH;
 				INFOPLIST_FILE = UCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucheckbeta.UCheck;
@@ -933,7 +929,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UCheck/UCheck.entitlements;
-				DEVELOPMENT_TEAM = UW63CYKZZU;
+				DEVELOPMENT_TEAM = QCGB64L4VH;
 				INFOPLIST_FILE = UCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucheckbeta.UCheck;
