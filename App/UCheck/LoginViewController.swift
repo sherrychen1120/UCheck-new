@@ -47,44 +47,48 @@ class LoginViewController: UIViewController {
                             }
                         }
                         
-                    }
-                    
-                    let saveEmail: Bool = KeychainWrapper.standard.set(email, forKey: "email")
-                    let savePassword: Bool = KeychainWrapper.standard.set(password, forKey: "password")
-                    print("Successfully saved email: \(saveEmail);")
-                    print("Successfully saved passwordd: \(savePassword).")
-                    
-                    //Store user email
-                    CurrentUser = email
-                    print(CurrentUser + " user stored.")
-
-                    self.uid = (user?.uid)!
-                    print(self.uid)
-                    
-                    self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                        // Get user value
-                        let value = snapshot.value as? NSDictionary
-                        let first_name = value?["first_name"] as? String ?? ""
-                        let last_name = value?["last_name"] as? String ?? ""
-                        //let url_string = value?["photo_url"] as? String ?? ""
+                    } else if let curr_user = user {
+                        //user != nil
                         
-                        CurrentUserName = first_name + " " + last_name
+                        let saveEmail: Bool = KeychainWrapper.standard.set(email, forKey: "email")
+                        let savePassword: Bool = KeychainWrapper.standard.set(password, forKey: "password")
+                        print("Successfully saved email: \(saveEmail);")
+                        print("Successfully saved passwordd: \(savePassword).")
                         
-                        //Save the user info to NSUserDefaults
-                        let defaults = UserDefaults.standard
-                        if (defaults.object(forKey: "email+" + email) == nil){
-                            defaults.set(CurrentUserName, forKey: "email+"+email)
+                        //Store user email
+                        CurrentUser = email
+                        print(CurrentUser + " user stored.")
+                        
+                        self.uid = curr_user.uid
+                        print(self.uid)//debug
+                        
+                        self.ref.child(self.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                            // Get user value
+                            let value = snapshot.value as? NSDictionary
+                            let first_name = value?["first_name"] as? String ?? ""
+                            let last_name = value?["last_name"] as? String ?? ""
+                            //let url_string = value?["photo_url"] as? String ?? ""
+                            
+                            CurrentUserName = first_name + " " + last_name
+                            
+                            //Save the user info to NSUserDefaults
+                            let defaults = UserDefaults.standard
+                            if (defaults.object(forKey: "email+" + email) == nil){
+                                defaults.set(CurrentUserName, forKey: "email+"+email)
+                            }
+                            
+                            //self.retrievePhoto(url: photo_url!)
+                            
+                        }) { (error) in
+                            print(error.localizedDescription)
                         }
                         
-                        //self.retrievePhoto(url: photo_url!)
-                        
-                    }) { (error) in
-                        print(error.localizedDescription)
+                        self.performSegue(withIdentifier: "LoginToScanner", sender: nil)
+                    } else {
+                        //user == null
+                        self.showAlert(withMessage: "Sign in error. Try again.")
                     }
-                    
-                    self.performSegue(withIdentifier: "LoginToScanner", sender: nil)
                 }
-                
             }
         
     }
@@ -160,14 +164,12 @@ class LoginViewController: UIViewController {
                 
                 let defaults = UserDefaults.standard
                 defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
-<<<<<<< HEAD
                 
                 break
-=======
-                print("Going into Scanner")
+                
+                /*print("Going into Scanner")
                 self.performSegue(withIdentifier: "LoginToScanner", sender: self)
-                return
->>>>>>> fc50683e6872a2bba4c8b3fd47406c8cb7289895
+                return*/
             }
         }
         
@@ -224,7 +226,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func SignUpButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "LoginToSetup", sender: nil)
+        self.performSegue(withIdentifier: "LoginToSignup", sender: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
