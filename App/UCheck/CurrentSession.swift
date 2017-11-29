@@ -27,6 +27,7 @@ var forHelp = false
 protocol communicationScanner {
     func scannerSetup()
     func showHelpForm()
+    func toLogOut()
 }
 
 class CurrentSession: NSObject {

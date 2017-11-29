@@ -31,13 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Check if the app has been opened on this device before.
         let defaults = UserDefaults.standard
         
-        //defaults.set(false, forKey: "ExistingDevice") //Just for Sign-up testing
+        //For debug - clean ExistingDevice
+        defaults.set(false, forKey: "ExistingDevice")
         
         //For debug - clean KeychainWrapper
-        let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
+        /*let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
         let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
         print("Successfully removed email: \(removeEmail);")
-        print("Successfully removed password: \(removePassword).")
+        print("Successfully removed password: \(removePassword).")*/
         
         var targetID = ""
         
