@@ -529,11 +529,9 @@
                         <segue destination="hy2-Cr-yuu" kind="presentation" identifier="ScanningToMenu" id="s1r-gW-IKa"/>
                         <segue destination="CoY-kx-CGz" kind="presentation" identifier="ScanningToCart" id="F50-un-QeU"/>
                         <segue destination="BMU-42-sIY" kind="show" identifier="ScanningToCheckout" id="Pdx-O8-oQT"/>
-                        <segue destination="HRK-lf-AZ7" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="bmc-wf-pq1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3o-lo-Upa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="HRK-lf-AZ7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="9581.6000000000004" y="1478.4107946026988"/>
         </scene>
@@ -1288,7 +1286,6 @@
                                 </state>
                                 <connections>
                                     <action selector="LogoutButton:" destination="hy2-Cr-yuu" eventType="touchUpInside" id="b1l-bm-YVM"/>
-                                    <segue destination="epk-kH-fnv" kind="unwind" identifier="unwindHelpToScanner" unwindAction="unwindToScannerForLogoutWithSegue:" id="zzW-GB-90C"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1328,7 +1325,7 @@
                     <connections>
                         <outlet property="UserImage" destination="cBz-lf-mwq" id="EQk-Ca-kGd"/>
                         <outlet property="UserNameLabel" destination="fhP-Mw-9nF" id="cMm-Qu-hW1"/>
-                        <segue destination="epk-kH-fnv" kind="unwind" identifier="MenuToScanning" unwindAction="unwindToScannerWithSegue:" id="eTJ-cL-Lxr"/>
+                        <segue destination="epk-kH-fnv" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="6KH-JA-EfR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCm-Fj-7Hw" userLabel="First Responder" sceneMemberID="firstResponder"/>

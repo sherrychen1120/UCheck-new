@@ -24,6 +24,10 @@ var CurrentUserPhoto : UIImage? = nil
 var toLogOut = false
 var forHelp = false
 
+protocol communicationScanner {
+    func scannerSetup()
+    func showHelpForm()
+}
 
 class CurrentSession: NSObject {
 

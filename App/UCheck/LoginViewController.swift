@@ -138,12 +138,16 @@ class LoginViewController: UIViewController {
     
     
     func searchExistingAccounts(snap: FIRDataSnapshot, completion:@escaping ()->()){
+        var found = false
+        
         //is there a faster way to look if user_id exists?
         for item in snap.children {
             let curr_item = item as! FIRDataSnapshot
             let value = curr_item.value as? NSDictionary
             let user_id = value?["uid"] as? String ?? ""
             if (user_id == uid){
+                found = true
+                
                 let first_name = value?["first_name"] as? String ?? ""
                 let last_name = value?["last_name"] as? String ?? ""
                 let email = value?["email"] as? String ?? ""
@@ -155,11 +159,17 @@ class LoginViewController: UIViewController {
                 
                 let defaults = UserDefaults.standard
                 defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
-                print("Going into Scanner")
-                self.performSegue(withIdentifier: "LoginToScanner", sender: self)
+                
+                break
             }
         }
-        completion()
+        
+        if (found == true){
+            print("Going into Scanner")
+            self.performSegue(withIdentifier: "LoginToScanner", sender: self)
+        } else {
+            completion()
+        }
     }
     
     var new_user = User(uid : "", first_name: "", last_name: "", email: "", phone_no: "")
@@ -241,7 +251,8 @@ class LoginViewController: UIViewController {
         emailSquare.roundCorners([.topLeft, .topRight], radius: 4.5)
         emailSquare.layer.borderColor = (UIColor(red: 195.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0)).cgColor
 
-        
+        //Call function to let the keyboard go down when the user taps around
+        self.hideKeyboardWhenTappedAround()
 
     }
 
@@ -302,5 +313,18 @@ class LoginViewController: UIViewController {
         } else if segue.identifier == "LoginToScanner"{
             print("user info stored.")
         }
+    }
+}
+
+//To bring down keyboard when a user taps around
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

@@ -9,11 +9,6 @@
 import UIKit
 
 
-protocol communicationScanner {
-    func scannerSetup()
-    func showHelpForm()
-}
-
 class ShoppingCartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var StoreNameLabel: UILabel!

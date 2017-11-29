@@ -253,25 +253,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     @IBAction func unwindToScannerForLogout(segue: UIStoryboardSegue) {
-        if (toLogOut == true){
-            print("unwindSegue for log out")
-            toLogOut = false
-            let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
-            let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
-            print("Successfully removed email: \(removeEmail);")
-            print("Successfully removed password: \(removePassword).")
-            
-            if FIRAuth.auth()?.currentUser != nil{
-                //There is a user signed in
-                do{
-                    try! FIRAuth.auth()!.signOut()
-                    print("signed out")
-                    ShoppingCart.clear()
-                    self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
-                }
-            }
-            
-        }
+        
     }
     
     @IBAction func unwindToScannerForHelp(_ segue: UIStoryboardSegue){
