@@ -276,6 +276,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
     }
     
+    func toLogOut(){
+        self.performSegue(withIdentifier: "unwindToLogin", sender: self)
+    }
+    
     /*func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         print("safariVCDidFinish Called.")
         controller.dismiss(animated: true, completion: nil)

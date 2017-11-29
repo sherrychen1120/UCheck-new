@@ -16,6 +16,7 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
 
     var uid : String = ""
     var delegate: communicationScanner? = nil
+    var loggingOut = false
     
     @IBAction func HelpButton(_ sender: Any) {
         forHelp = true
@@ -32,8 +33,10 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
             self.performSegue(withIdentifier: "unwindHelpToScanner", sender: nil)
         }*/
     }
+    
     @IBAction func LogoutButton(_ sender: Any) {
         print("toLogOut")
+        loggingOut = true
         
         //Identify login method and log out
         if let accessToken = FBSDKAccessToken.current(){
@@ -48,7 +51,7 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
             print("Successfully removed password: \(removePassword).")
         }
         
-        //Sign out through FB
+        //Log out through Firebase
         if FIRAuth.auth()?.currentUser != nil{
             do{
                 try! FIRAuth.auth()!.signOut()
@@ -62,13 +65,10 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
                 //Clean shopping cart
                 ShoppingCart.clear()
                 
-                //perform segue to login VC
-                self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
             }
-        } else {
-            self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
         }
-            
+        
+        self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -91,7 +91,11 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         print("menu view will disappear")
-        self.delegate?.scannerSetup()
+        if (loggingOut == false){
+            self.delegate?.scannerSetup()
+        } else {
+            self.delegate?.toLogOut()
+        }
     }
     
     func showHelpform() {
