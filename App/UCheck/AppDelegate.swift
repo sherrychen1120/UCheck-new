@@ -30,9 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Check if the app has been opened on this device before.
         let defaults = UserDefaults.standard
-        //defaults.set(false, forKey: "ExistingDevice") //Just for Sign-up testing
-        var targetID = ""
         
+        //defaults.set(false, forKey: "ExistingDevice") //Just for Sign-up testing
+        
+        //For debug - clean KeychainWrapper
+        let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
+        let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
+        print("Successfully removed email: \(removeEmail);")
+        print("Successfully removed password: \(removePassword).")
+        
+        var targetID = ""
         
         if let stringOne = defaults.string(forKey: "ExistingDevice") {
             print("Existing Device " + stringOne)
@@ -44,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 targetID = "signupBoard"
                 
                 showTargetVC(ID: targetID)
+                return true
                 
             } else {
                 //Try retrieving email login info
@@ -52,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 //Try retrieving FB login info
                 FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-                print(FBSDKAccessToken.current())//debug print
+                //print(FBSDKAccessToken.current())//debug print
                 
                 //If there's existing email logged in
                 if let email = retrievedEmail, let password = retrievedPassword{
@@ -117,11 +125,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     targetID = "loginBoard"
                     showTargetVC(ID: targetID)
                 }
-                
+                return true
             }
         }
         
         return true
+        
     }
     
     func showTargetVC(ID: String){

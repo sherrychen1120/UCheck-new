@@ -10,13 +10,13 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 import SafariServices
+import FBSDKLoginKit
 
 class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
 
     var uid : String = ""
     var delegate: communicationScanner? = nil
     
-
     @IBAction func HelpButton(_ sender: Any) {
         forHelp = true
         print("forHelp = " + String(forHelp))
@@ -33,8 +33,43 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
         }*/
     }
     @IBAction func LogoutButton(_ sender: Any) {
-        toLogOut = true
-        print("toLogOut = " + String(toLogOut))
+        print("toLogOut")
+        
+        //Identify login method and log out
+        if let accessToken = FBSDKAccessToken.current(){
+            //If logged in through FB
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+        } else {
+            //If logged in through email
+            let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
+            let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
+            print("Successfully removed email: \(removeEmail);")
+            print("Successfully removed password: \(removePassword).")
+        }
+        
+        //Sign out through FB
+        if FIRAuth.auth()?.currentUser != nil{
+            do{
+                try! FIRAuth.auth()!.signOut()
+                print("signed out")
+                
+                //Clean objects in CurrentSession
+                CurrentUser = ""
+                CurrentUserName = ""
+                CurrentUserId = ""
+                
+                //Clean shopping cart
+                ShoppingCart.clear()
+                
+                //perform segue to login VC
+                self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+            }
+        } else {
+            self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+        }
+            
+        
     }
     
     @IBOutlet weak var UserImage: UIImageView!
