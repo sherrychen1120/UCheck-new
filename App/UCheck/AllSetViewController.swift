@@ -9,15 +9,16 @@ import UIKit
 
 class AllSetViewController: UIViewController {
 
-    
+    @IBOutlet weak var StartShoppingButton: UIButton!
+
     @IBAction func StartShoppingButton(_ sender: Any) {
         self.performSegue(withIdentifier: "AllSetToScanning", sender: self)
     }
-    
-    @IBOutlet weak var StartShoppingButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
         // Do any additional setup after loading the view.
     }
 
