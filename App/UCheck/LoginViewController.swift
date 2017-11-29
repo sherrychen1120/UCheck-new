@@ -142,7 +142,6 @@ class LoginViewController: UIViewController {
     
     
     func searchExistingAccounts(snap: FIRDataSnapshot, completion:@escaping ()->()){
-        var found = false
         
         //is there a faster way to look if user_id exists?
         //is there no HashMap lookup with firebase?
@@ -151,7 +150,6 @@ class LoginViewController: UIViewController {
             let value = curr_item.value as? NSDictionary
             let user_id = value?["uid"] as? String ?? ""
             if (user_id == uid){
-                found = true
                 
                 let first_name = value?["first_name"] as? String ?? ""
                 let last_name = value?["last_name"] as? String ?? ""
@@ -164,21 +162,12 @@ class LoginViewController: UIViewController {
                 
                 let defaults = UserDefaults.standard
                 defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
-                
-                break
-                
-                /*print("Going into Scanner")
+                print("Going into Scanner")
                 self.performSegue(withIdentifier: "LoginToScanner", sender: self)
-                return*/
+                return
             }
         }
-        
-        if (found == true){
-            print("Going into Scanner")
-            self.performSegue(withIdentifier: "LoginToScanner", sender: self)
-        } else {
-            completion()
-        }
+        completion()
     }
     
     var new_user = User(uid : "", first_name: "", last_name: "", email: "", phone_no: "")
