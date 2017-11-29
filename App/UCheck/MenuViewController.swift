@@ -77,7 +77,8 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
         //UserImage.image = CurrentUserPhoto
         UserNameLabel.text = CurrentUserName
         

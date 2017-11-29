@@ -23,7 +23,7 @@ class VenmoSetupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
         //Hide the Loading View
         ActivityIndicator.isHidden = true
         ActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge

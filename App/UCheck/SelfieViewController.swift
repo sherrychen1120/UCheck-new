@@ -76,7 +76,8 @@ class SelfieViewController: UIViewController, UINavigationControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
+
         ContinueButton.layer.cornerRadius = 9
         
         storage = FIRStorage.storage()
