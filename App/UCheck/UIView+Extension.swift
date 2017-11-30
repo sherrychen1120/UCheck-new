@@ -27,3 +27,26 @@ struct Colors {
     static let darkRed = UIColor(red: 137.0/255.0, green: 3.0/255.0, blue: 9.0/255.0, alpha: 1.0)
     static let lightRed = UIColor(red: 203.0/255.0, green: 93.0/255.0, blue: 94.0/255.0, alpha: 1.0)
 }
+
+func getDocumentsDirectory() -> URL {
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    return paths[0]
+}
+
+func saveImage (image: UIImage, path: String) -> Void {
+    if let png = UIImagePNGRepresentation(image) {
+        let filename = getDocumentsDirectory().appendingPathComponent(path)
+        try? png.write(to: filename)
+    }
+}
+
+func loadImageFromPath(path: String) -> UIImage? {
+    let filename = getDocumentsDirectory().appendingPathComponent(path).path
+    let image = UIImage(contentsOfFile: filename)
+    
+    if image == nil {
+        print("missing image at: \(path)")
+    }
+    print("Loading image from path: \(path)") // debug to find path
+    return image
+}

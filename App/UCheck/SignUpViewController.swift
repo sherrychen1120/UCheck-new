@@ -205,10 +205,29 @@ class SignUpViewController: UIViewController {
                 CurrentUserName = full_name
                 CurrentUser = email
                 
+                //re-download image
+                let storageRef = FIRStorage.storage().reference()
+                let imagesRef = storageRef.child("profile_pics")
+                let selfieRef = imagesRef.child("\(self.fb_uid).png")
+                selfieRef.data(withMaxSize: 1024 * 1024, completion: { (data, error) in
+                    if (error != nil) {
+                        print("Unable to download image")
+                    } else if (data != nil) {
+                        if let image = UIImage(data: data!) {
+                            //save photo as the current users image
+                            CurrentUserPhoto = image
+                            
+                            //store photo in file system for later use
+                            saveImage(image: image, path: "profilePic.png")
+                        }
+                    }
+                })
+                
                 let defaults = UserDefaults.standard
                 defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
                 print("Going into Scanner")
                 self.performSegue(withIdentifier: "SignUpToScanner", sender: self)
+                return
             }
         }
         completion()
@@ -240,13 +259,43 @@ class SignUpViewController: UIViewController {
                 //update info on Firebase
                 let user_ref = self.ref.child(self.fb_uid)
                 user_ref.setValue(self.new_user.toAnyObject())
-                
-                //get and add profile picture url to user_ref
-                if let pictureUrl = response.profilePictureUrl {
-                    user_ref.updateChildValues([
-                        "photo_url" : pictureUrl
-                    ])
-                }
+
+                //fb request for profile picture
+                let profilePic = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["height":300, "width":300, "redirect":false], httpMethod: "GET")
+                profilePic?.start(completionHandler: { (connection, result, error) -> Void in
+                    if (error == nil) {
+                        if let dictionary = result as? [String: Any], let dataDict = dictionary["data"] as? [String: Any], let urlPic = dataDict["url"] as? String {
+                            if let imageData = NSData(contentsOf: URL(string: urlPic)!) as Data? {
+                                //Create a reference to the profile pics folder
+                                let storageRef = FIRStorage.storage().reference()
+                                let imagesRef = storageRef.child("profile_pics")
+                                
+                                // Create a reference to the file you want to upload
+                                let selfieRef = imagesRef.child("\(self.fb_uid).png")
+                                
+                                //store profile pic in firebase storage
+                                let metadata = FIRStorageMetadata()
+                                metadata.contentType = "image/png"
+                                selfieRef.put(imageData, metadata: metadata).observe(.success) { (snapshot) in
+                                    let downloadURL = snapshot.metadata?.downloadURL()?.absoluteString
+                                    
+                                    //put downloadURL in user profile
+                                    user_ref.updateChildValues([
+                                        "photo_url" : downloadURL
+                                    ])
+                                }
+                                
+                                if let image = UIImage(data: imageData) {
+                                    //save photo as the current users image
+                                    CurrentUserPhoto = image
+                                    
+                                    //store photo in file system for later use
+                                    saveImage(image: image, path: "profilePic.png")
+                                }
+                            }
+                        }
+                    }
+                })
                 
                 self.performSegue(withIdentifier: "SignUpToVenmo", sender: nil)
             case .failed(let error):

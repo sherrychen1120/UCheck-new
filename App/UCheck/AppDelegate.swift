@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if error != nil {
                             targetID = "loginBoard"
                             self.showTargetVC(ID: targetID)
+                            return
                         } else {
                             //Store user email
                             CurrentUser = email
@@ -83,12 +84,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 print("Login error: no user in defaults")
                                 targetID = "loginBoard"
                                 self.showTargetVC(ID: targetID)
-                                return;
+                                return
                             }
                             CurrentUserName = name
                             
+                            if let image = loadImageFromPath(path: "profilePicture.png") {
+                                //save photo as the current users image
+                                CurrentUserPhoto = image
+                            } else {
+                                print("No photo found in filepath, trying to re-download")
+                                //re-download image
+                                let storageRef = FIRStorage.storage().reference()
+                                let imagesRef = storageRef.child("profile_pics")
+                                let selfieRef = imagesRef.child("\(CurrentUserId).png")
+                                selfieRef.data(withMaxSize: 1024 * 1024, completion: { (data, error) in
+                                    if (error != nil) {
+                                        print("Unable to download image")
+                                        targetID = "loginBoard"
+                                        self.showTargetVC(ID: targetID)
+                                        return
+                                    } else if (data != nil) {
+                                        if let image = UIImage(data: data!) {
+                                            //save photo as the current users image
+                                            CurrentUserPhoto = image
+                                            
+                                            //store photo in file system for later use
+                                            saveImage(image: image, path: "profilePic.png")
+                                        }
+                                    }
+                                })
+                            }
+                            
+                            
                             targetID = "scannerBoard"
                             self.showTargetVC(ID: targetID)
+                            return
                         }
                     }
                 //else if there's a FB login
@@ -103,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             print("Login error: \(error.localizedDescription)")
                             targetID = "loginBoard"
                             self.showTargetVC(ID: targetID)
+                            return
                         }
                         
                         //Store user id
@@ -116,10 +147,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             CurrentUserName = values["full_name"]!
                         }
                         
+                        if let image = loadImageFromPath(path: "profilePicture.png") {
+                            //save photo as the current users image
+                            CurrentUserPhoto = image
+                        } else {
+                            print("No photo found in filepath, trying to re-download")
+                            //re-download image
+                            let storageRef = FIRStorage.storage().reference()
+                            let imagesRef = storageRef.child("profile_pics")
+                            let selfieRef = imagesRef.child("\(CurrentUserId).png")
+                            selfieRef.data(withMaxSize: 1024 * 1024, completion: { (data, error) in
+                                if (error != nil) {
+                                    print("Unable to download image")
+                                    targetID = "loginBoard"
+                                    self.showTargetVC(ID: targetID)
+                                    return
+                                } else if (data != nil) {
+                                    if let image = UIImage(data: data!) {
+                                        //save photo as the current users image
+                                        CurrentUserPhoto = image
+                                        
+                                        //store photo in file system for later use
+                                        saveImage(image: image, path: "profilePic.png")
+                                    }
+                                }
+                            })
+                        }
+                        
                         print("Logged in w/ Firebase UID:" + (FIRAuth.auth()?.currentUser?.uid)!)
                         targetID = "scannerBoard"
                         self.showTargetVC(ID: targetID)
-                        
+                        return
                     })
                 //no current email or fb session
                 } else {
