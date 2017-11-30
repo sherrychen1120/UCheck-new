@@ -80,6 +80,8 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
         super.viewDidLoad()
         
         view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
+        
+        //set the user's photo in the menu
         if CurrentUserPhoto != nil {
             UserImage.image = CurrentUserPhoto
         }
