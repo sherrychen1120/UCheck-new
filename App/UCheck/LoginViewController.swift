@@ -267,6 +267,8 @@ class LoginViewController: UIViewController {
                                 }
                             }
                         }
+                    } else {
+                        print("image download error:" + (error?.localizedDescription)!)
                     }
                 })
                 

@@ -157,8 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             let imagesRef = storageRef.child("profile_pics")
                             let selfieRef = imagesRef.child("\(CurrentUserId).png")
                             selfieRef.data(withMaxSize: 1024 * 1024, completion: { (data, error) in
-                                if (error != nil) {
-                                    print("Unable to download image")
+                                if let downloaderror = error {
+                                    print("Unable to download image. Error: " + downloaderror.localizedDescription);
                                     targetID = "loginBoard"
                                     self.showTargetVC(ID: targetID)
                                     return

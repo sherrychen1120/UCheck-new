@@ -294,6 +294,8 @@ class SignUpViewController: UIViewController {
                                 }
                             }
                         }
+                    } else {
+                        print("image download error:" + (error?.localizedDescription)!)
                     }
                 })
                 

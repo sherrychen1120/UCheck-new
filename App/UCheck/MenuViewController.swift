@@ -38,17 +38,30 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
         print("toLogOut")
         loggingOut = true
         
+        //Prep for deleting NSUserDefaults
+        let defaults = UserDefaults.standard
+        
         //Identify login method and log out
         if let accessToken = FBSDKAccessToken.current(){
             //If logged in through FB
+            
+            //Log out through FBSDKLoginManager
             let loginManager = FBSDKLoginManager()
             loginManager.logOut()
+            
+            //Clean NSUserDefault
+            defaults.removeObject(forKey: "fb+"+CurrentUserId)
+            
         } else {
             //If logged in through email
             let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
             let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
             print("Successfully removed email: \(removeEmail);")
             print("Successfully removed password: \(removePassword).")
+            
+            //Clean NSUserDefault
+            defaults.removeObject(forKey: "email+"+CurrentUser)
+            
         }
         
         //Log out through Firebase
@@ -56,6 +69,8 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
             do{
                 try! FIRAuth.auth()!.signOut()
                 print("signed out")
+                
+                //**TODO: clean image from image file path**
                 
                 //Clean objects in CurrentSession
                 CurrentUser = ""
