@@ -68,7 +68,11 @@ class SelfieViewController: UIViewController, UINavigationControllerDelegate, UI
 
             }
             
+            //update current photo
             CurrentUserPhoto = chosenImage!
+            
+            //save image in file system for future use
+            saveImage(image: chosenImage!, path: "profilePic.png")
                 
             self.performSegue(withIdentifier: "SelfieToAllSet", sender: nil)
         }

@@ -141,6 +141,10 @@ class VenmoSetupViewController: UIViewController {
                 self.postNewCustomerNonceToServer(paymentMethodNonce:venmoAccount.nonce, handleComplete: {
                     DispatchQueue.main.async (execute: { () -> Void in
                         self.ActivityIndicator.stopAnimating()
+                        if loadImageFromPath(path: "profilePic.png") != nil {
+                            self.performSegue(withIdentifier: "VenmoToAllSet", sender: self)
+                            return
+                        }
                         self.performSegue(withIdentifier: "VenmoToSelfie", sender: self)
                     })
                 })

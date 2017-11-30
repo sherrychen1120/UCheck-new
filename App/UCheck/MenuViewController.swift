@@ -61,6 +61,7 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
                 CurrentUser = ""
                 CurrentUserName = ""
                 CurrentUserId = ""
+                CurrentUserPhoto = nil
                 
                 //Clean shopping cart
                 ShoppingCart.clear()
@@ -79,7 +80,9 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
         super.viewDidLoad()
         
         view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
-        //UserImage.image = CurrentUserPhoto
+        if CurrentUserPhoto != nil {
+            UserImage.image = CurrentUserPhoto
+        }
         UserNameLabel.text = CurrentUserName
         
     }

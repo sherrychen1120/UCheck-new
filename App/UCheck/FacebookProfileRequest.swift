@@ -10,7 +10,7 @@ struct ProfileRequest: GraphRequestProtocol {
         var last_name: String?
         var id: String?
         var email: String?
-        var profilePictureUrl: String?
+//        var profilePictureUrl: String?
         
         init(rawResponse: Any?) {
             // Decode JSON from rawResponse into other properties here.
@@ -34,14 +34,14 @@ struct ProfileRequest: GraphRequestProtocol {
                 self.email = email
             }
             
-            if let picture = response["picture"] as? Dictionary<String, Any> {
-                
-                if let data = picture["data"] as? Dictionary<String, Any> {
-                    if let url = data["url"] as? String {
-                        self.profilePictureUrl = url
-                    }
-                }
-            }
+//            if let picture = response["picture"] as? Dictionary<String, Any> {
+//
+//                if let data = picture["data"] as? Dictionary<String, Any> {
+//                    if let url = data["url"] as? String {
+//                        self.profilePictureUrl = url
+//                    }
+//                }
+//            }
         }
     }
     
