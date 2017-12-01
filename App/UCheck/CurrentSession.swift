@@ -25,6 +25,7 @@ protocol communicationScanner {
     func scannerSetup()
     func showHelpForm()
     func toLogOut()
+    func showShoppingHistory()
 }
 
 class CurrentSession: NSObject {

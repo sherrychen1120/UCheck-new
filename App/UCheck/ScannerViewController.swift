@@ -275,6 +275,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginBoard") as! LoginViewController
         self.present(vc, animated: true, completion: nil)
     }
+    
+    //function to bring up the shopping history board
+    func showShoppingHistory(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "shoppingHistoryBoard") as! ShoppingHistoryViewController
+        self.present(vc, animated: true, completion: nil)
+    }
 
     
     /*func safariViewControllerDidFinish(_ controller: SFSafariViewController) {

@@ -71,15 +71,6 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    /*func showVenmo() {
-        if let url = URL(string: "https://venmo.com/?txn=pay&recipients=Sherry-Chen-1120&amount=1&share=f&audience=friends&note=UCheck") {
-            //let config = SFSafariViewController.Configuration()
-            //config.entersReaderIfAvailable = true
-            
-            let vc = SFSafariViewController(url: url)
-            present(vc, animated: true)
-        }
-    }*/
     
     private func getDateTime() -> String {
         
@@ -120,9 +111,9 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         //Customize the navigation bar
-        self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController!.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController!.navigationBar.titleTextAttributes =
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
+        self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedStringKey.foregroundColor: UIColor.white,
              NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
         self.navigationController?.setNavigationBarHidden(false, animated: true)

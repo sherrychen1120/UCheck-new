@@ -507,6 +507,7 @@
                         <segue destination="BMU-42-sIY" kind="show" identifier="ScanningToCheckout" id="Pdx-O8-oQT"/>
                         <segue destination="ebL-kL-9ZP" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="D6c-ou-3Zm"/>
                         <segue destination="RAL-9E-Ku6" kind="presentation" identifier="ScannerToHelpForm" id="GJ3-W6-dqy"/>
+                        <segue destination="uD3-zJ-pKZ" kind="show" id="RG0-cN-GPR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3o-lo-Upa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1217,6 +1218,9 @@
                                 <state key="normal" title="Shopping History">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ShoppingHistoryButton:" destination="hy2-Cr-yuu" eventType="touchUpInside" id="MiH-15-TT3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E63-47-WPw">
                                 <rect key="frame" x="0.0" y="292.5" width="375" height="53.5"/>
@@ -1310,7 +1314,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCm-Fj-7Hw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="epk-kH-fnv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="9009" y="2523"/>
+            <point key="canvasLocation" x="7894" y="1478"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="vGL-uw-fPK">
@@ -1422,7 +1426,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x6c-mi-uKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ypj-A8-ntq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="10269.6" y="2275.4122938530736"/>
+            <point key="canvasLocation" x="8698" y="2230"/>
+        </scene>
+        <!--Shopping History View Controller-->
+        <scene sceneID="P9V-lh-bFu">
+            <objects>
+                <viewController storyboardIdentifier="shoppingHistoryBoard" id="uD3-zJ-pKZ" customClass="ShoppingHistoryViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LMO-X3-s7e"/>
+                        <viewControllerLayoutGuide type="bottom" id="r3b-gl-y2T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9m6-hd-vfO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DT0-yO-85v">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Shopping History" id="dpX-Wf-XPV"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jhv-Ym-6U7">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="142" id="nxs-O9-0CS">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="142"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nxs-O9-0CS" id="cRY-PS-rpa">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="141.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DT0-yO-85v" secondAttribute="trailing" id="7Ol-Du-dQi"/>
+                            <constraint firstItem="Jhv-Ym-6U7" firstAttribute="leading" secondItem="9m6-hd-vfO" secondAttribute="leading" id="IhI-Xs-bBO"/>
+                            <constraint firstItem="DT0-yO-85v" firstAttribute="top" secondItem="LMO-X3-s7e" secondAttribute="bottom" id="cDc-6u-rJt"/>
+                            <constraint firstItem="Jhv-Ym-6U7" firstAttribute="top" secondItem="DT0-yO-85v" secondAttribute="bottom" id="iif-2Y-UWe"/>
+                            <constraint firstItem="DT0-yO-85v" firstAttribute="leading" secondItem="9m6-hd-vfO" secondAttribute="leading" id="ku0-o5-yYN"/>
+                            <constraint firstItem="r3b-gl-y2T" firstAttribute="top" secondItem="Jhv-Ym-6U7" secondAttribute="bottom" id="t6p-4A-5aa"/>
+                            <constraint firstAttribute="trailing" secondItem="Jhv-Ym-6U7" secondAttribute="trailing" id="xN9-Ct-Qyz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="HistoryListTableView" destination="Jhv-Ym-6U7" id="yCw-tC-Gpc"/>
+                        <outlet property="navBar" destination="DT0-yO-85v" id="frR-mS-Y0e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c9H-Za-Zwh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10221.6" y="2268.2158920539732"/>
         </scene>
         <!--Help Form View Controller-->
         <scene sceneID="kyf-R0-S3g">

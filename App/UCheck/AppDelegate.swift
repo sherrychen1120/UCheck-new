@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MARK: debug calls
         //For debug - set ExistingDevice
-        defaults.set("true", forKey: "ExistingDevice")
+        /*defaults.set("true", forKey: "ExistingDevice")
         
         //For debug - clean KeychainWrapper
         let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
@@ -50,10 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //For debug - Log out Facebook
         let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        /*if (FBSDKAccessToken.current() == nil){
-            print ("logout successful.")
-        }*/
+        loginManager.logOut()*/
         
         var targetID = ""
         
@@ -170,6 +167,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if let image = loadImageFromPath(path: "profilePicture.png") {
                             //If picture found, save photo as the current users image
                             CurrentUserPhoto = image
+                            
+                            //Redirect to scanner board after hearing back from Firebase
+                            targetID = "scannerBoard"
+                            self.showTargetVC(ID: targetID)
                         } else {
                             print("No photo found in filepath, trying to re-download")
                             //re-download image

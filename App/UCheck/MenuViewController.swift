@@ -18,6 +18,7 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
     var delegate: communicationScanner? = nil
     var loggingOut = false
     var toHelpForm = false
+    var toShoppingHistory = false
     
     @IBAction func HelpButton(_ sender: Any) {
         toHelpForm = true
@@ -45,13 +46,18 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
         }
     }
     
+    @IBAction func ShoppingHistoryButton(_ sender: Any) {
+        toShoppingHistory = true
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var UserNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
+        /*view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)*/
         
         //set the user's photo in the menu
         if CurrentUserPhoto != nil {
@@ -74,6 +80,9 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
         } else if (loggingOut == true){
             loggingOut = false
             self.delegate?.toLogOut()
+        } else if (toShoppingHistory == true){
+            toShoppingHistory = false
+            self.delegate?.showShoppingHistory()
         } else {
             self.delegate?.scannerSetup()
         }
