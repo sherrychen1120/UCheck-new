@@ -252,10 +252,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         print("unwindSegue scannerSetup") //Doesn't work
     }
     
-    @IBAction func unwindToScannerForLogout(segue: UIStoryboardSegue) {
-        
-    }
-    
     @IBAction func unwindToScannerForHelp(_ segue: UIStoryboardSegue){
         print("unwindToScannerForHelp")
         //self.showHelpform()
@@ -277,8 +273,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     func toLogOut(){
-        self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+        /*DispatchQueue.main.async (execute: { () -> Void in
+            self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+        })*/
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginBoard") as! LoginViewController
+        self.present(vc, animated: true, completion: nil)
     }
+
     
     /*func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         print("safariVCDidFinish Called.")

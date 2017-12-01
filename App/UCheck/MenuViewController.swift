@@ -29,63 +29,27 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
             self.dismiss(animated: true, completion: nil)
             self.delegate?.scannerSetup()
         }
-        /*if (forHelp == true){
-            self.performSegue(withIdentifier: "unwindHelpToScanner", sender: nil)
-        }*/
     }
     
     @IBAction func LogoutButton(_ sender: Any) {
-        print("toLogOut")
+        print("LogoutButton clicked")
         loggingOut = true
         
-        //Prep for deleting NSUserDefaults
-        let defaults = UserDefaults.standard
-        
         //Identify login method and log out
-        if let accessToken = FBSDKAccessToken.current(){
-            //If logged in through FB
-            
-            //Log out through FBSDKLoginManager
-            let loginManager = FBSDKLoginManager()
-            loginManager.logOut()
-            
-            //Clean NSUserDefault
-            defaults.removeObject(forKey: "fb+"+CurrentUserId)
-            
-        } else {
-            //If logged in through email
-            let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
-            let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
-            print("Successfully removed email: \(removeEmail);")
-            print("Successfully removed password: \(removePassword).")
-            
-            //Clean NSUserDefault
-            defaults.removeObject(forKey: "email+"+CurrentUser)
-            
+        //If logged in through FB
+        if let access_token = FBSDKAccessToken.current(){
+            //Log out and then dismiss Menu VC
+            logoutProcedure(EmailOrFB: "FB", removeUserDefaultsForKey: "fb+" + access_token.userID, deleteProfilePic: true, cleanCurrentSession: true, cleanShoppingCart: true, handleComplete: {
+                    self.dismiss(animated: true, completion: nil)
+                })
         }
-        
-        //Log out through Firebase
-        if FIRAuth.auth()?.currentUser != nil{
-            do{
-                try! FIRAuth.auth()!.signOut()
-                print("signed out")
-                
-                //**TODO: clean image from image file path**
-                
-                //Clean objects in CurrentSession
-                CurrentUser = ""
-                CurrentUserName = ""
-                CurrentUserId = ""
-                CurrentUserPhoto = nil
-                
-                //Clean shopping cart
-                ShoppingCart.clear()
-                
-            }
+        //If logged in through email
+        else {
+            //Log out and then dismiss Menu VC
+            logoutProcedure(EmailOrFB: "Email", removeUserDefaultsForKey: "email+" + CurrentUser, deleteProfilePic: true, cleanCurrentSession: true, cleanShoppingCart: true, handleComplete: {
+                self.dismiss(animated: true, completion: nil)
+            })
         }
-        
-        self.dismiss(animated: true, completion: nil)
-        
     }
     
     @IBOutlet weak var UserImage: UIImageView!
@@ -114,6 +78,7 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
         if (loggingOut == false){
             self.delegate?.scannerSetup()
         } else {
+            loggingOut = false
             self.delegate?.toLogOut()
         }
     }

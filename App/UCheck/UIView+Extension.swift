@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 import SwiftKeychainWrapper
 import Firebase
+import FBSDKLoginKit
 
 extension UIView {
     
@@ -54,13 +55,18 @@ func loadImageFromPath(path: String) -> UIImage? {
 }
 
 
-func logoutProcedure(removeKCW : Bool, removeUserDefaultsForKey: String?, deleteProfilePic: Bool, cleanCurrentSession: Bool, cleanShoppingCart: Bool, handleComplete:@escaping ()->()){
-    //1. Remove email-password pair from KeychainWrapper, if requested
-    if (removeKCW){
+func logoutProcedure(EmailOrFB : String?, removeUserDefaultsForKey: String?, deleteProfilePic: Bool, cleanCurrentSession: Bool, cleanShoppingCart: Bool, handleComplete:@escaping ()->()){
+    //1. Remove email-password pair from KeychainWrapper if logged in through "Email";
+    //Log out of FB if logged in through "FB";
+    //Value == nil otherwise.
+    if (EmailOrFB == "Email"){
         let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
         let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
         print("Successfully removed email: \(removeEmail);")
         print("Successfully removed password: \(removePassword).")
+    } else if (EmailOrFB == "FB"){
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
     }
     
     //2. Remove User Defaults, if requested

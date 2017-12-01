@@ -29,6 +29,10 @@ class LoginViewController: UIViewController {
             let email = EmailInput.text!
             let password = PasswordInput.text!
         
+            //Empty the input fields
+            EmailInput.text = ""
+            PasswordInput.text = ""
+        
             if (email == "" || password == ""){
                 self.showAlert(withMessage: "Incomplete information.")
             } else {

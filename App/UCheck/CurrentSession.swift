@@ -16,9 +16,9 @@ var OnGoing = false
 var MemberLoggedIn = false
 var IsMember = false
 
-var CurrentUser = ""
-var CurrentUserName = ""
-var CurrentUserId = ""
+var CurrentUser = "" //Stores the email address of the current user
+var CurrentUserName = "" //Stores the full name of the current user
+var CurrentUserId = "" //Stores the Firebase uid of the current user
 var CurrentUserPhoto : UIImage? = nil
 
 var toLogOut = false

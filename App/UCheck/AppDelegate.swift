@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MARK: debug calls
         //For debug - set ExistingDevice
-        defaults.set("true", forKey: "ExistingDevice")
+        //defaults.set("true", forKey: "ExistingDevice")
         
         //For debug - clean KeychainWrapper
         /*let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if let error = error {
                             print("Firebase login error: " + error.localizedDescription)
                             //Firebase sign in error. Log out and redirect to login board
-                            logoutProcedure(removeKCW: true, removeUserDefaultsForKey: "email+"+email, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
+                            logoutProcedure(EmailOrFB: "Email", removeUserDefaultsForKey: "email+"+email, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
                                     targetID = "loginBoard"
                                     self.showTargetVC(ID: targetID)
                             })
@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             } else {
                                 //Keychain inconsistency, log out the user and go back to login page
                                 print("Login error: data inconsistency. No user data in defaults")
-                                logoutProcedure(removeKCW: true, removeUserDefaultsForKey: "email+"+email, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
+                                logoutProcedure(EmailOrFB: "Email", removeUserDefaultsForKey: "email+"+email, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
                                     targetID = "loginBoard"
                                     self.showTargetVC(ID: targetID)
                                 })
@@ -150,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if let error = error {
                             print("Firebase login error: \(error.localizedDescription)")
                             //Firebase sign in error. Log out and redirect to login board
-                            logoutProcedure(removeKCW: false, removeUserDefaultsForKey: "fb+"+userID, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
+                            logoutProcedure(EmailOrFB: "FB", removeUserDefaultsForKey: "fb+"+userID, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
                                 targetID = "loginBoard"
                                 self.showTargetVC(ID: targetID)
                             })
