@@ -1,5 +1,7 @@
 import Foundation
 import UIKit
+import SwiftKeychainWrapper
+import Firebase
 
 extension UIView {
     
@@ -49,4 +51,47 @@ func loadImageFromPath(path: String) -> UIImage? {
     }
     print("Loading image from path: \(path)") // debug to find path
     return image
+}
+
+
+func logoutProcedure(removeKCW : Bool, removeUserDefaultsForKey: String?, deleteProfilePic: Bool, cleanCurrentSession: Bool, cleanShoppingCart: Bool, handleComplete:@escaping ()->()){
+    //1. Remove email-password pair from KeychainWrapper, if requested
+    if (removeKCW){
+        let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
+        let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
+        print("Successfully removed email: \(removeEmail);")
+        print("Successfully removed password: \(removePassword).")
+    }
+    
+    //2. Remove User Defaults, if requested
+    if let key = removeUserDefaultsForKey{
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: key)
+    }
+    
+    //3. Delete Profile Pic, if requested
+    //TODO
+    
+    //4. Clean current session objects
+    if (cleanCurrentSession){
+        CurrentUser = ""
+        CurrentUserName = ""
+        CurrentUserId = ""
+        CurrentUserPhoto = nil
+    }
+    
+    //5. Clean Shopping Cart
+    ShoppingCart.clear()
+    
+    //6. Sign out through Firebase, and call completion handler
+    if FIRAuth.auth()?.currentUser != nil{
+        do{
+            try! FIRAuth.auth()!.signOut()
+            print("Firebase signed out")
+        }
+        handleComplete()
+    } else {
+        handleComplete()
+    }
+    
 }
