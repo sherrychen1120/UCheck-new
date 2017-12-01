@@ -131,7 +131,9 @@ class VenmoSetupViewController: UIViewController {
                 print("Venmo Autho method completed.")
                 
                 guard let venmoAccount = venmoAccount else {
-                    print("Error: \(String(describing: error))")
+                    //Can we just return here? Shall we show an alert to the user and give
+                    //them a way to fix it?
+                    print("Venmo auth Error: \(String(describing: error))")
                     return
                 }
                 // You got a Venmo nonce!
@@ -144,8 +146,9 @@ class VenmoSetupViewController: UIViewController {
                         if loadImageFromPath(path: "profilePic.png") != nil {
                             self.performSegue(withIdentifier: "VenmoToAllSet", sender: self)
                             return
+                        } else {
+                            self.performSegue(withIdentifier: "VenmoToSelfie", sender: self)
                         }
-                        self.performSegue(withIdentifier: "VenmoToSelfie", sender: self)
                     })
                 })
             })

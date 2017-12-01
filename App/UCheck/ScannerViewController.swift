@@ -257,25 +257,21 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         //self.showHelpform()
     }
     
+    //function to show the Help Form
     func showHelpForm() {
-        //let urlString = "https://docs.google.com/forms/d/e/1FAIpQLSfO1WsJ23ByoqNSsgqGotFY4s7NKh6UEehAuV9tygDwUcFEyQ/viewform?usp=sf_link"
-        let urlString = "http://www.google.com"
+        //https://docs.google.com/forms/d/e/1FAIpQLSfO1WsJ23ByoqNSsgqGotFY4s7NKh6UEehAuV9tygDwUcFEyQ/viewform?usp=sf_link
+        /*if let url = URL(string: "https://google.com") {
+            
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true, completion: nil)
+        }*/
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "HelpFormBoard") as! HelpFormViewController
+        self.present(vc, animated: true, completion: nil)
         
-        if let url = URL(string: urlString) {
-            
-            //let config = SFSafariViewController.Configuration()
-            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: false)
-            self.present(vc, animated: true)
-            
-            //vc.delegate = self
-            //self.present(vc, animated: true)
-        }
     }
     
+    //function to bring up the login board
     func toLogOut(){
-        /*DispatchQueue.main.async (execute: { () -> Void in
-            self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
-        })*/
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "loginBoard") as! LoginViewController
         self.present(vc, animated: true, completion: nil)
     }

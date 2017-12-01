@@ -41,6 +41,7 @@
 		56B681041F10771F00772C68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681031F10771F00772C68 /* LoginViewController.swift */; };
 		56B681181F19A28200772C68 /* CurrentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681171F19A28200772C68 /* CurrentSession.swift */; };
 		56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681201F1AC96C00772C68 /* ScannerViewController.swift */; };
+		56C793D91FD11E5300CED84E /* HelpFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C793D81FD11E5300CED84E /* HelpFormViewController.swift */; };
 		56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3241F258CC90043E910 /* CheckOutViewController.swift */; };
 		56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */; };
 		56D9E3291F25B2440043E910 /* ShoppingCartTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */; };
@@ -115,6 +116,7 @@
 		56B681031F10771F00772C68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		56B681171F19A28200772C68 /* CurrentSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSession.swift; sourceTree = "<group>"; };
 		56B681201F1AC96C00772C68 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		56C793D81FD11E5300CED84E /* HelpFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpFormViewController.swift; sourceTree = "<group>"; };
 		56D9E3241F258CC90043E910 /* CheckOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
 		56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigCartItemTableViewCell.swift; sourceTree = "<group>"; };
 		56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableView.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		567C786D1FC9E3E700907232 /* Settings Pages */ = {
 			isa = PBXGroup;
 			children = (
+				56C793D81FD11E5300CED84E /* HelpFormViewController.swift */,
 			);
 			name = "Settings Pages";
 			sourceTree = "<group>";
@@ -730,6 +733,7 @@
 				56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */,
 				56B680FE1F0C4E9700772C68 /* StatePickerView.swift in Sources */,
 				56B680F81F0C433800772C68 /* PopDateViewController.swift in Sources */,
+				56C793D91FD11E5300CED84E /* HelpFormViewController.swift in Sources */,
 				5652EFA01F09D1030014873D /* UCheck.xcdatamodeld in Sources */,
 				565E4BC71FAD0B4B00D273E8 /* CustomObject.m in Sources */,
 				56FC95C51F1F13880090A1AE /* Item.swift in Sources */,

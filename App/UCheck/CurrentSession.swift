@@ -21,9 +21,6 @@ var CurrentUserName = "" //Stores the full name of the current user
 var CurrentUserId = "" //Stores the Firebase uid of the current user
 var CurrentUserPhoto : UIImage? = nil
 
-var toLogOut = false
-var forHelp = false
-
 protocol communicationScanner {
     func scannerSetup()
     func showHelpForm()

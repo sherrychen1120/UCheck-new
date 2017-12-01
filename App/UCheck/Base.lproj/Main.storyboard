@@ -506,6 +506,7 @@
                         <segue destination="CoY-kx-CGz" kind="presentation" identifier="ScanningToCart" id="F50-un-QeU"/>
                         <segue destination="BMU-42-sIY" kind="show" identifier="ScanningToCheckout" id="Pdx-O8-oQT"/>
                         <segue destination="ebL-kL-9ZP" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="D6c-ou-3Zm"/>
+                        <segue destination="RAL-9E-Ku6" kind="presentation" identifier="ScannerToHelpForm" id="GJ3-W6-dqy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3o-lo-Upa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -901,7 +902,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Umz-ij-k5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="bJQ-ma-jw7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="11752.799999999999" y="1448.7256371814094"/>
+            <point key="canvasLocation" x="12092" y="1448.7256371814094"/>
         </scene>
         <!--Receipt-->
         <scene sceneID="Fjq-9n-lQa">
@@ -1104,7 +1105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXl-8w-i0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12511.200000000001" y="1439.7301349325339"/>
+            <point key="canvasLocation" x="12850.4" y="1439.7301349325339"/>
         </scene>
         <!--Finish View Controller-->
         <scene sceneID="wki-SA-cXy">
@@ -1189,7 +1190,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTy-yY-dmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JiB-mf-YWl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="13317.6" y="2154.872563718141"/>
+            <point key="canvasLocation" x="13656.799999999999" y="2154.872563718141"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="eFQ-td-z9T">
@@ -1422,6 +1423,38 @@
                 <exit id="ypj-A8-ntq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="10269.6" y="2275.4122938530736"/>
+        </scene>
+        <!--Help Form View Controller-->
+        <scene sceneID="kyf-R0-S3g">
+            <objects>
+                <viewController storyboardIdentifier="HelpFormBoard" id="RAL-9E-Ku6" customClass="HelpFormViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gWp-AQ-XHf"/>
+                        <viewControllerLayoutGuide type="bottom" id="jMN-5y-ZS5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v9C-lr-SV0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfW-c7-cUh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="lQA-IY-HCH"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vfW-c7-cUh" firstAttribute="leading" secondItem="v9C-lr-SV0" secondAttribute="leading" id="Pck-30-fms"/>
+                            <constraint firstAttribute="trailing" secondItem="vfW-c7-cUh" secondAttribute="trailing" id="boC-SP-wic"/>
+                            <constraint firstItem="vfW-c7-cUh" firstAttribute="top" secondItem="v9C-lr-SV0" secondAttribute="top" id="fIc-iF-Ib7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sdg-kG-vK5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4SD-Dv-MJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11281" y="1957"/>
         </scene>
         <!--Venmo Setup View Controller-->
         <scene sceneID="0SZ-L9-qPz">
@@ -1689,8 +1722,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="etE-lk-2r4"/>
-        <segue reference="FvN-Mo-PyD"/>
-        <segue reference="BaN-Tn-j8k"/>
+        <segue reference="BbT-Cx-kJI"/>
+        <segue reference="NRm-WD-tbV"/>
         <segue reference="PBX-Gr-8q4"/>
     </inferredMetricsTieBreakers>
 </document>

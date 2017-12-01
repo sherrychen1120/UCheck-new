@@ -40,17 +40,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MARK: debug calls
         //For debug - set ExistingDevice
-        //defaults.set("true", forKey: "ExistingDevice")
+        defaults.set("true", forKey: "ExistingDevice")
         
         //For debug - clean KeychainWrapper
-        /*let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
+        let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
         let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
         print("Successfully removed email: \(removeEmail);")
-        print("Successfully removed password: \(removePassword).")*/
+        print("Successfully removed password: \(removePassword).")
         
         //For debug - Log out Facebook
-        /*let loginManager = FBSDKLoginManager()
-        loginManager.logOut()*/
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
         /*if (FBSDKAccessToken.current() == nil){
             print ("logout successful.")
         }*/
@@ -126,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                             CurrentUserPhoto = image
                                             
                                             //store photo in file system for later use
-                                            saveImage(image: image, path: "profilePic.png")
+                                            saveImage(image: image, path: "profilePicture.png")
                                         }
                                     }
                                     
@@ -185,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         CurrentUserPhoto = image
                                         
                                         //store photo in file system for later use
-                                        saveImage(image: image, path: "profilePic.png")
+                                        saveImage(image: image, path: "profilePicture.png")
                                     }
                                 }
                                 

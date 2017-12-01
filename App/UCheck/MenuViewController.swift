@@ -17,18 +17,11 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
     var uid : String = ""
     var delegate: communicationScanner? = nil
     var loggingOut = false
+    var toHelpForm = false
     
     @IBAction func HelpButton(_ sender: Any) {
-        forHelp = true
-        print("forHelp = " + String(forHelp))
-        if (forHelp == true){
-            forHelp = false
-            self.dismiss(animated: true, completion: nil)
-            self.delegate?.showHelpForm()
-        } else {
-            self.dismiss(animated: true, completion: nil)
-            self.delegate?.scannerSetup()
-        }
+        toHelpForm = true
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func LogoutButton(_ sender: Any) {
@@ -75,21 +68,14 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         print("menu view will disappear")
-        if (loggingOut == false){
-            self.delegate?.scannerSetup()
-        } else {
+        if (toHelpForm == true) {
+            toHelpForm = false
+            self.delegate?.showHelpForm()
+        } else if (loggingOut == true){
             loggingOut = false
             self.delegate?.toLogOut()
-        }
-    }
-    
-    func showHelpform() {
-        let urlString = "https://docs.google.com/forms/d/e/1FAIpQLSfO1WsJ23ByoqNSsgqGotFY4s7NKh6UEehAuV9tygDwUcFEyQ/viewform?usp=sf_link"
-        
-        if let url = URL(string: urlString) {
-            let vc = SFSafariViewController(url: url, entersReaderIfAvailable: false)
-            vc.delegate = self
-            self.present(vc, animated: true)
+        } else {
+            self.delegate?.scannerSetup()
         }
     }
     
