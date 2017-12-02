@@ -25,6 +25,11 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
         if let delegate = transitioningDelegate as? HalfModalTransitioningDelegate {
             delegate.interactiveDismiss = false
         }
+        
+        //Add to shopping cart
+        ShoppingCart.addItem(newItem: self.currItem)
+        ShoppingCart.listItems()
+        
         performSegue(withIdentifier: "ItemDetailToScanning", sender: self)
     }
     
@@ -33,7 +38,6 @@ class ItemDetailViewController: UIViewController, HalfModalPresentable {
             delegate.interactiveDismiss = false
         }
         
-        ShoppingCart.deleteItem(oldItem: currItem)
         ShoppingCart.listItems()
         
         performSegue(withIdentifier: "ItemDetailToScanning", sender: self)

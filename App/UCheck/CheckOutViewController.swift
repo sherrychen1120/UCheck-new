@@ -36,10 +36,10 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
 
             self.fetchClientToken(handleComplete: {
                 self.createTransaction(completion: {() -> () in
+                    //Saving the transaction to Firebase
                     //Firebase Ref
                     let ref = FIRDatabase.database().reference(withPath: "shopping_sessions/\(CurrentUserId)")
                     let date = self.getDateTime()
-                    
                     
                     let ShoppingSessionID = "s" + CurrentStore + date
                     let sessionRef = ref.child(ShoppingSessionID)
@@ -47,8 +47,8 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
                     //Create the item list JSON
                     var items_bought = [String:Int]()
                     for item in CurrentShoppingCart{
-                        let code = item.code
-                        items_bought[code] = item.quantity
+                        let item_number = item.item_number
+                        items_bought[item_number] = item.quantity
                     }
                     
                     let total_str = String(format: "%.2f", self.total)
