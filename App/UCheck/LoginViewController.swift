@@ -14,6 +14,9 @@ import FacebookCore
 import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var LoadingText: UILabel!
+    @IBOutlet weak var LoadingView: UIView!
+    @IBOutlet weak var LoadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var EmailInput: UITextField!
     @IBOutlet weak var PasswordInput: UITextField!
     @IBOutlet weak var LoginButton: UIButton!
@@ -29,15 +32,21 @@ class LoginViewController: UIViewController {
             let email = EmailInput.text!
             let password = PasswordInput.text!
         
+            //Start loading View
+            loadingViewSetup()
+        
             //Empty the input fields
             EmailInput.text = ""
             PasswordInput.text = ""
         
             if (email == "" || password == ""){
+                self.loadingViewRemove()
                 self.showAlert(withMessage: "Incomplete information.")
             } else {
                 FIRAuth.auth()!.signIn(withEmail: email, password: password){(user, error) in
                     if error != nil {
+                        
+                        self.loadingViewRemove()
                         
                         if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
                             
@@ -106,6 +115,7 @@ class LoginViewController: UIViewController {
                         self.performSegue(withIdentifier: "LoginToScanner", sender: nil)
                     } else {
                         //user == null
+                        self.loadingViewRemove()
                         self.showAlert(withMessage: "Sign in error. Try again.")
                     }
                 }
@@ -114,17 +124,21 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func facebookLoginButton(_ sender: Any) {
+        //Start loading View
+        loadingViewSetup()
+        
         let loginManager = FBSDKLoginManager()
         
         loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             if let error = error {
-                print("Failed to login: \(error.localizedDescription)")
-                return
+                self.loadingViewRemove()
+                self.showAlert(withMessage: "Failed to login: \(error.localizedDescription)")
             }
             
             //get accessToken from fb
             guard let accessToken = FBSDKAccessToken.current() else {
-                print("Failed to get access token")
+                self.loadingViewRemove()
+                self.showAlert(withMessage: "Failed to get Facebook access token")
                 return
             }
             
@@ -134,6 +148,8 @@ class LoginViewController: UIViewController {
             //sign in using firebase token
             FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
                 if let error = error {
+                    self.loadingViewRemove()
+                    
                     print("Login error: \(error.localizedDescription)")
                     let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
                     let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -150,7 +166,6 @@ class LoginViewController: UIViewController {
                     let profile_ref = FIRDatabase.database().reference(withPath: "user-profiles")
                     //Get user name if already exists
                     profile_ref.observeSingleEvent(of:.value, with: { (snapshot) in
-                        //bla bla bla
                         self.searchExistingAccounts(snap:snapshot, completion: {
                             self.GraphRequestAndToVenmo()
                         })
@@ -200,9 +215,8 @@ class LoginViewController: UIViewController {
                 
                 let defaults = UserDefaults.standard
                 defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
-                print("Going into Scanner")
-                self.performSegue(withIdentifier: "LoginToScanner", sender: self)
-                return
+                //print("Going into Scanner")
+                //self.performSegue(withIdentifier: "LoginToScanner", sender: self)
             }
         }
         completion()
@@ -276,7 +290,7 @@ class LoginViewController: UIViewController {
                     }
                 })
                 
-                self.performSegue(withIdentifier: "LoginToVenmo", sender: nil)
+                self.performSegue(withIdentifier: "LoginToScanner", sender: nil)
             case .failed(let error):
                 print("Custom Graph Request Failed: \(error)")
             }
@@ -325,9 +339,12 @@ class LoginViewController: UIViewController {
 
         //Call function to let the keyboard go down when the user taps around
         self.hideKeyboardWhenTappedAround()
+        
+        //loading view clean-up
+        loadingViewRemove()
 
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -364,7 +381,28 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
-        
+        //Remove loading View
+        loadingViewRemove()
+    }
+    
+    //functions to set up loading view
+    func loadingViewSetup(){
+        view.bringSubview(toFront: LoadingView)
+        self.LoadingActivityIndicator.isHidden = false
+        self.LoadingView.isHidden = false
+        self.LoadingText.isHidden = false
+        LoadingView.bringSubview(toFront: LoadingActivityIndicator)
+        LoadingActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        LoadingView.bringSubview(toFront: LoadingText)
+        LoadingText.text = "Logging in..."
+        LoadingActivityIndicator.hidesWhenStopped = true
+        LoadingActivityIndicator.startAnimating()
+    }
+    func loadingViewRemove(){
+        self.LoadingActivityIndicator.stopAnimating()
+        self.LoadingActivityIndicator.isHidden = true
+        self.LoadingView.isHidden = true
+        self.LoadingText.isHidden = true
     }
     
     // MARK: - show alert
@@ -377,12 +415,18 @@ class LoginViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LoginToVenmo"{
+            //Clean up loading view before leaving
+            //loadingViewRemove()
+            
             //Send the new_user to the next VC
             if let nextScene = segue.destination as? VenmoSetupViewController{
                 print("User UID: " + self.new_user.uid)
                 nextScene.new_user = self.new_user
             }
         } else if segue.identifier == "LoginToScanner"{
+            //Clean up loading view before leaving
+            //loadingViewRemove()
+            
             print("user info stored.")
         }
     }

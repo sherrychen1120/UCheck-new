@@ -15,8 +15,9 @@ import FBSDKLoginKit
 
 class SignUpViewController: UIViewController {
 
-
-    
+    @IBOutlet weak var LoadingText: UILabel!
+    @IBOutlet weak var LoadingActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var LoadingView: UIView!
     @IBOutlet weak var FirstNameInput: UITextField!
     @IBOutlet weak var LastNameInput: UITextField!
     @IBOutlet weak var EmailInput: UITextField!
@@ -32,8 +33,12 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set gradient
         view.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
-        // Do any additional setup after loading the view.
+        
+        //Clean loading view
+        loadingViewRemove()
     }
 
     @IBAction func SignUpButton(_ sender: Any) {
@@ -42,7 +47,13 @@ class SignUpViewController: UIViewController {
         email = EmailInput.text!
         password = PasswordInput.text!
         
+        //set up loading view
+        //loadingViewSetup()
+        
         if (first_name == "" || last_name == "" || email == "" || password == "" ){
+            //Clean loading view
+            //loadingViewRemove()
+            
             self.showAlert(withMessage: "Incomplete Information")
         } else {
             //password validation regEx
@@ -68,11 +79,17 @@ class SignUpViewController: UIViewController {
             
             //Create Firebase account
             if (!isValidPassword){
+                //Clean loading view
+                //loadingViewRemove()
+                
                 self.showAlert(withMessage: "Password requirements unmet.")
             } else {
                 //Firebase Auth - create new user
                 FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
                     if let error = error {
+                        //Clean loading view
+                        //self.loadingViewRemove()
+                        
                         print(error.localizedDescription)
                         
                         if let errCode = FIRAuthErrorCode(rawValue: error._code) {
@@ -94,6 +111,9 @@ class SignUpViewController: UIViewController {
                         FIRAuth.auth()!.signIn(withEmail: self.email, password: self.password){(user, error) in
                             
                             if (error != nil){
+                                //Clean loading view
+                                //self.loadingViewRemove()
+                                
                                 print(error?.localizedDescription)
                             } else {
                                 //fill the info to the new_user object
@@ -143,16 +163,25 @@ class SignUpViewController: UIViewController {
     
     var fb_uid = "";
     @IBAction func FBLoginButton(_ sender: Any) {
+        //set up loading view
+        //loadingViewSetup()
+        
         let loginManager = FBSDKLoginManager()
         
         loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             if let error = error {
+                //Clean loading view
+                //self.loadingViewRemove()
+                
                 print("Failed to login: \(error.localizedDescription)")
                 return
             }
             
             //get accessToken from fb
             guard let accessToken = FBSDKAccessToken.current() else {
+                //Clean loading view
+                //self.loadingViewRemove()
+                
                 print("Failed to get access token")
                 return
             }
@@ -163,6 +192,9 @@ class SignUpViewController: UIViewController {
             //sign in using firebase token
             FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
                 if let error = error {
+                    //Clean loading view
+                    //self.loadingViewRemove()
+                    
                     print("Login error: \(error.localizedDescription)")
                     let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
                     let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -309,20 +341,41 @@ class SignUpViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SignUpToVenmo"{
+            //Clean loading view
+            //self.loadingViewRemove()
+            
             //Send the new_user to the next VC
             if let nextScene = segue.destination as? VenmoSetupViewController{
                 print("User UID: " + self.new_user.uid)
                 nextScene.new_user = self.new_user
             }
         } else if segue.identifier == "SignUpToScanner"{
+            //Clean loading view
+            //self.loadingViewRemove()
+            
             print("user info stored.")
         }
     }
     
-    /*func isPasswordValid(_ password : String) -> Bool{
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@","^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]){6,}$")
-        return passwordTest.evaluate(with: password)
-    }*/
+    //functions to set up loading view
+    func loadingViewSetup(){
+        view.bringSubview(toFront: LoadingView)
+        self.LoadingActivityIndicator.isHidden = false
+        self.LoadingView.isHidden = false
+        self.LoadingText.isHidden = false
+        LoadingView.bringSubview(toFront: LoadingActivityIndicator)
+        LoadingActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        LoadingView.bringSubview(toFront: LoadingText)
+        LoadingText.text = "Logging in..."
+        LoadingActivityIndicator.hidesWhenStopped = true
+        LoadingActivityIndicator.startAnimating()
+    }
+    func loadingViewRemove(){
+        self.LoadingActivityIndicator.stopAnimating()
+        self.LoadingActivityIndicator.isHidden = true
+        self.LoadingView.isHidden = true
+        self.LoadingText.isHidden = true
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

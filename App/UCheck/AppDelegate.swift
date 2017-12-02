@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MARK: debug calls
         //For debug - set ExistingDevice
-        /*defaults.set("true", forKey: "ExistingDevice")
+        defaults.set("false", forKey: "ExistingDevice")
         
         //For debug - clean KeychainWrapper
         let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //For debug - Log out Facebook
         let loginManager = FBSDKLoginManager()
-        loginManager.logOut()*/
+        loginManager.logOut()
         
         var targetID = ""
         
