@@ -43,6 +43,8 @@
 		56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681201F1AC96C00772C68 /* ScannerViewController.swift */; };
 		56C793D91FD11E5300CED84E /* HelpFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C793D81FD11E5300CED84E /* HelpFormViewController.swift */; };
 		56C793DF1FD1A89000CED84E /* ShoppingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C793DE1FD1A89000CED84E /* ShoppingHistoryViewController.swift */; };
+		56C793E31FD1C9AA00CED84E /* HistorySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C793E21FD1C9AA00CED84E /* HistorySession.swift */; };
+		56C793E51FD2162300CED84E /* HistorySessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C793E41FD2162300CED84E /* HistorySessionTableViewCell.swift */; };
 		56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3241F258CC90043E910 /* CheckOutViewController.swift */; };
 		56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */; };
 		56D9E3291F25B2440043E910 /* ShoppingCartTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */; };
@@ -119,6 +121,8 @@
 		56B681201F1AC96C00772C68 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		56C793D81FD11E5300CED84E /* HelpFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpFormViewController.swift; sourceTree = "<group>"; };
 		56C793DE1FD1A89000CED84E /* ShoppingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingHistoryViewController.swift; sourceTree = "<group>"; };
+		56C793E21FD1C9AA00CED84E /* HistorySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySession.swift; sourceTree = "<group>"; };
+		56C793E41FD2162300CED84E /* HistorySessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySessionTableViewCell.swift; sourceTree = "<group>"; };
 		56D9E3241F258CC90043E910 /* CheckOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
 		56D9E3261F25950E0043E910 /* BigCartItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigCartItemTableViewCell.swift; sourceTree = "<group>"; };
 		56D9E3281F25B2440043E910 /* ShoppingCartTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableView.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 			children = (
 				56C793D81FD11E5300CED84E /* HelpFormViewController.swift */,
 				56C793DE1FD1A89000CED84E /* ShoppingHistoryViewController.swift */,
+				56C793E41FD2162300CED84E /* HistorySessionTableViewCell.swift */,
 			);
 			name = "Settings Pages";
 			sourceTree = "<group>";
@@ -360,6 +365,7 @@
 				56B681171F19A28200772C68 /* CurrentSession.swift */,
 				56FC95C41F1F13880090A1AE /* Item.swift */,
 				565D91B61F251A50009C2393 /* ShoppingCart.swift */,
+				56C793E21FD1C9AA00CED84E /* HistorySession.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -732,6 +738,7 @@
 				56FC95C31F1DE2D90090A1AE /* HalfModalPresentationController.swift in Sources */,
 				56FC95C01F1DE2CC0090A1AE /* HalfModalTransitionAnimator.swift in Sources */,
 				565D91AC1F23C571009C2393 /* SlideInPresentationManager.swift in Sources */,
+				56C793E31FD1C9AA00CED84E /* HistorySession.swift in Sources */,
 				565D91B51F23E75A009C2393 /* SmallCartItemTableViewCell.swift in Sources */,
 				56D9E3271F25950E0043E910 /* BigCartItemTableViewCell.swift in Sources */,
 				56B680FE1F0C4E9700772C68 /* StatePickerView.swift in Sources */,
@@ -754,6 +761,7 @@
 				56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
 				566CA2FD1FB2F6DA00DED44F /* AllSetViewController.swift in Sources */,
+				56C793E51FD2162300CED84E /* HistorySessionTableViewCell.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,
 				56A720BE1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift in Sources */,
 				5665A6141FB826A400A8719B /* SignUpViewController.swift in Sources */,

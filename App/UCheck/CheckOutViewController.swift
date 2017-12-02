@@ -88,6 +88,7 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
         return(myStringafd)
     }
     
+    @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var ConfirmAndPayButton: UIButton!
     @IBOutlet weak var TotalLabel: UILabel!
     @IBOutlet weak var EstTaxLabel: UILabel!
@@ -100,23 +101,13 @@ class CheckOutViewController: UIViewController, UITableViewDelegate, UITableView
     
     var total : Double = 0.0
     var tax : Double = 0.0
-    
-    //var clientToken : String? = nil
-    
+
     @IBAction func BackButton(_ sender: Any) {
         performSegue(withIdentifier: "UnwindToScanner", sender: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //Customize the navigation bar
-        self.navigationController?.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController?.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.white,
-             NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         //Customize the button
         ConfirmAndPayButton.layer.cornerRadius = 9

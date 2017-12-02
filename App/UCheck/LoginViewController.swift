@@ -94,7 +94,7 @@ class LoginViewController: UIViewController {
                                         CurrentUserPhoto = image
                                         
                                         //store photo in file system for later use
-                                        saveImage(image: image, path: "profilePic.png")
+                                        saveImage(image: image, path: "profilePicture.png")
                                     }
                                 }
                             })
@@ -193,7 +193,7 @@ class LoginViewController: UIViewController {
                             CurrentUserPhoto = image
                             
                             //store photo in file system for later use
-                            saveImage(image: image, path: "profilePic.png")
+                            saveImage(image: image, path: "profilePicture.png")
                         }
                     }
                 })
@@ -267,7 +267,7 @@ class LoginViewController: UIViewController {
                                     CurrentUserPhoto = image
                                     
                                     //store photo in file system for later use
-                                    saveImage(image: image, path: "profilePic.png")
+                                    saveImage(image: image, path: "profilePicture.png")
                                 }
                             }
                         }
