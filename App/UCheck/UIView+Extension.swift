@@ -29,6 +29,7 @@ extension UIView {
 struct Colors {
     static let darkRed = UIColor(red: 137.0/255.0, green: 3.0/255.0, blue: 9.0/255.0, alpha: 1.0)
     static let lightRed = UIColor(red: 203.0/255.0, green: 93.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+    static let lightWhite = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.2)
 }
 
 func getDocumentsDirectory() -> URL {

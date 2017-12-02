@@ -210,7 +210,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {
             defaults.set("true", forKey: "ExistingDevice")
             print("going to sign up page")
-            targetID = "signupBoard"
+            targetID = "tutorialBoard"
             showTargetVC(ID: targetID)
             return true
         }
