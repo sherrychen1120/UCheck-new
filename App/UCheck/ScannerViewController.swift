@@ -172,9 +172,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 /*if let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj){
                     barCodeFrameView?.frame = barCodeObject.bounds
                 }*/
-                
+                self.captureSession = nil
                 let code = metadataObj.stringValue
                 print("bar code detected = " + code!)
+                
                 
                 //Read object from Firebase
                 ref.observe(.value, with: { snapshot in
@@ -188,11 +189,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     
                     if (self.currItem != nil){
                         print(self.currItem!.item_name)
-                        self.captureSession = nil
-                        
-                        //Add to shopping cart
-                        ShoppingCart.addItem(newItem: self.currItem!)
-                        ShoppingCart.listItems()
                         
                         //Show ItemDetail VC
                         //Pass the currItem to the next VC

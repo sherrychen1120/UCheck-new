@@ -33,15 +33,6 @@ class ReceiptViewController: UIViewController,UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Customize the navigation bar
-        self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController!.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController!.navigationBar.titleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.white,
-             NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationItem.setHidesBackButton(true, animated:true);
-        
         //Customize the button
         ConfirmButton.layer.cornerRadius = 9
 
@@ -113,16 +104,6 @@ class ReceiptViewController: UIViewController,UICollectionViewDelegate, UICollec
     }
     
     @IBAction func unwindToReceipt(segue: UIStoryboardSegue) {
-        //Customize the navigation bar
-        self.navigationController!.navigationBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController!.navigationBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        self.navigationController!.navigationBar.titleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.white,
-             NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationItem.setHidesBackButton(true, animated:true);
-        
-        print("unwindSegue to receipt")
     }
     
     // MARK: - show alert

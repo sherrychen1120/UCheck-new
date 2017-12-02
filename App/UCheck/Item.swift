@@ -44,8 +44,9 @@ class Item: NSObject {
         ref = snapshot.ref
     }
     
-   /* init(snapshotValue: [String:AnyObject], barcode:String) {
-        self.code = barcode
+    init(snapshotValue: [String:AnyObject], item_number:String) {
+        self.item_number = item_number
+        code = snapshotValue["barcode"] as! String
         item_name = snapshotValue["item_name"] as! String
         if let snap_price = snapshotValue["item_price"] as? NSNumber {
             item_price = String(format: "%.2f", snap_price)
@@ -53,7 +54,7 @@ class Item: NSObject {
             item_price = snap_price
         }
         category = snapshotValue["category"] as! String
-    }*/
+    }
 
     
     func addImage(source : UIImage?){
@@ -68,6 +69,9 @@ class Item: NSObject {
         quantity = quantity - 1
         return quantity
     }
-
+    
+    func setQuantity(q: Int){
+        quantity = q
+    }
 
 }

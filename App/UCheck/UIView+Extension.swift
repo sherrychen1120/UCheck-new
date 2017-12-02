@@ -115,3 +115,27 @@ func logoutProcedure(EmailOrFB : String?, removeUserDefaultsForKey: String?, del
     }
     
 }
+
+
+//function to format date_time for output
+func formatDateTime(date_time : String) -> String{
+    let r1 = date_time.startIndex..<date_time.index(date_time.startIndex, offsetBy: 4)
+    let year = String(date_time[r1])
+    
+    let r2 = date_time.index(date_time.startIndex, offsetBy: 4)..<date_time.index(date_time.startIndex, offsetBy: 6)
+    let month = date_time[r2]
+    
+    let r3 = date_time.index(date_time.startIndex, offsetBy: 6)..<date_time.index(date_time.startIndex, offsetBy: 8)
+    let day = date_time[r3]
+    
+    let r4 = date_time.index(date_time.endIndex, offsetBy: -6)..<date_time.index(date_time.endIndex, offsetBy: -4)
+    let hour = date_time[r4]
+    
+    let r5 = date_time.index(date_time.endIndex, offsetBy: -4)..<date_time.index(date_time.endIndex, offsetBy: -2)
+    let minute = date_time[r5]
+    
+    let date = month + "/" + day + "/" + year
+    let time = hour + ":" + minute
+    let display_str = date + " " + time
+    return display_str
+}

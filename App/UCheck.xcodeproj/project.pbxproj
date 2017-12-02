@@ -41,6 +41,7 @@
 		56B681041F10771F00772C68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681031F10771F00772C68 /* LoginViewController.swift */; };
 		56B681181F19A28200772C68 /* CurrentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681171F19A28200772C68 /* CurrentSession.swift */; };
 		56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B681201F1AC96C00772C68 /* ScannerViewController.swift */; };
+		56C4B61C1FD25175007313BD /* HistoryReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C4B61B1FD25175007313BD /* HistoryReceiptViewController.swift */; };
 		56C793D91FD11E5300CED84E /* HelpFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C793D81FD11E5300CED84E /* HelpFormViewController.swift */; };
 		56C793DF1FD1A89000CED84E /* ShoppingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C793DE1FD1A89000CED84E /* ShoppingHistoryViewController.swift */; };
 		56C793E31FD1C9AA00CED84E /* HistorySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C793E21FD1C9AA00CED84E /* HistorySession.swift */; };
@@ -124,6 +125,7 @@
 		56B681031F10771F00772C68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		56B681171F19A28200772C68 /* CurrentSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSession.swift; sourceTree = "<group>"; };
 		56B681201F1AC96C00772C68 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		56C4B61B1FD25175007313BD /* HistoryReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryReceiptViewController.swift; sourceTree = "<group>"; };
 		56C793D81FD11E5300CED84E /* HelpFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpFormViewController.swift; sourceTree = "<group>"; };
 		56C793DE1FD1A89000CED84E /* ShoppingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingHistoryViewController.swift; sourceTree = "<group>"; };
 		56C793E21FD1C9AA00CED84E /* HistorySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySession.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				56C793D81FD11E5300CED84E /* HelpFormViewController.swift */,
 				56C793DE1FD1A89000CED84E /* ShoppingHistoryViewController.swift */,
 				56C793E41FD2162300CED84E /* HistorySessionTableViewCell.swift */,
+				56C4B61B1FD25175007313BD /* HistoryReceiptViewController.swift */,
 			);
 			name = "Settings Pages";
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				56C793E51FD2162300CED84E /* HistorySessionTableViewCell.swift in Sources */,
 				A96F09C91FD26C7D00D48082 /* TutorialOneViewController.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,
+				56C4B61C1FD25175007313BD /* HistoryReceiptViewController.swift in Sources */,
 				56A720BE1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift in Sources */,
 				5665A6141FB826A400A8719B /* SignUpViewController.swift in Sources */,
 				56C793DF1FD1A89000CED84E /* ShoppingHistoryViewController.swift in Sources */,

@@ -16,15 +16,11 @@ class ShoppingHistoryViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var LoadingText: UILabel!
     @IBOutlet weak var HistoryListTableView: UITableView!
     @IBOutlet weak var BackButton: UIBarButtonItem!
-    @IBOutlet weak var navBar: UINavigationBar!
     
     var should_reload_list = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //Customize navBar
-        self.customizeNavBar()
         
         //TableView delegate & data source
         HistoryListTableView.delegate = self
@@ -38,6 +34,7 @@ class ShoppingHistoryViewController: UIViewController, UITableViewDelegate, UITa
             DispatchQueue.main.async {
                 //Reload data if should_reload_list
                 if (self.should_reload_list){
+                    self.should_reload_list = false
                     self.HistoryListTableView.reloadData()
                 }
                 
@@ -47,17 +44,8 @@ class ShoppingHistoryViewController: UIViewController, UITableViewDelegate, UITa
         })
     }
     
-    func customizeNavBar(){
-        navBar.backgroundColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        navBar.barTintColor = UIColor(red:124/255.0, green:28/255.0, blue:22/255.0, alpha:1.0)
-        navBar.titleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.white,
-             NSAttributedStringKey.font: UIFont(name: "AvenirNext-DemiBold", size: 19)!]
-        let navItem = UINavigationItem(title: "Shopping History")
-        let backItem = UIBarButtonItem(title: "< Back", style: .plain, target: nil, action: #selector(back))
-        backItem.tintColor = UIColor.white
-        navItem.leftBarButtonItem = backItem
-        navBar.setItems([navItem], animated: false)
+    @IBAction func BackButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func loadingViewSetup(){
@@ -113,10 +101,6 @@ class ShoppingHistoryViewController: UIViewController, UITableViewDelegate, UITa
         })
     }
     
-    @objc func back() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -137,7 +121,7 @@ class ShoppingHistoryViewController: UIViewController, UITableViewDelegate, UITa
         cell.StoreLabel.text = session.store_id
         cell.TotalPriceLabel.text = "$" + session.total
         cell.DateTimeLabel.text = formatDateTime(date_time: session.date_time)
-        should_reload_list = false
+        
         
         return cell
     }
@@ -147,27 +131,29 @@ class ShoppingHistoryViewController: UIViewController, UITableViewDelegate, UITa
         return 70
     }
     
-    //function to format date_time for output in cells
-    func formatDateTime(date_time : String) -> String{
-        let r1 = date_time.startIndex..<date_time.index(date_time.startIndex, offsetBy: 4)
-        let year = String(date_time[r1])
+    //tableView func for cell selection
+    var selected_item : HistorySession? = nil
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selected_item = history_sessions[indexPath.row]
+        self.performSegue(withIdentifier: "ShoppingHistoryToHistoryReceipt", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //If directing to history receipt, pass on the selected session
+        if (segue.identifier == "ShoppingHistoryToHistoryReceipt"){
+            let controller = segue.destination as! HistoryReceiptViewController
+            controller.curr_item = selected_item
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let row = HistoryListTableView.indexPathForSelectedRow {
+            self.HistoryListTableView.deselectRow(at: row, animated: false)
+        }
+    }
+    
+    @IBAction func unwindToShoppingHistory(segue: UIStoryboardSegue) {
         
-        let r2 = date_time.index(date_time.startIndex, offsetBy: 4)..<date_time.index(date_time.startIndex, offsetBy: 6)
-        let month = date_time[r2]
-        
-        let r3 = date_time.index(date_time.startIndex, offsetBy: 6)..<date_time.index(date_time.startIndex, offsetBy: 8)
-        let day = date_time[r3]
-        
-        let r4 = date_time.index(date_time.endIndex, offsetBy: -6)..<date_time.index(date_time.endIndex, offsetBy: -4)
-        let hour = date_time[r4]
-        
-        let r5 = date_time.index(date_time.endIndex, offsetBy: -4)..<date_time.index(date_time.endIndex, offsetBy: -2)
-        let minute = date_time[r5]
-        
-        let date = month + "." + day + "." + year
-        let time = hour + ":" + minute
-        let display_str = date + " " + time
-        return display_str
     }
 
     
@@ -175,16 +161,8 @@ class ShoppingHistoryViewController: UIViewController, UITableViewDelegate, UITa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
