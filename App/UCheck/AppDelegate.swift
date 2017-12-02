@@ -198,8 +198,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     })
                 //no current email or fb session
                 } else {
-                    targetID = "loginBoard"
-                    showTargetVC(ID: targetID)
+                    logoutProcedure(EmailOrFB: "Other", removeUserDefaultsForKey: nil, deleteProfilePic: true, cleanCurrentSession: true, cleanShoppingCart: true, handleComplete: {
+                        targetID = "loginBoard"
+                        self.showTargetVC(ID: targetID)
+                    })
                 }
                 return true
             }

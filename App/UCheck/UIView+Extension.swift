@@ -36,7 +36,7 @@ func getDocumentsDirectory() -> URL {
     return paths[0]
 }
 
-func saveImage (image: UIImage, path: String) -> Void {
+func saveImage(image: UIImage, path: String) -> Void {
     if let png = UIImagePNGRepresentation(image) {
         let filename = getDocumentsDirectory().appendingPathComponent(path)
         try? png.write(to: filename)
@@ -52,6 +52,17 @@ func loadImageFromPath(path: String) -> UIImage? {
     }
     print("Loading image from path: \(path)") // debug to find path
     return image
+}
+
+func removeImage(path: String) -> Void {
+    let fileManager = FileManager.default
+    let filename = getDocumentsDirectory().appendingPathComponent(path).path
+    
+    if (filename == "") {
+        return;
+    }
+    
+    try? fileManager.removeItem(atPath: filename)
 }
 
 
@@ -76,7 +87,9 @@ func logoutProcedure(EmailOrFB : String?, removeUserDefaultsForKey: String?, del
     }
     
     //3. Delete Profile Pic, if requested
-    //TODO
+    if (deleteProfilePic) {
+        removeImage(path: "profilePic.png")
+    }
     
     //4. Clean current session objects
     if (cleanCurrentSession){
