@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1hz-Yx-Xdm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GmM-xN-KYi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,21 +23,181 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="V6X-Ks-1U9">
+        <!--Main Tutorial View Controller-->
+        <scene sceneID="ljr-5Y-aDN">
             <objects>
-                <navigationController id="1hz-Yx-Xdm" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1gn-pf-lML">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                <viewController storyboardIdentifier="tutorialBoard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GmM-xN-KYi" customClass="MainTutorialViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jc8-wr-VDB"/>
+                        <viewControllerLayoutGuide type="bottom" id="eNu-xa-5Ho"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O9n-xz-w8K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehd-ig-oX4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="1Vn-hL-ReE" kind="embed" id="jWs-dS-tSV"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHO-9H-szS">
+                                <rect key="frame" x="199" y="591" width="140" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="DBw-nU-Eq6"/>
+                                    <constraint firstAttribute="width" constant="140" id="yth-o6-B4f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <state key="normal" title="Log in">
+                                    <color key="titleColor" red="0.79607843137254897" green="0.36470588235294116" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logInAction:" destination="GmM-xN-KYi" eventType="touchUpInside" id="LsQ-xd-Yjq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRs-Sc-478">
+                                <rect key="frame" x="35" y="591" width="140" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="An8-6s-0fN"/>
+                                    <constraint firstAttribute="width" constant="140" id="Yj2-Yu-vXW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpAction:" destination="GmM-xN-KYi" eventType="touchUpInside" id="ixh-Px-Hdq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pRs-Sc-478" firstAttribute="leading" secondItem="O9n-xz-w8K" secondAttribute="leadingMargin" constant="19" id="Iy4-Bw-sFS"/>
+                            <constraint firstItem="ehd-ig-oX4" firstAttribute="height" secondItem="O9n-xz-w8K" secondAttribute="height" id="U0S-K5-0zr"/>
+                            <constraint firstItem="ehd-ig-oX4" firstAttribute="centerX" secondItem="O9n-xz-w8K" secondAttribute="centerX" id="Yqt-Bf-hAG"/>
+                            <constraint firstItem="eNu-xa-5Ho" firstAttribute="top" secondItem="oHO-9H-szS" secondAttribute="bottom" constant="20" id="aLl-0a-RIo"/>
+                            <constraint firstItem="eNu-xa-5Ho" firstAttribute="top" secondItem="pRs-Sc-478" secondAttribute="bottom" constant="20" id="bi3-7t-Gk2"/>
+                            <constraint firstItem="ehd-ig-oX4" firstAttribute="centerY" secondItem="O9n-xz-w8K" secondAttribute="centerY" id="lFX-Im-9be"/>
+                            <constraint firstItem="oHO-9H-szS" firstAttribute="leading" secondItem="pRs-Sc-478" secondAttribute="trailing" constant="24" id="qcG-mB-sqE"/>
+                            <constraint firstItem="ehd-ig-oX4" firstAttribute="width" secondItem="O9n-xz-w8K" secondAttribute="width" id="w49-Kn-0Cd"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <segue destination="ztx-sE-RLm" kind="relationship" relationship="rootViewController" id="u0V-Gw-4fs"/>
+                        <outlet property="containerView" destination="ehd-ig-oX4" id="Ka8-4R-AZq"/>
+                        <outlet property="logInButton" destination="oHO-9H-szS" id="hRa-Jy-Evb"/>
+                        <outlet property="signUpButton" destination="pRs-Sc-478" id="xfJ-e3-HN7"/>
+                        <segue destination="ztx-sE-RLm" kind="show" identifier="tutorialToSignUp" id="u7p-zs-hlp"/>
+                        <segue destination="ehJ-Cc-GYG" kind="show" identifier="tutorialToLogin" id="Ntf-2B-V9i"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nFi-Fr-Ecc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZi-hn-EUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="361" y="-296"/>
+            <point key="canvasLocation" x="292" y="3"/>
+        </scene>
+        <!--Tutorial Page View Controller-->
+        <scene sceneID="8Ez-YH-3DR">
+            <objects>
+                <pageViewController storyboardIdentifier="tutorialPage" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1Vn-hL-ReE" customClass="TutorialPageViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z6H-Wl-FFx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1215" y="778"/>
+        </scene>
+        <!--Tutorial One View Controller-->
+        <scene sceneID="58f-Ca-pCe">
+            <objects>
+                <viewController storyboardIdentifier="TutorialOneVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="f3S-kw-DhV" customClass="TutorialOneViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pBX-BE-tzS"/>
+                        <viewControllerLayoutGuide type="bottom" id="eJW-vb-iPN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="new-fI-tr5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FhV-Xx-ZdP">
+                                <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FhV-Xx-ZdP" firstAttribute="height" secondItem="new-fI-tr5" secondAttribute="height" id="Ne1-wz-J62"/>
+                            <constraint firstItem="FhV-Xx-ZdP" firstAttribute="centerX" secondItem="new-fI-tr5" secondAttribute="centerX" id="eV6-Gv-oG4"/>
+                            <constraint firstItem="FhV-Xx-ZdP" firstAttribute="width" secondItem="new-fI-tr5" secondAttribute="width" id="jqi-ie-FME"/>
+                            <constraint firstItem="FhV-Xx-ZdP" firstAttribute="centerY" secondItem="new-fI-tr5" secondAttribute="centerY" id="lNm-71-JcK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gradientLayer" destination="FhV-Xx-ZdP" id="WqD-cW-hFo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zet-DM-8DT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-383.19999999999999" y="777.66116941529242"/>
+        </scene>
+        <!--Tutorial Two View Controller-->
+        <scene sceneID="s8F-nl-Gs3">
+            <objects>
+                <viewController storyboardIdentifier="TutorialTwoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GfJ-0V-3fm" customClass="TutorialTwoViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3n8-Hs-voi"/>
+                        <viewControllerLayoutGuide type="bottom" id="lQA-PT-vf5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0ym-eY-DdR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7aX-X6-PhC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7aX-X6-PhC" firstAttribute="centerX" secondItem="0ym-eY-DdR" secondAttribute="centerX" id="Oj5-fW-FBe"/>
+                            <constraint firstItem="7aX-X6-PhC" firstAttribute="width" secondItem="0ym-eY-DdR" secondAttribute="width" id="c2V-YK-fud"/>
+                            <constraint firstItem="7aX-X6-PhC" firstAttribute="centerY" secondItem="0ym-eY-DdR" secondAttribute="centerY" id="f5y-Ex-MnE"/>
+                            <constraint firstItem="7aX-X6-PhC" firstAttribute="height" secondItem="0ym-eY-DdR" secondAttribute="height" id="iAC-VL-FcF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gradientView" destination="7aX-X6-PhC" id="NZg-KF-kpw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NgD-nr-lG6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289" y="778"/>
+        </scene>
+        <!--Tutorial Three View Controller-->
+        <scene sceneID="D5c-6b-Tl1">
+            <objects>
+                <viewController storyboardIdentifier="TutorialThreeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OHP-ux-zzk" customClass="TutorialThreeViewController" customModule="UCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Uj-0x-4v5"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nhb-gx-6Th"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ANa-Vd-gr7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Taj-Ua-68n">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Taj-Ua-68n" firstAttribute="height" secondItem="ANa-Vd-gr7" secondAttribute="height" id="U91-WR-TxP"/>
+                            <constraint firstItem="Taj-Ua-68n" firstAttribute="centerY" secondItem="ANa-Vd-gr7" secondAttribute="centerY" id="fHi-H9-Zgn"/>
+                            <constraint firstItem="Taj-Ua-68n" firstAttribute="centerX" secondItem="ANa-Vd-gr7" secondAttribute="centerX" id="h96-fe-gDJ"/>
+                            <constraint firstItem="Taj-Ua-68n" firstAttribute="width" secondItem="ANa-Vd-gr7" secondAttribute="width" id="tPQ-Kv-GRG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gradientView" destination="Taj-Ua-68n" id="nnX-Ou-kcf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZgV-Qt-FSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="778"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="2E5-zk-sid">
@@ -2131,5 +2291,8 @@
         <segue reference="FvN-Mo-PyD"/>
         <segue reference="BaN-Tn-j8k"/>
         <segue reference="PBX-Gr-8q4"/>
+        <segue reference="BbT-Cx-kJI"/>
+        <segue reference="NRm-WD-tbV"/>
+        <segue reference="u7p-zs-hlp"/>
     </inferredMetricsTieBreakers>
 </document>
