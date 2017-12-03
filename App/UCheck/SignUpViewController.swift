@@ -248,7 +248,7 @@ class SignUpViewController: UIViewController {
             
             let userData = ["email": email, "full_name": full_name]
             let defaults = UserDefaults.standard
-            defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
+            defaults.set(userData, forKey: "fb+" + CurrentUserId)
             
             CurrentUserName = full_name
             CurrentUser = email
@@ -304,7 +304,7 @@ class SignUpViewController: UIViewController {
                 CurrentUserName = full_name
                 
                 let defaults = UserDefaults.standard
-                defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
+                defaults.set(userData, forKey: "fb+" + CurrentUserId)
                 
                 //update info on Firebase
                 let user_ref = self.ref.child(self.fb_uid)

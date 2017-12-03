@@ -214,7 +214,7 @@ class LoginViewController: UIViewController {
                 })
                 
                 let defaults = UserDefaults.standard
-                defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
+                defaults.set(userData, forKey: "fb+" + CurrentUserId)
                 //print("Going into Scanner")
                 //self.performSegue(withIdentifier: "LoginToScanner", sender: self)
             }
@@ -245,7 +245,7 @@ class LoginViewController: UIViewController {
                 CurrentUserName = full_name
 
                 let defaults = UserDefaults.standard
-                defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
+                defaults.set(userData, forKey: "fb+" + CurrentUserId)
                 
                 //update info on Firebase
                 let user_ref = self.ref.child(self.uid)

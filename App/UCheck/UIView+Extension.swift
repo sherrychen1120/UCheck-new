@@ -89,7 +89,7 @@ func logoutProcedure(EmailOrFB : String?, removeUserDefaultsForKey: String?, del
     
     //3. Delete Profile Pic, if requested
     if (deleteProfilePic) {
-        removeImage(path: "profilePic.png")
+        removeImage(path: "profilePicture.png")
     }
     
     //4. Clean current session objects

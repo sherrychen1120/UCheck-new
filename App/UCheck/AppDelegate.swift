@@ -69,102 +69,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
                 
             } else {
-                
-                /*if (FBSDKAccessToken.current() == nil){
-                    print("AccessToken is nil.")
-                }*/
-                
-                //If there's existing email logged in
-                if let email = retrievedEmail, let password = retrievedPassword{
-                    FIRAuth.auth()!.signIn(withEmail: email, password: password){ (user, error) in
-                        if let error = error {
-                            print("Firebase login error: " + error.localizedDescription)
-                            //Firebase sign in error. Log out and redirect to login board
-                            logoutProcedure(EmailOrFB: "Email", removeUserDefaultsForKey: "email+"+email, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
-                                    targetID = "loginBoard"
-                                    self.showTargetVC(ID: targetID)
-                            })
+                //If there's existing user logged in (Firebase persistence!)
+                if let user = FIRAuth.auth()!.currentUser {
+                    print("Persistence!")
+                    //If there was email logged in
+                    if let email = retrievedEmail, let password = retrievedPassword {
+                        
+                        //Get the user profile picture from local storage
+                        if let image = loadImageFromPath(path: "profilePicture.png") {
+                            //If the picture is found, save photo as the current users image
+                            CurrentUserPhoto = image
                         } else {
-                            //Store user email
-                            CurrentUser = email
-                            
-                            //Store user id
-                            if let user = FIRAuth.auth()?.currentUser{
-                                CurrentUserId = user.uid
-                            }
-                            
-                            //Get the user name from NSUserDefaults
-                            if let name = defaults.string(forKey: "email+" + email) {
-                                CurrentUserName = name
-                            } else {
-                                //Keychain inconsistency, log out the user and go back to login page
-                                print("Login error: data inconsistency. No user data in defaults")
-                                logoutProcedure(EmailOrFB: "Email", removeUserDefaultsForKey: "email+"+email, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
-                                    targetID = "loginBoard"
-                                    self.showTargetVC(ID: targetID)
-                                })
-                            }
-                            
-                            //Get the user profile picture from local storage
-                            if let image = loadImageFromPath(path: "profilePicture.png") {
-                                //If the picture is found, save photo as the current users image
-                                CurrentUserPhoto = image
-                            } else {
-                                print("No photo found in filepath, trying to re-download")
-                                //re-download image
-                                let storageRef = FIRStorage.storage().reference()
-                                let imagesRef = storageRef.child("profile_pics")
-                                let selfieRef = imagesRef.child("\(CurrentUserId).png")
-                                selfieRef.data(withMaxSize: 1024 * 1024, completion: { (data, error) in
-                                    if (error != nil) {
-                                        print("Unable to download image. Will retry later. Error: " + (error?.localizedDescription)!)
-                                    } else if (data != nil) {
-                                        if let image = UIImage(data: data!) {
-                                            //save photo as the current users image
-                                            CurrentUserPhoto = image
-                                            
-                                            //store photo in file system for later use
-                                            saveImage(image: image, path: "profilePicture.png")
-                                        }
+                            print("No photo found in filepath, trying to re-download")
+                            //re-download image
+                            let storageRef = FIRStorage.storage().reference()
+                            let imagesRef = storageRef.child("profile_pics")
+                            let selfieRef = imagesRef.child("\(CurrentUserId).png")
+                            selfieRef.data(withMaxSize: 1024 * 1024, completion: { (data, error) in
+                                if (error != nil) {
+                                    print("Unable to download image. Will retry later. Error: " + (error?.localizedDescription)!)
+                                } else if (data != nil) {
+                                    if let image = UIImage(data: data!) {
+                                        //save photo as the current users image
+                                        CurrentUserPhoto = image
+                                        
+                                        //store photo in file system for later use
+                                        saveImage(image: image, path: "profilePicture.png")
                                     }
-                                    
-                                    //Redirect to scanner board after hearing back from Firebase
-                                    targetID = "scannerBoard"
-                                    self.showTargetVC(ID: targetID)
-                                })
-                            }
-                            
+                                }
+                            })
                         }
-                    }
-                //else if there was a FB login
-                } else if let accessToken = FBSDKAccessToken.current(){
-                    let userID = accessToken.userID!
-                    
-                    //swap fb accessToken for firebase login key
-                    let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
-                    
-                    //Firebase sign in
-                    FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
-                        if let error = error {
-                            print("Firebase login error: \(error.localizedDescription)")
-                            //Firebase sign in error. Log out and redirect to login board
-                            logoutProcedure(EmailOrFB: "FB", removeUserDefaultsForKey: "fb+"+userID, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
+                        
+                        //Store user info
+                        CurrentUser = email
+                        
+                        //Store user id
+                        CurrentUserId = user.uid
+                        
+                        //Get the user name from NSUserDefaults
+                        if let name = defaults.string(forKey: "email+" + email) {
+                            CurrentUserName = name
+                        } else {
+                            //Keychain inconsistency, log out the user and go back to login page
+                            print("Login error: data inconsistency. No user data in defaults")
+                            logoutProcedure(EmailOrFB: "Email", removeUserDefaultsForKey: "email+"+email, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
                                 targetID = "loginBoard"
                                 self.showTargetVC(ID: targetID)
                             })
                         }
                         
-                        //Store Firebase user id
-                        if let user = FIRAuth.auth()?.currentUser{
-                            CurrentUserId = user.uid
-                        }
+                        //Redirect to scanner board
+                        //Let the photo download process run in the backend and don't wait for it to avoid the async problem
+                        targetID = "scannerBoard"
+                        self.showTargetVC(ID: targetID)
+                    }
+                    //else if there was a FB login
+                    else if (FBSDKAccessToken.current() != nil) {
+                        //Store user id
+                        CurrentUserId = user.uid
                         
-                        //Get the user email & name from NSUserDefaults, using Facebook userID
-                        if let values = defaults.value(forKey: "fb+" + userID) as? [String: String]{
-                            CurrentUser = values["email"]!
-                            CurrentUserName = values["full_name"]!
-                        }
-                        
+                        //Get the user profile picture from local storage
                         if let image = loadImageFromPath(path: "profilePicture.png") {
                             //If picture found, save photo as the current users image
                             CurrentUserPhoto = image
@@ -190,22 +154,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         saveImage(image: image, path: "profilePicture.png")
                                     }
                                 }
-                                
-                                //Redirect to scanner board after hearing back from Firebase
-                                targetID = "scannerBoard"
+                            })
+                        }
+                        
+                        //Get the user email & name from NSUserDefaults, using Facebook userID
+                        if let values = defaults.value(forKey: "fb+" + CurrentUserId) as? [String: String]{
+                            CurrentUser = values["email"]!
+                            CurrentUserName = values["full_name"]!
+                        } else {
+                            //Keychain inconsistency, log out the user and go back to login page
+                            print("Login error: data inconsistency. No user data in defaults")
+                            logoutProcedure(EmailOrFB: "FB", removeUserDefaultsForKey: "fb+"+CurrentUserId, deleteProfilePic: true, cleanCurrentSession: false, cleanShoppingCart: false, handleComplete: {
+                                targetID = "loginBoard"
                                 self.showTargetVC(ID: targetID)
                             })
                         }
-                    })
-                //no current email or fb session
-                } else {
+                        
+                        //Redirect to scanner board
+                        //Let the photo download process run in the backend and don't wait for it to avoid the async problem
+                        targetID = "scannerBoard"
+                        self.showTargetVC(ID: targetID)
+                        
+                    }
+                    //Edge case: no current email or fb session variables but somehow there's a Firebase current user
+                    else {
+                        //Clean any potential legacy login info
+                        logoutProcedure(EmailOrFB: "Other", removeUserDefaultsForKey: nil, deleteProfilePic: true, cleanCurrentSession: true, cleanShoppingCart: true, handleComplete: {
+                            targetID = "loginBoard"
+                            self.showTargetVC(ID: targetID)
+                        })
+                    }
+                    
+                }
+                //If there's no user logged in
+                else{
+                    //Clean any potential legacy login info
                     logoutProcedure(EmailOrFB: "Other", removeUserDefaultsForKey: nil, deleteProfilePic: true, cleanCurrentSession: true, cleanShoppingCart: true, handleComplete: {
                         targetID = "loginBoard"
                         self.showTargetVC(ID: targetID)
                     })
                 }
                 return true
-            }
+            }//For the legacy case
         }
         //Actual case for first time using this device. No object found for key "ExistingDevice"
         else {
