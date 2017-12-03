@@ -278,8 +278,29 @@
                                     <action selector="SignUpButton:" destination="ztx-sE-RLm" eventType="touchUpInside" id="2Ed-GL-mgX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsO-UX-1in">
+                                <rect key="frame" x="106" y="588.5" width="163.5" height="19.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <color key="textColor" red="0.98691338299999998" green="0.87408608200000004" blue="0.87300062180000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72w-D4-xOs">
+                                <rect key="frame" x="48.5" y="618" width="278" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="2t8-nf-N4A"/>
+                                    <constraint firstAttribute="width" constant="278" id="Dyk-g4-TSG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                <state key="normal" title="Log in">
+                                    <color key="titleColor" red="0.98691338299999998" green="0.87408608200000004" blue="0.87300062180000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="LoginButton:" destination="ztx-sE-RLm" eventType="touchUpInside" id="v33-HW-A2E"/>
+                                    <action selector="SignUpButton:" destination="ehJ-Cc-GYG" eventType="touchUpInside" id="5aN-Qz-ujk"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up, you agree to our Terms of Services." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOf-7w-OUu">
-                                <rect key="frame" x="36" y="629" width="303" height="18"/>
+                                <rect key="frame" x="36" y="492" width="303" height="18"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -342,14 +363,16 @@
                             <constraint firstItem="ZTm-jC-y1D" firstAttribute="leading" secondItem="MmL-lC-BhZ" secondAttribute="trailing" constant="1.5" id="B2L-ne-3n8"/>
                             <constraint firstAttribute="trailing" secondItem="tc7-Mq-hGx" secondAttribute="trailing" id="B9d-dz-IeJ"/>
                             <constraint firstItem="05I-6G-N3t" firstAttribute="leading" secondItem="dS7-Gy-eM1" secondAttribute="leadingMargin" constant="20" id="CSb-DJ-j2f"/>
+                            <constraint firstItem="OsO-UX-1in" firstAttribute="bottom" secondItem="72w-D4-xOs" secondAttribute="top" constant="-10" id="CbH-c3-iN3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sZP-lN-xRK" secondAttribute="trailing" constant="20" id="Fcc-Ge-GaL"/>
                             <constraint firstItem="sZP-lN-xRK" firstAttribute="top" secondItem="F3e-sG-QHn" secondAttribute="bottom" constant="18" id="HDu-Oq-FGK"/>
+                            <constraint firstItem="sOf-7w-OUu" firstAttribute="top" secondItem="sZP-lN-xRK" secondAttribute="bottom" constant="10" id="JXi-Wk-GZ6"/>
+                            <constraint firstItem="kyF-av-STC" firstAttribute="top" secondItem="72w-D4-xOs" secondAttribute="bottom" constant="15" id="K5N-Dv-pVu"/>
                             <constraint firstAttribute="centerX" secondItem="M8Z-hD-dBq" secondAttribute="trailing" constant="5" id="Kmf-X0-gf4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Efd-zI-uoz" secondAttribute="trailing" constant="20" id="LN2-nN-pZI"/>
                             <constraint firstItem="M8Z-hD-dBq" firstAttribute="top" secondItem="05I-6G-N3t" secondAttribute="bottom" constant="18" id="Mu4-gL-enA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="q2n-lE-auN" secondAttribute="trailing" constant="20" id="MuN-nA-iTu"/>
                             <constraint firstItem="Efd-zI-uoz" firstAttribute="leading" secondItem="dS7-Gy-eM1" secondAttribute="centerX" constant="5" id="O7s-0b-FXe"/>
-                            <constraint firstItem="kyF-av-STC" firstAttribute="top" secondItem="sOf-7w-OUu" secondAttribute="bottom" constant="20" id="Rdx-23-T7Y"/>
                             <constraint firstItem="MmL-lC-BhZ" firstAttribute="top" secondItem="pM5-KK-n2a" secondAttribute="bottom" constant="7" id="U1F-SH-H5w"/>
                             <constraint firstItem="sOf-7w-OUu" firstAttribute="leading" secondItem="dS7-Gy-eM1" secondAttribute="leadingMargin" constant="20" id="Ul5-Xn-IMW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pM5-KK-n2a" secondAttribute="trailing" constant="20" id="YCi-k2-dbf"/>
@@ -363,8 +386,10 @@
                             <constraint firstItem="Um3-hz-6e6" firstAttribute="bottom" secondItem="pM5-KK-n2a" secondAttribute="centerY" id="j4v-Z7-Vyz"/>
                             <constraint firstItem="JbS-ie-w6n" firstAttribute="leading" secondItem="Efd-zI-uoz" secondAttribute="trailing" constant="1.5" id="kX6-Bk-NQh"/>
                             <constraint firstItem="05I-6G-N3t" firstAttribute="top" secondItem="q2n-lE-auN" secondAttribute="bottom" constant="14.5" id="kkw-61-tpd"/>
+                            <constraint firstItem="OsO-UX-1in" firstAttribute="centerX" secondItem="dS7-Gy-eM1" secondAttribute="centerX" id="lqN-BI-VPg"/>
                             <constraint firstItem="tc7-Mq-hGx" firstAttribute="top" secondItem="dS7-Gy-eM1" secondAttribute="top" id="mTP-Wk-NVT"/>
                             <constraint firstItem="pM5-KK-n2a" firstAttribute="leading" secondItem="dS7-Gy-eM1" secondAttribute="leadingMargin" constant="20" id="nGO-Mj-rV0"/>
+                            <constraint firstItem="72w-D4-xOs" firstAttribute="centerX" secondItem="dS7-Gy-eM1" secondAttribute="centerX" id="p4u-ce-YYf"/>
                             <constraint firstItem="q2n-lE-auN" firstAttribute="top" secondItem="ZWq-MA-wBz" secondAttribute="bottom" constant="23" id="qZ6-KE-91R"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sOf-7w-OUu" secondAttribute="trailing" constant="20" id="rZX-21-51t"/>
                             <constraint firstItem="MmL-lC-BhZ" firstAttribute="leading" secondItem="dS7-Gy-eM1" secondAttribute="leadingMargin" constant="20" id="ra7-O3-oLH"/>
@@ -379,19 +404,23 @@
                     <navigationItem key="navigationItem" id="Vj2-JO-2d0"/>
                     <connections>
                         <outlet property="EmailInput" destination="pM5-KK-n2a" id="FJd-lm-6Eu"/>
+                        <outlet property="FBSignupButton" destination="q2n-lE-auN" id="cOy-AQ-o7g"/>
                         <outlet property="FirstNameInput" destination="M8Z-hD-dBq" id="3Fl-8b-LFh"/>
                         <outlet property="LastNameInput" destination="Efd-zI-uoz" id="PWb-gr-sqb"/>
                         <outlet property="LoadingActivityIndicator" destination="OoG-MC-W1r" id="5bI-qg-r4G"/>
                         <outlet property="LoadingText" destination="6wU-gC-jCm" id="Hda-hS-4hQ"/>
                         <outlet property="LoadingView" destination="tc7-Mq-hGx" id="OGP-Tn-nla"/>
+                        <outlet property="LoginButton" destination="72w-D4-xOs" id="DAo-pf-bB1"/>
                         <outlet property="PasswordInput" destination="MmL-lC-BhZ" id="bC4-v1-zPA"/>
+                        <outlet property="SignupButton" destination="sZP-lN-xRK" id="RiY-ee-uRD"/>
                         <segue destination="M6h-eb-QMo" kind="show" identifier="SignUpToVenmo" id="FvN-Mo-PyD"/>
                         <segue destination="gbQ-Jh-5Ig" kind="show" identifier="SignUpToScanner" id="BaN-Tn-j8k"/>
+                        <segue destination="ehJ-Cc-GYG" kind="show" identifier="SignupToLogin" id="pBu-Q3-Mg3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7U-el-D4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1904.8" y="-296.40179910044981"/>
+            <point key="canvasLocation" x="1905" y="-475"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="JqP-io-iry">
@@ -462,8 +491,8 @@
                                     <constraint firstAttribute="height" constant="1" id="ykv-lM-ZQg"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZnI-Qh-ueX">
-                                <rect key="frame" x="48" y="620" width="278" height="34"/>
+                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZnI-Qh-ueX">
+                                <rect key="frame" x="48" y="618" width="278" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="4dm-qT-7Xi"/>
                                     <constraint firstAttribute="width" constant="278" id="9u0-1c-cxs"/>
@@ -605,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QaC-B2-isA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1905" y="434"/>
+            <point key="canvasLocation" x="1721" y="433"/>
         </scene>
         <!--Scanner View Controller-->
         <scene sceneID="TlP-9w-gKi">
@@ -2288,11 +2317,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="etE-lk-2r4"/>
-        <segue reference="FvN-Mo-PyD"/>
-        <segue reference="BaN-Tn-j8k"/>
-        <segue reference="PBX-Gr-8q4"/>
         <segue reference="BbT-Cx-kJI"/>
         <segue reference="NRm-WD-tbV"/>
-        <segue reference="u7p-zs-hlp"/>
+        <segue reference="pBu-Q3-Mg3"/>
+        <segue reference="PBX-Gr-8q4"/>
     </inferredMetricsTieBreakers>
 </document>

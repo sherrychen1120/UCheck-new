@@ -40,17 +40,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MARK: debug calls
         //For debug - set ExistingDevice
-        defaults.set("false", forKey: "ExistingDevice")
+        //If setting this to false, make sure that you've also cleaned email & FB login below
+        //defaults.set("false", forKey: "ExistingDevice")
         
         //For debug - clean KeychainWrapper
-        let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
+        /*let removeEmail: Bool = KeychainWrapper.standard.removeObject(forKey: "email")
         let removePassword: Bool = KeychainWrapper.standard.removeObject(forKey: "password")
         print("Successfully removed email: \(removeEmail);")
-        print("Successfully removed password: \(removePassword).")
+        print("Successfully removed password: \(removePassword).")*/
         
         //For debug - Log out Facebook
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
+        /*let loginManager = FBSDKLoginManager()
+        loginManager.logOut()*/
         
         var targetID = ""
         
@@ -60,10 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (!isExistingDevice){
                 //Data inconsistency. Somehow the value stored at "ExistingDevice" is not "true".
                 //Most likely a testing legacy.
-                //Going to signup board
+                //Going to tutorial board
                 defaults.set("true", forKey: "ExistingDevice")
-                print("going to sign up page")
-                targetID = "signupBoard"
+                print("going to tutorial board")
+                targetID = "tutorialBoard"
                 showTargetVC(ID: targetID)
                 return true
                 
@@ -209,7 +210,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Actual case for first time using this device. No object found for key "ExistingDevice"
         else {
             defaults.set("true", forKey: "ExistingDevice")
-            print("going to sign up page")
+            print("going to tutorial board")
             targetID = "tutorialBoard"
             showTargetVC(ID: targetID)
             return true

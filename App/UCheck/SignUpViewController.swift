@@ -15,6 +15,9 @@ import FBSDKLoginKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var SignupButton: UIButton!
+    @IBOutlet weak var FBSignupButton: UIButton!
+    @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var LoadingText: UILabel!
     @IBOutlet weak var LoadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var LoadingView: UIView!
@@ -39,6 +42,15 @@ class SignUpViewController: UIViewController {
         
         //Clean loading view
         loadingViewRemove()
+        
+        //login button format
+        LoginButton.layer.cornerRadius = 4.5
+        LoginButton.layer.borderWidth = 1
+        LoginButton.layer.borderColor = (UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.75)).cgColor
+        
+        //signup button and fb button format
+        SignupButton.layer.cornerRadius = 4.5
+        FBSignupButton.layer.cornerRadius = 4.5
     }
 
     @IBAction func SignUpButton(_ sender: Any) {
@@ -48,11 +60,11 @@ class SignUpViewController: UIViewController {
         password = PasswordInput.text!
         
         //set up loading view
-        //loadingViewSetup()
+        loadingViewSetup()
         
         if (first_name == "" || last_name == "" || email == "" || password == "" ){
             //Clean loading view
-            //loadingViewRemove()
+            loadingViewRemove()
             
             self.showAlert(withMessage: "Incomplete Information")
         } else {
@@ -80,7 +92,7 @@ class SignUpViewController: UIViewController {
             //Create Firebase account
             if (!isValidPassword){
                 //Clean loading view
-                //loadingViewRemove()
+                loadingViewRemove()
                 
                 self.showAlert(withMessage: "Password requirements unmet.")
             } else {
@@ -88,7 +100,7 @@ class SignUpViewController: UIViewController {
                 FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
                     if let error = error {
                         //Clean loading view
-                        //self.loadingViewRemove()
+                        self.loadingViewRemove()
                         
                         print(error.localizedDescription)
                         
@@ -112,9 +124,9 @@ class SignUpViewController: UIViewController {
                             
                             if (error != nil){
                                 //Clean loading view
-                                //self.loadingViewRemove()
+                                self.loadingViewRemove()
                                 
-                                print(error?.localizedDescription)
+                                print(error?.localizedDescription ?? "FIR signin error")
                             } else {
                                 //fill the info to the new_user object
                                 var uid = ""
@@ -164,14 +176,14 @@ class SignUpViewController: UIViewController {
     var fb_uid = "";
     @IBAction func FBLoginButton(_ sender: Any) {
         //set up loading view
-        //loadingViewSetup()
+        loadingViewSetup()
         
         let loginManager = FBSDKLoginManager()
         
         loginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) in
             if let error = error {
                 //Clean loading view
-                //self.loadingViewRemove()
+                self.loadingViewRemove()
                 
                 print("Failed to login: \(error.localizedDescription)")
                 return
@@ -180,7 +192,7 @@ class SignUpViewController: UIViewController {
             //get accessToken from fb
             guard let accessToken = FBSDKAccessToken.current() else {
                 //Clean loading view
-                //self.loadingViewRemove()
+                self.loadingViewRemove()
                 
                 print("Failed to get access token")
                 return
@@ -193,15 +205,17 @@ class SignUpViewController: UIViewController {
             FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
                 if let error = error {
                     //Clean loading view
-                    //self.loadingViewRemove()
+                    self.loadingViewRemove()
                     
-                    print("Login error: \(error.localizedDescription)")
-                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    print("FIR Signin error: \(error.localizedDescription)")
+                    self.showAlert(withMessage: "FIR Signin Error.")
+                    
+                    /*let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
                     let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(okayAction)
-                    self.present(alertController, animated: true, completion: nil)
+                    self.present(alertController, animated: true, completion: nil)*/
                     
-                    return
+                    //return
                 }
                 
                 if let user = FIRAuth.auth()?.currentUser{
@@ -211,7 +225,6 @@ class SignUpViewController: UIViewController {
                     let profile_ref = FIRDatabase.database().reference(withPath: "user-profiles")
                     //Get user name if already exists
                     profile_ref.observeSingleEvent(of:.value, with: { (snapshot) in
-                        //bla bla bla
                         self.searchExistingAccounts(snap:snapshot, completion: {
                             self.GraphRequestAndToVenmo()
                         })
@@ -222,47 +235,52 @@ class SignUpViewController: UIViewController {
     }
     
     func searchExistingAccounts(snap: FIRDataSnapshot, completion:@escaping ()->()){
-        //is there a faster way to look if user_id exists?
-        for item in snap.children {
-            let curr_item = item as! FIRDataSnapshot
-            let value = curr_item.value as? NSDictionary
-            let user_id = value?["uid"] as? String ?? ""
-            if (user_id == fb_uid){
-                let first_name = value?["first_name"] as? String ?? ""
-                let last_name = value?["last_name"] as? String ?? ""
-                let email = value?["email"] as? String ?? ""
-                let full_name = first_name + " " + last_name
-                
-                let userData = ["email": email, "full_name": full_name]
-                CurrentUserName = full_name
-                CurrentUser = email
-                
-                //re-download image
-                let storageRef = FIRStorage.storage().reference()
-                let imagesRef = storageRef.child("profile_pics")
-                let selfieRef = imagesRef.child("\(self.fb_uid).png")
-                selfieRef.data(withMaxSize: 1024 * 1024, completion: { (data, error) in
-                    if (error != nil) {
-                        print("Unable to download image")
-                    } else if (data != nil) {
-                        if let image = UIImage(data: data!) {
-                            //save photo as the current users image
-                            CurrentUserPhoto = image
-                            
-                            //store photo in file system for later use
-                            saveImage(image: image, path: "profilePicture.png")
-                        }
+        //Get all the user ids and search among them
+        let snapValue = snap.value as! NSDictionary
+        let all_uids = snapValue.allKeys as! [String]
+        //If found fb_uid in all profiles, showing that this person has registered before.
+        if (all_uids.contains(fb_uid)){
+            let value = snapValue[fb_uid] as! NSDictionary
+            let first_name = value["first_name"] as? String ?? ""
+            let last_name = value["last_name"] as? String ?? ""
+            let email = value["email"] as? String ?? ""
+            let full_name = first_name + " " + last_name
+            
+            let userData = ["email": email, "full_name": full_name]
+            let defaults = UserDefaults.standard
+            defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
+            
+            CurrentUserName = full_name
+            CurrentUser = email
+            
+            //download image??
+            let storageRef = FIRStorage.storage().reference()
+            let imagesRef = storageRef.child("profile_pics")
+            let selfieRef = imagesRef.child("\(self.fb_uid).png")
+            selfieRef.data(withMaxSize: 1024 * 1024, completion: { (data, error) in
+                if (error != nil) {
+                    print("Unable to download image")
+                } else if (data != nil) {
+                    if let image = UIImage(data: data!) {
+                        //save photo as the current users image
+                        CurrentUserPhoto = image
+                        print("image for "+CurrentUserName+" stored.")
+                        
+                        //store photo in file system for later use
+                        saveImage(image: image, path: "profilePicture.png")
                     }
-                })
-                
-                let defaults = UserDefaults.standard
-                defaults.set(userData, forKey: "fb+" + FBSDKAccessToken.current().userID!)
-                print("Going into Scanner")
-                self.performSegue(withIdentifier: "SignUpToScanner", sender: self)
-                return
-            }
+                }
+            })
+            
+            //Going straight to scanner, because this user has signed up and so must already have
+            //a linked Venmo account
+            print("Going into Scanner")
+            self.performSegue(withIdentifier: "SignUpToScanner", sender: self)
         }
-        completion()
+        //Otherwise, it's a new FB sign-in
+        else{
+            completion()
+        }
     }
     
     func GraphRequestAndToVenmo(){
@@ -296,6 +314,7 @@ class SignUpViewController: UIViewController {
                 let profilePic = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["height":300, "width":300, "redirect":false], httpMethod: "GET")
                 profilePic?.start(completionHandler: { (connection, result, error) -> Void in
                     if (error == nil) {
+                        //If the profile pic has been successfully found
                         if let dictionary = result as? [String: Any], let dataDict = dictionary["data"] as? [String: Any], let urlPic = dataDict["url"] as? String {
                             if let imageData = NSData(contentsOf: URL(string: urlPic)!) as Data? {
                                 //Create a reference to the profile pics folder
@@ -326,16 +345,21 @@ class SignUpViewController: UIViewController {
                                 }
                             }
                         }
-                    } else {
-                        print("image download error:" + (error?.localizedDescription)!)
+                    }
+                    //profile pic download error
+                    else {
+                        print("profile pic download error:" + (error?.localizedDescription)!)
                     }
                 })
-                
+                //perform segue to venmo, without waiting for the procedure to download profile pic
                 self.performSegue(withIdentifier: "SignUpToVenmo", sender: nil)
+            
             case .failed(let error):
                 print("Custom Graph Request Failed: \(error)")
             }
         }
+        
+        //Start the connection in the end
         connection.start()
     }
     
@@ -357,6 +381,14 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    @IBAction func LoginButton(_ sender: Any) {
+        //loading view remove
+        self.loadingViewRemove()
+        
+        self.performSegue(withIdentifier: "SignupToLogin", sender: nil)
+    }
+    
+    
     //functions to set up loading view
     func loadingViewSetup(){
         view.bringSubview(toFront: LoadingView)
@@ -366,7 +398,7 @@ class SignUpViewController: UIViewController {
         LoadingView.bringSubview(toFront: LoadingActivityIndicator)
         LoadingActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
         LoadingView.bringSubview(toFront: LoadingText)
-        LoadingText.text = "Logging in..."
+        LoadingText.text = "Signing up..."
         LoadingActivityIndicator.hidesWhenStopped = true
         LoadingActivityIndicator.startAnimating()
     }
