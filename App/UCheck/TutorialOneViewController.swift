@@ -17,7 +17,7 @@ class TutorialOneViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        gradientLayer.setGradientBackground(colorOne: Colors.lightWhite, colorTwo: UIColor.white)
+        gradientLayer.setGradientBackground(colorOne: UIColor.clear, colorTwo: UIColor.white)
         CATransaction.commit()
     }
     

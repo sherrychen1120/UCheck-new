@@ -19,6 +19,12 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
     var loggingOut = false
     var toHelpForm = false
     var toShoppingHistory = false
+    var toAccountSettings = false
+    
+    @IBAction func AccountButton(_ sender: Any) {
+        toAccountSettings = true
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func HelpButton(_ sender: Any) {
         toHelpForm = true
@@ -83,6 +89,9 @@ class MenuViewController: UIViewController, SFSafariViewControllerDelegate {
         } else if (toShoppingHistory == true){
             toShoppingHistory = false
             self.delegate?.showShoppingHistory()
+        } else if (toAccountSettings == true){
+            toAccountSettings = false
+            self.delegate?.showAccountSettings()
         } else {
             self.delegate?.scannerSetup()
         }

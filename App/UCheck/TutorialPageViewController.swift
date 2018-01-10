@@ -10,7 +10,7 @@ import UIKit
 class TutorialPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     lazy var VCArr: [UIViewController] = {
-        return [self.VCInstance(name: "TutorialOneVC"),
+        return [//self.VCInstance(name: "TutorialOneVC"),
                 self.VCInstance(name: "TutorialTwoVC"),
                 self.VCInstance(name: "TutorialThreeVC")]
     }()
@@ -27,15 +27,19 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
         
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         for view in self.view.subviews {
             if view is UIScrollView {
-                view.frame = UIScreen.main.bounds
+                view.frame = view.superview!.bounds
             } else if view is UIPageControl {
+                let pos = CGPoint(x: view.frame.midX - (view.frame.width / 2), y: self.view.frame.height - 80 - view.frame.height)
+                view.frame = CGRect(origin: pos, size: view.frame.size)
+                let pageControl = view as! UIPageControl
+                pageControl.currentPageIndicatorTintColor = Colors.lightRed
+                pageControl.pageIndicatorTintColor = UIColor.gray
                 view.backgroundColor = UIColor.clear
             }
         }
@@ -81,13 +85,13 @@ class TutorialPageViewController: UIPageViewController, UIPageViewControllerData
     public func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return VCArr.count
     }
-    
+
     public func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
             let firstViewControllerIndex = VCArr.index(of: firstViewController) else {
                 return 0
         }
-        
+
         return firstViewControllerIndex
     }
 }

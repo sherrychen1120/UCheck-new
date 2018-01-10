@@ -58,6 +58,8 @@
 		56FC95C71F20945D0090A1AE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC95C61F20945C0090A1AE /* MenuViewController.swift */; };
 		A90ACA6E1FC612A800177EA1 /* FacebookProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90ACA6D1FC612A800177EA1 /* FacebookProfileRequest.swift */; };
 		A90ACA701FC61B9000177EA1 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90ACA6F1FC61B9000177EA1 /* UIView+Extension.swift */; };
+		A9586D41200484B500DD9624 /* AccountMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9586D40200484B500DD9624 /* AccountMenuViewController.swift */; };
+		A9586D4320058FAA00DD9624 /* AccountMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9586D4220058FAA00DD9624 /* AccountMenuTableViewCell.swift */; };
 		A96F09C41FD2539600D48082 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F09C31FD2539600D48082 /* TutorialPageViewController.swift */; };
 		A96F09C71FD2639C00D48082 /* MainTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F09C61FD2639C00D48082 /* MainTutorialViewController.swift */; };
 		A96F09C91FD26C7D00D48082 /* TutorialOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F09C81FD26C7D00D48082 /* TutorialOneViewController.swift */; };
@@ -146,6 +148,8 @@
 		93CCC7E31EE3909C7CB36AEA /* Pods-UCheckTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UCheckTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UCheckTests/Pods-UCheckTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A90ACA6D1FC612A800177EA1 /* FacebookProfileRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookProfileRequest.swift; sourceTree = "<group>"; };
 		A90ACA6F1FC61B9000177EA1 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		A9586D40200484B500DD9624 /* AccountMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMenuViewController.swift; sourceTree = "<group>"; };
+		A9586D4220058FAA00DD9624 /* AccountMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMenuTableViewCell.swift; sourceTree = "<group>"; };
 		A96F09C31FD2539600D48082 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		A96F09C61FD2639C00D48082 /* MainTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTutorialViewController.swift; sourceTree = "<group>"; };
 		A96F09C81FD26C7D00D48082 /* TutorialOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialOneViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 			children = (
 				56C793D81FD11E5300CED84E /* HelpFormViewController.swift */,
 				56C793DE1FD1A89000CED84E /* ShoppingHistoryViewController.swift */,
+				A9586D40200484B500DD9624 /* AccountMenuViewController.swift */,
+				A9586D4220058FAA00DD9624 /* AccountMenuTableViewCell.swift */,
 				56C793E41FD2162300CED84E /* HistorySessionTableViewCell.swift */,
 				56C4B61B1FD25175007313BD /* HistoryReceiptViewController.swift */,
 			);
@@ -506,7 +512,7 @@
 				TargetAttributes = {
 					5652EF931F09D1030014873D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = UW63CYKZZU;
+						DevelopmentTeam = QCGB64L4VH;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -787,6 +793,7 @@
 				565D91B31F23DD2A009C2393 /* ShoppingCartViewController.swift in Sources */,
 				5684800F1F4B80DD00B41BC7 /* EdgeShadowLayer.swift in Sources */,
 				A96F09CD1FD26D6B00D48082 /* TutorialThreeViewController.swift in Sources */,
+				A9586D4320058FAA00DD9624 /* AccountMenuTableViewCell.swift in Sources */,
 				56FC95AE1F1DE03F0090A1AE /* ItemDetailViewController.swift in Sources */,
 				56D9E3251F258CC90043E910 /* CheckOutViewController.swift in Sources */,
 				56B681211F1AC96C00772C68 /* ScannerViewController.swift in Sources */,
@@ -794,6 +801,7 @@
 				56C793E51FD2162300CED84E /* HistorySessionTableViewCell.swift in Sources */,
 				A96F09C91FD26C7D00D48082 /* TutorialOneViewController.swift in Sources */,
 				56B680F01F0BFD1800772C68 /* CheckBox.swift in Sources */,
+				A9586D41200484B500DD9624 /* AccountMenuViewController.swift in Sources */,
 				56C4B61C1FD25175007313BD /* HistoryReceiptViewController.swift in Sources */,
 				56A720BE1FB0288300FF6DCE /* ReceiptItemCollectionViewCell.swift in Sources */,
 				5665A6141FB826A400A8719B /* SignUpViewController.swift in Sources */,
@@ -954,7 +962,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UCheck/UCheck.entitlements;
-				DEVELOPMENT_TEAM = UW63CYKZZU;
+				DEVELOPMENT_TEAM = QCGB64L4VH;
 				INFOPLIST_FILE = UCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucheckbeta.UCheck;
@@ -973,7 +981,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UCheck/UCheck.entitlements;
-				DEVELOPMENT_TEAM = UW63CYKZZU;
+				DEVELOPMENT_TEAM = QCGB64L4VH;
 				INFOPLIST_FILE = UCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucheckbeta.UCheck;
