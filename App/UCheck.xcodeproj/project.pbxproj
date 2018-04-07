@@ -306,7 +306,6 @@
 		56B680E91F09FB0900772C68 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A96F09C51FD2637C00D48082 /* Tutorials */,
 				567C786D1FC9E3E700907232 /* Settings Pages */,
 				56B1AA711F2B87040085FE06 /* Checkout Flow */,
 				56B681221F1AC96F00772C68 /* Shopping Flow */,
@@ -319,6 +318,7 @@
 		56B680EA1F09FB1C00772C68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A96F09C51FD2637C00D48082 /* Tutorials */,
 				568480101F4B80F000B41BC7 /* StyleHelper */,
 				56D9E3231F258BA90043E910 /* Classes */,
 				565D91AD1F23C785009C2393 /* SlideInPresentation */,
