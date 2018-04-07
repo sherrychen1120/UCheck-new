@@ -20,8 +20,6 @@ class MainTutorialViewController: UIViewController {
         
         signUpButton.layer.cornerRadius = 4.5
         signUpButton.backgroundColor = Colors.lightRed
-        
-    containerView.setGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
     }
     
     @IBAction func signUpAction(_ sender: Any) {

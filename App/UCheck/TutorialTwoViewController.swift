@@ -12,13 +12,12 @@ class TutorialTwoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewDidLayoutSubviews() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
-        gradientView.setGradientBackground(colorOne: Colors.lightWhite, colorTwo: UIColor.white)
+        gradientView.setTallGradientBackground(colorOne: Colors.lightWhite, colorTwo: UIColor.white)
         CATransaction.commit()
     }
     
